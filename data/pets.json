@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-12T17:30:55Z",
+  "generatedAt": "2026-08-12T18:00:12Z",
   "variants": [
     {
       "id": "normal",
@@ -11667,8 +11667,8 @@
           ]
         },
         {
-          "slug": "dragon",
-          "name": "Dragon",
+          "slug": "ornament-dragon",
+          "name": "Ornament Dragon",
           "egg": null,
           "rarity": "Mythical",
           "clicks": null,
@@ -11888,9 +11888,9 @@
           ]
         },
         {
-          "slug": "grinch-exclusive-egg",
-          "name": "Grinch Exclusive Egg",
-          "egg": null,
+          "slug": "gifts-sack",
+          "name": "Gifts Sack",
+          "egg": "Grinch Exclusive Egg",
           "rarity": "Eternal",
           "clicks": null,
           "variants": [
