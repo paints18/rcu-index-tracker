@@ -1,0 +1,994 @@
+@import "tailwindcss";
+
+/* index.html is the site; editor.html is its own local-only page (gitignored —
+   present on disk for whoever runs this build, absent for anyone else's clone).
+   settings.html and updates.html are redirect stubs with nothing to scan. */
+@source "../index.html";
+@source "../editor.html";
+@source "../assets/js/**/*.js";
+
+/* ---------------------------------------------------------------------------
+   Theme
+   ---------------------------------------------------------------------------
+   Two independent axes, both driven by attributes on <html> and both written
+   pre-paint by the bootstrap snippet in each page's <head>:
+
+     data-mode   auto (absent) | light | dark        — which neutrals to use
+     data-theme  periwinkle (absent) | sky | meadow | … | trans | lesbian | …
+
+   data-mode picks the surface set (--surface-*). data-theme sets seeds and
+   nothing else:
+
+     --accent-base  the accent, picked to read on a dark surface
+     --accent-2     the theme's second colour (see below)
+     --good-base    "complete" — defaults to --accent-2; set it only when the
+                    second colour would make a poor completion marker
+     --on-accent    text on a filled accent button
+     --tint         hue stirred into every neutral surface
+     --tint-amt     how much of it — 0% (the default) leaves the greys grey
+
+   A theme is two colours, not one, and both do real work: --accent-base owns
+   the interactive things (buttons, links, focus, the active pill) and
+   --accent-2 owns progress and completion (the bar, the tint on a finished
+   row, the "added" tag). One accent alone left half of a theme's palette
+   showing up nowhere.
+
+   Everything else — the light-mode darkening, the soft tint, the tinted
+   surfaces — is derived below, so a new theme is a line or two rather than a
+   whole palette.
+   --------------------------------------------------------------------------- */
+
+:root {
+  --dark-bg: #0e1015;
+  --dark-raised: #171b23;
+  --dark-input: #10141b;
+  --dark-border: #262c38;
+  --dark-border-hi: #38414f;
+  --dark-text: #e6e9ef;
+  --dark-muted: #949cad;
+
+  --light-bg: #f6f7fa;
+  --light-raised: #ffffff;
+  --light-input: #ffffff;
+  --light-border: #dfe3ea;
+  --light-border-hi: #c3cad6;
+  --light-text: #1b1f27;
+  --light-muted: #5f6878;
+
+  /* Dark is the default. color-scheme rides along with the surfaces: the
+     settings dialog's checkboxes and the import radios are native controls, and
+     the UA paints those from color-scheme alone. Left on dark, they stayed dark
+     in light mode. */
+  color-scheme: dark;
+
+  --surface-bg: var(--dark-bg);
+  --surface-raised: var(--dark-raised);
+  --surface-input: var(--dark-input);
+  --surface-border: var(--dark-border);
+  --surface-border-hi: var(--dark-border-hi);
+  --c-text: var(--dark-text);
+  --c-muted: var(--dark-muted);
+
+  /* The drop-down marker is ours rather than the UA's — see the `select` rule
+     for why — so its colour has to follow the surface set, and both light blocks
+     below redefine it. Muted, matching the one it replaces. */
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%23949cad' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M1.75 2 6 6.25 10.25 2'/%3E%3C/svg%3E");
+
+  /* One source for a menu's horizontal padding, because two things depend on it:
+     the menu, and the sizer that reserves the menu's width (see .select-sizer).
+     The right side is wide enough to hold the arrow and a gap either side of it. */
+  --select-pad-x: 0.625rem;
+  --select-pad-right: 2rem;
+
+  /* Theme seeds. Every :root[data-theme] block below overrides some of these
+     and only these. */
+  --accent-base: #7c9cff;
+  --accent-2: #48c98a;
+  --good-base: var(--accent-2);
+  --on-accent: #ffffff;
+  --tint: var(--accent-base);
+  --tint-amt: 0%;
+
+  /* A light surface shows a tint far more readily than a dark one, so the same
+     --tint-amt is scaled down in light mode rather than restated per theme. */
+  --tint-scale: 1;
+  --tint-mix: calc(var(--tint-amt) * var(--tint-scale));
+
+  /* Borders take double the tint: they are the thing that actually reads as
+     "this UI is green" at a glance. */
+  --c-bg: color-mix(in srgb, var(--tint) var(--tint-mix), var(--surface-bg));
+  --c-raised: color-mix(in srgb, var(--tint) var(--tint-mix), var(--surface-raised));
+  --c-input: color-mix(in srgb, var(--tint) var(--tint-mix), var(--surface-input));
+  --c-border: color-mix(in srgb, var(--tint) calc(var(--tint-mix) * 2), var(--surface-border));
+  --c-border-hi: color-mix(in srgb, var(--tint) calc(var(--tint-mix) * 2), var(--surface-border-hi));
+
+  --c-accent: var(--accent-base);
+  --c-on-accent: var(--on-accent);
+  --c-accent-soft: color-mix(in srgb, var(--c-accent) 26%, var(--c-bg));
+  --c-good: var(--good-base);
+  --c-danger: #f2777a;
+
+  /* Tick boxes. The variant colours they are tinted with are bright in dark mode
+     and deep in light mode, so the check mark and the unchecked tint have to
+     flip with the surface rather than being fixed. */
+  --tick-ink: #0d1017;
+  --tick-tint: 9%;
+  --tick-edge: 45%;
+
+  /* Tint on a finished row. Light mode needs more of it: the completion colour
+     is darkened there, so the same percentage over white reads fainter. */
+  --row-done: 9%;
+
+  --c-normal: #9aa4b8;
+  --c-golden: #e8c14a;
+  --c-toxic: #7ed957;
+  --c-galaxy: #b07cf0;
+
+  /* Measured by the pages so the sticky table header sits under the site header. */
+  --header-h: 57px;
+  --row-py: 7px;
+}
+
+/* `:not([data-mode="dark"])` so an explicit dark choice still wins on a
+   light system. The two light blocks are deliberately identical; only their
+   selectors differ, and there is no way to share one rule across a media
+   query and an attribute. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-mode="dark"]) {
+    color-scheme: light;
+    --surface-bg: var(--light-bg);
+    --surface-raised: var(--light-raised);
+    --surface-input: var(--light-input);
+    --surface-border: var(--light-border);
+    --surface-border-hi: var(--light-border-hi);
+    --c-text: var(--light-text);
+    --c-muted: var(--light-muted);
+    --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%235f6878' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M1.75 2 6 6.25 10.25 2'/%3E%3C/svg%3E");
+    --tint-scale: 0.55;
+    /* Theme accents are chosen against a dark surface, so they are darkened
+       here rather than swapped for a second hand-picked set. */
+    --c-accent: color-mix(in srgb, var(--accent-base) 64%, #000);
+    --c-on-accent: #ffffff;
+    /* A ticked box is a deep variant colour here, so the check goes white; the
+       unticked tint has to work harder to show at all against white. */
+    --tick-ink: #ffffff;
+    --tick-tint: 13%;
+    --tick-edge: 62%;
+    --row-done: 13%;
+    --c-good: color-mix(in srgb, var(--good-base) 60%, #000);
+    --c-danger: #d64545;
+    --c-normal: #6b7488;
+    --c-golden: #a97d05;
+    --c-toxic: #2f8f3f;
+    --c-galaxy: #7a41c4;
+  }
+}
+
+:root[data-mode="light"] {
+  color-scheme: light;
+  --surface-bg: var(--light-bg);
+  --surface-raised: var(--light-raised);
+  --surface-input: var(--light-input);
+  --surface-border: var(--light-border);
+  --surface-border-hi: var(--light-border-hi);
+  --c-text: var(--light-text);
+  --c-muted: var(--light-muted);
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%235f6878' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M1.75 2 6 6.25 10.25 2'/%3E%3C/svg%3E");
+  --tint-scale: 0.55;
+  --c-accent: color-mix(in srgb, var(--accent-base) 64%, #000);
+  --c-on-accent: #ffffff;
+  --tick-ink: #ffffff;
+  --tick-tint: 13%;
+  --tick-edge: 62%;
+  --row-done: 13%;
+  --c-good: color-mix(in srgb, var(--good-base) 60%, #000);
+  --c-danger: #d64545;
+  --c-normal: #6b7488;
+  --c-golden: #a97d05;
+  --c-toxic: #2f8f3f;
+  --c-galaxy: #7a41c4;
+}
+
+/* ---------- themes: plain colours ----------
+   The default (periwinkle) is the one theme with no tint at all: neutral greys,
+   one accent. Everything else stirs its hue through the whole UI. */
+
+:root[data-theme="sky"] {
+  --accent-base: #56b6ff;
+  --accent-2: #7ee0ff;
+  --on-accent: #0d1017;
+  --tint: #56b6ff;
+  --tint-amt: 6%;
+}
+:root[data-theme="meadow"] {
+  --accent-base: #43c98b;
+  --accent-2: #a8e05f;
+  --on-accent: #0d1017;
+  --tint: #43c98b;
+  --tint-amt: 6%;
+}
+:root[data-theme="gold"] {
+  --accent-base: #e8c14a;
+  --accent-2: #f0883e;
+  --on-accent: #0d1017;
+  --tint: #e8c14a;
+  --tint-amt: 5%;
+}
+:root[data-theme="toxic"] {
+  --accent-base: #6dd44a;
+  --accent-2: #d6f24a;
+  --on-accent: #0d1017;
+  --tint: #6dd44a;
+  --tint-amt: 5%;
+}
+:root[data-theme="galaxy"] {
+  --accent-base: #b07cf0;
+  --accent-2: #6f8cff;
+  --on-accent: #0d1017;
+  --tint: #b07cf0;
+  --tint-amt: 6%;
+}
+:root[data-theme="rose"] {
+  --accent-base: #f2777a;
+  --accent-2: #ffb36b;
+  --on-accent: #0d1017;
+  --tint: #f2777a;
+  --tint-amt: 5%;
+}
+:root[data-theme="cyan"] {
+  --accent-base: #4cc9d9;
+  --accent-2: #5be0a8;
+  --on-accent: #0d1017;
+  --tint: #4cc9d9;
+  --tint-amt: 6%;
+}
+
+/* ---------- themes: pride flags ----------
+   Two colours out of each flag, chosen to work as UI rather than to reproduce
+   the flag: nothing here paints stripes. */
+
+:root[data-theme="rainbow"] {
+  --accent-base: #ff8a4c;
+  --accent-2: #a86bf0;
+  --on-accent: #0d1017;
+  --tint: #a86bf0;
+  --tint-amt: 5%;
+}
+:root[data-theme="trans"] {
+  --accent-base: #5bcefa;
+  --accent-2: #f5a9b8;
+  --on-accent: #0d1017;
+  --tint: #5bcefa;
+  --tint-amt: 6%;
+}
+:root[data-theme="lesbian"] {
+  --accent-base: #ff9a56;
+  --accent-2: #d362a4;
+  --on-accent: #0d1017;
+  --tint: #d362a4;
+  --tint-amt: 6%;
+}
+:root[data-theme="bisexual"] {
+  --accent-base: #f04a94;
+  --accent-2: #6f8cff;
+  --on-accent: #0d1017;
+  --tint: #9b4f96;
+  --tint-amt: 6%;
+}
+:root[data-theme="pan"] {
+  --accent-base: #ff4fa3;
+  --accent-2: #ffd63d;
+  --on-accent: #0d1017;
+  --tint: #ff1b8d;
+  --tint-amt: 5%;
+}
+:root[data-theme="nonbinary"] {
+  --accent-base: #f2e34a;
+  --accent-2: #b47bea;
+  --on-accent: #0d1017;
+  --tint: #9c59d1;
+  --tint-amt: 6%;
+}
+:root[data-theme="asexual"] {
+  --accent-base: #a86bd6;
+  --accent-2: #b9bcc6;
+  /* The one theme whose second colour is a grey: completion in grey reads as
+     disabled, so it borrows the purple instead. */
+  --good-base: #b98ad6;
+  --on-accent: #0d1017;
+  --tint: #800080;
+  --tint-amt: 6%;
+}
+
+:root[data-density="compact"] { --row-py: 3px; }
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-raised: var(--c-raised);
+  --color-input: var(--c-input);
+  --color-edge: var(--c-border);
+  --color-edge-hi: var(--c-border-hi);
+  --color-ink: var(--c-text);
+  --color-muted: var(--c-muted);
+  --color-accent: var(--c-accent);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-on-accent: var(--c-on-accent);
+  --color-good: var(--c-good);
+  --color-danger: var(--c-danger);
+
+  --color-v-normal: var(--c-normal);
+  --color-v-golden: var(--c-golden);
+  --color-v-toxic: var(--c-toxic);
+  --color-v-galaxy: var(--c-galaxy);
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+@layer base {
+  html {
+    /* Reserve the scrollbar track always, so a short page (Updates) and a long
+       one (Tracker) do not sit at different horizontal offsets. */
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans text-[15px] leading-normal;
+  }
+
+  h1, h2, h3 { @apply leading-tight; }
+
+  input[type="text"],
+  input[type="search"],
+  input[type="date"],
+  input[type="number"],
+  select,
+  textarea {
+    @apply bg-input text-ink border border-edge-hi rounded-lg px-2.5 py-[7px] min-w-0
+           font-[inherit] text-[inherit];
+  }
+
+  /* The drop-down marker is drawn here rather than left to the UA, because the
+     native one is painted a fixed few pixels off the BORDER box — no amount of
+     padding moves it — and that sat too tight against these rounded corners.
+     Ours is a background image, so its distance from the edge is just a
+     background-position, and every menu on every platform gets the same one.
+     `appearance: none` is what stops the native arrow being drawn beside it.
+
+     The width reserved on the right is a token, because the sizers that hold
+     these menus to a fixed width have to reserve exactly the same (see
+     .select-sizer). Nothing else about the control changes: the popup list is
+     still the UA's, painted from color-scheme. */
+  select {
+    @apply appearance-none bg-no-repeat;
+    background-image: var(--select-arrow);
+    background-position: right 0.75rem center;
+    background-size: 11px 7px;
+    padding-left: var(--select-pad-x);
+    padding-right: var(--select-pad-right);
+  }
+
+  textarea { @apply w-full resize-y font-mono text-xs; }
+
+  /* Native controls, left native — but themed, so the settings checkboxes and
+     the import radios tick in the theme's accent rather than the OS blue. The
+     tick columns in the table are not these; they are .tick input, which drops
+     appearance entirely. */
+  input[type="checkbox"],
+  input[type="radio"] { accent-color: var(--c-accent); }
+
+  :is(input, select, textarea, button, a, summary):focus-visible {
+    @apply outline-2 outline-accent outline-offset-1;
+  }
+}
+
+@layer components {
+
+  /* Variant colour lookup. JS only tags an element with data-variant; the
+     mapping to an actual colour lives here so renaming a palette variable can
+     never silently blank out the UI. */
+  [data-variant="normal"] { --vc: var(--c-normal); }
+  [data-variant="golden"] { --vc: var(--c-golden); }
+  [data-variant="toxic"]  { --vc: var(--c-toxic); }
+  [data-variant="galaxy"] { --vc: var(--c-galaxy); }
+
+  /* ---------- layout primitives ---------- */
+
+  .wrap { @apply max-w-[1180px] mx-auto px-4; }
+  .prose-col { @apply max-w-[820px]; }
+
+  .card { @apply bg-raised border border-edge rounded-[10px] p-4; }
+
+  .field { @apply flex flex-col gap-1; }
+
+  /* A <select> is as wide as its widest option, and these are refilled per
+     category — so the row of filters jumped every time you changed world. The
+     sizer holds a fixed width open the same way the table's column sizers do:
+     the longest values in the whole dataset, drawn invisibly at zero height in
+     the same grid cell as the menu.
+
+     The select is given a zero preferred width so that ONLY the sizer can size
+     the wrapper; min-width stretches it back over the whole cell afterwards.
+     Without that the menu would still push the wrapper wider in whichever world
+     happens to hold the longest option — the exact thing being fixed. */
+  .select-wrap { @apply grid; }
+  .select-wrap > select {
+    grid-area: 1 / 1;
+    @apply w-0 min-w-full;
+  }
+  .select-sizer {
+    grid-area: 1 / 1;
+    /* Its own samples stack inside it, same as the table's do. One line of text
+       with no vertical padding, so it is shorter than the menu it is standing
+       beside and never sets the row's height — only its width. */
+    @apply grid justify-items-start invisible whitespace-nowrap;
+    /* What the menu spends on chrome and the sizer does not: its padding, which
+       already includes room for the arrow, and its border. Exact rather than an
+       allowance, because the arrow is ours and the padding is a shared token. */
+    padding-left: calc(var(--select-pad-x) + 1px);
+    padding-right: calc(var(--select-pad-right) + 1px);
+  }
+  .select-sizer > * { grid-area: 1 / 1; }
+  .field-label {
+    @apply text-[11px] uppercase tracking-[0.06em] text-muted font-semibold;
+  }
+
+  /* One heading scale, used on every page. */
+  .page-head { @apply mt-7 mb-5; }
+  .page-title { @apply text-2xl font-semibold tracking-tight; }
+  .page-sub { @apply text-muted text-sm mt-1; }
+  .section-title { @apply text-[15px] font-semibold; }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 whitespace-nowrap cursor-pointer
+           font-medium bg-input text-ink border border-edge-hi rounded-lg px-3 py-[7px]
+           transition-colors hover:border-accent disabled:opacity-50
+           disabled:cursor-not-allowed disabled:hover:border-edge-hi;
+  }
+  /* text-on-accent, not text-white: half the themes have a pale accent, and
+     white on pale gold is unreadable. Each theme names its own ink. */
+  .btn-primary { @apply bg-accent border-accent text-on-accent hover:brightness-110 hover:border-accent; }
+  .btn-quiet { @apply bg-transparent; }
+  .btn-danger { @apply hover:border-danger hover:text-danger; }
+  .btn-sm { @apply px-2.5 py-1 text-[13px]; }
+
+  .linkish {
+    @apply bg-transparent border-0 p-0 font-[inherit] text-accent underline cursor-pointer;
+  }
+
+  /* ---------- site chrome ---------- */
+
+  /* Identical on every page: brand plus nav, one fixed-height row. Page-specific
+     controls live in the page body, not here — that is what keeps the header
+     (and therefore the sticky table offset) the same height everywhere. */
+  .site-header { @apply sticky top-0 z-20 bg-raised border-b border-edge; }
+
+  /* Same box as .wrap, spelled out — @apply cannot reference another custom
+     component class. Fixed height is the point: it is what makes the header
+     identical on every page, and keeps --header-h stable. */
+  .site-header-inner {
+    @apply max-w-[1180px] mx-auto px-4 flex items-center gap-4 h-14;
+  }
+
+  .brand { @apply font-semibold text-[17px] tracking-tight no-underline text-ink truncate; }
+
+  .site-nav { @apply flex gap-1 ml-auto shrink-0; }
+
+  /* Used on both <a> (pages) and <button> (the settings dialog), so it resets
+     the button chrome too — otherwise Settings would sit a pixel off from its
+     neighbours and lose the pointer cursor. */
+  .nav-link {
+    @apply text-[13px] text-muted px-2.5 py-1.5 rounded-md no-underline
+           hover:text-ink hover:bg-input
+           font-[inherit] leading-normal bg-transparent border-0 cursor-pointer;
+  }
+  .nav-link.is-current { @apply text-ink font-semibold bg-input; }
+
+  /* ---------- status bar ---------- */
+
+  /* One card, two panes: who you are on the left, how far along they are on the
+     right. Roughly a quarter and three quarters — the left is the narrowest
+     that still holds its four small buttons on one line, and everything past
+     that goes to the bar and the variant chips, which are the thing worth
+     looking at. Below the breakpoint the two panes stack and the rule between
+     them turns into a rule above the progress. */
+  .status-bar {
+    @apply grid gap-3.5;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /* Centred, not top-aligned: the progress pane is the taller of the two, and
+     three tight rows pinned to the top left a hole under them. */
+  .status-profile { @apply flex flex-col justify-center gap-1 min-w-0; }
+  /* The same size as the overall count across the card, so the two panes read as
+     one line: whose index, and how far through it.
+     Long names truncate rather than wrap — the pane's height is budgeted against
+     the progress beside it, and a two-line name would stretch the whole card. */
+  .profile-name { @apply text-[22px] font-semibold leading-tight truncate; }
+  .profile-actions { @apply flex flex-wrap gap-1.5 pt-2.5; }
+  .status-progress { @apply min-w-0 border-t border-edge pt-3.5; }
+
+  /* The floor is the width of the four buttons on one line — at 1fr alone the
+     left column is narrower than that until about 1200px, and Backup spent the
+     whole range wrapped onto a second row. The breakpoint is then the width at
+     which the remainder still leaves the variant chips a single row; below it
+     the panes stack and each gets the full card width. */
+  @media (min-width: 940px) {
+    .status-bar {
+      @apply gap-5;
+      grid-template-columns: minmax(292px, 1fr) minmax(0, 3fr);
+    }
+    .status-progress { @apply border-t-0 border-l pt-0 pl-5; }
+  }
+
+  /* ---------- progress ---------- */
+
+  .bar { @apply h-2 bg-input rounded-full overflow-hidden border border-edge my-2.5 mb-3.5; }
+  /* The theme's second colour — the same one a finished row is tinted with, so
+     a full bar and a done pet read as the same thing. */
+  .bar-fill {
+    @apply h-full w-0 bg-good transition-[width] duration-200 ease-out;
+  }
+
+  /* The floor is what one chip needs, not what looks roomy: the chips share a
+     card with the profile pane now, and a larger minimum tips all four onto a
+     second row at the width where the two panes first sit side by side. They
+     are 1fr, so they spread back out whenever there is space. */
+  .variant-summary {
+    @apply list-none m-0 p-0 grid gap-2.5;
+    grid-template-columns: repeat(auto-fit, minmax(116px, 1fr));
+  }
+  .variant-summary li {
+    @apply border border-edge rounded-lg px-2.5 py-2 border-l-[3px];
+    border-left-color: var(--vc, var(--c-border-hi));
+  }
+  .vs-label { @apply text-[11.5px] text-muted uppercase tracking-[0.05em] font-semibold; }
+  .vs-value { @apply text-[15px] tabular-nums; }
+
+  /* ---------- category nav ---------- */
+
+  .cat-pill {
+    @apply text-[13px] bg-raised text-muted border border-edge rounded-full px-3 py-[5px]
+           cursor-pointer hover:border-edge-hi hover:text-ink;
+  }
+  .cat-pill.is-active { @apply bg-accent-soft border-accent text-ink font-semibold; }
+  .cat-pill.is-empty { @apply opacity-50; }
+  .pill-count { @apply tabular-nums opacity-75 ml-1.5 text-xs; }
+
+  /* Reorderable pills — the editor only; the tracker's nav renders whatever
+     order pets.json is in and never sets these. Faded source and a marker on
+     the edge the dragged pill will land against, which is the same pair of
+     states .editor-row uses for a pet row. An inset shadow rather than a
+     border, because a border would be a pixel of layout and the whole row of
+     pills would twitch as the marker moved along it; it follows the pill's own
+     radius, so on a rounded-full pill it reads as a crescent down that side. */
+  .cat-pill.is-dragging { @apply opacity-40; }
+  .cat-pill.is-drop-before {
+    @apply border-edge-hi;
+    box-shadow: inset 3px 0 0 var(--c-accent);
+  }
+  .cat-pill.is-drop-after {
+    @apply border-edge-hi;
+    box-shadow: inset -3px 0 0 var(--c-accent);
+  }
+
+  /* ---------- pet table ---------- */
+
+  /* --table-radius is read back by the pet table's corner cells, so the two
+     stay in step. */
+  .table-scroll {
+    --table-radius: 10px;
+    @apply overflow-x-auto border border-edge rounded-[var(--table-radius)] bg-raised;
+  }
+
+  /* Only the pet table, whose <thead> is sticky — the editor's list wants a
+     plain scroller and has no header to pin.
+
+     `overflow-x: auto` forces `overflow-y` to `auto` as well, which turns this
+     into a scroll container, and the sticky <thead> inside then sticks to *it*
+     rather than the viewport, so it scrolls away with the page. Nothing may
+     clip here, so the corners are rounded on the cells instead (below) — the
+     `overflow-x: clip` / `overflow-y: visible` pair looks like it would do the
+     job without a scrollport, but clipping one axis alone makes the clip
+     region an infinite vertical strip, which has no corners to round. */
+  .table-scroll.sticky-head { overflow: visible; }
+
+  /* Narrow viewports — which is also what a heavily zoomed-in desktop window
+     looks like — need the horizontal scroll back, and that unavoidably makes
+     this a scroll container. Cap the height so it is a *vertical* scrollport
+     too: the header then has something to pin against (top: 0, below) instead
+     of riding up out of view. */
+  @media (max-width: 899px) {
+    .table-scroll.sticky-head {
+      overflow: auto;
+      max-height: calc(100svh - var(--header-h) - 12px);
+    }
+  }
+
+  /* `separate` rather than `collapse`: border-radius is ignored on the cells of
+     a collapsed table, and rounding the corner cells is the only way to keep
+     the card's corners (see .table-scroll). border-spacing: 0 leaves the grid
+     looking identical — the cost is that <tr> stops painting borders and
+     backgrounds have to be set on the cells, which the rules below do. */
+  .pet-table { @apply w-full text-sm; border-collapse: separate; border-spacing: 0; }
+
+  .pet-table :is(th, td) {
+    @apply text-left px-3 whitespace-nowrap;
+    padding-top: var(--row-py);
+    padding-bottom: var(--row-py);
+  }
+
+  .pet-table thead th {
+    @apply sticky z-[5] bg-raised border-b border-edge-hi text-[11px] uppercase
+           tracking-[0.05em] text-muted font-semibold align-middle;
+    /* One pixel of deliberate overlap. --header-h is measured in whole CSS
+       pixels, but at fractional browser zoom the header's painted bottom edge
+       lands mid-pixel, and parking exactly on the measured value leaves a
+       hairline the rows scroll through. The site header is opaque and sits at
+       z-20, so the covered pixel never shows. */
+    top: calc(var(--header-h) - 1px);
+  }
+
+  /* Paired with the capped .table-scroll height above: inside a scroll
+     container the offset is measured from the box, not the page, so the site
+     header's height is not part of it. Must come after the rule above — same
+     specificity, so source order decides. */
+  @media (max-width: 899px) {
+    .pet-table thead th { top: 0; }
+  }
+
+  .pet-table tbody tr > :is(th, td) { @apply border-t border-edge; }
+
+  /* The <thead> already draws the heavier line under itself; a top border on
+     the first row would stack a second one under it. Transparent rather than
+     `border-top: 0` so the row keeps the same height as every other row. */
+  .pet-table tbody tr:first-child > :is(th, td) { border-top-color: transparent; }
+
+  /* A finished pet tints its whole row rather than recolouring its name: the
+     row reads as done at a glance, and the name column stays one colour.
+     Hover comes second deliberately — same specificity, so hovering a finished
+     row still shows the hover tint rather than sitting under it. */
+  .pet-table tbody tr.is-complete > :is(th, td) {
+    background: color-mix(in srgb, var(--c-good) var(--row-done), transparent);
+  }
+  .pet-table tbody tr:hover > :is(th, td) {
+    background: color-mix(in srgb, var(--c-accent) 7%, transparent);
+  }
+
+  /* The rounded corners of the card, transplanted onto the cells that sit in
+     them — the wrapper cannot clip them itself without becoming a scroll
+     container and breaking the sticky header. One pixel smaller than the
+     wrapper's radius: this is the padding-box corner, inside its 1px border. */
+  .pet-table thead th:first-child { border-top-left-radius: calc(var(--table-radius) - 1px); }
+  .pet-table thead th:last-child { border-top-right-radius: calc(var(--table-radius) - 1px); }
+  .pet-table tbody tr:last-child > :is(th, td):first-child {
+    border-bottom-left-radius: calc(var(--table-radius) - 1px);
+  }
+  .pet-table tbody tr:last-child > :is(th, td):last-child {
+    border-bottom-right-radius: calc(var(--table-radius) - 1px);
+  }
+
+  .col-name { @apply font-medium; }
+  .col-egg, .col-rarity, .col-clicks { @apply text-muted text-[13px]; }
+  .col-clicks { @apply tabular-nums; }
+
+  /* Every width sample and the label share one grid cell, so the column is as
+     wide as the widest of them (see textHead). */
+  .head-stack { @apply grid justify-items-start; }
+  .head-stack > * { grid-area: 1 / 1; }
+
+  /* Hidden, but still taking up its width — that is the whole job, and the
+     reason this is `visibility` rather than `display: none` or a zero size.
+     Height is not a concern: the tick columns' two-line headers are taller than
+     any of this, so the row is not measuring these cells anyway.
+
+     They stand in for BODY cells while living in the head, so they carry the
+     body's type rather than the head's: same sizes as the four rules above, with
+     the head's uppercase and letter-spacing undone. Anything inherited that is
+     not overridden here is already right — .col-clicks sits on the <th>, so its
+     tabular figures reach the sample too. */
+  .col-sizer, .fit-probe { @apply invisible normal-case tracking-normal font-normal text-[13px]; }
+  .col-name > .head-stack > .col-sizer, .fit-probe.is-name { @apply text-sm font-medium; }
+  .fit-probe.is-clicks { @apply tabular-nums; }
+
+  /* The ruler a too-long value is measured against before it is drawn (see
+     measure() in ui.js). It shares the sizers' rules above rather than
+     restating them: it stands in for the same body cells, and a ruler in a
+     different type from the column it is measuring for would quietly hand back
+     the wrong number.
+
+     Parked out of flow instead of hidden outright, because `display: none` has
+     no width to report. It lives at the end of <body>, so it inherits the page
+     font and nothing else — every property that matters is set above.
+
+     `pre` because a value can hold a run of spaces that the browser would
+     otherwise collapse, making the measurement come back short. */
+  .fit-probe {
+    position: absolute;
+    top: 0;
+    left: -9999px;
+    white-space: pre;
+    pointer-events: none;
+  }
+
+  /* Sized to their samples and nothing more: `width: 1px` loses to the widest
+     content, so these columns collapse onto it and every pixel of slack in the
+     table goes to the name column instead of being shared out among all four.
+     One flexible column is also what keeps the other three identical in every
+     category — there is nothing left over for them to disagree about.
+
+     Collapsed onto their content, though, they were left with only the shared
+     12px gutter between one value and the next, which read as cramped beside a
+     name column holding all the slack in the table. The wider gutter here is
+     that slack being handed back: the name column is the only thing that can pay
+     for it, and it has the most to spare. */
+  .pet-table :is(th, td):is(.col-egg, .col-rarity, .col-clicks) { @apply w-px px-5; }
+
+  /* Written as `:is(th, td).col-variant` rather than plain `.col-variant`: the
+     `.pet-table :is(th, td)` rule above scores (0,1,1) and would otherwise win,
+     leaving the checkboxes left-aligned under centred headers.
+
+     Much narrower side padding than the text columns because these already
+     carry their own: the header reserves a checkbox width on both sides (see
+     .vhead) and the count reserves more on top of that, so ~40px already
+     separates one column's label from the next column's checkbox before any
+     padding is added. Kept symmetric — uneven padding would push the label off
+     the centre line the row ticks sit on. */
+  .pet-table :is(th, td).col-variant { @apply text-center w-px px-1.5; }
+
+  /* Optional columns, switched off in Settings. `~=` matches one id inside the
+     space-separated list written by applySettings(). */
+  :root[data-hide-cols~="egg"] .col-egg,
+  :root[data-hide-cols~="rarity"] .col-rarity,
+  :root[data-hide-cols~="clicks"] .col-clicks { @apply hidden; }
+
+  /* The bulk checkbox sits BESIDE the name/count stack, not above it: stacked, it
+     spent a whole extra line of header height on a control that is 17px tall, and
+     the head stood off the table for no reason.
+
+     The catch is centring. The label has to stay on the column's centre line,
+     because that is the line the row ticks below it sit on, and a checkbox added
+     to one side alone shoves it half its own width off. So the row reserves the
+     same width again on the right — an empty mirror of the tick — and the text
+     lands back on the centre line with the ticks. One number, --vhead-tick,
+     drives the box and its mirror so the two can never drift apart. */
+  .vhead {
+    --vhead-tick: 17px;
+    --vhead-gap: 0.25rem;
+    @apply inline-flex flex-row items-center leading-tight;
+    gap: var(--vhead-gap);
+    padding-right: calc(var(--vhead-tick) + var(--vhead-gap));
+  }
+  .vhead-text { @apply inline-flex flex-col items-center gap-0.5 leading-tight; }
+  .vhead-name { color: var(--vc, var(--c-muted)); }
+  /* Both counts share one grid cell, so the box is as wide as the hidden one
+     (COUNT_WIDTH) and the live one is centred in it. visibility rather than
+     opacity or a colour: hidden content is out of the accessibility tree, so the
+     count is not announced twice, but it still takes up its space — which is the
+     entire point of it. */
+  .vhead-count {
+    @apply grid text-[10.5px] tabular-nums opacity-80 normal-case tracking-normal;
+  }
+  .vhead-count > * { grid-area: 1 / 1; }
+  .vhead-count-max { @apply invisible; }
+  .vhead-count-now { @apply justify-self-center; }
+
+  .tick { @apply inline-flex cursor-pointer p-[3px]; }
+
+  /* Tinted even when unchecked, so the four variant columns stay tellable apart
+     at a glance instead of reading as one grey field. */
+  .tick input {
+    @apply appearance-none w-[19px] h-[19px] m-0 rounded-[5px] cursor-pointer relative
+           border-[1.5px] transition-colors;
+    border-color: color-mix(in srgb, var(--vc, var(--c-border-hi)) var(--tick-edge), var(--c-border-hi));
+    background-color: color-mix(in srgb, var(--vc, var(--c-input)) var(--tick-tint), var(--c-input));
+  }
+  .tick:hover input {
+    border-color: color-mix(in srgb, var(--vc, var(--c-border-hi)) 80%, var(--c-border-hi));
+    background-color: color-mix(in srgb, var(--vc, var(--c-input)) calc(var(--tick-tint) * 2), var(--c-input));
+  }
+  .tick input:checked {
+    background-color: var(--vc, var(--c-accent));
+    border-color: var(--vc, var(--c-accent));
+  }
+  /* Masked rather than drawn: the check is a hole in a --tick-ink fill, so it can
+     be dark on dark mode's bright variant colours and white on light mode's deep
+     ones without shipping the SVG twice. */
+  .tick input:checked::after {
+    content: "";
+    @apply absolute inset-0;
+    background-color: var(--tick-ink);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round' d='M3 8.5l3.4 3.4L13 4.8'/%3E%3C/svg%3E") no-repeat center / 11px;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round' d='M3 8.5l3.4 3.4L13 4.8'/%3E%3C/svg%3E") no-repeat center / 11px;
+  }
+  .tick input:focus-visible { @apply outline-2 outline-accent outline-offset-2; }
+
+  /* ---------- bulk edit ---------- */
+
+  /* Turning bulk edit on must not move the table. `visibility: hidden` rather
+     than `display: none` keeps the cell exactly the size it already was, so the
+     mode flips with no reflow at all — the checkbox simply fades in where the
+     space was already reserved for it.
+
+     It gives up nothing in return: like `display: none`, visibility-hidden
+     content is out of the tab order and out of the accessibility tree, so the
+     control is still genuinely unreachable when the mode is off.
+
+     Only the head checkbox is reserved this way. The All column is NOT hidden
+     with the mode — reserving a whole column left a 76px void between Clicks and
+     Normal, and a per-pet "I have all of these" tick is worth having whether or
+     not you are working in bulk. */
+  :root:not([data-bulk="on"]) .vhead-tick { @apply invisible; }
+
+  /* The bulk control for a column sits at the head of that column, so the
+     mapping is spatial and needs no legend, and the count beside it is the same
+     number the click will move. Sized just under a row tick: it is a header
+     control, not a fifth row of boxes. */
+  .vhead-tick { @apply p-0 shrink-0; }
+  .vhead-tick input { width: var(--vhead-tick); height: var(--vhead-tick); }
+
+  .pet-table :is(th, td).col-all {
+    @apply text-center w-px px-1.5;
+    /* The one vertical rule in the table: this column summarises the columns to
+       its right rather than being another one of them. */
+    border-right: 1px solid var(--c-border);
+  }
+
+  /* Round and accent-coloured rather than variant-coloured, so it cannot be
+     mistaken for a fifth variant tick at a glance. It carries no data-variant, so
+     .tick's colour-mix rules above already fall back to the neutral input
+     colours; only the checked and mixed states need saying. */
+  .tick-all input { @apply rounded-full; }
+  .tick-all input:checked {
+    background-color: var(--c-accent);
+    border-color: var(--c-accent);
+  }
+  .tick-all input:indeterminate {
+    background-color: var(--c-accent-soft);
+    border-color: var(--c-accent);
+  }
+  /* "Some but not all": a bar, not a tick. Drawn rather than masked — one
+     rectangle does not need an SVG. */
+  .tick-all input:indeterminate::after {
+    content: "";
+    @apply absolute left-1/2 top-1/2 w-[9px] h-[2px] -translate-x-1/2 -translate-y-1/2 rounded-full;
+    background-color: var(--c-accent);
+  }
+
+  /* Nothing left to act on in this column under the current filter. */
+  .vhead-tick input:disabled { @apply opacity-40 cursor-default; }
+
+  /* A mode button, not an action: it has to read as ON at a glance, so pressed
+     gets the accent treatment the active category pill uses. */
+  .btn-toggle[aria-pressed="true"] {
+    @apply bg-accent-soft border-accent text-ink font-semibold;
+  }
+
+  /* ---------- dialogs ---------- */
+
+  /* `margin: auto` is what the UA stylesheet uses to centre a modal <dialog>.
+     Tailwind's preflight zeroes margins on every element, which strips that and
+     pins the dialog to the top-left corner — so put it back explicitly. */
+  .dialog {
+    @apply m-auto border border-edge-hi rounded-xl bg-raised text-ink p-[22px]
+           w-[calc(100%-2rem)] max-w-[620px] backdrop:bg-black/55;
+  }
+  .dialog h2 { @apply text-lg mb-1.5; }
+  .dialog-x {
+    @apply bg-transparent border-0 text-muted text-2xl leading-none cursor-pointer px-2 py-1;
+  }
+
+  /* The switch dialog's profile list. Capped and scrollable so a player with a
+     dozen alts cannot push the New profile form off the bottom of the screen —
+     it is the reason half of them opened this dialog. */
+  .profile-list {
+    @apply list-none m-0 p-0 mt-4 flex flex-col gap-1.5 max-h-[46vh] overflow-y-auto;
+  }
+  .profile-row {
+    @apply w-full flex items-baseline justify-between gap-3 text-left font-[inherit]
+           bg-transparent text-ink border border-edge rounded-lg px-3 py-2 cursor-pointer
+           hover:border-accent;
+  }
+  .profile-row.is-active { @apply bg-accent-soft border-accent; }
+  .profile-row-name { @apply font-medium truncate; }
+  .profile-row-count { @apply text-muted text-[13px] tabular-nums shrink-0; }
+
+  .tabs { @apply flex gap-1 mb-4 border-b border-edge; }
+  .tab {
+    @apply font-[inherit] bg-transparent border-0 cursor-pointer px-3 py-[7px] text-muted
+           border-b-2 border-transparent -mb-px;
+  }
+  .tab.is-active { @apply text-ink border-b-accent font-semibold; }
+
+  /* ---------- settings ---------- */
+
+  /* Groups inside the settings dialog. A rule between them rather than a card
+     around each: the dialog is already a raised surface, and nesting boxes
+     inside it reads as clutter. */
+  .settings-group + .settings-group { @apply mt-4 pt-4 border-t border-edge; }
+
+  .setting-row {
+    @apply flex flex-wrap items-center justify-between gap-3 py-3 border-t border-edge;
+  }
+  .setting-row:first-of-type { @apply border-t-0 pt-0; }
+  .setting-label { @apply text-sm font-medium; }
+  .setting-hint { @apply text-[13px] text-muted mt-0.5 max-w-[52ch]; }
+
+  /* The theme picker is too wide to sit in the right-hand column of a row, so
+     it gets the full width of the dialog with the label above it. */
+  .setting-row-stacked { @apply flex-col items-stretch gap-2; }
+
+  /* ---------- theme picker ---------- */
+
+  .swatch-row { @apply flex flex-wrap gap-2; }
+
+  /* A paint chip of the theme's two working colours — the accent it draws
+     buttons and links with, and the second colour it marks progress with. Not
+     the palette it was named after: a swatch is a sample of the UI, and a row
+     of recognisable flags is exactly what this picker should not be. */
+  .swatch {
+    @apply w-9 h-7 rounded-md border border-edge-hi cursor-pointer p-0
+           transition-transform hover:scale-110;
+    background-image: var(--swatch);
+  }
+  .swatch.is-active {
+    @apply border-ink scale-110;
+    box-shadow: 0 0 0 1px var(--c-text);
+  }
+
+  .seg { @apply inline-flex rounded-lg border border-edge-hi overflow-hidden; }
+  .seg button {
+    @apply font-[inherit] text-[13px] bg-input text-muted border-0 px-3 py-1.5 cursor-pointer
+           border-l border-edge-hi first:border-l-0 hover:text-ink;
+  }
+  .seg button.is-active { @apply bg-accent-soft text-ink font-semibold; }
+
+  /* ---------- updates page ---------- */
+
+  .update-entry { @apply border-l-2 border-edge pl-4 pb-6 relative; }
+  .update-entry::before {
+    content: "";
+    @apply absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-edge-hi;
+  }
+  .update-entry.is-latest::before { @apply bg-accent; }
+  .update-entry:last-child { @apply pb-0; }
+
+  .tag {
+    @apply inline-block text-[11px] font-semibold uppercase tracking-[0.05em]
+           px-1.5 py-0.5 rounded border border-edge text-muted;
+  }
+  .tag-added { @apply text-good border-good/40; }
+  .tag-changed { @apply text-accent border-accent/40; }
+  .tag-fixed { @apply text-v-golden border-v-golden/40; }
+
+  /* ---------- help / about ---------- */
+
+  /* Sections of plain text (see assets/js/prose-dialog.js). Same treatment as
+     the settings groups — a rule between them rather than a box around each,
+     since the dialog is already a raised surface — but a little more air,
+     because these are paragraphs to read rather than rows to scan. */
+  .prose-group + .prose-group { @apply mt-5 pt-5 border-t border-edge; }
+
+  /* ---------- editor page ---------- */
+
+  .editor-grid {
+    grid-template-columns:
+      26px minmax(150px, 1.4fr) minmax(120px, 1fr) minmax(110px, 0.9fr)
+      88px repeat(4, 44px) minmax(190px, 1.2fr) 58px;
+  }
+
+  .editor-row { @apply grid gap-2 items-center border-t border-edge py-1.5; }
+  .drag-handle { @apply cursor-grab text-muted select-none px-1 active:cursor-grabbing; }
+  .editor-row.is-dragging { @apply opacity-40; }
+  .editor-row.is-drop-target { @apply border-t-2 border-t-accent; }
+  /* The live column count under a variant head. Tabular figures so the number
+     cannot change width as it counts up, in a fixed 44px column. */
+  .head-count {
+    @apply block font-normal normal-case tracking-normal text-[10px] leading-tight
+           text-muted tabular-nums;
+  }
+  .slug-preview { @apply font-mono text-[11px] text-muted truncate; }
+  .slug-preview.is-clash { @apply text-danger font-semibold; }
+}
+
+@utility toast-shadow {
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.35);
+}

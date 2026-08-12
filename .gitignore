@@ -1,0 +1,26 @@
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Safety net from tools/xlsx_to_json.py and manual edits
+data/*.json.bak
+
+node_modules/
+package-lock.json
+
+# The editor: local-only by choice, not just unpublished. It never leaves this
+# machine, so it never appears in the GitHub repo's source either. Keep the
+# files themselves — npm run build still scans editor.html for Tailwind
+# classes, and opening it locally is how the weekly update happens.
+editor.html
+assets/js/editor.js
+assets/js/editor-save.js
+
+# Maintainer/dev notes — not ready for the public repo yet.
+docs/
+
+# Claude Code's local config for this project — permission grants, launch.json
+# etc. Not part of the site, and settings.local.json carries local machine
+# paths that shouldn't end up in a public repo.
+.claude/

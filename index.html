@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RCU Index Tracker</title>
+<meta name="description" content="Pet index progress tracker for Rebirth Champions Ultimate.">
+<meta name="color-scheme" content="dark light">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥚</text></svg>">
+<!-- Applies the saved theme before first paint. Mirrors applySettings() in
+     assets/js/settings-store.js; kept inline because a module would load too
+     late and the default theme would flash first. -->
+<script>
+(function () {
+  try {
+    var s = JSON.parse(localStorage.getItem("rcu:v1:settings") || "{}");
+    var r = document.documentElement;
+    if (s.mode && s.mode !== "auto") r.dataset.mode = s.mode;
+    var theme = s.theme || s.accent; // accents became themes; ids carried over
+    if (theme && theme !== "periwinkle") r.dataset.theme = theme;
+    if (s.density === "compact") r.dataset.density = "compact";
+    var cols = s.columns || (s.showClicks === false ? { clicks: false } : {});
+    var hide = ["egg", "rarity", "clicks"].filter(function (c) { return cols[c] === false; });
+    if (hide.length) r.dataset.hideCols = hide.join(" ");
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+
+<a class="sr-only focus:not-sr-only focus:absolute focus:left-0 focus:top-0 focus:z-50 focus:bg-accent focus:text-on-accent focus:px-4 focus:py-2.5" href="#pet-table">Skip to checklist</a>
+
+<header class="site-header" id="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="brand">RCU Index Tracker</a>
+    <!-- Ordered by how often it is needed, with the two that explain the site
+         wrapped around the two that change it: Help first because it is the only
+         one a first-time visitor needs, About last because it is the only one
+         nobody needs. -->
+    <nav class="site-nav" aria-label="Main">
+      <button type="button" class="nav-link" data-open-help aria-haspopup="dialog">Help</button>
+      <button type="button" class="nav-link" data-open-updates aria-haspopup="dialog">Updates</button>
+      <button type="button" class="nav-link" data-open-settings aria-haspopup="dialog">Settings</button>
+      <button type="button" class="nav-link" data-open-about aria-haspopup="dialog">About</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap pb-10">
+
+  <div class="page-head">
+    <h1 class="page-title">Rebirth Champions Ultimate - Pet Index</h1>
+    <!-- <p class="page-sub"></p> -->
+  </div>
+
+  <!-- First run: no profiles exist yet -->
+  <section class="card prose-col mx-auto my-12" id="onboard" hidden>
+    <h2 class="text-xl mb-2 font-semibold">Create a profile</h2>
+    <p class="text-muted">Each profile keeps its own checklist.
+       Already playing? Bulk edit fills in what you already have.</p>
+    <form class="flex flex-wrap gap-2 mt-[18px] mb-3" id="onboard-form">
+      <input type="text" id="onboard-name" class="flex-1 min-w-[220px]" placeholder="e.g. paints" maxlength="40"
+             autocomplete="off" spellcheck="false" required aria-label="Profile name">
+      <button type="submit" class="btn btn-primary">Create profile</button>
+    </form>
+    <p class="text-muted text-[13px]">
+      <button type="button" class="linkish" id="onboard-import">Import a backup code</button>
+    </p>
+  </section>
+
+  <!-- Main app -->
+  <div id="app" hidden>
+
+    <!-- Profile controls and overall progress share one card: the profile names
+         whose numbers these are, so the two belong on one line rather than in
+         two stacked bands. Profile controls live in the page, not the header, so
+         the header is the same height on every page. -->
+    <section class="card status-bar mb-3.5" aria-label="Profile and overall progress">
+      <div class="status-profile">
+        <p class="field-label">Profile</p>
+        <!-- The active profile is a heading, not a menu. Picking a different one
+             is rare enough to live behind Switch, which is also where New is —
+             creating and choosing are the same errand. -->
+        <p class="profile-name" id="profile-name">&mdash;</p>
+        <div class="profile-actions">
+          <button type="button" class="btn btn-quiet btn-sm" id="profile-switch"
+                  aria-haspopup="dialog">Switch</button>
+          <button type="button" class="btn btn-quiet btn-sm" id="profile-rename">Rename</button>
+          <button type="button" class="btn btn-quiet btn-sm" id="open-backup">Backup</button>
+          <!-- Last, and away from the rest: the only one here you cannot take back. -->
+          <button type="button" class="btn btn-quiet btn-danger btn-sm" id="profile-delete">Delete</button>
+        </div>
+      </div>
+
+      <div class="status-progress">
+        <div class="flex items-baseline justify-between gap-3">
+          <h2 class="section-title" id="summary-title">Overall</h2>
+          <p><strong class="text-[22px] tabular-nums" id="summary-value">0</strong>
+             <span class="text-muted tabular-nums" id="summary-total">/ 0</span></p>
+        </div>
+        <div class="bar" role="img" aria-labelledby="summary-title" id="summary-bar-wrap">
+          <div class="bar-fill" id="summary-bar"></div>
+        </div>
+        <ul class="variant-summary" id="variant-summary"></ul>
+      </div>
+    </section>
+
+    <nav class="flex flex-wrap gap-1.5 mb-3.5" id="cat-nav" aria-label="Categories"></nav>
+
+    <!-- Heads everything below it, not just the table: the filters narrow what
+         you see *within* this category, so the category name comes first. -->
+    <div class="flex flex-wrap items-baseline gap-3 mb-2">
+      <h2 class="text-[17px] font-semibold" id="cat-title">World 1</h2>
+      <p class="text-muted text-[13px] tabular-nums" id="cat-count"></p>
+    </div>
+
+    <section class="card flex flex-wrap items-end gap-2.5 mb-3.5" aria-label="Filters">
+      <label class="field flex-1 min-w-[220px]">
+        <span class="field-label">Search</span>
+        <input type="search" id="filter-search" placeholder="Pet or egg name…"
+               autocomplete="off" spellcheck="false">
+      </label>
+      <!-- The menus hold one category's eggs and rarities, so left to themselves
+           they are a different width in every world and the whole filter row
+           reshuffles as you switch. The sizer next to each is filled with the
+           longest values in the entire dataset and holds the width open; see
+           .select-wrap. -->
+      <label class="field">
+        <span class="field-label">Egg</span>
+        <span class="select-wrap">
+          <select id="filter-egg"></select>
+          <span class="select-sizer" id="egg-sizer"></span>
+        </span>
+      </label>
+      <label class="field">
+        <span class="field-label">Rarity</span>
+        <span class="select-wrap">
+          <select id="filter-rarity"></select>
+          <span class="select-sizer" id="rarity-sizer"></span>
+        </span>
+      </label>
+      <label class="field">
+        <span class="field-label">Show</span>
+        <select id="filter-status">
+          <option value="all">All pets</option>
+          <option value="incomplete">Incomplete</option>
+          <option value="complete">Complete</option>
+          <option value="untouched">Not indexed</option>
+        </select>
+      </label>
+      <button type="button" class="btn btn-quiet" id="filter-reset">Reset</button>
+
+      <!-- Turns on the checkboxes in the table head and the All column. There is
+           no separate bulk panel: the control for a column lives in that
+           column's header, so nothing has to explain which is which. -->
+      <button type="button" class="btn btn-quiet btn-toggle ml-auto" id="bulk-toggle"
+              aria-pressed="false">Bulk edit</button>
+      <!-- Always present, enabled only when there is something to roll back:
+           appearing and vanishing made the row of buttons jump. Steps back
+           through everything done since the page was loaded. -->
+      <button type="button" class="btn btn-quiet" id="bulk-undo" disabled>Undo</button>
+    </section>
+
+    <section aria-label="Pet checklist">
+      <!-- Shown only while the active profile has no ticks at all, so it retires
+           itself the moment anyone does anything; Dismiss makes that permanent.
+           Worded to read the same whether or not bulk edit is on, so that
+           toggling the mode never changes its height. -->
+      <p class="text-muted text-[13px] flex flex-wrap items-center gap-2 mb-2" id="bulk-hint" hidden>
+        <span><strong>Bulk edit</strong> puts a checkbox at the
+              top of every column that fills in each pet shown. Narrow the list with the filters
+              first, or shift-click two boxes in the same column to fill in the rows between them.</span>
+        <button type="button" class="linkish" id="bulk-hint-dismiss">Dismiss</button>
+      </p>
+      <div class="table-scroll sticky-head">
+        <table class="pet-table" id="pet-table">
+          <thead id="pet-thead"></thead>
+          <tbody id="pet-tbody"></tbody>
+        </table>
+      </div>
+      <p class="py-7 px-3 text-center text-muted" id="empty-state" hidden>No pets match the current filters.</p>
+    </section>
+
+  </div>
+</main>
+
+
+<!-- ============================ Dialogs ============================ -->
+
+<!-- Switching and creating are one dialog because they are one errand: you come
+     here to work on a different profile, and sometimes that profile does not
+     exist yet. Each row carries its own tick count, which is the only reliable
+     way to tell two similarly named profiles apart. -->
+<dialog id="switch-dialog" class="dialog max-w-[460px]">
+  <form method="dialog" class="float-right -mt-2 -mr-1.5">
+    <button class="dialog-x" aria-label="Close">&times;</button>
+  </form>
+  <h2>Switch profile</h2>
+  <p class="text-muted text-[13px]">Each profile keeps its own checklist.</p>
+
+  <ul class="profile-list" id="switch-list" aria-label="Profiles"></ul>
+
+  <form class="flex flex-wrap items-end gap-2 mt-4 pt-4 border-t border-edge" id="switch-new-form">
+    <label class="field flex-1 min-w-[200px]">
+      <span class="field-label">New profile</span>
+      <input type="text" id="switch-new-name" maxlength="40" autocomplete="off"
+             spellcheck="false" required placeholder="e.g. alt">
+    </label>
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+  <p class="text-danger text-[13px] empty:hidden mt-2" id="switch-new-error" role="alert"></p>
+</dialog>
+
+<dialog id="rename-dialog" class="dialog max-w-[460px]">
+  <form method="dialog" class="float-right -mt-2 -mr-1.5">
+    <button class="dialog-x" aria-label="Close">&times;</button>
+  </form>
+  <h2>Rename profile</h2>
+  <p class="text-muted text-[13px]">Renaming does not affect this profile's checklist.</p>
+  <form id="rename-dialog-form" class="flex flex-col gap-3 mt-4">
+    <label class="field">
+      <span class="field-label">Profile name</span>
+      <input type="text" id="rename-dialog-name" maxlength="40" autocomplete="off"
+             spellcheck="false" required placeholder="e.g. paints">
+    </label>
+    <p class="text-danger text-[13px] empty:hidden" id="rename-dialog-error" role="alert"></p>
+    <div class="flex gap-2 justify-end">
+      <button type="button" class="btn btn-quiet" data-close-dialog>Cancel</button>
+      <button type="submit" class="btn btn-primary">Save name</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="delete-dialog" class="dialog max-w-[460px]">
+  <h2>Delete profile?</h2>
+  <p class="text-muted text-[13px] mt-1.5" id="delete-dialog-body"></p>
+  <p class="text-[13px] mt-3">This cannot be undone.</p>
+  <div class="flex gap-2 justify-end mt-5">
+    <button type="button" class="btn btn-quiet" data-close-dialog>Cancel</button>
+    <button type="button" class="btn btn-danger" id="delete-dialog-confirm">Delete profile</button>
+  </div>
+</dialog>
+
+<dialog id="backup-dialog" class="dialog">
+  <form method="dialog" class="float-right -mt-2 -mr-1.5">
+    <button class="dialog-x" aria-label="Close">&times;</button>
+  </form>
+
+  <h2>Backup code</h2>
+  <p class="text-muted text-[13px]">
+    Moves one profile's progress to another browser or device.
+  </p>
+
+  <div class="tabs mt-4" role="tablist">
+    <button type="button" class="tab is-active" id="tab-export" role="tab" aria-selected="true">Export</button>
+    <button type="button" class="tab" id="tab-import" role="tab" aria-selected="false">Import</button>
+  </div>
+
+  <div class="flex flex-col gap-3" id="panel-export">
+    <p class="text-[13px]">Backup code for <strong id="export-profile-name"></strong>:</p>
+    <textarea id="export-code" readonly rows="5" spellcheck="false" aria-label="Backup code"></textarea>
+    <p class="text-muted text-[13px]" id="export-meta"></p>
+    <button type="button" class="btn btn-primary self-start" id="copy-code">Copy to clipboard</button>
+  </div>
+
+  <div class="flex flex-col gap-3" id="panel-import" hidden>
+    <label class="field">
+      <span class="field-label">Profile name to import into</span>
+      <input type="text" id="import-name" maxlength="40" autocomplete="off"
+             spellcheck="false" placeholder="Leave blank to use the name stored in the code">
+    </label>
+    <label class="field">
+      <span class="field-label">Backup code</span>
+      <textarea id="import-code" rows="5" spellcheck="false" placeholder="RCU1…"></textarea>
+    </label>
+    <fieldset class="border-0 p-0 m-0 flex flex-col gap-1.5">
+      <legend class="field-label">If the profile already has progress</legend>
+      <label class="text-sm flex gap-2 items-center"><input type="radio" name="import-mode" value="merge" checked> Merge with existing ticks</label>
+      <label class="text-sm flex gap-2 items-center"><input type="radio" name="import-mode" value="replace"> Replace existing ticks</label>
+    </fieldset>
+    <button type="button" class="btn btn-primary self-start" id="do-import">Import</button>
+    <p class="text-[13px] empty:hidden" id="import-status" role="status"></p>
+  </div>
+</dialog>
+
+<!-- Reserved for one-off events with nowhere else to show themselves: a renamed
+     or deleted profile, a copied backup code, storage being unavailable. Edits
+     do NOT raise one — they are their own feedback (the boxes move, the counts
+     move) and the Undo button in the bulk bar is always there to take them back,
+     so a panel sliding over the table on every fill was noise. -->
+<div class="fixed left-1/2 bottom-6 -translate-x-1/2 bg-raised border border-edge-hi rounded-full px-[18px] py-2 text-sm toast-shadow z-50"
+     id="toast" hidden>
+  <span id="toast-text" role="status" aria-live="polite"></span>
+</div>
+
+<script type="module" src="assets/js/main.js"></script>
+<noscript>
+  <p class="wrap">This tracker requires JavaScript.</p>
+</noscript>
+
+</body>
+</html>

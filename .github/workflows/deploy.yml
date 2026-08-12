@@ -1,0 +1,95 @@
+name: Build and deploy
+
+# Replaces branch-based Pages deployment so the editor can be kept out of the
+# published site. Everything else about your workflow is unchanged: edit
+# data/pets.json, push, and this publishes it.
+#
+# This also absorbs what codes.yml used to do. Merging the two matters: a commit
+# pushed by GITHUB_TOKEN does NOT trigger further workflow runs, so if code
+# assignment lived in its own workflow, the codes.json it committed would never
+# get deployed until the next unrelated push.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write   # commit data/codes.json back
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Assign codes to any new pets
+        run: python tools/assign_codes.py
+
+      - name: Commit updated ledger
+        run: |
+          if git diff --quiet -- data/codes.json; then
+            echo "No new pets to code."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/codes.json
+          git commit -m "chore: assign codes to new pets"
+          git push
+
+      # Explicit allowlist rather than an ignore list: a new private tool added
+      # later is excluded by default instead of leaking because someone forgot
+      # to update an exclusion. The editor itself never even reaches this
+      # checkout — editor.html, editor.js and editor-save.js are gitignored,
+      # not just unpublished — so there is nothing to strip out here anymore.
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          cp .nojekyll _site/
+          cp index.html updates.html settings.html _site/
+          cp -r data _site/
+          cp -r assets _site/
+
+      - name: Verify the editor is not published
+        run: |
+          found=$(find _site -name 'editor*' -print)
+          if [ -n "$found" ]; then
+            echo "::error::Editor files leaked into the published site:"
+            echo "$found"
+            exit 1
+          fi
+          test -f _site/index.html
+          test -f _site/data/pets.json
+          echo "OK — editor excluded, site looks complete."
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  # Separate job on purpose: a slug-drift failure should be loud without
+  # blocking the deploy, exactly as it did before.
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate.py

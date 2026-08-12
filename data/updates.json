@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "_comment": "Changelog shown on updates.html. Newest first is not required — entries are sorted by date at render time. Add entries with the Editor page, or by hand. Tags: added | changed | fixed.",
+  "notice": "",
+  "entries": [
+    {
+      "id": "2026-08-12-release",
+      "date": "2026-08-12",
+      "title": "Release",
+      "tags": [
+        "added"
+      ],
+      "body": "Every pet in the game is indexed: 1,229 pets across 16 categories, 4,613 variants. Progress saves in your browser under a profile name, no login or account needed.",
+      "items": [
+        "Clicks data is incomplete: 657 of 1,229 pets show a dash instead of a number. Missing data will be added in future updates."
+      ]
+    }
+  ]
+}
