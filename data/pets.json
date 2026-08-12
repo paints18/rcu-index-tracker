@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-12T16:54:17Z",
+  "generatedAt": "2026-08-12T17:30:55Z",
   "variants": [
     {
       "id": "normal",
@@ -2344,7 +2344,7 @@
         },
         {
           "slug": "fueldroid",
-          "name": "Fueldroid",
+          "name": "Fuelroid",
           "egg": "Spaceship",
           "rarity": "Eternal",
           "clicks": null,
