@@ -24,3 +24,7 @@ docs/
 # etc. Not part of the site, and settings.local.json carries local machine
 # paths that shouldn't end up in a public repo.
 .claude/
+
+# Local-only shortcut that starts the server, opens the editor, and stops
+# the server again. Personal convenience, not part of the site.
+local/

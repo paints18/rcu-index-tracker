@@ -20,9 +20,21 @@ const SECTIONS = [
   {
     title: "Ticking pets",
     blocks: [
-      "Tick a box for each variant you have in your in-game index. The round box in " +
+      "Tick a box for each variant you have in your in-game index. The circle in " +
         "the **All** column covers every variant that pet has, and shows a bar when " +
         "you have some of them but not all.",
+    ],
+  },
+  {
+    title: "Keyboard",
+    blocks: [
+      [
+        "**Arrow keys** - move focus to the next box: Up/Down stays in the column, Left/Right in the row.",
+        "**Home** / **End** - jump to the first or last box in a row.",
+        "**Ctrl+Home** / **Ctrl+End** - jump to the first or last box in the table.",
+        "**Enter** / **Shift+Enter** - move focus down or up a row.",
+        "**Space** - tick the box that has focus.",
+      ],
     ],
   },
   {
@@ -39,15 +51,17 @@ const SECTIONS = [
   {
     title: "Profiles",
     blocks: [
-      "Each profile keeps its own checklist. **Switch** is also where new ones are " +
-        "made, so an alt does not have to share yours.",
+      "Each profile keeps its own checklist. **Switch profile** is also where new " +
+        "ones are made, so an alt's progress stays separate from your main's.",
+      "**Export pets** copies what you're still missing as plain text, for index " +
+        "services.",
     ],
   },
   {
     title: "Another device",
     blocks: [
       "Progress is saved in this browser, so a phone or a second browser starts empty. " +
-        "**Backup** turns a profile into a code; paste it into the Import tab there.",
+        "**Backup/Import** turns a profile into a code; paste it into the Import tab there.",
     ],
   },
 ];

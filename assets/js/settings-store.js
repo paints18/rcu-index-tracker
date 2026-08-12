@@ -83,7 +83,7 @@ export const DEFAULTS = {
   bulkEdit: false,
   /** One-time hint about bulk edit; not a choice, just a "seen it" flag. */
   bulkHintSeen: false,
-  defaultCategory: "",
+  defaultCategory: "world1",
 };
 
 export function loadSettings() {
@@ -112,6 +112,10 @@ function withDefaults(stored) {
   // back to the default.
   if (rest.theme == null && accent) rest.theme = accent;
   if (!THEME_IDS.has(rest.theme)) delete rest.theme;
+
+  // Settings saved before there was a default category, or with the old
+  // "first category with pets" blank choice, fall back to the current default.
+  if (!rest.defaultCategory) delete rest.defaultCategory;
 
   return { ...DEFAULTS, ...rest, columns };
 }

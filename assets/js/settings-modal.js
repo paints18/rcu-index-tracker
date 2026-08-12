@@ -138,7 +138,7 @@ function buildConfirm() {
 
   const actions = el("div", "flex gap-2 justify-end mt-5");
   const cancel = button("btn btn-quiet", "Cancel");
-  const ok = button("btn btn-danger", "Confirm");
+  const ok = button("btn btn-danger-solid", "Confirm");
   actions.append(cancel, ok);
 
   dialog.append(title, body, actions);
@@ -217,6 +217,13 @@ function buildDialog() {
     ),
   );
 
+  const densitySeg = el("div", "seg");
+  densitySeg.setAttribute("role", "group");
+  densitySeg.setAttribute("aria-label", "Row density");
+  tracker.append(
+    row("Row density", null, densitySeg),
+  );
+
   const hideCompleted = checkbox("Hide");
   tracker.append(
     row(
@@ -257,13 +264,6 @@ function buildDialog() {
       "",
       true,
     ),
-  );
-
-  const densitySeg = el("div", "seg");
-  densitySeg.setAttribute("role", "group");
-  densitySeg.setAttribute("aria-label", "Row density");
-  appearance.append(
-    row("Row density", null, densitySeg),
   );
 
   /* ---------- data ---------- */
@@ -397,12 +397,15 @@ function renderCategoryChoices() {
   const select = ui.defaultCategory;
   select.replaceChildren();
 
-  const first = document.createElement("option");
-  first.value = "";
-  first.textContent = index ? "First category with pets" : "Loading categories…";
-  select.append(first);
+  if (!index) {
+    const loading = document.createElement("option");
+    loading.textContent = "Loading categories…";
+    loading.disabled = true;
+    select.append(loading);
+    return;
+  }
 
-  for (const category of index?.categories ?? []) {
+  for (const category of index.categories) {
     const option = document.createElement("option");
     option.value = category.id;
     option.textContent = category.pets.length
@@ -412,7 +415,7 @@ function renderCategoryChoices() {
     select.append(option);
   }
 
-  select.value = settings.defaultCategory ?? "";
+  select.value = settings.defaultCategory;
 }
 
 function renderProfiles() {

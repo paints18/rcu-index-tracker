@@ -4,6 +4,21 @@
   "notice": "",
   "entries": [
     {
+      "id": "2026-08-12-export",
+      "date": "2026-08-12",
+      "title": "Export list, keyboard navigation",
+      "tags": [
+        "added",
+        "changed"
+      ],
+      "body": "Added a way to export what you're still missing as a plain-text list, and the tick grid now supports full keyboard navigation.",
+      "items": [
+        "Export pets: copy a list of what you still need, scoped to the whole index, one world, or your current filters.",
+        "Keyboard navigation: arrow keys, Home/End, and Enter now move focus around the grid.",
+        "Profile actions reorganised: Switch profile, Edit profile, Backup/Import, Export pets."
+      ]
+    },
+    {
       "id": "2026-08-12-release",
       "date": "2026-08-12",
       "title": "Release",

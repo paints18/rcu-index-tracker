@@ -10,6 +10,7 @@ import { mountHelpModal } from "./help-modal.js";
 import { mountSettingsModal } from "./settings-modal.js";
 import { mountUpdatesModal } from "./updates-modal.js";
 import { mountAboutModal } from "./about-modal.js";
+import { mountExportModal } from "./export-modal.js";
 import { loadIndex, countProgress, totalsByVariant } from "./data.js";
 import { Store, normalizeName, PROBE_KEY } from "./store.js";
 import { encodeBackup, decodeBackup, partitionKnown } from "./backup.js";
@@ -37,7 +38,7 @@ const dom = {
   app: $("app"),
   profileName: $("profile-name"),
   profileSwitch: $("profile-switch"),
-  profileRename: $("profile-rename"),
+  profileEdit: $("profile-edit"),
   profileDelete: $("profile-delete"),
   openBackup: $("open-backup"),
 
@@ -64,6 +65,7 @@ const dom = {
   bulkHint: $("bulk-hint"),
   bulkHintDismiss: $("bulk-hint-dismiss"),
 
+  table: $("pet-table"),
   thead: $("pet-thead"),
   tbody: $("pet-tbody"),
   emptyState: $("empty-state"),
@@ -526,6 +528,160 @@ function refreshRows(slugs) {
   }
 }
 
+/* ---------- keyboard grid navigation ---------- */
+
+/**
+ * Column keys in on-screen order: the roll-up first, then each variant the
+ * head is currently showing. Mirrors the order renderTableHead/renderRows
+ * build cells in, so index N here is always index N in every row.
+ */
+function gridColumns() {
+  return ["*", ...state.usedVariants.map((v) => v.id)];
+}
+
+/**
+ * Bulk-off hides the head's tick boxes with `visibility: hidden` rather than
+ * `display: none` (see .vhead-tick in tailwind.css), specifically so turning
+ * bulk edit on never reflows the table. That means `offsetParent` alone does
+ * not detect them — a hidden box still has one — so visibility has to be
+ * checked too, or navigation "focuses" a box the browser silently refuses to
+ * take focus, and the keypress goes nowhere.
+ */
+function isFocusable(input) {
+  return (
+    Boolean(input) &&
+    !input.disabled &&
+    input.offsetParent !== null &&
+    getComputedStyle(input).visibility !== "hidden"
+  );
+}
+
+/**
+ * The checkbox for one column of one row (header or body), or null if that
+ * cell has nothing to focus — a pet without that variant leaves the <td>
+ * empty, and the bulk row's boxes are unfocusable while bulk edit is off.
+ */
+function cellForColumn(row, columnId) {
+  const input =
+    row.querySelector(`input[data-bulk-column="${columnId}"]`) ??
+    (columnId === "*"
+      ? row.querySelector('input[data-slug]:not([data-variant])')
+      : row.querySelector(`input[data-variant="${columnId}"]`));
+  return isFocusable(input) ? input : null;
+}
+
+function gridRows() {
+  return [dom.thead.rows[0], ...dom.tbody.rows].filter(Boolean);
+}
+
+function focusCell(input) {
+  if (!input) return;
+  input.focus();
+  input.scrollIntoView({ block: "nearest", inline: "nearest" });
+}
+
+/**
+ * Move focus one or more steps along a single axis from the checkbox the
+ * keypress landed on, the way arrow keys do in a spreadsheet: stepping past
+ * an empty cell (a pet without that variant, or a disabled bulk box) rather
+ * than stopping there, and going no further once the grid runs out — this
+ * never wraps to the opposite edge or the next row.
+ *
+ * @param {HTMLInputElement} current
+ * @param {"row"|"col"} axis
+ * @param {number} step +1 or -1
+ */
+function moveFocus(current, axis, step) {
+  const rows = gridRows();
+  const columns = gridColumns();
+  const row = current.closest("tr");
+  const rowIndex = rows.indexOf(row);
+  const colIndex = columns.indexOf(current.dataset.bulkColumn ?? current.dataset.variant ?? "*");
+  if (rowIndex < 0 || colIndex < 0) return;
+
+  if (axis === "row") {
+    for (let r = rowIndex + step; rows[r]; r += step) {
+      const target = cellForColumn(rows[r], columns[colIndex]);
+      if (target) return focusCell(target);
+    }
+  } else {
+    for (let c = colIndex + step; columns[c] != null; c += step) {
+      const target = cellForColumn(row, columns[c]);
+      if (target) return focusCell(target);
+    }
+  }
+}
+
+/** Home/End: the first or last focusable box in the current row. */
+function moveToRowEdge(current, end) {
+  const row = current.closest("tr");
+  const columns = gridColumns();
+  const order = end ? [...columns].reverse() : columns;
+  for (const columnId of order) {
+    const target = cellForColumn(row, columnId);
+    if (target) return focusCell(target);
+  }
+}
+
+/** Ctrl+Home/Ctrl+End: the first or last focusable box in the whole table. */
+function moveToTableEdge(end) {
+  const rows = gridRows();
+  const columns = gridColumns();
+  const rowOrder = end ? [...rows].reverse() : rows;
+  const colOrder = end ? [...columns].reverse() : columns;
+  for (const row of rowOrder) {
+    for (const columnId of colOrder) {
+      const target = cellForColumn(row, columnId);
+      if (target) return focusCell(target);
+    }
+  }
+}
+
+/**
+ * Arrow/Home/End navigation across the tick grid, plus Enter as a shorthand
+ * for "confirm this box, move to the next row" — the spreadsheet habit of
+ * arrowing or tabbing across a run, then Enter-ing down to the next one.
+ * Space still does the actual toggling; it is a native checkbox behaviour
+ * this deliberately leaves alone.
+ */
+function onGridKeydown(event) {
+  const input = event.target.closest('input[data-slug], input[data-bulk-column]');
+  if (!input) return;
+
+  switch (event.key) {
+    case "ArrowDown":
+      event.preventDefault();
+      moveFocus(input, "row", 1);
+      break;
+    case "ArrowUp":
+      event.preventDefault();
+      moveFocus(input, "row", -1);
+      break;
+    case "ArrowRight":
+      event.preventDefault();
+      moveFocus(input, "col", 1);
+      break;
+    case "ArrowLeft":
+      event.preventDefault();
+      moveFocus(input, "col", -1);
+      break;
+    case "Home":
+      event.preventDefault();
+      if (event.ctrlKey) moveToTableEdge(false);
+      else moveToRowEdge(input, false);
+      break;
+    case "End":
+      event.preventDefault();
+      if (event.ctrlKey) moveToTableEdge(true);
+      else moveToRowEdge(input, true);
+      break;
+    case "Enter":
+      event.preventDefault();
+      moveFocus(input, "row", event.shiftKey ? -1 : 1);
+      break;
+  }
+}
+
 /* ---------- undo history ---------- */
 
 /**
@@ -884,6 +1040,9 @@ function confirmDelete() {
   state.progress = store.getProgress(next);
 
   dom.deleteDialog.close();
+  // Delete now opens from inside the edit-profile dialog, on top of it — if
+  // that is still open, the profile it was editing no longer exists.
+  if (dom.renameDialog.open) dom.renameDialog.close();
   renderProfiles();
   if (next) renderAll();
   toast(`Deleted "${profile.name}".`);
@@ -1002,7 +1161,7 @@ function wireEvents() {
   dom.onboardImport.addEventListener("click", () => openBackupDialog("import"));
 
   dom.profileSwitch.addEventListener("click", openSwitchDialog);
-  dom.profileRename.addEventListener("click", openRenameDialog);
+  dom.profileEdit.addEventListener("click", openRenameDialog);
   dom.profileDelete.addEventListener("click", openDeleteDialog);
 
   dom.switchList.addEventListener("click", (event) => {
@@ -1075,6 +1234,10 @@ function wireEvents() {
     if (input) onBulkColumn(input);
   });
 
+  // Arrow/Home/End/Enter move focus around the tick grid; shared by the head's
+  // bulk row and the body since both hold the same kind of checkbox.
+  dom.table.addEventListener("keydown", onGridKeydown);
+
   dom.bulkToggle.addEventListener("click", toggleBulkEdit);
   // Wrapped: the listener's MouseEvent must not land in undoBulk's entry slot.
   dom.bulkUndo.addEventListener("click", () => undoBulk());
@@ -1137,6 +1300,14 @@ async function boot() {
   mountSettingsModal({ getIndex: () => state.index, onChange: onSettingsChanged });
   mountUpdatesModal();
   mountAboutModal({ getIndex: () => state.index });
+  mountExportModal({
+    getIndex: () => state.index,
+    getProfileId: () => state.profileId,
+    getProgress: () => state.progress,
+    getActiveCategory: () => (state.index ? activeCategory() : null),
+    getFilters: () => state.filters,
+    filterPets: (category) => visiblePets(category),
+  });
 
   try {
     state.index = await loadIndex();

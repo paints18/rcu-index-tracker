@@ -107,6 +107,9 @@
   --c-accent-soft: color-mix(in srgb, var(--c-accent) 26%, var(--c-bg));
   --c-good: var(--good-base);
   --c-danger: #f2777a;
+  /* Dark ink here, same as --tick-ink: this danger red is the bright shade
+     picked for a dark surface, so white text on it would not hold contrast. */
+  --c-on-danger: #0d1017;
 
   /* Tick boxes. The variant colours they are tinted with are bright in dark mode
      and deep in light mode, so the check mark and the unchecked tint have to
@@ -157,6 +160,7 @@
     --row-done: 13%;
     --c-good: color-mix(in srgb, var(--good-base) 60%, #000);
     --c-danger: #d64545;
+    --c-on-danger: #ffffff;
     --c-normal: #6b7488;
     --c-golden: #a97d05;
     --c-toxic: #2f8f3f;
@@ -183,6 +187,7 @@
   --row-done: 13%;
   --c-good: color-mix(in srgb, var(--good-base) 60%, #000);
   --c-danger: #d64545;
+  --c-on-danger: #ffffff;
   --c-normal: #6b7488;
   --c-golden: #a97d05;
   --c-toxic: #2f8f3f;
@@ -315,6 +320,7 @@
   --color-on-accent: var(--c-on-accent);
   --color-good: var(--c-good);
   --color-danger: var(--c-danger);
+  --color-on-danger: var(--c-on-danger);
 
   --color-v-normal: var(--c-normal);
   --color-v-golden: var(--c-golden);
@@ -448,7 +454,11 @@
      white on pale gold is unreadable. Each theme names its own ink. */
   .btn-primary { @apply bg-accent border-accent text-on-accent hover:brightness-110 hover:border-accent; }
   .btn-quiet { @apply bg-transparent; }
+  /* Hover-only: for a button that leads to a confirm step, not the final one. */
   .btn-danger { @apply hover:border-danger hover:text-danger; }
+  /* Solid, always red: for the confirm button itself — the one click that
+     actually cannot be undone. */
+  .btn-danger-solid { @apply bg-danger border-danger text-on-danger hover:brightness-110; }
   .btn-sm { @apply px-2.5 py-1 text-[13px]; }
 
   .linkish {
@@ -487,10 +497,10 @@
 
   /* One card, two panes: who you are on the left, how far along they are on the
      right. Roughly a quarter and three quarters — the left is the narrowest
-     that still holds its four small buttons on one line, and everything past
-     that goes to the bar and the variant chips, which are the thing worth
-     looking at. Below the breakpoint the two panes stack and the rule between
-     them turns into a rule above the progress. */
+     that still holds its actions as a clean 2x2, and everything past that goes
+     to the bar and the variant chips, which are the thing worth looking at.
+     Below the breakpoint the two panes stack and the rule between them turns
+     into a rule above the progress. */
   .status-bar {
     @apply grid gap-3.5;
     grid-template-columns: minmax(0, 1fr);
@@ -503,13 +513,16 @@
      Long names truncate rather than wrap — the pane's height is budgeted against
      the progress beside it, and a two-line name would stretch the whole card. */
   .profile-name { @apply text-[22px] font-semibold leading-tight truncate; }
-  .profile-actions { @apply flex flex-wrap gap-1.5 pt-2.5; }
+  /* A fixed 2x2 grid rather than flex-wrap: four buttons is one too many for a
+     single row at this column's width, and flex-wrap left the fourth stranded
+     alone on its own line. Two even rows reads as intentional at any width and
+     stays that way regardless of how long a label gets. */
+  .profile-actions { @apply grid grid-cols-2 gap-1.5 pt-2.5; }
   .status-progress { @apply min-w-0 border-t border-edge pt-3.5; }
 
-  /* The floor is the width of the four buttons on one line — at 1fr alone the
-     left column is narrower than that until about 1200px, and Backup spent the
-     whole range wrapped onto a second row. The breakpoint is then the width at
-     which the remainder still leaves the variant chips a single row; below it
+  /* The floor only has to fit two buttons per row now, not four — comfortable
+     well below this. The breakpoint itself is still about where the remainder
+     stops leaving room for the variant chips to stay a single row; below it
      the panes stack and each gets the full card width. */
   @media (min-width: 940px) {
     .status-bar {
@@ -649,7 +662,8 @@
   .pet-table tbody tr.is-complete > :is(th, td) {
     background: color-mix(in srgb, var(--c-good) var(--row-done), transparent);
   }
-  .pet-table tbody tr:hover > :is(th, td) {
+  .pet-table tbody tr:hover > :is(th, td),
+  .pet-table tbody tr:focus-within > :is(th, td) {
     background: color-mix(in srgb, var(--c-accent) 7%, transparent);
   }
 
