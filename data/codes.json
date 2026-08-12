@@ -1,6 +1,6 @@
 {
   "_comment": "Permanent pet-slug -> integer ledger, maintained by tools/assign_codes.py. Do not hand-edit: changing or reusing an integer invalidates every backup code players have saved.",
-  "nextCode": 1229,
+  "nextCode": 1231,
   "codes": {
     "100m-balloon": 1137,
     "100m-blaster": 1146,
@@ -557,6 +557,7 @@
     "giant-chocolate-bunny": 1044,
     "giant-pinata": 1155,
     "gifts-immortal": 606,
+    "gifts-sack": 1230,
     "gilded-alchemist": 632,
     "gingerbread-bunny": 892,
     "gingerbread-butterfly": 893,
@@ -826,6 +827,7 @@
     "octopus": 20,
     "orca": 1205,
     "ore-monster": 378,
+    "ornament-dragon": 1229,
     "ornamentium": 923,
     "overgrowth": 102,
     "ox-of-justice": 45,
