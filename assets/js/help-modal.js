@@ -40,12 +40,11 @@ const SECTIONS = [
   {
     title: "Filling in a lot at once",
     blocks: [
-      "Turn on **Bulk edit** in the filter bar. Every column then gets a checkbox at " +
-        "the top that fills that variant in for the pets currently listed, so filter " +
-        "or search first and it only touches those. Clicking a full one clears the " +
-        "column again.",
+      "Every column has a checkbox at the top that fills that variant in for the pets " +
+        "currently listed, so filter or search first and it only touches those. " +
+        "Clicking a full one clears the column again.",
       "**Shift-click** a box after another one in the same column to fill in the rows " +
-        "between them. That works with Bulk edit off as well.",
+        "between them.",
     ],
   },
   {

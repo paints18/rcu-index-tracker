@@ -156,17 +156,12 @@
           <option value="untouched">Not indexed</option>
         </select>
       </label>
-      <button type="button" class="btn btn-quiet" id="filter-reset">Reset</button>
+      <button type="button" class="btn btn-quiet" id="filter-reset">Clear filters</button>
 
-      <!-- Turns on the checkboxes in the table head and the All column. There is
-           no separate bulk panel: the control for a column lives in that
-           column's header, so nothing has to explain which is which. -->
-      <button type="button" class="btn btn-quiet btn-toggle ml-auto" id="bulk-toggle"
-              aria-pressed="false">Bulk edit</button>
       <!-- Always present, enabled only when there is something to roll back:
            appearing and vanishing made the row of buttons jump. Steps back
            through everything done since the page was loaded. -->
-      <button type="button" class="btn btn-quiet" id="bulk-undo" disabled>Undo</button>
+      <button type="button" class="btn btn-quiet ml-auto" id="bulk-undo" disabled>Undo</button>
     </section>
 
     <section aria-label="Pet checklist">

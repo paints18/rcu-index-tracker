@@ -29,11 +29,10 @@ but not all.
 
 ### Filling in a lot at once
 
-Turn on **Bulk edit** in the filter bar. Every column then gets a checkbox at
-the top that fills that variant in for the pets currently listed — filter or
-search first and it only touches those. **Shift-click** a box after another
-one in the same column to fill in the rows between them; that works with Bulk
-edit off as well.
+Every column has a checkbox at the top that fills that variant in for the pets
+currently listed — filter or search first and it only touches those.
+**Shift-click** a box after another one in the same column to fill in the rows
+between them.
 
 ### Profiles
 

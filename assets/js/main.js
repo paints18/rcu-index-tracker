@@ -60,7 +60,6 @@ const dom = {
   filterStatus: $("filter-status"),
   filterReset: $("filter-reset"),
 
-  bulkToggle: $("bulk-toggle"),
   bulkUndo: $("bulk-undo"),
   bulkHint: $("bulk-hint"),
   bulkHintDismiss: $("bulk-hint-dismiss"),
@@ -944,15 +943,6 @@ function undoBulk() {
   renderUndo(); // the stack just shrank; the button has to say so
 }
 
-function toggleBulkEdit() {
-  const on = !loadSettings().bulkEdit;
-  // applySettings writes data-bulk on <html>; the stylesheet does the rest, so
-  // nothing here has to rebuild the table.
-  saveSettings({ bulkEdit: on });
-  dom.bulkToggle.setAttribute("aria-pressed", String(on));
-  renderCounts(); // the hint retires once bulk edit is on
-}
-
 /* ---------- profile dialogs ---------- */
 
 function openSwitchDialog() {
@@ -1238,7 +1228,6 @@ function wireEvents() {
   // bulk row and the body since both hold the same kind of checkbox.
   dom.table.addEventListener("keydown", onGridKeydown);
 
-  dom.bulkToggle.addEventListener("click", toggleBulkEdit);
   // Wrapped: the listener's MouseEvent must not land in undoBulk's entry slot.
   dom.bulkUndo.addEventListener("click", () => undoBulk());
 
@@ -1318,13 +1307,8 @@ async function boot() {
   }
 
   // The inline snippet in <head> applies only the settings that would flash if
-  // they arrived late (theme, density, columns). data-bulk is not one of them —
-  // it governs controls inside #app, which stays hidden until renderProfiles()
-  // runs — but it still has to be applied, or Bulk edit would not survive a
-  // reload. This is idempotent with the snippet.
+  // they arrived late (theme, density, columns); this is idempotent with it.
   const settings = applySettings(loadSettings());
-
-  dom.bulkToggle.setAttribute("aria-pressed", String(settings.bulkEdit));
 
   // Once, not per render: the samples come from the whole dataset, which cannot
   // change while the page is open.

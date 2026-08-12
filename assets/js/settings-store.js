@@ -79,8 +79,6 @@ export const DEFAULTS = {
   density: "comfortable",
   columns: Object.fromEntries(COLUMNS.map((c) => [c.id, true])),
   hideCompleted: false,
-  /** Reveals the bulk-edit bar and the row roll-up column. */
-  bulkEdit: false,
   /** One-time hint about bulk edit; not a choice, just a "seen it" flag. */
   bulkHintSeen: false,
   defaultCategory: "world1",
@@ -157,15 +155,10 @@ export function applySettings(settings = loadSettings()) {
   if (settings.density === "compact") root.dataset.density = "compact";
   else delete root.dataset.density;
 
-  // One attribute rather than a re-render: the bulk bar and the roll-up column
-  // are always in the DOM and CSS decides whether they exist on screen, so
-  // flipping the mode cannot desync the table head from the rows.
-  //
-  // Unlike the theme this needs no pre-paint snippet in <head>: both controls
-  // live inside #app, which ships hidden and is only revealed by renderProfiles()
-  // once main.js has run, so there is no default state to flash first.
-  if (settings.bulkEdit === true) root.dataset.bulk = "on";
-  else delete root.dataset.bulk;
+  // Bulk edit is always on; the attribute stays because the stylesheet keys off
+  // it (see [data-bulk="on"] in tailwind.css) rather than because it is still a
+  // choice.
+  root.dataset.bulk = "on";
 
   // One space-separated list rather than an attribute per column, matched in CSS
   // with `[data-hide-cols~="egg"]`.
