@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-12T18:00:12Z",
+  "generatedAt": "2026-08-12T18:39:11Z",
   "variants": [
     {
       "id": "normal",
@@ -14924,7 +14924,7 @@
           "name": "Firework Beast",
           "egg": null,
           "rarity": "Supreme",
-          "clicks": "100%",
+          "clicks": "110%",
           "variants": [
             "normal",
             "golden",
