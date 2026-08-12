@@ -4,7 +4,7 @@ A pet index tracker for **Rebirth Champions Ultimate**. Tick off the pets and
 variants you've collected in-game and watch your progress add up — no login,
 no account, just a profile name.
 
-**Open the tracker:** _(link goes here once the site is deployed)_
+**Open the tracker:** [paints18.github.io/rcu-index-tracker](https://paints18.github.io/rcu-index-tracker/)
 
 Every pet in the game is indexed: 1,229 pets across 16 categories, 4,613
 variants in total.
