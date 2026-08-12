@@ -64,6 +64,25 @@ jobs:
           cp -r data _site/
           cp -r assets _site/
 
+      # GitHub Pages caches every file for ~10 minutes (its own Cache-Control,
+      # not something this repo can turn off). A plain refresh right after a
+      # deploy can revalidate index.html while a script it imports is still
+      # served stale from cache — a renamed element id then crashes boot()
+      # against markup that no longer matches. Every reference gets a ?v= tag
+      # tied to this commit, so a stale cached file is never reused under a
+      # URL a new deploy expects to mean something else: it is always fetched
+      # fresh instead. Data JSON already sidesteps this the other way, via
+      # `cache: "no-cache"` in data.js/updates-modal.js.
+      - name: Cache-bust JS and CSS
+        run: |
+          v="${GITHUB_SHA:0:8}"
+          for f in _site/index.html _site/settings.html _site/updates.html; do
+            [ -f "$f" ] || continue
+            sed -i -E "s#href=\"assets/styles\.css\"#href=\"assets/styles.css?v=$v\"#; s#src=\"assets/js/main\.js\"#src=\"assets/js/main.js?v=$v\"#" "$f"
+          done
+          find _site/assets/js -name '*.js' -exec \
+            sed -i -E "s#from \"(\./[A-Za-z0-9_-]+\.js)\"#from \"\1?v=$v\"#" {} +
+
       - name: Verify the editor is not published
         run: |
           found=$(find _site -name 'editor*' -print)
