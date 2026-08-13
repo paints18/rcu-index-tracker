@@ -58,7 +58,7 @@
   <section class="card prose-col mx-auto my-12" id="onboard" hidden>
     <h2 class="text-xl mb-2 font-semibold">Create a profile</h2>
     <p class="text-muted">Each profile keeps its own checklist.
-       Already playing? Bulk edit fills in what you already have.</p>
+       Already playing? The checkbox at the top of each column fills in what you already have.</p>
     <form class="flex flex-wrap gap-2 mt-[18px] mb-3" id="onboard-form">
       <input type="text" id="onboard-name" class="flex-1 min-w-[220px]" placeholder="e.g. paints" maxlength="40"
              autocomplete="off" spellcheck="false" required aria-label="Profile name">
@@ -166,9 +166,7 @@
 
     <section aria-label="Pet checklist">
       <!-- Shown only while the active profile has no ticks at all, so it retires
-           itself the moment anyone does anything; Dismiss makes that permanent.
-           Worded to read the same whether or not bulk edit is on, so that
-           toggling the mode never changes its height. -->
+           itself the moment anyone does anything; Dismiss makes that permanent. -->
       <p class="text-muted text-[13px] flex flex-wrap items-center gap-2 mb-2" id="bulk-hint" hidden>
         <span><strong>Bulk edit</strong> puts a checkbox at the
               top of every column that fills in each pet shown. Narrow the list with the filters
