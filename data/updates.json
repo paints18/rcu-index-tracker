@@ -4,6 +4,18 @@
   "notice": "",
   "entries": [
     {
+      "id": "2026-08-14-update",
+      "date": "2026-08-15",
+      "title": "Update 73",
+      "tags": [
+        "added"
+      ],
+      "body": "Added Atomic World pets: Atomic Slime, Atomic Rat, Atomic Moth, Atomic Dragon, Nuclear Crab, Nuclear Bloom, Reactor Spider, Core Overlord.",
+      "items": [
+        "Missing clicks amount for Core Overlord, will be added soon."
+      ]
+    },
+    {
       "id": "2026-08-14-export-sort-missing-filter",
       "date": "2026-08-14",
       "title": "Export sorting, Missing filter",

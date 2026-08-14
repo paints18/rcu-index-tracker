@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-14T10:42:30Z",
+  "generatedAt": "2026-08-14T18:22:52Z",
   "variants": [
     {
       "id": "normal",
@@ -5566,6 +5566,19 @@
           ]
         },
         {
+          "slug": "atomic-slime",
+          "name": "Atomic Slime",
+          "egg": "Atomic World",
+          "rarity": "Rare",
+          "clicks": "400Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "sand-scorpion",
           "name": "Sand Scorpion",
           "egg": "Sandy Dunes",
@@ -5579,11 +5592,37 @@
           ]
         },
         {
+          "slug": "atomic-rat",
+          "name": "Atomic Rat",
+          "egg": "Atomic World",
+          "rarity": "Epic",
+          "clicks": "600Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "windmill-wisp",
           "name": "Windmill Wisp",
           "egg": "Primitive Fields",
           "rarity": "Mythical",
           "clicks": "670Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "atomic-moth",
+          "name": "Atomic Moth",
+          "egg": "Atomic World",
+          "rarity": "Legendary",
+          "clicks": "1.09O",
           "variants": [
             "normal",
             "golden",
@@ -5644,6 +5683,19 @@
           ]
         },
         {
+          "slug": "atomic-dragon",
+          "name": "Atomic Dragon",
+          "egg": "Atomic World",
+          "rarity": "Mythical",
+          "clicks": "5.5O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "pterodactyl",
           "name": "Pterodactyl",
           "egg": "Dino World",
@@ -5688,6 +5740,19 @@
           "egg": "Primitive Fields",
           "rarity": "Secret",
           "clicks": "20.5O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "nuclear-crab",
+          "name": "Nuclear Crab",
+          "egg": "Atomic World",
+          "rarity": "Eternal",
+          "clicks": "30O",
           "variants": [
             "normal",
             "golden",
@@ -5761,6 +5826,19 @@
           ]
         },
         {
+          "slug": "nuclear-bloom",
+          "name": "Nuclear Bloom",
+          "egg": "Atomic World",
+          "rarity": "Secret",
+          "clicks": "175O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "paradox-beast",
           "name": "Paradox Beast",
           "egg": "Paradox Spawn",
@@ -5800,6 +5878,19 @@
           ]
         },
         {
+          "slug": "reactor-spider",
+          "name": "Reactor Spider",
+          "egg": "Atomic World",
+          "rarity": "Divine",
+          "clicks": "560O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "ancient-terror",
           "name": "Ancient Terror",
           "egg": "Dino World",
@@ -5818,6 +5909,19 @@
           "egg": "Sandy Dunes",
           "rarity": "Mysterious",
           "clicks": "1.2N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "core-overlord",
+          "name": "Core Overlord",
+          "egg": "Atomic World",
+          "rarity": "Mysterious",
+          "clicks": null,
           "variants": [
             "normal",
             "golden",
