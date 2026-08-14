@@ -25,6 +25,17 @@ const SEPARATORS = [
 ];
 
 /**
+ * "List order" leaves pets exactly as the table shows them — already grouped
+ * by world and, within a world, already ascending by Clicks, since that is
+ * how the source data is entered. No separate "sort by Clicks" is needed for
+ * that reason; Rarity is the one axis list order doesn't already give you.
+ */
+const SORTS = [
+  { id: "list", label: "List order (Clicks, low to high)" },
+  { id: "rarity", label: "Rarity" },
+];
+
+/**
  * Only 4 variants exist in the whole dataset, so a hand-picked map reads
  * better than deriving codes from the label (e.g. Golden and Galaxy both
  * start with G).
@@ -40,6 +51,7 @@ let indexPromise = null;
 /** Built on first open. */
 let ui = null;
 let scope = "all";
+let sortBy = "list";
 let abbreviate = false;
 let separator = "comma";
 
@@ -108,6 +120,22 @@ function buildDialog() {
     scopeInputs.set(option.id, input);
   }
 
+  const sortFieldset = el("fieldset", "border-0 p-0 m-0 flex flex-col gap-1.5 mt-4");
+  sortFieldset.append(el("legend", "field-label", "Sort"));
+
+  const sortInputs = new Map();
+  for (const option of SORTS) {
+    const label = el("label", "text-sm flex gap-2 items-center");
+    const input = document.createElement("input");
+    input.type = "radio";
+    input.name = "export-sort";
+    input.value = option.id;
+    if (option.id === sortBy) input.checked = true;
+    label.append(input, document.createTextNode(option.label));
+    sortFieldset.append(label);
+    sortInputs.set(option.id, input);
+  }
+
   const formatFieldset = el("fieldset", "border-0 p-0 m-0 flex flex-col gap-1.5 mt-4");
   formatFieldset.append(el("legend", "field-label", "Format"));
 
@@ -150,6 +178,7 @@ function buildDialog() {
     heading,
     intro,
     scopeFieldset,
+    sortFieldset,
     formatFieldset,
     meta,
     textarea,
@@ -161,6 +190,7 @@ function buildDialog() {
   return {
     dialog,
     scopeInputs,
+    sortInputs,
     abbrInput,
     sepInputs,
     meta,
@@ -173,6 +203,22 @@ function buildDialog() {
 /** Variant id -> display label, from the loaded index. */
 function labelMap() {
   return new Map(index.variants.map((v) => [v.id, v.label]));
+}
+
+/**
+ * Rarity name -> its first-seen position across the whole index.
+ *
+ * Not a hand-written tier list: the categories already read low tier to high
+ * within each world (see data/pets.json), so walking pets in file order and
+ * recording each rarity the first time it appears reconstructs that same
+ * ladder without anyone having to keep a second copy of it in sync.
+ */
+function rarityRank() {
+  const rank = new Map();
+  for (const pet of index.bySlug.values()) {
+    if (pet.rarity && !rank.has(pet.rarity)) rank.set(pet.rarity, rank.size);
+  }
+  return rank;
 }
 
 /** Missing-variant lines for one category's pets, in display order, no header. */
@@ -193,6 +239,30 @@ function linesFor(pets, labels) {
   }
 
   return { lines, missingCount };
+}
+
+/**
+ * Turn a list of `{ label, pets }` groups into text blocks, each headed by its
+ * label — unless there is only one group, in which case a header would just
+ * be repeating what the Scope radio already said.
+ */
+function blocksFrom(groups, labels) {
+  const headed = groups.length > 1;
+  const blocks = [];
+  let pets = 0;
+  let variants = 0;
+
+  for (const { label, pets: groupPets } of groups) {
+    const { lines, missingCount } = linesFor(groupPets, labels);
+    if (!lines.length) continue;
+
+    pets += lines.length;
+    variants += missingCount;
+
+    blocks.push(headed ? [label, ...lines].join("\n") : lines.join("\n"));
+  }
+
+  return { text: blocks.join("\n\n"), pets, variants };
 }
 
 /** @returns {{text: string, pets: number, variants: number}} */
@@ -216,22 +286,37 @@ function buildExport() {
     scoped = categories.map((category) => ({ category, pets: category.pets }));
   }
 
-  const multiCategory = scoped.length > 1;
-  const blocks = [];
-  let pets = 0;
-  let variants = 0;
+  // Sorting by Rarity re-pools everything in scope by that trait instead of
+  // by world — the same way Whole index blocks by world, a rarity sort blocks
+  // by rarity, so a Legendary from World 1 sits next to a Legendary from
+  // World 4 rather than being split across two world headings.
+  if (sortBy === "rarity") {
+    const rank = rarityRank();
+    const groups = new Map();
+    for (const { pets: groupPets } of scoped) {
+      for (const pet of groupPets) {
+        const key = pet.rarity ?? "";
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(pet);
+      }
+    }
 
-  for (const { category, pets: catPets } of scoped) {
-    const { lines, missingCount } = linesFor(catPets, labels);
-    if (!lines.length) continue;
-
-    pets += lines.length;
-    variants += missingCount;
-
-    blocks.push(multiCategory ? [category.label, ...lines].join("\n") : lines.join("\n"));
+    const tiers = [...groups.keys()].sort(
+      (a, b) => (rank.get(a) ?? Infinity) - (rank.get(b) ?? Infinity),
+    );
+    return blocksFrom(
+      tiers.map((rarity) => ({
+        label: rarity || "No rarity listed",
+        pets: groups.get(rarity),
+      })),
+      labels,
+    );
   }
 
-  return { text: blocks.join("\n\n"), pets, variants };
+  return blocksFrom(
+    scoped.map(({ category, pets: catPets }) => ({ label: category.label, pets: catPets })),
+    labels,
+  );
 }
 
 function render() {
@@ -268,6 +353,14 @@ function wire() {
     input.addEventListener("change", () => {
       if (!input.checked) return;
       scope = id;
+      render();
+    });
+  }
+
+  for (const [id, input] of ui.sortInputs) {
+    input.addEventListener("change", () => {
+      if (!input.checked) return;
+      sortBy = id;
       render();
     });
   }

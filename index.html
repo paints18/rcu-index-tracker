@@ -156,6 +156,26 @@
           <option value="untouched">Not indexed</option>
         </select>
       </label>
+      <!-- Which variant is still unticked, not how far along the pet is overall
+           — a separate axis from Status on purpose, so the two combine (e.g.
+           Incomplete + Missing Golden) instead of one dropdown trying to hold
+           both. Options are only the variants the active category actually
+           has, same as the tick columns; see usedVariants in ui.js.
+
+           Its placeholder is "No filter" rather than "All variants" — it
+           reads fine paired with a neutral label like Egg or Rarity, but
+           "Missing" is already a state verb, and "Missing: All variants"
+           reads as "missing every variant" (a real, different status) rather
+           than "not filtering by this". Its sizer is a fixed list of every
+           variant rather than the per-category widest (see egg/rarity
+           above), since the option set is the same small handful everywhere. -->
+      <label class="field">
+        <span class="field-label">Missing</span>
+        <span class="select-wrap">
+          <select id="filter-missing"></select>
+          <span class="select-sizer" id="missing-sizer"></span>
+        </span>
+      </label>
       <button type="button" class="btn btn-quiet" id="filter-reset">Clear filters</button>
 
       <!-- Always present, enabled only when there is something to roll back:

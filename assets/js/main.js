@@ -23,6 +23,7 @@ import {
   syncTableHead,
   fillSelect,
   fillSizer,
+  usedVariants,
   percent,
 } from "./ui.js";
 
@@ -58,6 +59,8 @@ const dom = {
   eggSizer: $("egg-sizer"),
   raritySizer: $("rarity-sizer"),
   filterStatus: $("filter-status"),
+  filterMissing: $("filter-missing"),
+  missingSizer: $("missing-sizer"),
   filterReset: $("filter-reset"),
 
   bulkUndo: $("bulk-undo"),
@@ -109,7 +112,7 @@ const state = {
   profileId: null,
   progress: {},
   categoryId: null,
-  filters: { search: "", egg: "", rarity: "", status: "all" },
+  filters: { search: "", egg: "", rarity: "", status: "all", missing: "" },
   /** Variant columns the current head was built with; syncTableHead needs them. */
   usedVariants: [],
 
@@ -148,12 +151,18 @@ const state = {
 const UNDO_LIMIT = 200;
 
 /**
- * The "no filter" option at the top of each menu. Named here because the menu's
- * width sizer has to account for it too — "All rarities" is longer than every
- * rarity there is, so a sizer built from the data alone would leave the menu too
- * narrow to show its own placeholder.
+ * The "no filter" option at the top of each menu. Named here because the
+ * Egg/Rarity menus' width sizers have to account for it too — "All rarities"
+ * is longer than every rarity there is, so a sizer built from the data alone
+ * would leave the menu too narrow to show its own placeholder.
+ *
+ * Missing breaks the "All ___" pattern on purpose: "Missing" is a state verb,
+ * so "Missing: All variants" reads as "missing every variant" — a real,
+ * different status (see "Not indexed") — rather than "not filtering by this
+ * at all". "No filter" doesn't parse as a variant name, so it can't be
+ * misread that way, even though it costs the visual parallel with Egg/Rarity.
  */
-const FILTER_ALL = { egg: "All eggs", rarity: "All rarities" };
+const FILTER_ALL = { egg: "All eggs", rarity: "All rarities", missing: "No filter" };
 
 /* ------------------------------------------------------------------ */
 /* helpers                                                             */
@@ -358,7 +367,7 @@ function renderCounts() {
 }
 
 function visiblePets(category) {
-  const { search, egg, rarity, status } = state.filters;
+  const { search, egg, rarity, status, missing } = state.filters;
   const needle = search.trim().toLowerCase();
 
   return category.pets.filter((pet) => {
@@ -370,12 +379,20 @@ function visiblePets(category) {
       if (!haystack.includes(needle)) return false;
     }
 
+    const caught = state.progress[pet.slug] ?? [];
+
     if (status !== "all") {
-      const caught = state.progress[pet.slug] ?? [];
       const owned = pet.variants.filter((v) => caught.includes(v)).length;
       if (status === "complete" && owned !== pet.variants.length) return false;
       if (status === "incomplete" && owned === pet.variants.length) return false;
       if (status === "untouched" && owned !== 0) return false;
+    }
+
+    // A pet without this variant at all isn't "missing" it — there is nothing
+    // to tick — so it drops out rather than counting as a match.
+    if (missing) {
+      if (!pet.variants.includes(missing)) return false;
+      if (caught.includes(missing)) return false;
     }
     return true;
   });
@@ -765,6 +782,14 @@ function renderFilters() {
     placeholder: FILTER_ALL.rarity,
     value: state.filters.rarity,
   });
+  // Same variant set the tick columns show for this category (see
+  // renderTableHead) — never an option guaranteed to match nothing.
+  const variants = usedVariants(state.index.variants, category);
+  fillSelect(
+    dom.filterMissing,
+    variants.map((v) => ({ value: v.id, label: v.label })),
+    { placeholder: FILTER_ALL.missing, value: state.filters.missing },
+  );
   dom.filterSearch.value = state.filters.search;
   dom.filterStatus.value = state.filters.status;
 }
@@ -829,6 +854,17 @@ function selectCategory(categoryId) {
   state.categoryId = categoryId;
   state.filters.egg = "";
   state.filters.rarity = "";
+
+  // Unlike egg/rarity, a variant id means the same thing in every category, so
+  // "Missing Golden" is left standing rather than cleared on every switch — it
+  // is meant to follow you from world to world. It only gets dropped here if
+  // the category you just landed in doesn't have that variant at all, which
+  // would otherwise leave the filter applying to a dropdown showing "Any
+  // variant".
+  const stillValid = usedVariants(state.index.variants, activeCategory()).some(
+    (v) => v.id === state.filters.missing,
+  );
+  if (!stillValid) state.filters.missing = "";
 
   // The undo history survives the switch — entries carry the category they were
   // made in, and lastUndoIndex() only reaches for this one, so the button now
@@ -1257,11 +1293,15 @@ function wireEvents() {
     state.filters.status = dom.filterStatus.value;
     renderTable();
   });
+  dom.filterMissing.addEventListener("change", () => {
+    state.filters.missing = dom.filterMissing.value;
+    renderTable();
+  });
   dom.filterReset.addEventListener("click", () => {
     // "Reset" means back to your configured default, not back to showing
     // everything — otherwise it would undo the hide-completed preference.
     const status = loadSettings().hideCompleted ? "incomplete" : "all";
-    state.filters = { search: "", egg: "", rarity: "", status };
+    state.filters = { search: "", egg: "", rarity: "", status, missing: "" };
     renderFilters();
     renderTable();
   });
@@ -1314,6 +1354,7 @@ async function boot() {
   // change while the page is open.
   fillSizer(dom.eggSizer, [...state.index.widest.egg, FILTER_ALL.egg]);
   fillSizer(dom.raritySizer, [...state.index.widest.rarity, FILTER_ALL.rarity]);
+  fillSizer(dom.missingSizer, [...state.index.variants.map((v) => v.label), FILTER_ALL.missing]);
 
   state.categoryId = initialCategoryId(state.index, settings);
   if (settings.hideCompleted) state.filters.status = "incomplete";

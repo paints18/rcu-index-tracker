@@ -4,6 +4,21 @@
   "notice": "",
   "entries": [
     {
+      "id": "2026-08-14-export-sort-missing-filter",
+      "date": "2026-08-14",
+      "title": "Export sorting, Missing filter",
+      "tags": [
+        "added",
+        "fixed"
+      ],
+      "body": "Export gained a Rarity sort, and a new Missing filter narrows the table to pets that still need one specific variant.",
+      "items": [
+        "Export sort: Rarity now pools everything in scope by tier instead of by world.",
+        "Missing filter: show only pets still missing one variant, from Normal, Golden, Toxic, or Galaxy.",
+        "Season Exclusive Egg pets: previously blank egg names and clicks filled in. Thanks oliveboi08!"
+      ]
+    },
+    {
       "id": "2026-08-14-all-category",
       "date": "2026-08-14",
       "title": "All category",
