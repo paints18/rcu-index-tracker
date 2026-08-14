@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-14T02:44:07Z",
+  "generatedAt": "2026-08-14T10:42:30Z",
   "variants": [
     {
       "id": "normal",
@@ -8830,7 +8830,7 @@
         {
           "slug": "season-1-bee",
           "name": "Season 1 Bee",
-          "egg": null,
+          "egg": "Season 1 Egg",
           "rarity": "Epic",
           "clicks": null,
           "variants": [
@@ -8902,9 +8902,9 @@
         {
           "slug": "season-1-flower",
           "name": "Season 1 Flower",
-          "egg": null,
+          "egg": "Season 1 Egg",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "50M",
           "variants": [
             "normal",
             "golden",
@@ -8938,9 +8938,9 @@
         {
           "slug": "season-1-dragon",
           "name": "Season 1 Dragon",
-          "egg": null,
+          "egg": "Season 1 Egg",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "200M",
           "variants": [
             "normal",
             "golden",
@@ -8962,7 +8962,7 @@
         {
           "slug": "season-1-star",
           "name": "Season 1 Star",
-          "egg": null,
+          "egg": "Season 1 Egg",
           "rarity": "Eternal",
           "clicks": null,
           "variants": [
@@ -9000,9 +9000,9 @@
         {
           "slug": "nature-butterfly",
           "name": "Nature Butterfly",
-          "egg": null,
+          "egg": "Season 2 Egg",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "15B",
           "variants": [
             "normal",
             "golden",
@@ -9026,9 +9026,9 @@
         {
           "slug": "fire-spirit",
           "name": "Fire Spirit",
-          "egg": null,
+          "egg": "Season 2 Egg",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "25B",
           "variants": [
             "normal",
             "golden",
@@ -9052,9 +9052,9 @@
         {
           "slug": "shadow-shock",
           "name": "Shadow Shock",
-          "egg": null,
+          "egg": "Season 2 Egg",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "40B",
           "variants": [
             "normal",
             "golden",
@@ -9078,9 +9078,9 @@
         {
           "slug": "game-pad",
           "name": "Game Pad",
-          "egg": null,
+          "egg": "Season 3 Egg",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "50B",
           "variants": [
             "normal",
             "golden",
@@ -9104,9 +9104,9 @@
         {
           "slug": "poison-overlord",
           "name": "Poison Overlord",
-          "egg": null,
+          "egg": "Season 2 Egg",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "125B",
           "variants": [
             "normal",
             "golden",
@@ -9143,9 +9143,9 @@
         {
           "slug": "arcade-fox",
           "name": "Arcade Fox",
-          "egg": null,
+          "egg": "Season 3 Egg",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "250B",
           "variants": [
             "normal",
             "golden",
@@ -9156,9 +9156,9 @@
         {
           "slug": "gamer-dragon",
           "name": "Gamer Dragon",
-          "egg": null,
+          "egg": "Season 3 Egg",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "750B",
           "variants": [
             "normal",
             "golden",
@@ -9221,9 +9221,9 @@
         {
           "slug": "game-breaker",
           "name": "Game Breaker",
-          "egg": null,
+          "egg": "Season 3 Egg",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "3T",
           "variants": [
             "normal",
             "golden",
@@ -9260,9 +9260,9 @@
         {
           "slug": "shadow-bee",
           "name": "Shadow Bee",
-          "egg": null,
+          "egg": "Season 4 Egg",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "15T",
           "variants": [
             "normal",
             "golden",
@@ -9273,9 +9273,9 @@
         {
           "slug": "shadow-dominus",
           "name": "Shadow Dominus",
-          "egg": null,
+          "egg": "Season 4 Egg",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "30T",
           "variants": [
             "normal",
             "golden",
@@ -9299,9 +9299,9 @@
         {
           "slug": "shadow-dragon",
           "name": "Shadow Dragon",
-          "egg": null,
+          "egg": "Season 4 Egg",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "100T",
           "variants": [
             "normal",
             "golden",
@@ -9325,9 +9325,9 @@
         {
           "slug": "shadow-hexagon",
           "name": "Shadow Hexagon",
-          "egg": null,
+          "egg": "Season 4 Egg",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "300T",
           "variants": [
             "normal",
             "golden",
@@ -9429,9 +9429,9 @@
         {
           "slug": "crystal-golem",
           "name": "Crystal Golem",
-          "egg": null,
+          "egg": "Season 5 Egg",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "8Qd",
           "variants": [
             "normal",
             "golden",
@@ -9468,9 +9468,9 @@
         {
           "slug": "crystal-butterfly",
           "name": "Crystal Butterfly",
-          "egg": null,
+          "egg": "Season 5 Egg",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "20Qd",
           "variants": [
             "normal",
             "golden",
@@ -9481,9 +9481,9 @@
         {
           "slug": "crystal-dragon",
           "name": "Crystal Dragon",
-          "egg": null,
+          "egg": "Season 5 Egg",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "40Qd",
           "variants": [
             "normal",
             "golden",
@@ -9520,9 +9520,9 @@
         {
           "slug": "crystal-hydra",
           "name": "Crystal Hydra",
-          "egg": null,
+          "egg": "Season 5 Egg",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "100Qd",
           "variants": [
             "normal",
             "golden",
@@ -9559,9 +9559,9 @@
         {
           "slug": "magic-heart",
           "name": "Magic Heart",
-          "egg": null,
+          "egg": "Season 6 Egg",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "1Qn",
           "variants": [
             "normal",
             "golden",
@@ -9585,9 +9585,9 @@
         {
           "slug": "magic-dominus",
           "name": "Magic Dominus",
-          "egg": null,
+          "egg": "Season 6 Egg",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "1.5Qn",
           "variants": [
             "normal",
             "golden",
@@ -9624,9 +9624,9 @@
         {
           "slug": "spirit-dragon",
           "name": "Spirit Dragon",
-          "egg": null,
+          "egg": "Season 6 Egg",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "6Qn",
           "variants": [
             "normal",
             "golden",
@@ -9637,9 +9637,9 @@
         {
           "slug": "magic-fairy",
           "name": "Magic Fairy",
-          "egg": null,
+          "egg": "Season 6 Egg",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "35Qn",
           "variants": [
             "normal",
             "golden",
@@ -9650,9 +9650,9 @@
         {
           "slug": "lucky-block",
           "name": "Lucky Block",
-          "egg": null,
+          "egg": "Season 7 Egg",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "150Qn",
           "variants": [
             "normal",
             "golden",
@@ -9663,9 +9663,9 @@
         {
           "slug": "lovely-lucky-block",
           "name": "Lovely Lucky Block",
-          "egg": null,
+          "egg": "Season 7 Egg",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "450Qn",
           "variants": [
             "normal",
             "golden",
@@ -9676,9 +9676,9 @@
         {
           "slug": "devil-lucky-block",
           "name": "Devil Lucky Block",
-          "egg": null,
+          "egg": "Season 7 Egg",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "800Qn",
           "variants": [
             "normal",
             "golden",
@@ -9689,9 +9689,9 @@
         {
           "slug": "void-lucky-block",
           "name": "Void Lucky Block",
-          "egg": null,
+          "egg": "Season 7 Egg",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "3.5Sx",
           "variants": [
             "normal",
             "golden",
@@ -9741,9 +9741,9 @@
         {
           "slug": "ice-wolf",
           "name": "Ice Wolf",
-          "egg": null,
+          "egg": "Season 8 Egg",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "50Sx",
           "variants": [
             "normal",
             "golden",
@@ -9767,9 +9767,9 @@
         {
           "slug": "fire-dragon",
           "name": "Fire Dragon",
-          "egg": null,
+          "egg": "Season 8 Egg",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "100Sx",
           "variants": [
             "normal",
             "golden",
@@ -9793,9 +9793,9 @@
         {
           "slug": "ice-hydra",
           "name": "Ice Hydra",
-          "egg": null,
+          "egg": "Season 8 Egg",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "500Sx",
           "variants": [
             "normal",
             "golden",
@@ -9806,9 +9806,9 @@
         {
           "slug": "fire-bat",
           "name": "Fire Bat",
-          "egg": null,
+          "egg": "Season 8 Egg",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "1.6Sp",
           "variants": [
             "normal",
             "golden",
@@ -9832,9 +9832,9 @@
         {
           "slug": "gummy-bear",
           "name": "Gummy Bear",
-          "egg": null,
+          "egg": "Season 9 Egg",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "5Sp",
           "variants": [
             "normal",
             "golden",
@@ -9858,9 +9858,9 @@
         {
           "slug": "bubblegum-hydra",
           "name": "Bubblegum Hydra",
-          "egg": null,
+          "egg": "Season 9 Egg",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "15Sp",
           "variants": [
             "normal",
             "golden",
@@ -9871,9 +9871,9 @@
         {
           "slug": "lollipop-dragon",
           "name": "Lollipop Dragon",
-          "egg": null,
+          "egg": "Season 9 Egg",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "45Sp",
           "variants": [
             "normal",
             "golden",
@@ -9897,9 +9897,9 @@
         {
           "slug": "chocolate-overlord",
           "name": "Chocolate Overlord",
-          "egg": null,
+          "egg": "Season 9 Egg",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "130Sp",
           "variants": [
             "normal",
             "golden",
@@ -9912,7 +9912,7 @@
           "name": "Viking Puppy",
           "egg": "Season 10 Egg",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "750Sp",
           "variants": [
             "normal",
             "golden",
@@ -9925,7 +9925,7 @@
           "name": "Shield Dragon",
           "egg": "Season 10 Egg",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "1O",
           "variants": [
             "normal",
             "golden",
@@ -9938,7 +9938,7 @@
           "name": "Viking Drakkar",
           "egg": "Season 10 Egg",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "3O",
           "variants": [
             "normal",
             "golden",
@@ -9951,7 +9951,7 @@
           "name": "Viking Immortal",
           "egg": "Season 10 Egg",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "25O",
           "variants": [
             "normal",
             "golden",
@@ -10038,7 +10038,7 @@
         {
           "slug": "season-1-trophy",
           "name": "Season 1 Trophy",
-          "egg": null,
+          "egg": "Season 1 Egg",
           "rarity": "Supreme",
           "clicks": "100%",
           "variants": [
@@ -10369,7 +10369,7 @@
         {
           "slug": "sweet-sovereign",
           "name": "Sweet Sovereign",
-          "egg": null,
+          "egg": "Season 9 Egg",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
@@ -10470,7 +10470,7 @@
         {
           "slug": "duality-lord",
           "name": "Duality Lord",
-          "egg": null,
+          "egg": "Season 8 Egg",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
@@ -10483,7 +10483,7 @@
         {
           "slug": "angel-lucky-block",
           "name": "Angel Lucky Block",
-          "egg": null,
+          "egg": "Season 7 Egg",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
@@ -10535,7 +10535,7 @@
         {
           "slug": "crystal-guardian",
           "name": "Crystal Guardian",
-          "egg": null,
+          "egg": "Season 5 Egg",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
@@ -10548,7 +10548,7 @@
         {
           "slug": "shadow-owl",
           "name": "Shadow Owl",
-          "egg": null,
+          "egg": "Season 4 Egg",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
@@ -10561,7 +10561,7 @@
         {
           "slug": "sky-saviour",
           "name": "Sky Saviour",
-          "egg": null,
+          "egg": "Season 2 Egg",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
@@ -10574,7 +10574,7 @@
         {
           "slug": "spirit-overlord",
           "name": "Spirit Overlord",
-          "egg": null,
+          "egg": "Season 6 Egg",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
@@ -10600,7 +10600,7 @@
         {
           "slug": "arcade-hydra",
           "name": "Arcade Hydra",
-          "egg": null,
+          "egg": "Season 3 Egg",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
