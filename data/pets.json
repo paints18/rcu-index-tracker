@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-12T18:39:11Z",
+  "generatedAt": "2026-08-14T02:44:07Z",
   "variants": [
     {
       "id": "normal",
@@ -9910,7 +9910,7 @@
         {
           "slug": "viking-puppy",
           "name": "Viking Puppy",
-          "egg": null,
+          "egg": "Season 10 Egg",
           "rarity": "Epic",
           "clicks": null,
           "variants": [
@@ -9923,7 +9923,7 @@
         {
           "slug": "shield-dragon",
           "name": "Shield Dragon",
-          "egg": null,
+          "egg": "Season 10 Egg",
           "rarity": "Legendary",
           "clicks": null,
           "variants": [
@@ -9936,7 +9936,7 @@
         {
           "slug": "viking-drakkar",
           "name": "Viking Drakkar",
-          "egg": null,
+          "egg": "Season 10 Egg",
           "rarity": "Mythical",
           "clicks": null,
           "variants": [
@@ -9949,7 +9949,7 @@
         {
           "slug": "viking-immortal",
           "name": "Viking Immortal",
-          "egg": null,
+          "egg": "Season 10 Egg",
           "rarity": "Eternal",
           "clicks": null,
           "variants": [
@@ -10395,7 +10395,7 @@
         {
           "slug": "storm-sovereign",
           "name": "Storm Sovereign",
-          "egg": null,
+          "egg": "Season 10 Egg",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
