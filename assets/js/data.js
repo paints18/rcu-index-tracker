@@ -155,6 +155,26 @@ export async function loadIndex() {
     console.error("Duplicate pet slugs in pets.json:", duplicates);
   }
 
+  // Real categories only — computed before the "All" category is added below,
+  // since that category's pets are the same objects again and would double
+  // this if it were included.
+  const totalTicks = categories.reduce((sum, c) => sum + c.totalTicks, 0);
+
+  // A synthetic category ahead of World 1 with every pet from every other
+  // category, reusing the same pet objects rather than copying them — a tick
+  // made here and a tick made in the pet's own world are the same tick, since
+  // both write to the same slug in `progress`.
+  const allPets = categories.flatMap((c) => c.pets);
+  categories.unshift({
+    id: "all",
+    label: "All",
+    virtual: true,
+    pets: allPets,
+    eggs: [...new Set(allPets.map((p) => p.egg).filter(Boolean))],
+    rarities: [...new Set(allPets.map((p) => p.rarity).filter(Boolean))],
+    totalTicks,
+  });
+
   return {
     schemaVersion: doc.schemaVersion ?? 1,
     generatedAt: doc.generatedAt ?? null,
@@ -168,7 +188,7 @@ export async function loadIndex() {
     /** Highest integer in use, so the encoder knows how wide a bitset to build. */
     maxCode: byCode.size ? Math.max(...byCode.keys()) : -1,
     totalPets: bySlug.size,
-    totalTicks: categories.reduce((sum, c) => sum + c.totalTicks, 0),
+    totalTicks,
   };
 }
 
@@ -192,19 +212,28 @@ export function countProgress(index, progress) {
     }
   }
 
+  // Every pet's categoryId is its real category, never "all" — that category's
+  // pets are the same objects, reused, not re-tagged. Its count is the grand
+  // total rather than a sum over perCategory.
+  perCategory.set("all", total);
+
   return { total, perVariant, perCategory };
 }
 
-/** Tickable boxes per variant, across the whole index or one category. */
+/**
+ * Tickable boxes per variant, across the whole index or one category.
+ *
+ * "Whole index" is read from bySlug rather than summed over index.categories,
+ * because the "All" category holds the same pet objects as every other
+ * category — summing the categories would count each pet twice.
+ */
 export function totalsByVariant(index, category) {
-  const source = category ? [category] : index.categories;
+  const pets = category ? category.pets : index.bySlug.values();
   const totals = new Map(index.variants.map((v) => [v.id, 0]));
 
-  for (const cat of source) {
-    for (const pet of cat.pets) {
-      for (const variantId of pet.variants) {
-        totals.set(variantId, (totals.get(variantId) ?? 0) + 1);
-      }
+  for (const pet of pets) {
+    for (const variantId of pet.variants) {
+      totals.set(variantId, (totals.get(variantId) ?? 0) + 1);
     }
   }
   return totals;

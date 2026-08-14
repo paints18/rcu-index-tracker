@@ -198,7 +198,10 @@ function linesFor(pets, labels) {
 /** @returns {{text: string, pets: number, variants: number}} */
 function buildExport() {
   const labels = labelMap();
-  const categories = index.categories;
+  // The "All" category holds the same pets as every other category, reused
+  // rather than copied — walking it here alongside the rest would export
+  // everything twice.
+  const categories = index.categories.filter((c) => !c.virtual);
 
   let scoped;
   if (scope === "category") {

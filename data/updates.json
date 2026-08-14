@@ -4,6 +4,17 @@
   "notice": "",
   "entries": [
     {
+      "id": "2026-08-14-all-category",
+      "date": "2026-08-14",
+      "title": "All category",
+      "tags": [
+        "added",
+        "changed"
+      ],
+      "body": "Added an All tab that lists every pet from every world and category in one place. New profiles now open on it by default.",
+      "items": []
+    },
+    {
       "id": "2026-08-12-export",
       "date": "2026-08-12",
       "title": "Export list, keyboard navigation",

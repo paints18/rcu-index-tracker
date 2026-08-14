@@ -81,7 +81,7 @@ export const DEFAULTS = {
   hideCompleted: false,
   /** One-time hint about bulk edit; not a choice, just a "seen it" flag. */
   bulkHintSeen: false,
-  defaultCategory: "world1",
+  defaultCategory: "all",
 };
 
 export function loadSettings() {
