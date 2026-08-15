@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-14T18:22:52Z",
+  "generatedAt": "2026-08-15T19:46:18Z",
   "variants": [
     {
       "id": "normal",
@@ -7488,11 +7488,50 @@
           ]
         },
         {
+          "slug": "alien-bat",
+          "name": "Alien Bat",
+          "egg": "Alien Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "50O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "flame-shard",
           "name": "Flame Shard",
           "egg": "-",
           "rarity": "Exclusive",
           "clicks": null,
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "alien-snail",
+          "name": "Alien Snail",
+          "egg": "Alien Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "70O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "cosmic-mantis",
+          "name": "Cosmic Mantis",
+          "egg": "Alien Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "150O",
           "variants": [
             "normal",
             "golden",
@@ -7951,6 +7990,19 @@
           "name": "Ocean Core",
           "egg": "Coral Exclusive Egg",
           "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "interstellar-dragon",
+          "name": "Interstellar Dragon",
+          "egg": "Alien Exclusive Egg",
+          "rarity": "Ultimate",
           "clicks": "125%",
           "variants": [
             "normal",
@@ -8573,6 +8625,19 @@
             "normal",
             "golden",
             "toxic"
+          ]
+        },
+        {
+          "slug": "alien-overseer",
+          "name": "Alien Overseer",
+          "egg": "Alien Exclusive Egg",
+          "rarity": "Ultimate",
+          "clicks": "400%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
           ]
         },
         {
