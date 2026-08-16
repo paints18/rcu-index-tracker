@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-15T19:46:18Z",
+  "generatedAt": "2026-08-16T20:17:38Z",
   "variants": [
     {
       "id": "normal",
@@ -3084,9 +3084,9 @@
           ]
         },
         {
-          "slug": "underground-terror",
-          "name": "Underground Terror",
-          "egg": null,
+          "slug": "underground-phoenix",
+          "name": "Underground Phoenix",
+          "egg": "Bat",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
@@ -3097,9 +3097,9 @@
           ]
         },
         {
-          "slug": "underground-phoenix",
-          "name": "Underground Phoenix",
-          "egg": "Bat",
+          "slug": "underground-terror",
+          "name": "Underground Terror",
+          "egg": null,
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
@@ -4846,7 +4846,7 @@
         },
         {
           "slug": "obsidiant-bat",
-          "name": "Obsidiant Bat",
+          "name": "Obsidian Bat",
           "egg": "Obsidian Spires",
           "rarity": "Mythical",
           "clicks": "10.4Sp",
@@ -9726,11 +9726,11 @@
           ]
         },
         {
-          "slug": "magic-heart",
-          "name": "Magic Heart",
-          "egg": "Season 6 Egg",
-          "rarity": "Epic",
-          "clicks": "1Qn",
+          "slug": "thanksgiving-queen",
+          "name": "Thanksgiving Queen",
+          "egg": null,
+          "rarity": "Divine",
+          "clicks": null,
           "variants": [
             "normal",
             "golden",
@@ -9739,11 +9739,11 @@
           ]
         },
         {
-          "slug": "thanksgiving-queen",
-          "name": "Thanksgiving Queen",
-          "egg": null,
-          "rarity": "Divine",
-          "clicks": null,
+          "slug": "magic-heart",
+          "name": "Magic Heart",
+          "egg": "Season 6 Egg",
+          "rarity": "Epic",
+          "clicks": "1Qn",
           "variants": [
             "normal",
             "golden",
@@ -12200,8 +12200,8 @@
           ]
         },
         {
-          "slug": "radiant-starlight",
-          "name": "Radiant Starlight",
+          "slug": "winter-spirit",
+          "name": "Winter Spirit",
           "egg": null,
           "rarity": "Supreme",
           "clicks": "110%",
@@ -12213,8 +12213,8 @@
           ]
         },
         {
-          "slug": "winter-spirit",
-          "name": "Winter Spirit",
+          "slug": "radiant-starlight",
+          "name": "Radiant Starlight",
           "egg": null,
           "rarity": "Supreme",
           "clicks": "110%",
