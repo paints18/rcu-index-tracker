@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-16T20:17:38Z",
+  "generatedAt": "2026-08-27T06:55:03Z",
   "variants": [
     {
       "id": "normal",
@@ -4548,7 +4548,7 @@
         {
           "slug": "temple-dragon",
           "name": "Temple Dragon",
-          "egg": "Sunken Dragon",
+          "egg": "Sunken Temple",
           "rarity": "Eternal",
           "clicks": null,
           "variants": [
@@ -4914,7 +4914,7 @@
           "name": "Sakura Shock",
           "egg": "Samurai World",
           "rarity": "Mythical",
-          "clicks": "21 Sp",
+          "clicks": "21Sp",
           "variants": [
             "normal",
             "golden",
@@ -5618,11 +5618,37 @@
           ]
         },
         {
+          "slug": "magnet-bunny",
+          "name": "Magnet Bunny",
+          "egg": "Magnetar Yard",
+          "rarity": "Rare",
+          "clicks": "800Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "atomic-moth",
           "name": "Atomic Moth",
           "egg": "Atomic World",
           "rarity": "Legendary",
           "clicks": "1.09O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "gear-golem",
+          "name": "Gear Golem",
+          "egg": "Magnetar Yard",
+          "rarity": "Epic",
+          "clicks": "1.2O",
           "variants": [
             "normal",
             "golden",
@@ -5649,6 +5675,19 @@
           "egg": "Paradox Spawn",
           "rarity": "Eternal",
           "clicks": "1.75O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "magnet-dragon",
+          "name": "Magnet Dragon",
+          "egg": "Magnetar Yard",
+          "rarity": "Legendary",
+          "clicks": "2.25O",
           "variants": [
             "normal",
             "golden",
@@ -5714,6 +5753,19 @@
           "egg": "Paradox Spawn",
           "rarity": "Secret",
           "clicks": "10.25O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "gear-hydra",
+          "name": "Gear Hydra",
+          "egg": "Magnetar Yard",
+          "rarity": "Mythical",
+          "clicks": "11O",
           "variants": [
             "normal",
             "golden",
@@ -5800,6 +5852,19 @@
           ]
         },
         {
+          "slug": "magnetar-core",
+          "name": "Magnetar Core",
+          "egg": "Magnetar Yard",
+          "rarity": "Eternal",
+          "clicks": "60O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "ancient-sandworm",
           "name": "Ancient Sandworm",
           "egg": "Sandy Dunes",
@@ -5865,6 +5930,19 @@
           ]
         },
         {
+          "slug": "scrap-immortal",
+          "name": "Scrap Immortal",
+          "egg": "Magnetar Yard",
+          "rarity": "Secret",
+          "clicks": "350O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "scarecrow-immortal",
           "name": "Scarecrow Immortal",
           "egg": "Primitive Fields",
@@ -5904,6 +5982,19 @@
           ]
         },
         {
+          "slug": "magnet-shard",
+          "name": "Magnet Shard",
+          "egg": "Magnetar Yard",
+          "rarity": "Divine",
+          "clicks": null,
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "mirage-titan",
           "name": "Mirage Titan",
           "egg": "Sandy Dunes",
@@ -5920,6 +6011,19 @@
           "slug": "core-overlord",
           "name": "Core Overlord",
           "egg": "Atomic World",
+          "rarity": "Mysterious",
+          "clicks": null,
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "magnetar-beast",
+          "name": "Magnetar Beast",
+          "egg": "Magnetar Yard",
           "rarity": "Mysterious",
           "clicks": null,
           "variants": [

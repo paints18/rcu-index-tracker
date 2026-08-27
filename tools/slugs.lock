@@ -91,7 +91,10 @@ aether-slime
 aether-wisp
 alchemist-owl
 alien
+alien-bat
 alien-bee
+alien-overseer
+alien-snail
 alien-soldier
 alien-star
 almighty-goddess
@@ -144,6 +147,10 @@ astral-empress
 astral-witch
 atlantean-guardian
 atlantis-shard
+atomic-dragon
+atomic-moth
+atomic-rat
+atomic-slime
 aurora-beast
 aurora-dragon
 aurora-eagle
@@ -322,9 +329,11 @@ coral-dragon
 coral-fish
 coral-guardian
 coral-queen
+core-overlord
 corn-overlord
 cosmic-butterfly
 cosmic-gryphon
+cosmic-mantis
 cosmic-star
 cosmic-watcher
 cosmic-wisp
@@ -405,7 +414,6 @@ disco-overlord
 diver-dragon
 dna-overlord
 dog
-dragon
 dragon-emperor
 dragon-king
 dragon-queen
@@ -543,6 +551,8 @@ gamer-dragon
 garden-queen
 gear-butterfly
 gear-dragon
+gear-golem
+gear-hydra
 gear-overlord
 gear-star
 gears-of-time
@@ -555,6 +565,7 @@ ghoul-emperor
 giant-chocolate-bunny
 giant-pinata
 gifts-immortal
+gifts-sack
 gilded-alchemist
 gingerbread-bunny
 gingerbread-butterfly
@@ -577,7 +588,6 @@ goldfish
 grand-bouquet
 grinch
 grinch-dragon
-grinch-exclusive-egg
 grinch-overlord
 grinch-roksek
 gryphon
@@ -649,6 +659,7 @@ inferno-golem
 inferno-phantom
 inferno-skull
 inferno-wraith
+interstellar-dragon
 jade-samurai
 jellyfish
 king-of-tutels
@@ -725,6 +736,11 @@ magma-book
 magma-fiend
 magma-shard
 magma-slime
+magnet-bunny
+magnet-dragon
+magnet-shard
+magnetar-beast
+magnetar-core
 maple-dragon
 maple-imp
 mars-dragon
@@ -802,6 +818,8 @@ new-year-heart
 nocturnal-beast
 nova-singularity
 nuclear-beast
+nuclear-bloom
+nuclear-crab
 nuclear-golem
 nuclear-hydra
 obsidian-angel
@@ -824,6 +842,7 @@ ocean-s-blessing
 octopus
 orca
 ore-monster
+ornament-dragon
 ornamentium
 overgrowth
 ox-of-justice
@@ -894,6 +913,7 @@ quest-sovereign
 radiant-bunny
 radiant-starlight
 raptor
+reactor-spider
 reaper
 reaper-immortal
 rebirth-basket
@@ -960,6 +980,7 @@ sapphire-immortal
 sapphire-seeker
 scarecrow-immortal
 scientist
+scrap-immortal
 screaming-book
 sea-devil
 sea-overseer

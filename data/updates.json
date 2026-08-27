@@ -4,6 +4,18 @@
   "notice": "",
   "entries": [
     {
+      "id": "2026-08-27-update",
+      "date": "2026-08-27",
+      "title": "Update 74",
+      "tags": [
+        "added"
+      ],
+      "body": "Added Magnetar Yard pets: Magnet Bunny, Gear Golem, Magnet Dragon, Gear Hydra, Magnetar Core, Scrap Immortal, Magnet Shard, Magnetar Beast.",
+      "items": [
+        "Fixed wrong egg name for Temple Dragon. Thanks rar1ng_!"
+      ]
+    },
+    {
       "id": "2026-08-15-update",
       "date": "2026-08-16",
       "title": "Update 73 new Exclusives",
