@@ -342,6 +342,8 @@ cotton-candy-spirit
 cow
 cowboy-dragon
 crab
+crate-crab
+crate-golem
 crescent-overseer
 crown-phoenix
 crystal-butterfly
@@ -419,6 +421,9 @@ dragon-king
 dragon-queen
 drone-bee
 drowned-wolf
+dual-bunny
+dual-emperor
+dual-spirit
 duality-beast
 duality-heart
 duality-lord
@@ -474,7 +479,13 @@ eternal-shogun
 evil-witch
 eye-of-deception
 eye-sovereign
+factory-dog
+factory-drone
 factory-hexagon
+factory-king
+factory-overlord
+factory-shard
+factory-warden
 failed-experiment
 fairy-dragon
 fairydust-dragon
@@ -523,7 +534,9 @@ fly-note
 flying-gumdrop
 foam-immortal
 forest-dragon
+forge-hydra
 forgotten-titan
+forklift-bot
 fossilized-guardian
 fox
 fox-sovereign
@@ -544,6 +557,7 @@ frozen-rocket
 frozen-shard
 fuel-overlord
 fueldroid
+furnace-dragon
 galaxy-shard
 game-breaker
 game-pad
@@ -553,7 +567,10 @@ gear-butterfly
 gear-dragon
 gear-golem
 gear-hydra
+gear-immortal
+gear-lord
 gear-overlord
+gear-shard
 gear-star
 gears-of-time
 gem-lord
@@ -650,10 +667,12 @@ ice-sentinel
 ice-wolf
 igor-trophy
 immortal-cake
+immortal-drone
 immortal-flower
 immortal-heart
 immortal-kitsune
 impire
+industrial-tutel
 inferno-dragon
 inferno-golem
 inferno-phantom
@@ -1088,6 +1107,8 @@ starfactory-worker
 starfish
 starry-owl
 stars-trio
+steam-blobfish
+steam-elephant
 steampunk-balloon
 steampunk-conductor
 steampunk-dog
@@ -1134,6 +1155,7 @@ sweet-sovereign
 swordfish
 taffy-angel
 tainted-egg
+tank-mech
 teddy-bear
 tempest-lord
 temple-dragon
@@ -1167,6 +1189,7 @@ tiki-shield
 tiki-treasure
 tiki-tutel
 titanium-gem
+tool-dragon
 tormented-wraith
 tornado-monster
 tralalero-tralala
@@ -1228,6 +1251,7 @@ watermelon-dragon
 watermelon-hydra
 watermelon-jellyfish
 wave-dragon
+welder-cat
 western-dread
 wheat-bunny
 wheat-overlord
@@ -1243,7 +1267,10 @@ woiz-gift
 woiz-trophy
 wolf
 worker-bee
+workshop-seraph
 wreath
+yin-yang-immortal
+yin-yang-star
 yolk-spirit
 zombie
 zombie-bat

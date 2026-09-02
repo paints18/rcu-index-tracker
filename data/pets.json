@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-27T06:55:03Z",
+  "generatedAt": "2026-09-02T07:30:28Z",
   "variants": [
     {
       "id": "normal",
@@ -7657,6 +7657,45 @@
           ]
         },
         {
+          "slug": "dual-bunny",
+          "name": "Dual Bunny",
+          "egg": "Yin Yang Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "200O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "yin-yang-star",
+          "name": "Yin Yang Star",
+          "egg": "Yin Yang Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "300O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "dual-spirit",
+          "name": "Dual Spirit",
+          "egg": "Yin Yang Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "600O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "thunder-fury",
           "name": "Thunder Fury",
           "egg": "Storm Exclusive Egg",
@@ -8051,6 +8090,19 @@
           ]
         },
         {
+          "slug": "factory-warden",
+          "name": "Factory Warden",
+          "egg": "Factory Pack",
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "obsidian-hydra",
           "name": "Obsidian Hydra",
           "egg": "Obsidian Exclusive Egg",
@@ -8194,6 +8246,19 @@
           ]
         },
         {
+          "slug": "yin-yang-immortal",
+          "name": "Yin Yang Immortal",
+          "egg": "Yin Yang Exclusive Egg",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "celestial-sovereign",
           "name": "Celestial Sovereign",
           "egg": "-",
@@ -8288,6 +8353,19 @@
           "slug": "summer-lord",
           "name": "Summer Lord",
           "egg": "-",
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "gear-lord",
+          "name": "Gear Lord",
+          "egg": "Factory Supporter Pack",
           "rarity": "Supreme",
           "clicks": "200%",
           "variants": [
@@ -8678,6 +8756,19 @@
             "normal",
             "golden",
             "toxic"
+          ]
+        },
+        {
+          "slug": "dual-emperor",
+          "name": "Dual Emperor",
+          "egg": "Yin Yang Exclusive Egg",
+          "rarity": "Ultimate",
+          "clicks": "400%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
           ]
         },
         {
@@ -10858,6 +10949,19 @@
           ]
         },
         {
+          "slug": "immortal-drone",
+          "name": "Immortal Drone",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "party-spirit",
           "name": "Party Spirit",
           "egg": null,
@@ -11239,6 +11343,19 @@
           ]
         },
         {
+          "slug": "factory-shard",
+          "name": "Factory Shard",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "plasma-lucky-block",
           "name": "Plasma Lucky Block",
           "egg": null,
@@ -11307,6 +11424,19 @@
           "egg": null,
           "rarity": "Supreme",
           "clicks": "225%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "forge-hydra",
+          "name": "Forge Hydra",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "300%",
           "variants": [
             "normal",
             "golden",
@@ -11663,6 +11793,19 @@
         {
           "slug": "champion-basket",
           "name": "Champion Basket",
+          "egg": null,
+          "rarity": "Ultimate",
+          "clicks": "500%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "factory-king",
+          "name": "Factory King",
           "egg": null,
           "rarity": "Ultimate",
           "clicks": "500%",
@@ -16058,6 +16201,220 @@
             "normal",
             "golden",
             "toxic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cash",
+      "label": "Cash",
+      "pets": [
+        {
+          "slug": "factory-dog",
+          "name": "Factory Dog",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "180Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "crate-golem",
+          "name": "Crate Golem",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "500Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "welder-cat",
+          "name": "Welder Cat",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "1.6O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "steam-elephant",
+          "name": "Steam Elephant",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "1.2O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "factory-drone",
+          "name": "Factory Drone",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "5O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "tool-dragon",
+          "name": "Tool Dragon",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "22O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "forklift-bot",
+          "name": "Forklift Bot",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "36O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "crate-crab",
+          "name": "Crate Crab",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "120O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "furnace-dragon",
+          "name": "Furnace Dragon",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "205O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "tank-mech",
+          "name": "Tank Mech",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "700O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "gear-shard",
+          "name": "Gear Shard",
+          "egg": null,
+          "rarity": "Exclusive",
+          "clicks": "1N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "steam-blobfish",
+          "name": "Steam Blobfish",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "1.2N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "factory-overlord",
+          "name": "Factory Overlord",
+          "egg": null,
+          "rarity": "Divine",
+          "clicks": "2.31N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "gear-immortal",
+          "name": "Gear Immortal",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "workshop-seraph",
+          "name": "Workshop Seraph",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "industrial-tutel",
+          "name": "Industrial Tutel",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
           ]
         }
       ]

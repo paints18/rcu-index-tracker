@@ -4,6 +4,20 @@
   "notice": "",
   "entries": [
     {
+      "id": "2026-09-02-update",
+      "date": "2026-09-02",
+      "title": "Update 75: Pets Factory",
+      "tags": [
+        "added"
+      ],
+      "body": "Added Cash category, plus Yin Yang, Factory Supporter, and Factory Pack Exclusives. Thanks oliveboi08!",
+      "items": [
+        "Cash: Factory Dog, Crate Golem, Welder Cat, Steam Elephant, Factory Drone, Tool Dragon, Forklift Bot, Crate Crab, Furnace Dragon, Tank Mech, Gear Shard, Steam Blobfish, Factory Overlord, Gear Immortal, Workshop Seraph, Industrial Tutel.",
+        "Exclusives: Dual Bunny, Yin Yang Star, Dual Spirit, Yin Yang Immortal, Dual Emperor (Yin Yang Exclusive Egg), Gear Lord (Factory Supporter Pack), Factory Warden (Factory Pack).",
+        "No Currency: Factory King, Factory Shard, Forge Hydra, Immortal Drone."
+      ]
+    },
+    {
       "id": "2026-08-27-update",
       "date": "2026-08-27",
       "title": "Update 74",
