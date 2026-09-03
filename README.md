@@ -1,75 +1,41 @@
 # RCU Index Tracker
 
-A pet index tracker for **Rebirth Champions Ultimate**. Tick off the pets and
-variants you've collected in-game and watch your progress add up — no login,
-no account, just a profile name.
+A pet index tracker for **Rebirth Champions Ultimate**. Tick off the
+variants you've indexed in-game and track your progress. No account, just a
+profile name.
 
 **Open the tracker:** [paints18.github.io/rcu-index-tracker](https://paints18.github.io/rcu-index-tracker/)
 
-Every pet in the game is indexed: 1,229 pets across 16 categories, 4,613
-variants in total.
-
 ---
 
-## Using it
+## Features
 
-### Tracking your pets
+- Tick individual variants per pet. The **All** column shows a full or
+  partial ring depending on how many of a pet's variants you own.
+- Browse by category, or filter by name, egg, rarity, completion status, or
+  a specific missing variant.
+- Fill a whole column at once for the pets currently shown, or shift-click
+  to fill a range. Undo reverts any of these bulk edits.
+- Keyboard navigation: arrow keys, Home/End, Ctrl+Home/Ctrl+End,
+  Enter/Shift+Enter, and Space to tick.
+- Multiple profiles, each with its own checklist.
+- Backup/Import moves a profile between browsers or devices via a code.
+- Export a plain-text list of what you're missing, for trading or paying
+  someone to index for you.
+- Light/dark mode, colour themes, a compact density option, and the ability
+  to hide unused columns (Egg, Rarity, Clicks). A default category and
+  hide-completed-pets option are also available in Settings.
 
-Tick a box for each variant you have. The circle in the **All** column
-covers every variant that pet has, and shows a bar when you own some of them
-but not all.
+## Data
 
-### Keyboard shortcuts
+Progress is stored locally in the browser. There is no account and no
+server, so progress does not leave your device and does not sync across
+devices unless you use Backup/Import.
 
-- **Arrow keys** — move focus to the next box: Up/Down stays in the column, Left/Right in the row.
-- **Home** / **End** — jump to the first or last box in a row.
-- **Ctrl+Home** / **Ctrl+End** — jump to the first or last box in the table.
-- **Enter** / **Shift+Enter** — move focus down or up a row.
-- **Space** — tick the box that has focus.
+## Reporting problems
 
-### Filling in a lot at once
-
-Every column has a checkbox at the top that fills that variant in for the pets
-currently listed — filter or search first and it only touches those.
-**Shift-click** a box after another one in the same column to fill in the rows
-between them.
-
-### Profiles
-
-Each profile keeps its own checklist. **Switch profile** is also where new
-ones are made, so an alt's progress stays separate from your main's.
-**Export pets** copies what you're still missing as plain text, for index
-services.
-
-### Using it on another device
-
-Progress is saved in your browser, so a phone or a second browser starts
-empty. **Backup/Import** turns a profile into a code — paste it into the
-Import tab on the other device to bring your progress with you.
-
-### Settings
-
-Light or dark mode, several colour themes (including a few pride flags), a
-compact density option, and the ability to hide columns you don't need (Egg,
-Rarity, Clicks).
-
-### Updates
-
-The **Updates** page in the nav lists what's changed — new categories, fixed
-pets, anything else worth knowing about.
-
----
-
-## Your progress, your browser
-
-Progress is saved locally in your browser and never leaves your device. There's
-no account and no server, so there's nothing for anyone else to see.
-
-## Something wrong or missing?
-
-This tracker is updated manually, so new pets may take a while to get added.
-If a pet is missing or listed wrong, or you've got feedback, ping **paints**
-in the Powerful Studio Discord.
+This tracker is updated manually. If a pet is missing or listed wrong, or
+you have feedback, contact **paints** in the Powerful Studio Discord.
 
 ---
 
