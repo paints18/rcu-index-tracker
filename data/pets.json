@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-02T07:30:28Z",
+  "generatedAt": "2026-09-12T13:52:31Z",
   "variants": [
     {
       "id": "normal",
@@ -5631,6 +5631,19 @@
           ]
         },
         {
+          "slug": "wooden-fish",
+          "name": "Wooden Fish",
+          "egg": "Sunken Village",
+          "rarity": "Rare",
+          "clicks": "4.8O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "atomic-moth",
           "name": "Atomic Moth",
           "egg": "Atomic World",
@@ -5649,6 +5662,19 @@
           "egg": "Magnetar Yard",
           "rarity": "Epic",
           "clicks": "1.2O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "bucket-crab",
+          "name": "Bucket Crab",
+          "egg": "Sunken Village",
+          "rarity": "Epic",
+          "clicks": "7.5O",
           "variants": [
             "normal",
             "golden",
@@ -5688,6 +5714,19 @@
           "egg": "Magnetar Yard",
           "rarity": "Legendary",
           "clicks": "2.25O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "fisher-frog",
+          "name": "Fisher Frog",
+          "egg": "Sunken Village",
+          "rarity": "Legendary",
+          "clicks": "15O",
           "variants": [
             "normal",
             "golden",
@@ -5766,6 +5805,19 @@
           "egg": "Magnetar Yard",
           "rarity": "Mythical",
           "clicks": "11O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "crystal-octopus",
+          "name": "Crystal Octopus",
+          "egg": "Sunken Village",
+          "rarity": "Mythical",
+          "clicks": "67O",
           "variants": [
             "normal",
             "golden",
@@ -5857,6 +5909,19 @@
           "egg": "Magnetar Yard",
           "rarity": "Eternal",
           "clicks": "60O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "streetlight-angler",
+          "name": "Streetlight Angler",
+          "egg": "Sunken Village",
+          "rarity": "Eternal",
+          "clicks": "359.99O",
           "variants": [
             "normal",
             "golden",
@@ -5995,11 +6060,50 @@
           ]
         },
         {
+          "slug": "dock-kraken",
+          "name": "Dock Kraken",
+          "egg": "Sunken Village",
+          "rarity": "Divine",
+          "clicks": "7.2N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "sunken-colossus",
+          "name": "Sunken Colossus",
+          "egg": "Sunken Village",
+          "rarity": "Mysterious",
+          "clicks": null,
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "mirage-titan",
           "name": "Mirage Titan",
           "egg": "Sandy Dunes",
           "rarity": "Mysterious",
           "clicks": "1.2N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "seaweed-immortal",
+          "name": "Seaweed Immortal",
+          "egg": "Sunken Village",
+          "rarity": "Secret",
+          "clicks": null,
           "variants": [
             "normal",
             "golden",
@@ -7696,6 +7800,45 @@
           ]
         },
         {
+          "slug": "flowering-cat",
+          "name": "Flowering Cat",
+          "egg": "Garden Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "250O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "leafy-dragon",
+          "name": "Leafy Dragon",
+          "egg": "Garden Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "400O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "blue-blossom",
+          "name": "Blue Blossom",
+          "egg": "Garden Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "750O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "thunder-fury",
           "name": "Thunder Fury",
           "egg": "Storm Exclusive Egg",
@@ -8324,6 +8467,19 @@
           ]
         },
         {
+          "slug": "blooming-hare",
+          "name": "Blooming Hare",
+          "egg": "Garden Exclusive Egg",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "sandy-phantom",
           "name": "Sandy Phantom",
           "egg": "Mirage Exclusive Egg",
@@ -8582,6 +8738,19 @@
           "slug": "lovely-queen",
           "name": "Lovely Queen",
           "egg": "Lovely Exclusive Egg",
+          "rarity": "Ultimate",
+          "clicks": "400%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "garden-goddess",
+          "name": "Garden Goddess",
+          "egg": "Garden Exclusive Egg",
           "rarity": "Ultimate",
           "clicks": "400%",
           "variants": [
@@ -16327,6 +16496,19 @@
           ]
         },
         {
+          "slug": "cable-dragon",
+          "name": "Cable Dragon",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "300O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "tank-mech",
           "name": "Tank Mech",
           "egg": null,
@@ -16366,11 +16548,37 @@
           ]
         },
         {
+          "slug": "factory-core",
+          "name": "Factory Core",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "1.6N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "factory-overlord",
           "name": "Factory Overlord",
           "egg": null,
           "rarity": "Divine",
           "clicks": "2.31N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "production-master",
+          "name": "Production Master",
+          "egg": null,
+          "rarity": "Divine",
+          "clicks": "2.99N",
           "variants": [
             "normal",
             "golden",
@@ -16410,6 +16618,19 @@
           "egg": null,
           "rarity": "Supreme",
           "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "the-prototype",
+          "name": "The Prototype",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "400%",
           "variants": [
             "normal",
             "golden",

@@ -4,6 +4,20 @@
   "notice": "",
   "entries": [
     {
+      "id": "2026-09-12-update",
+      "date": "2026-09-12",
+      "title": "Update 76, 77: Pets Factory part 2, Sunken Village",
+      "tags": [
+        "added"
+      ],
+      "body": "Added Sunken Village pets to World 4, Garden Exclusive Egg to Exclusives, and the last Cash pets.",
+      "items": [
+        "World 4: Wooden Fish, Bucket Crab, Fisher Frog, Crystal Octopus, Streetlight Angler, Seaweed Immortal, Dock Kraken, Sunken Colossus.",
+        "Exclusives: Flowering Cat, Leafy Dragon, Blue Blossom, Blooming Hare, Garden Goddess (Garden Exclusive Egg).",
+        "Cash: Cable Dragon, Factory Core, Production Master, The Prototype."
+      ]
+    },
+    {
       "id": "2026-09-02-update",
       "date": "2026-09-02",
       "title": "Update 75: Pets Factory",
