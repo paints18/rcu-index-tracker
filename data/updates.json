@@ -4,6 +4,23 @@
   "notice": "",
   "entries": [
     {
+      "id": "2026-09-29-update",
+      "date": "2026-09-29",
+      "title": "Update 78, 79: Carnival City, Fall Event",
+      "tags": [
+        "added",
+        "fixed"
+      ],
+      "body": "Added Carnival City pets to World 4, a new Acorns tab for the Fall Event, Mushroom Exclusive Egg to Exclusives, and the Fall Pack pets. Thanks oliveboi08 for the help with the past few updates!",
+      "items": [
+        "World 4: Popcorn Dog, Balloon Bunny, Cotton Candy Heart, Ferris Dragon, Popcorn Overlord, Jester Hydra, Illusion Shard, Carnival Titan, Illusion Beast.",
+        "Acorns: Acorn Dog, Acorn Fox, Leaf Hedgehog, Apple Slime, Apple Bunny, Acorn Dragon, Orchard Deer, Apple Golem, Orchard Spirit, Autumn Spirit, Happy Leaf, Maple Cat, Autumn Heart, Maple Owl, Rain Dragon, Autumn Moth, Fall Phoenix, Autumn Kitsune, Maple Divinity, Acorn Blobfish, Fall Community Pet, Acorn Tutel.",
+        "Exclusives: Mushroom Snail, Toadstool Dragon, Mushroom Ghost, Toadstool Guardian, Mushroom King (Mushroom Exclusive Egg), Royal Trophy, Champion Tutel, Hedgehog Beast (Fall Pack), Autumn Lord (Fall Supporter Pack).",
+        "Fixed Interstellar Dragon being listed as Ultimate instead of Supreme. Thanks Vorticle!",
+        "Fixed Fairydust Dragon and Sakura Cat having their clicks swapped. Thanks hadam5!"
+      ]
+    },
+    {
       "id": "2026-09-12-update",
       "date": "2026-09-12",
       "title": "Update 76, 77: Pets Factory part 2, Sunken Village",

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-12T14:02:12Z",
+  "generatedAt": "2026-09-29T14:26:08Z",
   "variants": [
     {
       "id": "normal",
@@ -901,23 +901,11 @@
           ]
         },
         {
-          "slug": "fairydust-dragon",
-          "name": "Fairydust Dragon",
-          "egg": "Magic",
-          "rarity": "Mythical",
-          "clicks": "24M",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
           "slug": "sakura-cat",
           "name": "Sakura Cat",
           "egg": "Sakura",
           "rarity": "Rare",
-          "clicks": "30M",
+          "clicks": "24M",
           "variants": [
             "normal",
             "golden",
@@ -941,6 +929,18 @@
           "name": "Parrot",
           "egg": "Jungle",
           "rarity": "Legendary",
+          "clicks": "30M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "fairydust-dragon",
+          "name": "Fairydust Dragon",
+          "egg": "Magic",
+          "rarity": "Mythical",
           "clicks": "30M",
           "variants": [
             "normal",
@@ -5774,6 +5774,19 @@
           ]
         },
         {
+          "slug": "popcorn-dog",
+          "name": "Popcorn Dog",
+          "egg": "Carnival City",
+          "rarity": "Rare",
+          "clicks": "10O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "hourglass-immortal",
           "name": "Hourglass Immortal",
           "egg": "Paradox Spawn",
@@ -5826,6 +5839,19 @@
           ]
         },
         {
+          "slug": "balloon-bunny",
+          "name": "Balloon Bunny",
+          "egg": "Carnival City",
+          "rarity": "Epic",
+          "clicks": "15O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "wheat-overlord",
           "name": "Wheat Overlord",
           "egg": "Primitive Fields",
@@ -5843,6 +5869,19 @@
           "name": "Nuclear Crab",
           "egg": "Atomic World",
           "rarity": "Eternal",
+          "clicks": "30O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "cotton-candy-heart",
+          "name": "Cotton Candy Heart",
+          "egg": "Carnival City",
+          "rarity": "Legendary",
           "clicks": "30O",
           "variants": [
             "normal",
@@ -5922,6 +5961,19 @@
           "egg": "Sandy Dunes",
           "rarity": "Secret",
           "clicks": "84O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "ferris-dragon",
+          "name": "Ferris Dragon",
+          "egg": "Carnival City",
+          "rarity": "Mythical",
+          "clicks": "135O",
           "variants": [
             "normal",
             "golden",
@@ -6060,6 +6112,19 @@
           ]
         },
         {
+          "slug": "popcorn-overlord",
+          "name": "Popcorn Overlord",
+          "egg": "Carnival City",
+          "rarity": "Eternal",
+          "clicks": "720O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "mirage-titan",
           "name": "Mirage Titan",
           "egg": "Sandy Dunes",
@@ -6112,11 +6177,37 @@
           ]
         },
         {
+          "slug": "jester-hydra",
+          "name": "Jester Hydra",
+          "egg": "Carnival City",
+          "rarity": "Secret",
+          "clicks": "4.2N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "dock-kraken",
           "name": "Dock Kraken",
           "egg": "Sunken Village",
           "rarity": "Divine",
           "clicks": "7.2N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "illusion-shard",
+          "name": "Illusion Shard",
+          "egg": "Carnival City",
+          "rarity": "Divine",
+          "clicks": "14.4N",
           "variants": [
             "normal",
             "golden",
@@ -6138,8 +6229,21 @@
           ]
         },
         {
-          "slug": "compass-overlord",
-          "name": "Compass Overlord",
+          "slug": "carnival-titan",
+          "name": "Carnival Titan",
+          "egg": "Carnival City",
+          "rarity": "Mysterious",
+          "clicks": "60N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "adventure-immortal",
+          "name": "Adventure Immortal",
           "egg": null,
           "rarity": "Supreme",
           "clicks": null,
@@ -6151,8 +6255,21 @@
           ]
         },
         {
-          "slug": "adventure-immortal",
-          "name": "Adventure Immortal",
+          "slug": "illusion-beast",
+          "name": "Illusion Beast",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "compass-overlord",
+          "name": "Compass Overlord",
           "egg": null,
           "rarity": "Supreme",
           "clicks": null,
@@ -7579,11 +7696,37 @@
           ]
         },
         {
+          "slug": "mushroom-snail",
+          "name": "Mushroom Snail",
+          "egg": "Mushroom Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "200Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "lunar-shard",
           "name": "Lunar Shard",
           "egg": "-",
           "rarity": "Exclusive",
           "clicks": null,
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "toadstool-dragon",
+          "name": "Toadstool Dragon",
+          "egg": "Mushroom Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "400Sp",
           "variants": [
             "normal",
             "golden",
@@ -7610,6 +7753,19 @@
           "egg": "Clockwork Exclusive Egg",
           "rarity": "Exclusive",
           "clicks": null,
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "mushroom-ghost",
+          "name": "Mushroom Ghost",
+          "egg": "Mushroom Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "1O",
           "variants": [
             "normal",
             "golden",
@@ -8301,7 +8457,20 @@
           "slug": "interstellar-dragon",
           "name": "Interstellar Dragon",
           "egg": "Alien Exclusive Egg",
-          "rarity": "Ultimate",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "hedgehog-beast",
+          "name": "Hedgehog Beast",
+          "egg": "Fall Pack",
+          "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
             "normal",
@@ -8363,6 +8532,19 @@
           ]
         },
         {
+          "slug": "royal-trophy",
+          "name": "Royal Trophy",
+          "egg": "-",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "ashen-dragon",
           "name": "Ashen Dragon",
           "egg": "-",
@@ -8392,6 +8574,19 @@
           "slug": "yin-yang-immortal",
           "name": "Yin Yang Immortal",
           "egg": "Yin Yang Exclusive Egg",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "toadstool-guardian",
+          "name": "Toadstool Guardian",
+          "egg": "Mushroom Exclusive Egg",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
@@ -8509,6 +8704,19 @@
           "slug": "summer-lord",
           "name": "Summer Lord",
           "egg": "-",
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "autumn-lord",
+          "name": "Autumn Lord",
+          "egg": "Fall Supporter Pack",
           "rarity": "Supreme",
           "clicks": "200%",
           "variants": [
@@ -8812,6 +9020,19 @@
           ]
         },
         {
+          "slug": "mushroom-king",
+          "name": "Mushroom King",
+          "egg": "Mushroom Exclusive Egg",
+          "rarity": "Ultimate",
+          "clicks": "400%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "mirage-beast",
           "name": "Mirage Beast",
           "egg": "Mirage Exclusive Egg",
@@ -8842,6 +9063,19 @@
           "name": "Fall Monarch",
           "egg": "Fall Exclusive Egg",
           "rarity": "Ultimate",
+          "clicks": "400%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "champion-tutel",
+          "name": "Champion Tutel",
+          "egg": "-",
+          "rarity": "Supreme",
           "clicks": "400%",
           "variants": [
             "normal",
@@ -16370,6 +16604,298 @@
             "normal",
             "golden",
             "toxic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acorns",
+      "label": "Acorns",
+      "pets": [
+        {
+          "slug": "acorn-dog",
+          "name": "Acorn Dog",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "600Qd",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "acorn-fox",
+          "name": "Acorn Fox",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "1.2Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "leaf-hedgehog",
+          "name": "Leaf Hedgehog",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "2.1Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "apple-slime",
+          "name": "Apple Slime",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "2.4Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "apple-bunny",
+          "name": "Apple Bunny",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "3Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "acorn-dragon",
+          "name": "Acorn Dragon",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "4.5Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "orchard-deer",
+          "name": "Orchard Deer",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "6Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "apple-golem",
+          "name": "Apple Golem",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "9Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "orchard-spirit",
+          "name": "Orchard Spirit",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "30Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "autumn-spirit",
+          "name": "Autumn Spirit",
+          "egg": null,
+          "rarity": "Exclusive",
+          "clicks": "2.5O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "happy-leaf",
+          "name": "Happy Leaf",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "20O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "maple-cat",
+          "name": "Maple Cat",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "30O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "autumn-heart",
+          "name": "Autumn Heart",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "60O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "maple-owl",
+          "name": "Maple Owl",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "270O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "rain-dragon",
+          "name": "Rain Dragon",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "1.44N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "autumn-moth",
+          "name": "Autumn Moth",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "8.4N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "fall-phoenix",
+          "name": "Fall Phoenix",
+          "egg": null,
+          "rarity": "Divine",
+          "clicks": "28.8N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "autumn-kitsune",
+          "name": "Autumn Kitsune",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "maple-divinity",
+          "name": "Maple Divinity",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "acorn-blobfish",
+          "name": "Acorn Blobfish",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "fall-community-pet",
+          "name": "Fall Community Pet",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "acorn-tutel",
+          "name": "Acorn Tutel",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
           ]
         }
       ]

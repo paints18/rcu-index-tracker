@@ -80,6 +80,11 @@ abyssal-guardian
 abyssal-jellyfish
 abyssal-leviathan
 abyssal-slime
+acorn-blobfish
+acorn-dog
+acorn-dragon
+acorn-fox
+acorn-tutel
 adaspo-trophy
 adventure-dragon
 adventure-immortal
@@ -134,7 +139,10 @@ anniversary-shield
 anniversary-spirit
 anniversary-tutel
 anniversary-warrior
+apple-bunny
 apple-dragon
+apple-golem
+apple-slime
 aqua-leviathan
 arcade-fox
 arcade-hydra
@@ -160,8 +168,14 @@ aurora-star
 aurora-warden
 aurora-wisp
 aurora-wolf
+autumn-heart
+autumn-kitsune
+autumn-lord
+autumn-moth
+autumn-spirit
 baby-dino
 ballerina-cappuccina
+balloon-bunny
 balloon-dragon
 balloons-trio
 bamboo-bunny
@@ -208,6 +222,7 @@ bloom-overlord
 bloom-seraph
 bloom-shard
 bloom-spirit
+blooming-hare
 blossom-bunny
 blossom-cat
 blossom-deity
@@ -216,6 +231,7 @@ blossom-robot
 blossom-seraph
 blossom-star
 blossom-unicorn
+blue-blossom
 bobrito-bandito
 bombardiro-crocodilo
 boneca-ambalabu
@@ -225,6 +241,7 @@ broken-clock
 broken-heart
 brr-brr-patapim
 bubblegum-hydra
+bucket-crab
 bucketshell-crab
 bumble-bee
 bunny
@@ -234,6 +251,7 @@ bunny-overlord
 bunny-queen
 bunny-tutel
 burbaloni-luliloli
+cable-dragon
 cactus-cowboy
 cactus-golem
 cactus-overlord
@@ -242,6 +260,7 @@ candy-cane-dragon
 candy-immortal
 candy-shield
 candycorn-gem
+carnival-titan
 carrot-fiend
 carrot-gem
 carrot-golem
@@ -256,6 +275,7 @@ cerberus
 chain-dragon
 champion-basket
 champion-drakkar
+champion-tutel
 chaos-bat
 chaos-dragon
 chaos-eye
@@ -338,6 +358,7 @@ cosmic-star
 cosmic-watcher
 cosmic-wisp
 cotton-candy
+cotton-candy-heart
 cotton-candy-spirit
 cow
 cowboy-dragon
@@ -355,6 +376,7 @@ crystal-golem
 crystal-guardian
 crystal-heart
 crystal-hydra
+crystal-octopus
 crystal-orb
 crystal-overlord
 crystal-panda
@@ -415,6 +437,7 @@ disco-octopus
 disco-overlord
 diver-dragon
 dna-overlord
+dock-kraken
 dog
 dragon-emperor
 dragon-king
@@ -479,6 +502,7 @@ eternal-shogun
 evil-witch
 eye-of-deception
 eye-sovereign
+factory-core
 factory-dog
 factory-drone
 factory-hexagon
@@ -490,12 +514,14 @@ failed-experiment
 fairy-dragon
 fairydust-dragon
 fall-bear
+fall-community-pet
 fall-dominus
 fall-dragon
 fall-hydra
 fall-immortal
 fall-king
 fall-monarch
+fall-phoenix
 fall-seraph
 fall-squirrel
 fall-star
@@ -505,6 +531,7 @@ fallen-heart
 fallen-samurai
 falling-comet
 falling-star
+ferris-dragon
 festive-bell
 festive-giftgiver
 festive-guardian
@@ -523,12 +550,14 @@ fire-warden
 firework-beast
 firework-wyvern
 fish
+fisher-frog
 flame-shard
 flamekeeper
 flora-guardian
 flower-bunny
 flower-dragon
 flower-wyvern
+flowering-cat
 flowing-blaze
 fly-note
 flying-gumdrop
@@ -562,6 +591,7 @@ galaxy-shard
 game-breaker
 game-pad
 gamer-dragon
+garden-goddess
 garden-queen
 gear-butterfly
 gear-dragon
@@ -626,6 +656,7 @@ happy-cloud
 happy-crystal
 happy-firework
 happy-gift
+happy-leaf
 happy-ornament
 happy-seal
 happy-tutel
@@ -641,6 +672,7 @@ heatwave-hydra
 heaven-dove
 heaven-eye
 heavenly-harp
+hedgehog-beast
 hell-guardian
 hell-lord
 hive-dragon
@@ -666,6 +698,8 @@ ice-monster
 ice-sentinel
 ice-wolf
 igor-trophy
+illusion-beast
+illusion-shard
 immortal-cake
 immortal-drone
 immortal-flower
@@ -681,6 +715,7 @@ inferno-wraith
 interstellar-dragon
 jade-samurai
 jellyfish
+jester-hydra
 king-of-tutels
 koi-dragon
 kraken-shipwreck
@@ -689,6 +724,8 @@ lab-balloon
 lab-robot
 lagoon-jellyfish
 laser-dragon
+leaf-hedgehog
+leafy-dragon
 leviathan-heart
 licorice-demon
 lightborn-phoenix
@@ -760,8 +797,11 @@ magnet-dragon
 magnet-shard
 magnetar-beast
 magnetar-core
+maple-cat
+maple-divinity
 maple-dragon
 maple-imp
+maple-owl
 mars-dragon
 mars-fox
 mars-heart
@@ -810,6 +850,9 @@ moss-heart
 mr-cactus
 mr-coconut
 mushroom-dragon
+mushroom-ghost
+mushroom-king
+mushroom-snail
 mystic-fox
 mystic-griffin
 mystic-reaper
@@ -860,6 +903,8 @@ ocean-dragon
 ocean-s-blessing
 octopus
 orca
+orchard-deer
+orchard-spirit
 ore-monster
 ornament-dragon
 ornamentium
@@ -915,10 +960,13 @@ player-dominus
 poison-overlord
 police-wolf
 pool-flamingo
+popcorn-dog
+popcorn-overlord
 portal-guardian
 potion-monster
 potion-slime
 potion-trio
+production-master
 pterodactyl
 pumpkin
 pumpkin-bucket
@@ -931,6 +979,7 @@ queen-devourer
 quest-sovereign
 radiant-bunny
 radiant-starlight
+rain-dragon
 raptor
 reactor-spider
 reaper
@@ -961,6 +1010,7 @@ royal-lollipop
 royal-panda
 royal-ruby
 royal-throne
+royal-trophy
 royal-tutel
 royal-vault
 ruby-drone
@@ -1011,6 +1061,7 @@ season-1-dragon
 season-1-flower
 season-1-star
 season-1-trophy
+seaweed-immortal
 sentient-mothership
 shadow-bee
 shadow-demon
@@ -1125,6 +1176,7 @@ storm-striker
 storm-titan
 storm-wisp
 straw-dragon
+streetlight-angler
 sugar-empress
 sugar-serpent
 summer-blobfish
@@ -1142,6 +1194,7 @@ sunblessed-siren
 sundrop-sovereign
 sunflower-overlord
 sunflower-spirit
+sunken-colossus
 sunken-ring
 sunken-treasure
 sunny-dragon
@@ -1171,6 +1224,7 @@ the-eggcelent-one
 the-fool
 the-kraken
 the-krampus
+the-prototype
 the-sinister
 thornrose-regent
 thunder-cat
@@ -1189,6 +1243,8 @@ tiki-shield
 tiki-treasure
 tiki-tutel
 titanium-gem
+toadstool-dragon
+toadstool-guardian
 tool-dragon
 tormented-wraith
 tornado-monster
@@ -1266,6 +1322,7 @@ wizard-wisp
 woiz-gift
 woiz-trophy
 wolf
+wooden-fish
 worker-bee
 workshop-seraph
 wreath
