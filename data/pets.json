@@ -10968,6 +10968,19 @@
           ]
         },
         {
+          "slug": "maple-shield",
+          "name": "Maple Shield",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "magic-rune",
           "name": "Magic Rune",
           "egg": null,
@@ -11592,6 +11605,19 @@
           ]
         },
         {
+          "slug": "maple-shard",
+          "name": "Maple Shard",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "thanksgiving-tutel",
           "name": "Thanksgiving Tutel",
           "egg": null,
@@ -11837,6 +11863,19 @@
         {
           "slug": "forge-hydra",
           "name": "Forge Hydra",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "300%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "royal-corn",
+          "name": "Royal Corn",
           "egg": null,
           "rarity": "Supreme",
           "clicks": "300%",
@@ -12196,6 +12235,19 @@
         {
           "slug": "champion-basket",
           "name": "Champion Basket",
+          "egg": null,
+          "rarity": "Ultimate",
+          "clicks": "500%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "fall-protector",
+          "name": "Fall Protector",
           "egg": null,
           "rarity": "Ultimate",
           "clicks": "500%",
@@ -16615,7 +16667,7 @@
         {
           "slug": "acorn-dog",
           "name": "Acorn Dog",
-          "egg": null,
+          "egg": "Acorn Egg",
           "rarity": "Common",
           "clicks": "600Qd",
           "variants": [
@@ -16628,7 +16680,7 @@
         {
           "slug": "acorn-fox",
           "name": "Acorn Fox",
-          "egg": null,
+          "egg": "Acorn Egg",
           "rarity": "Uncommon",
           "clicks": "1.2Qn",
           "variants": [
@@ -16641,7 +16693,7 @@
         {
           "slug": "leaf-hedgehog",
           "name": "Leaf Hedgehog",
-          "egg": null,
+          "egg": "Acorn Egg",
           "rarity": "Rare",
           "clicks": "2.1Qn",
           "variants": [
@@ -16654,7 +16706,7 @@
         {
           "slug": "apple-slime",
           "name": "Apple Slime",
-          "egg": null,
+          "egg": "Orchard Egg",
           "rarity": "Common",
           "clicks": "2.4Qn",
           "variants": [
@@ -16667,7 +16719,7 @@
         {
           "slug": "apple-bunny",
           "name": "Apple Bunny",
-          "egg": null,
+          "egg": "Orchard Egg",
           "rarity": "Uncommon",
           "clicks": "3Qn",
           "variants": [
@@ -16680,7 +16732,7 @@
         {
           "slug": "acorn-dragon",
           "name": "Acorn Dragon",
-          "egg": null,
+          "egg": "Acorn Egg",
           "rarity": "Epic",
           "clicks": "4.5Qn",
           "variants": [
@@ -16693,7 +16745,7 @@
         {
           "slug": "orchard-deer",
           "name": "Orchard Deer",
-          "egg": null,
+          "egg": "Orchard Egg",
           "rarity": "Rare",
           "clicks": "6Qn",
           "variants": [
@@ -16706,7 +16758,7 @@
         {
           "slug": "apple-golem",
           "name": "Apple Golem",
-          "egg": null,
+          "egg": "Orchard Egg",
           "rarity": "Epic",
           "clicks": "9Qn",
           "variants": [
@@ -16719,7 +16771,7 @@
         {
           "slug": "orchard-spirit",
           "name": "Orchard Spirit",
-          "egg": null,
+          "egg": "Orchard Egg",
           "rarity": "Legendary",
           "clicks": "30Qn",
           "variants": [
@@ -16732,7 +16784,7 @@
         {
           "slug": "autumn-spirit",
           "name": "Autumn Spirit",
-          "egg": null,
+          "egg": "Fall Stock Pack",
           "rarity": "Exclusive",
           "clicks": "2.5O",
           "variants": [
@@ -16745,7 +16797,7 @@
         {
           "slug": "happy-leaf",
           "name": "Happy Leaf",
-          "egg": null,
+          "egg": "Fall 2026 Egg",
           "rarity": "Rare",
           "clicks": "20O",
           "variants": [
@@ -16758,7 +16810,7 @@
         {
           "slug": "maple-cat",
           "name": "Maple Cat",
-          "egg": null,
+          "egg": "Fall 2026 Egg",
           "rarity": "Epic",
           "clicks": "30O",
           "variants": [
@@ -16771,7 +16823,7 @@
         {
           "slug": "autumn-heart",
           "name": "Autumn Heart",
-          "egg": null,
+          "egg": "Fall 2026 Egg",
           "rarity": "Legendary",
           "clicks": "60O",
           "variants": [
@@ -16784,7 +16836,7 @@
         {
           "slug": "maple-owl",
           "name": "Maple Owl",
-          "egg": null,
+          "egg": "Fall 2026 Egg",
           "rarity": "Mythical",
           "clicks": "270O",
           "variants": [
@@ -16797,7 +16849,7 @@
         {
           "slug": "rain-dragon",
           "name": "Rain Dragon",
-          "egg": null,
+          "egg": "Fall 2026 Egg",
           "rarity": "Eternal",
           "clicks": "1.44N",
           "variants": [
@@ -16810,7 +16862,7 @@
         {
           "slug": "autumn-moth",
           "name": "Autumn Moth",
-          "egg": null,
+          "egg": "Fall 2026 Egg",
           "rarity": "Secret",
           "clicks": "8.4N",
           "variants": [
@@ -16823,7 +16875,7 @@
         {
           "slug": "fall-phoenix",
           "name": "Fall Phoenix",
-          "egg": null,
+          "egg": "Fall 2026 Egg",
           "rarity": "Divine",
           "clicks": "28.8N",
           "variants": [
@@ -16881,14 +16933,13 @@
           "variants": [
             "normal",
             "golden",
-            "toxic",
-            "galaxy"
+            "toxic"
           ]
         },
         {
           "slug": "acorn-tutel",
           "name": "Acorn Tutel",
-          "egg": null,
+          "egg": "Fall 2026 Egg",
           "rarity": "Supreme",
           "clicks": "200%",
           "variants": [

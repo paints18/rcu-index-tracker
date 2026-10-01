@@ -4,6 +4,20 @@
   "notice": "",
   "entries": [
     {
+      "id": "2026-10-01-update",
+      "date": "2026-10-01",
+      "title": "Update 79 missing pets",
+      "tags": [
+        "added",
+        "fixed"
+      ],
+      "body": "Added missing leaderboard pets: Fall Protector, Royal Corn, Maple Shard, Maple Shield.",
+      "items": [
+        "Added egg names for the Acorns pets (Acorn Egg, Orchard Egg, Fall 2026 Egg, Fall Stock Pack).",
+        "Fixed Fall Community Pet showing a Galaxy variant."
+      ]
+    },
+    {
       "id": "2026-09-29-update",
       "date": "2026-09-29",
       "title": "Update 78, 79: Carnival City, Fall Event",
