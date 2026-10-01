@@ -1,6 +1,6 @@
 {
   "_comment": "Permanent pet-slug -> integer ledger, maintained by tools/assign_codes.py. Do not hand-edit: changing or reusing an integer invalidates every backup code players have saved.",
-  "nextCode": 1336,
+  "nextCode": 1340,
   "codes": {
     "100m-balloon": 1137,
     "100m-blaster": 1146,
@@ -525,6 +525,7 @@
     "fall-king": 813,
     "fall-monarch": 650,
     "fall-phoenix": 1330,
+    "fall-protector": 1339,
     "fall-seraph": 730,
     "fall-squirrel": 722,
     "fall-star": 509,
@@ -806,6 +807,8 @@
     "maple-dragon": 723,
     "maple-imp": 726,
     "maple-owl": 1327,
+    "maple-shard": 1337,
+    "maple-shield": 1336,
     "mars-dragon": 229,
     "mars-fox": 204,
     "mars-heart": 212,
@@ -1007,6 +1010,7 @@
     "round-bot": 176,
     "royal-beast": 635,
     "royal-cat": 26,
+    "royal-corn": 1338,
     "royal-dog": 24,
     "royal-egg": 1186,
     "royal-fox": 555,
