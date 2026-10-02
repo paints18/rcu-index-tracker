@@ -93,7 +93,7 @@
          whose numbers these are, so the two belong on one line rather than in
          two stacked bands. Profile controls live in the page, not the header, so
          the header is the same height on every page. -->
-    <section class="card status-bar mb-2.5" aria-label="Profile and overall progress">
+    <section class="card status-bar mb-3.5" aria-label="Profile and overall progress">
       <div class="status-profile">
         <p class="field-label">Profile</p>
         <!-- The active profile is a heading, not a menu. Picking a different one
@@ -145,7 +145,7 @@
       </div>
     </section>
 
-    <nav class="flex flex-wrap gap-1.5 mb-2.5" id="cat-nav" aria-label="Categories"></nav>
+    <nav class="flex flex-wrap gap-1.5 mb-3.5" id="cat-nav" aria-label="Categories"></nav>
 
     <!-- Heads everything below it, not just the table: the filters narrow what
          you see *within* this category, so the category name comes first. -->
@@ -158,7 +158,7 @@
       </div>
     </div>
 
-    <section class="card flex flex-wrap items-end gap-2.5 mb-2.5" aria-label="Filters">
+    <section class="card flex flex-wrap items-end gap-2.5 mb-3.5" aria-label="Filters">
       <label class="field flex-1 min-w-[220px]">
         <span class="field-label">Search</span>
         <input type="search" id="filter-search" placeholder="Pet or egg name…"
@@ -223,6 +223,15 @@
     <!-- Both views live in one wrapper so they can share a height: the list is a
          window onto the table the same size as the grid's (see grid-view.css). -->
     <div class="views">
+    <!-- Invisible stand-in for the grid's variant row. The list has no such row, so its
+         window is made taller by this row's height (--gv-bar-h, set in main.js) and
+         both views end at the same bottom edge. It wraps exactly as the real one does. -->
+    <div class="gv-bar gv-bar-twin" id="gv-bar-twin" aria-hidden="true" inert>
+      <div class="gv-variants">
+        <span class="btn btn-sm btn-toggle">Normal</span><span class="btn btn-sm btn-toggle">Golden</span><span class="btn btn-sm btn-toggle">Toxic</span><span class="btn btn-sm btn-toggle">Galaxy</span>
+      </div>
+      <p class="gv-count">Normal collected (000/0000)</p>
+    </div>
     <section aria-label="Pet checklist" id="list-view" hidden>
       <!-- Shown only while the active profile has no ticks at all, so it retires
            itself the moment anyone does anything; Dismiss makes that permanent. -->
@@ -345,8 +354,10 @@
         <li>Click <strong>Sign in with Roblox</strong> and log in to your Roblox account.</li>
         <li>Click <strong>Confirm and Give Access</strong> when Roblox asks. It only reads your
           user ID and public profile.</li>
-        <li>You are sent back to the access tokens page. Click <strong>Generate</strong>, then
-          copy your token and paste it below.</li>
+        <li>You may be sent to the site's home page instead of back to the access tokens
+          page. Make sure you are on the access tokens page (open the link in step 1 again
+          if you are not), click <strong>Generate</strong>, then copy your token and paste
+          it below.</li>
       </ol>
     </div>
     <label class="field max-w-[360px]">

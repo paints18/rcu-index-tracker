@@ -1,11 +1,19 @@
 /* Grid view. Hand-written rather than part of the Tailwind build, so it needs
    no rebuild; it only reads the theme variables the build defines. */
 
+/* The row of variant buttons and the count is as wide as the panel below it (same
+   640px cap, centred), so it lines up with the panel's edges instead of the page's:
+   buttons on the left, count on the right. Anchored at both ends, so nothing shifts
+   when the count changes length. Wrapped (a phone), the count drops under the buttons. */
 .gv-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   gap: 8px 14px;
+  width: 100%;
+  max-width: 640px;
+  margin-inline: auto;
   margin-bottom: 10px;
 }
 .gv-variants { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -161,14 +169,28 @@
    centred, with 8px of padding and a 2px border; its rows are squares one seventh of
    what is left, less the scrollbar gutter. Both views sit in .views, which is the
    container this measures against, so the two heights stay equal at every width. */
-.views { container-type: inline-size; }
+.views { container-type: inline-size; position: relative; }
+
+/* Out of the flow and invisible: it only exists to be measured (see syncListHeight in
+   main.js). Not a spacer, so nothing shows above the list. */
+.gv-bar-twin {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
 
 .table-scroll.sticky-head {
   --gv-gap: 6px;
   --gv-rows: 8;
   --gv-tile: calc((min(640px, 100cqw) - 20px - 12px - 6 * var(--gv-gap)) / 7);
-  /* + 20px: the panel's padding and border, so the two outer boxes match */
-  max-height: calc(var(--gv-rows) * var(--gv-tile) + (var(--gv-rows) - 1) * var(--gv-gap) + 20px);
+  /* + 20px: the panel's padding and border, so the two outer boxes match. Plus the
+     grid's variant row, which the list lacks, so the two views end at the same bottom. */
+  max-height: calc(
+    var(--gv-rows) * var(--gv-tile) + (var(--gv-rows) - 1) * var(--gv-gap) + 20px +
+      var(--gv-bar-h, 39px)
+  );
   /* keyboard movement scrolls a row into view; keep it clear of the pinned header */
   scroll-padding-top: 3.25rem;
 }

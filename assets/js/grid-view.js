@@ -221,10 +221,11 @@ export function renderGrid(host, pets, getProgress, variant, images) {
   grid.from = 0;
   grid.to = 0;
 
-  grid.scroller.scrollTop = 0; // a new category, variant or filter starts at the top
-  host.replaceChildren();
-  host.style.paddingTop = "";
-  host.style.paddingBottom = "";
+  // A new category, variant or filter starts at the top. Nothing is emptied first:
+  // measuring an empty grid forces a layout with the page a grid shorter, which clamps
+  // the page's own scroll position, and it does not come back when the tiles do. So the
+  // old tiles stay until renderWindow swaps in the new ones in a single step.
+  grid.scroller.scrollTop = 0;
   measure();
   renderWindow(true);
   return countGrid();

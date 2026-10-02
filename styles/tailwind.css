@@ -481,7 +481,7 @@
   }
 
   /* One heading scale, used on every page. */
-  .page-head { @apply mt-5 mb-4; }
+  .page-head { @apply mt-5 mb-2.5; }
   .page-title { @apply text-2xl font-semibold tracking-tight; }
   .page-sub { @apply text-muted text-sm mt-1; }
   .section-title { @apply text-[15px] font-semibold; }

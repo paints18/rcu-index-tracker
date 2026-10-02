@@ -120,7 +120,8 @@ const TABS = [
       "Fill a profile from your in-game index instead of ticking by hand.",
       steps([
         "Get an access token from **rcu.powerfulstudio.xyz/public/access-tokens** " +
-          "(sign in with Roblox, then Generate).",
+          "(sign in with Roblox, then Generate). After signing in you may land on the " +
+          "site's home page; make sure you are back on the access tokens page first.",
         "Open **Backup/Import > From API**, or use the first screen. Enter your " +
           "Roblox username and the token, then press **Import from API**.",
         "The profile refreshes whenever the page loads, or when you press " +

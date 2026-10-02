@@ -936,6 +936,26 @@ function updateGridCount() {
   dom.gridCount.textContent = `${variant.label} collected (${done}/${total})`;
 }
 
+/**
+ * The grid has a row of variant buttons above its panel and the list has not, so the
+ * list's window is made that much taller and both views end at the same bottom edge.
+ * The row's height is not fixed — it wraps onto two lines on a phone — and it cannot
+ * be measured while the grid is hidden, so an invisible copy in the page is measured
+ * instead (see #gv-bar-twin) and published as --gv-bar-h for grid-view.css.
+ */
+function syncListHeight() {
+  const twin = $("gv-bar-twin");
+  const views = twin?.parentElement;
+  if (!twin || !views) return;
+  const publish = () => {
+    const margin = parseFloat(getComputedStyle(twin).marginBottom) || 0;
+    views.style.setProperty("--gv-bar-h", `${twin.getBoundingClientRect().height + margin}px`);
+  };
+  publish();
+  if (typeof ResizeObserver === "function") new ResizeObserver(publish).observe(twin);
+  document.fonts?.ready?.then(publish).catch(() => {});
+}
+
 function applyView() {
   const grid = state.view === "grid";
   dom.listView.hidden = grid;
@@ -953,9 +973,18 @@ async function setView(view) {
   } catch {
     // Not persisted in private mode; the choice still holds for this visit.
   }
-  applyView();
-  if (view === "grid") state.petImages = await loadPetImages();
-  if (state.index && state.profileId) renderBody();
+  // Hold the page at its current height while the views swap. For a moment the one
+  // coming in is empty or stale, a shorter page clamps the scroll position, and you
+  // would be thrown back to the top and stay there.
+  const views = dom.listView.parentElement;
+  views.style.minHeight = `${views.offsetHeight}px`;
+  try {
+    applyView();
+    if (view === "grid") state.petImages = await loadPetImages();
+    if (state.index && state.profileId) renderBody();
+  } finally {
+    views.style.minHeight = "";
+  }
 }
 
 /** A tile was clicked: flip that pet's tick for the grid's variant. */
@@ -1956,6 +1985,7 @@ async function boot() {
   if (state.view === "grid") state.petImages = await loadPetImages();
 
   trackHeaderHeight();
+  syncListHeight();
   mountApiForm(dom.onboardApiForm, { naming: true });
   mountApiForm(dom.panelApi);
   wireEvents();
