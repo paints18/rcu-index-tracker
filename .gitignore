@@ -12,6 +12,10 @@ package-lock.json
 # Maintainer/dev notes — not ready for the public repo yet.
 docs/
 
+# Local-only shortcut that serves the site and opens it. Personal convenience,
+# not part of the site.
+local/
+
 # Claude Code's local config for this project — permission grants, launch.json
 # etc. Not part of the site, and settings.local.json carries local machine
 # paths that shouldn't end up in a public repo.
