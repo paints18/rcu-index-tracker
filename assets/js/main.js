@@ -205,17 +205,19 @@ const STATUS_OPTIONS = [
   { value: "incomplete", label: "Incomplete" },
   { value: "complete", label: "Complete" },
   { value: "untouched", label: "Not indexed" },
+  { value: "missing", label: "Missing" },
 ];
 
 /**
  * Status choices for the view on screen. The grid shows one variant at a time, so
- * "incomplete" and "complete" (judged across every variant of a pet) have nothing
- * to say there; it keeps only the two that still make sense.
+ * "incomplete", "complete" and "not indexed" (judged across every variant of a
+ * pet) have nothing to say there. It gets "missing" instead: pets you have not
+ * ticked for the variant on show, so it follows the Normal/Golden/Toxic/Galaxy
+ * buttons. The list has no use for that one, its Missing menu does the job.
  */
 function statusOptions() {
-  return state.view === "grid"
-    ? STATUS_OPTIONS.filter((o) => o.value === "all" || o.value === "untouched")
-    : STATUS_OPTIONS;
+  const grid = state.view === "grid";
+  return STATUS_OPTIONS.filter((o) => o.value === "all" || (o.value === "missing") === grid);
 }
 
 /** "No filter" plus the variants this category has. */
@@ -494,7 +496,10 @@ function visiblePets(category) {
 
     const caught = state.progress[pet.slug] ?? [];
 
-    if (status !== "all") {
+    if (status === "missing") {
+      const variantId = gridVariant()?.id;
+      if (!pet.variants.includes(variantId) || caught.includes(variantId)) return false;
+    } else if (status !== "all") {
       const owned = pet.variants.filter((v) => caught.includes(v)).length;
       if (status === "complete" && owned !== pet.variants.length) return false;
       if (status === "incomplete" && owned === pet.variants.length) return false;

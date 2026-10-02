@@ -14,8 +14,9 @@ profile name.
   shows the in-game index layout: one variant at a time, 7 tiles per row,
   not-indexed pets as silhouettes, and a hover card with rarity, clicks and
   egg. Clicking a tile ticks it. Search, Egg, Rarity, counts and Undo are shared
-  with the list. The Status menu offers only All pets and Not indexed, and the
-  Missing menu is disabled and reset to No filter. The chosen view is remembered in this browser.
+  with the list. The Status menu offers All pets and Missing, which lists
+  the pets not yet ticked for the variant on show (Normal, Golden, Toxic or
+  Galaxy). The Missing menu is disabled and reset to No filter. The chosen view is remembered in this browser.
 - List view is a table with a box per variant. The **All** column shows a full
   or partial ring depending on how many of a pet's variants you own.
 - Browse by category, or filter by name, egg, rarity, completion status, or
