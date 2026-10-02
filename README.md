@@ -38,8 +38,17 @@ profile name.
   be edited (list, grid, column checkboxes and Undo); clicking a tick shows a
   message instead. Settings > Your data has a Lock/Unlock button for each
   profile, so any profile can be locked or unlocked.
-- Export a plain-text list of what you're missing, for trading or paying
-  someone to index for you.
+- Export pets builds a list of the pets you're missing, have, or all of them,
+  as plain text, a spreadsheet or a CSV file, for trading or paying someone to
+  index for you. Options: whole index, the tab the table is on, or the current
+  filters; group by pet or by variant; comma or slash separator; abbreviated
+  variant names; variant and rarity filters. The Spreadsheet format is
+  tab-separated, for pasting into Google Sheets or Excel. Spreadsheet and CSV
+  have one row per pet and a column per variant. A caught variant is marked ✓, a
+  missing one is left blank, and a variant the pet does not have shows -. The
+  List option chooses which pets get a row. Group by, separator and
+  abbreviations apply to plain text only. The preview is editable, and the list
+  can be copied or downloaded. Options are remembered in this browser.
 - Light/dark mode, colour themes, a compact density option, and the ability
   to hide unused columns (Egg, Rarity, Clicks). A default category and
   hide-completed-pets option are also available in Settings.

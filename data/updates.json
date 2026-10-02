@@ -19,6 +19,7 @@
         "Renamed Straw Dragon to Straw Golem.",
         "Champion Tutel and The Prototype are now Ultimate. Royal Cat clicks are 3.5K.",
         "Fixed percentages for Party Shield, Tiki Shield, 135M Dice, 25M Alien, Lovely Guardian, Adventure Immortal and Compass Overlord.",
+        "Export pets: list missing, owned or all pets, group by pet or variant, filter by variant and rarity, edit the list, and copy it or download it as text, a spreadsheet (paste into Google Sheets or Excel) or CSV. Spreadsheet and CSV have a column per variant, with a ✓ for what you have.",
         "Filled in clicks for about 230 pets."
       ]
     },
