@@ -79,6 +79,8 @@ export const DEFAULTS = {
   density: "comfortable",
   columns: Object.fromEntries(COLUMNS.map((c) => [c.id, true])),
   hideCompleted: false,
+  /** The "ticks are locked" note under the profile name, once dismissed. */
+  lockNoteDismissed: false,
   /** One-time hint about bulk edit; not a choice, just a "seen it" flag. */
   bulkHintSeen: false,
   defaultCategory: "all",
@@ -99,11 +101,28 @@ export function loadSettings() {
  * everyone whose saved settings were written before it existed.
  */
 function withDefaults(stored) {
+  // Anything that is not a plain object (a hand-edited array or string parses
+  // fine and would otherwise spread into the settings as indexed keys).
+  if (!stored || typeof stored !== "object" || Array.isArray(stored)) stored = {};
+
   const { showClicks, accent, ...rest } = stored;
-  const columns = { ...DEFAULTS.columns, ...(stored.columns ?? {}) };
+  const storedColumns =
+    stored.columns && typeof stored.columns === "object" && !Array.isArray(stored.columns)
+      ? stored.columns
+      : {};
+  const columns = { ...DEFAULTS.columns, ...storedColumns };
 
   // Settings saved before this was a per-column list carried a single flag.
   if (stored.columns == null && showClicks === false) columns.clicks = false;
+
+  // A value of the wrong type falls back to its default rather than reaching
+  // the UI as a string, number or object.
+  for (const [key, fallback] of Object.entries(DEFAULTS)) {
+    if (typeof fallback === "boolean" && key in rest && typeof rest[key] !== "boolean") delete rest[key];
+  }
+  if (!MODES.some((m) => m.id === rest.mode)) delete rest.mode;
+  if (!DENSITIES.some((d) => d.id === rest.density)) delete rest.density;
+  for (const c of COLUMNS) if (typeof columns[c.id] !== "boolean") columns[c.id] = true;
 
   // Accents became whole themes. The five accent ids that survived as themes
   // keep their name, so an old setting carries straight over; the rest fall
@@ -113,13 +132,14 @@ function withDefaults(stored) {
 
   // Settings saved before there was a default category, or with the old
   // "first category with pets" blank choice, fall back to the current default.
-  if (!rest.defaultCategory) delete rest.defaultCategory;
+  if (!rest.defaultCategory || typeof rest.defaultCategory !== "string") delete rest.defaultCategory;
 
   return { ...DEFAULTS, ...rest, columns };
 }
 
 export function saveSettings(patch) {
-  const next = { ...loadSettings(), ...patch };
+  const safePatch = patch && typeof patch === "object" && !Array.isArray(patch) ? patch : {};
+  const next = withDefaults({ ...loadSettings(), ...safePatch });
   try {
     localStorage.setItem(KEY, JSON.stringify(next));
   } catch {
@@ -135,8 +155,9 @@ export function resetSettings() {
   } catch {
     /* ignore */
   }
-  applySettings({ ...DEFAULTS });
-  return { ...DEFAULTS };
+  const defaults = withDefaults({});
+  applySettings(defaults);
+  return defaults;
 }
 
 /**

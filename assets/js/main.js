@@ -14,6 +14,8 @@ import { mountExportModal } from "./export-modal.js";
 import { loadIndex, countProgress, totalsByVariant } from "./data.js";
 import { Store, normalizeName, PROBE_KEY } from "./store.js";
 import { encodeBackup, decodeBackup, partitionKnown } from "./backup.js";
+import { fetchPlayerIndex, entriesToProgress, ApiImportError } from "./api-import.js";
+import { renderGrid, syncTile, loadPetImages, attachHoverCard, attachGridKeys } from "./grid-view.js";
 import {
   renderCategoryNav,
   renderVariantSummary,
@@ -32,9 +34,14 @@ const $ = (id) => document.getElementById(id);
 const dom = {
   siteHeader: $("site-header"),
   onboard: $("onboard"),
-  onboardForm: $("onboard-form"),
   onboardName: $("onboard-name"),
+  onboardTabApi: $("onboard-tab-api"),
+  onboardTabManual: $("onboard-tab-manual"),
+  onboardPanelApi: $("onboard-panel-api"),
+  onboardPanelManual: $("onboard-panel-manual"),
   onboardImport: $("onboard-import"),
+  onboardManual: $("onboard-manual"),
+  onboardApiForm: $("onboard-api-form"),
 
   app: $("app"),
   profileName: $("profile-name"),
@@ -72,6 +79,14 @@ const dom = {
   tbody: $("pet-tbody"),
   emptyState: $("empty-state"),
 
+  listView: $("list-view"),
+  gridView: $("grid-view"),
+  viewButtons: [...document.querySelectorAll("[data-view]")],
+  gridVariants: $("gv-variants"),
+  gridCount: $("gv-count"),
+  grid: $("gv-grid"),
+  gridEmpty: $("gv-empty"),
+
   switchDialog: $("switch-dialog"),
   switchList: $("switch-list"),
   switchNewForm: $("switch-new-form"),
@@ -90,6 +105,13 @@ const dom = {
   dialog: $("backup-dialog"),
   tabExport: $("tab-export"),
   tabImport: $("tab-import"),
+  tabApi: $("tab-api"),
+  panelApi: $("panel-api"),
+  apiRefresh: $("api-refresh"),
+  lockNote: $("lock-note"),
+  lockNoteDismiss: $("lock-note-dismiss"),
+  renameDialogTokenWrap: $("rename-dialog-token-wrap"),
+  renameDialogToken: $("rename-dialog-token"),
   panelExport: $("panel-export"),
   panelImport: $("panel-import"),
   exportProfileName: $("export-profile-name"),
@@ -115,6 +137,13 @@ const state = {
   filters: { search: "", egg: "", rarity: "", status: "all", missing: "" },
   /** Variant columns the current head was built with; syncTableHead needs them. */
   usedVariants: [],
+
+  /** "list" (the checklist table) or "grid" (the in-game index layout). */
+  view: "list",
+  /** Variant the grid is showing; falls back per category (see gridVariant). */
+  gridVariantId: "normal",
+  /** slug -> asset ids, loaded the first time the grid is opened. */
+  petImages: {},
 
   /**
    * Shift-click anchor, as { column, slug }. Held by SLUG rather than row index
@@ -262,6 +291,15 @@ function renderProfiles() {
 
   if (!hasProfiles) {
     state.profileId = null;
+    // The last profile may have been a linked one: its username and token must
+    // not linger in the first-run form, nor its Disconnect button and lock.
+    for (const form of apiForms) {
+      if (form.disconnect.hidden) continue;
+      form.user.value = "";
+      form.token.value = "";
+      setApiStatus(form, "");
+    }
+    renderApiLink();
     measureHeader();
     return;
   }
@@ -270,6 +308,7 @@ function renderProfiles() {
   dom.profileName.textContent = active.name;
   // Truncated names lose their tail; the tooltip is where the rest of it lives.
   dom.profileName.title = active.name;
+  renderApiLink();
 
   // Showing the profile bar grows the header, and the sticky table header has
   // to follow it. Measuring here rather than in a rAF keeps the two in step on
@@ -450,7 +489,9 @@ function renderTableHeadFor(category, scopePets) {
  */
 function updateTableHead() {
   const headRow = dom.thead.rows[0];
-  if (headRow) syncTableHead(headRow, state.usedVariants, headCounts(renderedPets()));
+  if (!headRow) return;
+  syncTableHead(headRow, state.usedVariants, headCounts(renderedPets()));
+  if (isLocked()) for (const input of headRow.querySelectorAll("input")) input.setAttribute("aria-disabled", "true");
 }
 
 function renderTable() {
@@ -758,7 +799,8 @@ function lastUndoIndex() {
  */
 function renderUndo() {
   const index = lastUndoIndex();
-  dom.bulkUndo.disabled = index < 0;
+  // Undo is an edit like any other, so a locked profile cannot use it either.
+  dom.bulkUndo.disabled = index < 0 || isLocked();
 
   if (index < 0) {
     dom.bulkUndo.title = `Nothing to undo in ${activeCategory().label} yet`;
@@ -797,7 +839,138 @@ function renderFilters() {
 function renderAll() {
   renderCounts();
   renderFilters();
-  renderTable();
+  renderBody();
+  renderUndo();
+}
+
+/* ---------- grid view ---------- */
+
+const VIEW_KEY = "rcu:v1:view";
+
+function initialView() {
+  const fromQuery = new URLSearchParams(location.search).get("view");
+  if (fromQuery === "grid" || fromQuery === "list") return fromQuery;
+  try {
+    return localStorage.getItem(VIEW_KEY) === "grid" ? "grid" : "list";
+  } catch {
+    return "list";
+  }
+}
+
+/** The grid shows one variant at a time; use the chosen one if this category has it. */
+function gridVariant() {
+  const used = usedVariants(state.index.variants, activeCategory());
+  return used.find((v) => v.id === state.gridVariantId) ?? used[0] ?? null;
+}
+
+/** Whichever of the two views is showing; the table is not built while hidden. */
+function renderBody() {
+  if (state.view === "grid") renderGridView();
+  else renderTable();
+  applyLock();
+}
+
+function renderGridView() {
+  const category = activeCategory();
+  const variant = gridVariant();
+  const pets = visiblePets(category);
+
+  dom.gridVariants.replaceChildren(
+    ...usedVariants(state.index.variants, category).map((v) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "btn btn-sm btn-toggle";
+      button.dataset.gridVariant = v.id;
+      button.dataset.variant = v.id;
+      button.textContent = v.label;
+      button.setAttribute("aria-pressed", String(v.id === variant?.id));
+      return button;
+    }),
+  );
+
+  if (!variant) {
+    dom.grid.replaceChildren();
+    dom.gridCount.textContent = "";
+    dom.gridEmpty.textContent = "No pets listed in this category yet.";
+    dom.gridEmpty.hidden = false;
+    return;
+  }
+  dom.gridEmpty.textContent = "No pets match the current filters.";
+
+  const { done, total } = renderGrid(dom.grid, pets, state.progress, variant, state.petImages);
+  dom.grid.parentElement.scrollTop = 0; // a new category, variant or filter starts at the top
+  dom.gridCount.textContent = `${variant.label} collected (${done}/${total})`;
+  dom.gridEmpty.hidden = total > 0;
+}
+
+/**
+ * Show another variant in the grid. If a tile had focus, focus moves to the same
+ * pet in the new variant, so keyboard users keep their place.
+ */
+function setGridVariant(variantId) {
+  const slug = dom.grid.contains(document.activeElement)
+    ? document.activeElement.dataset.slug
+    : null;
+  state.gridVariantId = variantId;
+  renderGridView();
+  applyLock(); // the new tiles need the locked state too
+  if (slug) dom.grid.querySelector(`.gv-tile[data-slug="${CSS.escape(slug)}"]`)?.focus();
+}
+
+function updateGridCount() {
+  const variant = gridVariant();
+  if (!variant) return;
+  let done = 0;
+  const tiles = dom.grid.children;
+  for (const tile of tiles) if (tile.classList.contains("is-caught")) done += 1;
+  dom.gridCount.textContent = `${variant.label} collected (${done}/${tiles.length})`;
+}
+
+function applyView() {
+  const grid = state.view === "grid";
+  dom.listView.hidden = grid;
+  dom.gridView.hidden = !grid;
+  for (const button of dom.viewButtons) {
+    button.setAttribute("aria-pressed", String(button.dataset.view === state.view));
+  }
+}
+
+async function setView(view) {
+  if (view === state.view) return;
+  state.view = view;
+  try {
+    localStorage.setItem(VIEW_KEY, view);
+  } catch {
+    // Not persisted in private mode; the choice still holds for this visit.
+  }
+  applyView();
+  if (view === "grid") state.petImages = await loadPetImages();
+  if (state.index && state.profileId) renderBody();
+}
+
+/** A tile was clicked: flip that pet's tick for the grid's variant. */
+function onGridToggle(tile) {
+  if (isLocked()) {
+    toast(LOCKED_MESSAGE);
+    return;
+  }
+  const { slug, variant: variantId } = tile.dataset;
+  const pet = state.index.bySlug.get(slug);
+  if (!pet) return;
+
+  const caught = !(state.progress[slug] ?? []).includes(variantId);
+  const changes = changesFor([slug], variantId, caught);
+  if (!changes.length) return;
+
+  pushUndo(changes, caught);
+  store.setManyCaught(state.profileId, changes, caught);
+  state.progress = store.getProgress(state.profileId);
+
+  // The tile is updated in place and left where it is even if it no longer
+  // matches the status filter, same as a table row; see onTick.
+  syncTile(tile, caught, pet, state.index.variants.find((v) => v.id === variantId));
+  renderCounts();
+  updateGridCount();
   renderUndo();
 }
 
@@ -815,6 +988,16 @@ function switchProfile(profileId) {
   state.range = null;
   renderProfiles();
   renderAll();
+}
+
+function showOnboardTab(which) {
+  const api = which === "api";
+  dom.onboardTabApi.classList.toggle("is-active", api);
+  dom.onboardTabManual.classList.toggle("is-active", !api);
+  dom.onboardTabApi.setAttribute("aria-selected", String(api));
+  dom.onboardTabManual.setAttribute("aria-selected", String(!api));
+  dom.onboardPanelApi.hidden = !api;
+  dom.onboardPanelManual.hidden = api;
 }
 
 function createProfile(rawName) {
@@ -880,6 +1063,11 @@ function selectCategory(categoryId) {
  * @param {boolean} shiftKey Was Shift held on the click that caused this change?
  */
 function onTick(input, shiftKey) {
+  if (isLocked()) {
+    input.checked = !input.checked;
+    toast(LOCKED_MESSAGE);
+    return;
+  }
   const slug = input.dataset.slug;
   const pet = state.index.bySlug.get(slug);
   if (!pet) return;
@@ -915,6 +1103,57 @@ function onTick(input, shiftKey) {
   renderUndo();
 }
 
+/* ---------- shortcuts ---------- */
+
+/** Is focus somewhere the user is typing, where single keys must be left alone? */
+function isTyping(el) {
+  if (!(el instanceof Element)) return false;
+  if (el.isContentEditable) return true;
+  if (el.tagName === "TEXTAREA" || el.tagName === "SELECT") return true;
+  return (
+    el.tagName === "INPUT" &&
+    !["checkbox", "radio", "button", "submit", "reset", "range", "color", "file"].includes(el.type)
+  );
+}
+
+/**
+ * Page-wide shortcuts, shared by both views:
+ *   1-4        grid only: show the Normal / Golden / Toxic / Galaxy variant
+ *   /          focus the search box
+ *   Ctrl+Z     Undo (Cmd+Z on macOS)
+ *
+ * All of them stand down while typing in a field and while a dialog is open.
+ */
+function onShortcut(event) {
+  if (event.defaultPrevented || event.isComposing || dom.app.hidden) return;
+  if (event.altKey || isTyping(event.target) || document.querySelector("dialog[open]")) return;
+
+  const mod = event.ctrlKey || event.metaKey;
+
+  if (mod && !event.shiftKey && event.key.toLowerCase() === "z") {
+    if (event.repeat || dom.bulkUndo.disabled) return;
+    event.preventDefault();
+    undoBulk();
+    return;
+  }
+  if (mod || event.shiftKey) return;
+
+  if (event.key === "/") {
+    event.preventDefault();
+    dom.filterSearch.focus();
+    dom.filterSearch.select();
+    return;
+  }
+
+  if (state.view === "grid" && /^[1-9]$/.test(event.key)) {
+    const variant = state.index.variants[Number(event.key) - 1];
+    const shown = usedVariants(state.index.variants, activeCategory());
+    if (!variant || !shown.some((v) => v.id === variant.id)) return;
+    event.preventDefault();
+    if (variant.id !== gridVariant()?.id) setGridVariant(variant.id);
+  }
+}
+
 /* ---------- bulk edit actions ---------- */
 
 /**
@@ -929,6 +1168,11 @@ function onTick(input, shiftKey) {
  * @param {HTMLInputElement} input
  */
 function onBulkColumn(input) {
+  if (isLocked()) {
+    updateTableHead(); // put the box back where the data says it should be
+    toast(LOCKED_MESSAGE);
+    return;
+  }
   const column = input.dataset.bulkColumn;
   const caught = input.checked;
 
@@ -965,7 +1209,7 @@ function onBulkColumn(input) {
  */
 function undoBulk() {
   const index = lastUndoIndex();
-  if (index < 0) return;
+  if (index < 0 || isLocked()) return;
 
   const [entry] = state.undoStack.splice(index, 1);
   // Invert the delta rather than restore a snapshot: this touches only the boxes
@@ -975,7 +1219,7 @@ function undoBulk() {
   state.range = null;
 
   renderCounts();
-  renderTable();
+  renderBody();
   renderUndo(); // the stack just shrank; the button has to say so
 }
 
@@ -1015,6 +1259,10 @@ function openRenameDialog() {
   dom.renameDialogName.value = profile.name;
   dom.renameDialogError.textContent = "";
 
+  const link = store.getLink(profile.id);
+  dom.renameDialogTokenWrap.hidden = !link;
+  dom.renameDialogToken.value = link?.token ?? "";
+
   dom.renameDialog.showModal();
   dom.renameDialogName.focus();
   dom.renameDialogName.select();
@@ -1036,9 +1284,18 @@ function submitRenameDialog(event) {
     return;
   }
 
+  // Only a linked profile shows the field. An emptied field keeps the old token
+  // rather than saving a blank one the next refresh would fail on.
+  const link = store.getLink(state.profileId);
+  const token = dom.renameDialogToken.value.trim();
+  if (link && token && token !== link.token) {
+    store.setLink(state.profileId, { ...link, token });
+    fillApiForms();
+  }
+
   renderProfiles();
   dom.renameDialog.close();
-  toast("Profile renamed.");
+  toast("Profile saved.");
 }
 
 function openDeleteDialog() {
@@ -1077,13 +1334,18 @@ function confirmDelete() {
 /* ---------- backup dialog ---------- */
 
 function showBackupTab(which) {
-  const exporting = which === "export";
-  dom.tabExport.classList.toggle("is-active", exporting);
-  dom.tabImport.classList.toggle("is-active", !exporting);
-  dom.tabExport.setAttribute("aria-selected", String(exporting));
-  dom.tabImport.setAttribute("aria-selected", String(!exporting));
-  dom.panelExport.hidden = !exporting;
-  dom.panelImport.hidden = exporting;
+  const tabs = [
+    [dom.tabExport, dom.panelExport, "export"],
+    [dom.tabImport, dom.panelImport, "import"],
+    [dom.tabApi, dom.panelApi, "api"],
+  ];
+  for (const [tab, panel, name] of tabs) {
+    const active = name === which;
+    tab.classList.toggle("is-active", active);
+    tab.setAttribute("aria-selected", String(active));
+    panel.hidden = !active;
+  }
+  if (which === "api") fillApiForms();
 }
 
 async function openBackupDialog(tab = "export") {
@@ -1101,7 +1363,7 @@ async function openBackupDialog(tab = "export") {
     dom.exportProfileName.textContent = "—";
     dom.exportCode.value = "";
     dom.exportMeta.textContent = "Create a profile before exporting a backup code.";
-    tab = "import";
+    if (tab === "export") tab = "import";
   }
 
   showBackupTab(tab);
@@ -1173,13 +1435,298 @@ async function runImport() {
   toast("Backup code imported.");
 }
 
+/* ---------- API import ---------- */
+
+let apiBusy = false;
+
+/**
+ * The API form appears twice — in the onboarding card and in the backup dialog —
+ * cloned from one template. Every instance is kept here so state changes reach
+ * both.
+ */
+const apiForms = [];
+
+function mountApiForm(host, { naming = false } = {}) {
+  const root = document.getElementById("api-form-template").content.cloneNode(true);
+  const field = (name) => root.querySelector(`[data-api="${name}"]`);
+  const form = {
+    user: field("user"),
+    token: field("token"),
+    connect: field("connect"),
+    disconnect: field("disconnect"),
+    status: field("status"),
+    target: field("target"),
+    currentName: field("current-name"),
+    // Shown only where the import makes the profile (first run). Elsewhere it
+    // imports into the active profile and has no name to ask for.
+    nameWrap: field("name-wrap"),
+    name: field("name"),
+  };
+  form.nameWrap.hidden = !naming;
+
+  form.connect.addEventListener("click", () => runApiConnect(form));
+  // The fields are not in a <form>, so Enter would otherwise do nothing.
+  for (const input of [form.user, form.token, form.name]) {
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") runApiConnect(form);
+    });
+  }
+  form.disconnect.addEventListener("click", runApiDisconnect);
+
+  host.append(root);
+  apiForms.push(form);
+  return form;
+}
+
+function setApiStatus(form, message, kind) {
+  form.status.textContent = message;
+  form.status.className = `text-[13px] empty:hidden import-status${kind ? ` is-${kind}` : ""}`;
+}
+
+/**
+ * A locked profile cannot be edited by hand. Profiles imported from the API are
+ * locked by default, since the game is the source of truth; any profile can be
+ * locked or unlocked from Settings > Your data (see Store.isLocked).
+ */
+function isLocked() {
+  return Boolean(state.profileId && store.isLocked(state.profileId));
+}
+
+const LOCKED_MESSAGE = "Ticks are locked on this profile. Unlock it in Settings > Your data.";
+
+/**
+ * Mark the tick boxes and grid tiles to match isLocked().
+ *
+ * The boxes are marked aria-disabled rather than disabled: a disabled input
+ * swallows the click, so there would be nothing to tell the user why it did not
+ * react. onTick and onBulkColumn put the box back and explain instead.
+ */
+function applyLock() {
+  const locked = isLocked();
+  document.documentElement.toggleAttribute("data-ticks-locked", locked);
+  for (const tile of dom.grid.children) tile.setAttribute("aria-disabled", String(locked));
+  if (state.index && state.profileId) renderUndo();
+  dom.lockNote.hidden = !locked || loadSettings().lockNoteDismissed === true;
+  for (const input of document.querySelectorAll("#app .tick input")) {
+    if (locked) input.setAttribute("aria-disabled", "true");
+    else input.removeAttribute("aria-disabled");
+  }
+}
+
+/** Show or hide the controls that only make sense for a linked profile. */
+function renderApiLink() {
+  const link = state.profileId ? store.getLink(state.profileId) : null;
+  const profile = state.profileId ? store.getProfile(state.profileId) : null;
+  dom.apiRefresh.hidden = !link;
+  applyLock();
+  for (const form of apiForms) {
+    form.disconnect.hidden = !link;
+    // With no profile yet there is nothing to choose: the import makes one.
+    form.target.hidden = !profile;
+    form.currentName.textContent = profile?.name ?? "";
+  }
+}
+
+function fillApiForms() {
+  const link = state.profileId ? store.getLink(state.profileId) : null;
+  for (const form of apiForms) {
+    form.user.value = link?.user ?? "";
+    form.token.value = link?.token ?? "";
+    setApiStatus(form, "");
+  }
+  renderApiLink();
+}
+
+function setApiBusy(busy) {
+  apiBusy = busy;
+  for (const form of apiForms) form.connect.disabled = busy;
+  dom.apiRefresh.disabled = busy;
+  dom.apiRefresh.textContent = busy ? "Refreshing…" : "Refresh";
+}
+
+const countTicks = (progress) => Object.values(progress).reduce((sum, v) => sum + v.length, 0);
+
+/**
+ * Work out what importing an API response would do to a profile, without doing it.
+ *
+ * The in-game index is the source of truth: the profile's ticks become exactly
+ * what the API reports, so a tick that is not in the game is removed. An empty
+ * result for a profile that has ticks is refused instead — a failed or partial
+ * API response must never be able to wipe a checklist.
+ */
+function planApiIndex(profileId, body) {
+  const { progress, unmatched, unsupported } = entriesToProgress(body.index, state.index);
+  const current = store.getProgress(profileId);
+
+  let added = 0;
+  let removed = 0;
+  for (const [slug, variants] of Object.entries(progress)) {
+    const had = new Set(current[slug] ?? []);
+    for (const v of variants) if (!had.has(v)) added += 1;
+  }
+  for (const [slug, variants] of Object.entries(current)) {
+    const wanted = new Set(progress[slug] ?? []);
+    for (const v of variants) if (!wanted.has(v)) removed += 1;
+  }
+
+  if (countTicks(progress) === 0 && countTicks(current) > 0) {
+    throw new ApiImportError("The API reported no pets for this player, so nothing was changed.");
+  }
+  return { progress, added, removed, unmatched, unsupported };
+}
+
+/** Replace a profile's ticks with a plan from planApiIndex and record the link. */
+function applyApiIndex(profileId, link, plan) {
+  const { progress, added, removed, unmatched, unsupported } = plan;
+
+  store.setProgress(profileId, progress);
+  store.setLink(profileId, { ...link, syncedAt: new Date().toISOString() });
+  // The ticks changed under it, so an older edit would no longer undo cleanly.
+  state.undoStack = state.undoStack.filter((entry) => entry.profileId !== profileId);
+
+  if (profileId === state.profileId) {
+    state.progress = store.getProgress(profileId);
+    state.range = null;
+    renderAll();
+  }
+  if (unmatched.length) console.warn("API entries with no matching pet:", unmatched);
+  return { added, removed, unmatched, unsupported };
+}
+
+function describeSync({ added, removed, unmatched, unsupported }) {
+  const ticks = (n) => `${n.toLocaleString()} ${n === 1 ? "tick" : "ticks"}`;
+  let message = added ? `Imported ${ticks(added)}.` : removed ? "" : "No new ticks imported.";
+  if (removed) message += ` Removed ${ticks(removed)} not in your in-game index.`;
+  message = message.trim();
+  if (unmatched.length) {
+    // Names come from the API squashed together ("nuclearcow"), which is still
+    // enough to recognise the pet.
+    const shown = unmatched.slice(0, 5).join(", ");
+    const more = unmatched.length > 5 ? `, and ${unmatched.length - 5} more` : "";
+    message += ` Not in the tracker yet: ${shown}${more}.`;
+  }
+  if (unsupported) {
+    message += ` ${unsupported.toLocaleString()} ${unsupported === 1 ? "entry" : "entries"} skipped.`;
+  }
+  return message;
+}
+
+async function runApiConnect(form) {
+  if (apiBusy) return;
+
+  const link = { user: form.user.value.trim(), token: form.token.value.trim(), syncedAt: null };
+  if (!link.user || !link.token) {
+    setApiStatus(form, "Enter your Roblox username and access token.", "error");
+    return;
+  }
+
+  setApiBusy(true);
+  setApiStatus(form, "Importing…");
+  try {
+    const body = await fetchPlayerIndex(link);
+    link.userId = body.userId;
+
+    // First run creates the profile: the name the player typed, else their
+    // username. Anywhere else the import goes into the active profile.
+    let profile = state.profileId ? store.getProfile(state.profileId) : null;
+    const created = !profile;
+    if (created) {
+      const typed = form.nameWrap.hidden ? "" : normalizeName(form.name.value);
+      profile = store.createProfile(typed || normalizeName(body.name || link.user)).profile;
+      switchProfile(profile.id);
+    }
+
+    // Never quietly point a profile at a different player: their ticks would be
+    // merged into this checklist and every later refresh would add more.
+    const existing = store.getLink(profile.id);
+    if (existing?.userId && existing.userId !== body.userId) {
+      setApiStatus(
+        form,
+        `"${profile.name}" is linked to a different player. Disconnect it first, or switch to another profile.`,
+        "error",
+      );
+      return;
+    }
+
+    const plan = planApiIndex(profile.id, body);
+    // Linking a profile that already has hand-made ticks replaces them, which
+    // cannot be undone; say so before doing it. Refreshes of a linked profile
+    // already agreed to this when it was linked.
+    if (!created && !existing && plan.removed > 0) {
+      const ok = confirm(
+        `Importing will remove ${plan.removed.toLocaleString()} ${plan.removed === 1 ? "tick" : "ticks"} ` +
+          `from "${profile.name}" that are not in your in-game index. Continue?`,
+      );
+      if (!ok) {
+        setApiStatus(form, "Import cancelled. Nothing was changed.");
+        return;
+      }
+    }
+    if (!existing) store.setLocked(profile.id, null); // a newly linked profile starts locked
+    const result = applyApiIndex(profile.id, link, plan);
+    if (created) form.name.value = "";
+    fillApiForms();
+    setApiStatus(form, `${describeSync(result)} Profile: "${profile.name}".`, "ok");
+    toast(created ? `Created "${profile.name}" from the API.` : `Imported into "${profile.name}".`);
+  } catch (error) {
+    setApiStatus(form, error instanceof ApiImportError ? error.message : "Something went wrong importing.", "error");
+  } finally {
+    setApiBusy(false);
+  }
+}
+
+async function runApiRefresh({ quiet = false } = {}) {
+  const profileId = state.profileId;
+  const link = profileId ? store.getLink(profileId) : null;
+  if (!link || apiBusy) return;
+
+  setApiBusy(true);
+  try {
+    const body = await fetchPlayerIndex(link);
+    // A username can be released and taken by someone else; the user ID cannot.
+    if (link.userId && body.userId !== link.userId) {
+      throw new ApiImportError(
+        "That username now belongs to a different player. Disconnect this profile and import again.",
+      );
+    }
+    const result = applyApiIndex(profileId, link, planApiIndex(profileId, body));
+    if (!quiet) toast(describeSync(result));
+    else if (result.added || result.removed) {
+      toast(`Refreshed from the API. ${describeSync(result)}`);
+    }
+  } catch (error) {
+    // A silent refresh on page load should not nag; an explicit one should.
+    if (!quiet) toast(error instanceof ApiImportError ? error.message : "Could not refresh from the API.");
+    else console.warn("API refresh failed:", error.message);
+  } finally {
+    setApiBusy(false);
+  }
+}
+
+function runApiDisconnect() {
+  if (!state.profileId) return;
+  store.clearLink(state.profileId);
+  fillApiForms();
+  toast("Disconnected. Your ticks were kept.");
+}
+
 /* ------------------------------------------------------------------ */
 /* wiring                                                              */
 /* ------------------------------------------------------------------ */
 
 function wireEvents() {
-  dom.onboardForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+  dom.onboardTabApi.addEventListener("click", () => showOnboardTab("api"));
+  dom.onboardTabManual.addEventListener("click", () => {
+    showOnboardTab("manual");
+    dom.onboardName.focus();
+  });
+
+  dom.onboardManual.addEventListener("click", () => {
+    if (!normalizeName(dom.onboardName.value)) {
+      dom.onboardName.focus();
+      toast("Enter a profile name first.");
+      return;
+    }
     createProfile(dom.onboardName.value);
     dom.onboardName.value = "";
   });
@@ -1212,6 +1759,8 @@ function wireEvents() {
   dom.openBackup.addEventListener("click", () => openBackupDialog("export"));
   dom.tabExport.addEventListener("click", () => showBackupTab("export"));
   dom.tabImport.addEventListener("click", () => showBackupTab("import"));
+  dom.tabApi.addEventListener("click", () => showBackupTab("api"));
+  dom.apiRefresh.addEventListener("click", () => runApiRefresh());
   dom.doImport.addEventListener("click", runImport);
 
   dom.copyCode.addEventListener("click", async () => {
@@ -1224,6 +1773,22 @@ function wireEvents() {
       dom.exportCode.select();
       toast("Press Ctrl+C to copy.");
     }
+  });
+
+  for (const button of dom.viewButtons) {
+    button.addEventListener("click", () => setView(button.dataset.view));
+  }
+  dom.gridVariants.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-grid-variant]");
+    if (!button) return;
+    setGridVariant(button.dataset.gridVariant);
+  });
+  attachHoverCard(dom.grid, dom.grid.parentElement, (slug) => state.index.bySlug.get(slug));
+  attachGridKeys(dom.grid, dom.grid.parentElement);
+  document.addEventListener("keydown", onShortcut);
+  dom.grid.addEventListener("click", (event) => {
+    const tile = event.target.closest(".gv-tile");
+    if (tile) onGridToggle(tile);
   });
 
   dom.catNav.addEventListener("click", (event) => {
@@ -1267,6 +1832,11 @@ function wireEvents() {
   // Wrapped: the listener's MouseEvent must not land in undoBulk's entry slot.
   dom.bulkUndo.addEventListener("click", () => undoBulk());
 
+  dom.lockNoteDismiss.addEventListener("click", () => {
+    saveSettings({ lockNoteDismissed: true });
+    dom.lockNote.hidden = true;
+  });
+
   dom.bulkHintDismiss.addEventListener("click", () => {
     saveSettings({ bulkHintSeen: true });
     dom.bulkHint.hidden = true;
@@ -1277,25 +1847,25 @@ function wireEvents() {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => {
       state.filters.search = dom.filterSearch.value;
-      renderTable();
+      renderBody();
     }, 120);
   });
 
   dom.filterEgg.addEventListener("change", () => {
     state.filters.egg = dom.filterEgg.value;
-    renderTable();
+    renderBody();
   });
   dom.filterRarity.addEventListener("change", () => {
     state.filters.rarity = dom.filterRarity.value;
-    renderTable();
+    renderBody();
   });
   dom.filterStatus.addEventListener("change", () => {
     state.filters.status = dom.filterStatus.value;
-    renderTable();
+    renderBody();
   });
   dom.filterMissing.addEventListener("change", () => {
     state.filters.missing = dom.filterMissing.value;
-    renderTable();
+    renderBody();
   });
   dom.filterReset.addEventListener("click", () => {
     // "Reset" means back to your configured default, not back to showing
@@ -1303,7 +1873,7 @@ function wireEvents() {
     const status = loadSettings().hideCompleted ? "incomplete" : "all";
     state.filters = { search: "", egg: "", rarity: "", status, missing: "" };
     renderFilters();
-    renderTable();
+    renderBody();
   });
 
   // Another tab edited the same profile — pick up its changes.
@@ -1365,11 +1935,21 @@ async function boot() {
     toast("Local storage is blocked. Progress will not be saved.");
   }
 
+  state.view = initialView();
+  applyView();
+  if (state.view === "grid") state.petImages = await loadPetImages();
+
   trackHeaderHeight();
+  mountApiForm(dom.onboardApiForm, { naming: true });
+  mountApiForm(dom.panelApi);
   wireEvents();
   renderProfiles();
   if (state.profileId) renderAll();
-  else dom.onboardName.focus();
+  else apiForms[0].user.focus();
+
+  // A profile linked to the API refreshes itself on every load.
+  renderApiLink();
+  runApiRefresh({ quiet: true });
 }
 
 boot();

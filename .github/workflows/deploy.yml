@@ -78,7 +78,7 @@ jobs:
           v="${GITHUB_SHA:0:8}"
           for f in _site/index.html _site/settings.html _site/updates.html; do
             [ -f "$f" ] || continue
-            sed -i -E "s#href=\"assets/styles\.css\"#href=\"assets/styles.css?v=$v\"#; s#src=\"assets/js/main\.js\"#src=\"assets/js/main.js?v=$v\"#" "$f"
+            sed -i -E "s#href=\"assets/styles\.css\"#href=\"assets/styles.css?v=$v\"#; s#href=\"assets/grid-view\.css\"#href=\"assets/grid-view.css?v=$v\"#;s#src=\"assets/js/main\.js\"#src=\"assets/js/main.js?v=$v\"#" "$f"
           done
           find _site/assets/js -name '*.js' -exec \
             sed -i -E "s#from \"(\./[A-Za-z0-9_-]+\.js)\"#from \"\1?v=$v\"#" {} +

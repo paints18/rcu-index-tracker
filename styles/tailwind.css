@@ -345,6 +345,7 @@
 
   input[type="text"],
   input[type="search"],
+  input[type="password"],
   input[type="date"],
   input[type="number"],
   select,
@@ -795,6 +796,12 @@
     border-color: color-mix(in srgb, var(--vc, var(--c-border-hi)) var(--tick-edge), var(--c-border-hi));
     background-color: color-mix(in srgb, var(--vc, var(--c-input)) var(--tick-tint), var(--c-input));
   }
+  /* A locked profile is read-only: the boxes are dimmed. */
+  .tick input:disabled,
+  .tick input[aria-disabled="true"] { @apply opacity-40 cursor-not-allowed; }
+  .tick:has(input:disabled),
+  .tick:has(input[aria-disabled="true"]) { @apply cursor-not-allowed; }
+
   .tick:hover input {
     border-color: color-mix(in srgb, var(--vc, var(--c-border-hi)) 80%, var(--c-border-hi));
     background-color: color-mix(in srgb, var(--vc, var(--c-input)) calc(var(--tick-tint) * 2), var(--c-input));

@@ -436,6 +436,17 @@ function renderProfiles() {
       : Object.values(progress).reduce((sum, v) => sum + v.length, 0);
 
     const label = `${ticks.toLocaleString()} ticked ${ticks === 1 ? "box" : "boxes"}`;
+    const locked = store.isLocked(profile.id);
+    const lock = button("btn btn-sm btn-quiet", locked ? "Unlock" : "Lock");
+    lock.title = locked
+      ? "Allow ticks to be edited by hand"
+      : "Stop ticks being edited by hand";
+    lock.addEventListener("click", () => {
+      store.setLocked(profile.id, !locked);
+      renderProfiles();
+      toast(locked ? `Unlocked "${profile.name}".` : `Locked "${profile.name}".`);
+      host.onChange?.(settings);
+    });
     const remove = button("btn btn-sm btn-quiet btn-danger", "Delete");
 
     remove.addEventListener("click", async () => {
@@ -452,7 +463,9 @@ function renderProfiles() {
       host.onChange?.(settings);
     });
 
-    container.append(row(profile.name, label, remove));
+    const actions = el("div", "flex gap-2");
+    actions.append(lock, remove);
+    container.append(row(profile.name, locked ? `${label} · locked` : label, actions));
   }
 }
 

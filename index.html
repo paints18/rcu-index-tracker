@@ -7,6 +7,7 @@
 <meta name="description" content="Pet index progress tracker for Rebirth Champions Ultimate.">
 <meta name="color-scheme" content="dark light">
 <link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/grid-view.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥚</text></svg>">
 <!-- Applies the saved theme before first paint. Mirrors applySettings() in
      assets/js/settings-store.js; kept inline because a module would load too
@@ -54,19 +55,36 @@
     <!-- <p class="page-sub"></p> -->
   </div>
 
-  <!-- First run: no profiles exist yet -->
+  <!-- First run: no profiles exist yet. Two routes, one open at a time, each
+       with its own name field. Importing from the API is the recommended one. -->
   <section class="card prose-col mx-auto my-12" id="onboard" hidden>
-    <h2 class="text-xl mb-2 font-semibold">Create a profile</h2>
-    <p class="text-muted">Each profile keeps its own checklist.
-       Already playing? The checkbox at the top of each column fills in what you already have.</p>
-    <form class="flex flex-wrap gap-2 mt-[18px] mb-3" id="onboard-form">
-      <input type="text" id="onboard-name" class="flex-1 min-w-[220px]" placeholder="e.g. paints" maxlength="40"
-             autocomplete="off" spellcheck="false" required aria-label="Profile name">
-      <button type="submit" class="btn btn-primary">Create profile</button>
-    </form>
-    <p class="text-muted text-[13px]">
-      <button type="button" class="linkish" id="onboard-import">Import a backup code</button>
-    </p>
+    <h2 class="text-xl mb-2 font-semibold">Get started</h2>
+    <p class="text-muted">Each profile keeps its own checklist.</p>
+
+    <div class="tabs mt-4" role="tablist">
+      <button type="button" class="tab is-active" id="onboard-tab-api" role="tab" aria-selected="true">
+        Import from Roblox <span class="text-muted text-[12px] font-normal">&middot; recommended</span></button>
+      <button type="button" class="tab" id="onboard-tab-manual" role="tab" aria-selected="false">Set up manually</button>
+    </div>
+
+    <div class="mt-4" id="onboard-panel-api">
+      <p class="text-muted text-[13px] mb-3">Fills in your checklist from your in-game index.</p>
+      <div id="onboard-api-form"></div>
+    </div>
+
+    <div class="mt-4 flex flex-col gap-3" id="onboard-panel-manual" hidden>
+      <p class="text-muted text-[13px]">Start with an empty profile and tick pets yourself.
+         The checkbox at the top of each column fills in what you already have.</p>
+      <label class="field max-w-[360px]">
+        <span class="field-label">Profile name</span>
+        <input type="text" id="onboard-name" maxlength="40" placeholder="e.g. paints"
+               autocomplete="off" spellcheck="false">
+      </label>
+      <div class="flex flex-wrap items-center gap-3">
+        <button type="button" class="btn btn-primary" id="onboard-manual">Create profile</button>
+        <button type="button" class="linkish text-[13px]" id="onboard-import">Import a backup code</button>
+      </div>
+    </div>
   </section>
 
   <!-- Main app -->
@@ -82,7 +100,14 @@
         <!-- The active profile is a heading, not a menu. Picking a different one
              is rare enough to live behind Switch, which is also where New is —
              creating and choosing are the same errand. -->
-        <p class="profile-name" id="profile-name">&mdash;</p>
+        <div class="flex items-center justify-between gap-3 min-w-0">
+          <p class="profile-name min-w-0" id="profile-name">&mdash;</p>
+          <!-- Shown only for a profile linked to the API. -->
+          <button type="button" class="btn btn-quiet btn-sm shrink-0" id="api-refresh" hidden>Refresh</button>
+        </div>
+        <p class="text-muted text-[12px]" id="lock-note" hidden>
+          Ticks are locked on this profile. Unlock it in Settings &gt; Your data.
+          <button type="button" class="linkish" id="lock-note-dismiss">Dismiss</button></p>
         <div class="profile-actions">
           <button type="button" class="btn btn-quiet btn-sm" id="profile-switch"
                   aria-haspopup="dialog">Switch profile</button>
@@ -120,6 +145,10 @@
     <div class="flex flex-wrap items-baseline gap-3 mb-2">
       <h2 class="text-[17px] font-semibold" id="cat-title">World 1</h2>
       <p class="text-muted text-[13px] tabular-nums" id="cat-count"></p>
+      <div class="ml-auto flex gap-1.5" role="group" aria-label="View">
+        <button type="button" class="btn btn-sm btn-toggle" id="view-list" data-view="list" aria-pressed="true">List view</button>
+        <button type="button" class="btn btn-sm btn-toggle" id="view-grid" data-view="grid" aria-pressed="false">Grid view</button>
+      </div>
     </div>
 
     <section class="card flex flex-wrap items-end gap-2.5 mb-3.5" aria-label="Filters">
@@ -184,7 +213,7 @@
       <button type="button" class="btn btn-quiet ml-auto" id="bulk-undo" disabled>Undo</button>
     </section>
 
-    <section aria-label="Pet checklist">
+    <section aria-label="Pet checklist" id="list-view">
       <!-- Shown only while the active profile has no ticks at all, so it retires
            itself the moment anyone does anything; Dismiss makes that permanent. -->
       <p class="text-muted text-[13px] flex flex-wrap items-center gap-2 mb-2" id="bulk-hint" hidden>
@@ -200,6 +229,23 @@
         </table>
       </div>
       <p class="py-7 px-3 text-center text-muted" id="empty-state" hidden>No pets match the current filters.</p>
+    </section>
+
+    <!-- Alternative to the checklist above: the in-game index layout. Tiles are
+         buttons; clicking one toggles that pet's tick for the chosen variant. -->
+    <section aria-label="Pet index grid" id="grid-view" hidden>
+      <div class="gv-bar">
+        <div class="gv-variants" id="gv-variants" role="group" aria-label="Variant"></div>
+        <p class="gv-count" id="gv-count"></p>
+      </div>
+      <!-- A fixed window onto the grid, like the game's index panel: a set number
+           of rows show (--gv-rows in grid-view.css) and the rest scroll. -->
+      <div class="gv-panel">
+        <div class="gv-scroll" id="gv-scroll" tabindex="-1">
+          <div class="gv-grid" id="gv-grid"></div>
+        </div>
+      </div>
+      <p class="py-7 px-3 text-center text-muted" id="gv-empty" hidden>No pets match the current filters.</p>
     </section>
 
   </div>
@@ -244,10 +290,17 @@
       <input type="text" id="rename-dialog-name" maxlength="40" autocomplete="off"
              spellcheck="false" required placeholder="e.g. paints">
     </label>
+    <!-- Only for a profile linked to the API: replace the token if you regenerate it. -->
+    <label class="field" id="rename-dialog-token-wrap" hidden>
+      <span class="field-label">Access token</span>
+      <input type="password" id="rename-dialog-token" maxlength="200" autocomplete="off"
+             spellcheck="false">
+      <span class="text-muted text-[13px]">Paste the new token here if you regenerate it.</span>
+    </label>
     <p class="text-danger text-[13px] empty:hidden" id="rename-dialog-error" role="alert"></p>
     <div class="flex gap-2 justify-end">
       <button type="button" class="btn btn-quiet" data-close-dialog>Cancel</button>
-      <button type="submit" class="btn btn-primary">Save name</button>
+      <button type="submit" class="btn btn-primary">Save</button>
     </div>
   </form>
 
@@ -269,6 +322,49 @@
   </div>
 </dialog>
 
+<!-- The API import form. Cloned into the onboarding card and into the backup
+     dialog, so the steps and fields are written once. -->
+<template id="api-form-template">
+  <div class="flex flex-col gap-3">
+    <div class="text-[13px]">
+      <p class="field-label">How to get your access token</p>
+      <ol class="list-decimal pl-5 mt-1.5 flex flex-col gap-1">
+        <li>Open
+          <a class="linkish" href="https://rcu.powerfulstudio.xyz/public/access-tokens" target="_blank" rel="noopener noreferrer">https://rcu.powerfulstudio.xyz/public/access-tokens</a>.</li>
+        <li>Click <strong>Sign in with Roblox</strong> and log in to your Roblox account.</li>
+        <li>Click <strong>Confirm and Give Access</strong> when Roblox asks. It only reads your
+          user ID and public profile.</li>
+        <li>You are sent back to the access tokens page. Click <strong>Generate</strong>, then
+          copy your token and paste it below.</li>
+      </ol>
+    </div>
+    <label class="field max-w-[360px]">
+      <span class="field-label">Roblox username or user ID</span>
+      <input type="text" data-api="user" maxlength="40" autocomplete="off" spellcheck="false">
+    </label>
+    <label class="field max-w-[360px]">
+      <span class="field-label">Access token</span>
+      <input type="password" data-api="token" maxlength="200" autocomplete="off" spellcheck="false">
+    </label>
+    <label class="field max-w-[360px]" data-api="name-wrap" hidden>
+      <span class="field-label">Profile name <span class="normal-case">(optional)</span></span>
+      <input type="text" data-api="name" maxlength="40" autocomplete="off" spellcheck="false"
+             placeholder="Defaults to your username">
+    </label>
+    <p class="text-[13px]" data-api="target" hidden>Imports into <strong data-api="current-name"></strong>. Ticks not in your in-game index are removed.</p>
+    <p class="text-muted text-[13px]">
+      Your username and token are sent through a small proxy service to the
+      Powerful Studio API to read your index. The proxy does not store or log
+      them. They are kept in this browser so the profile can refresh itself.
+    </p>
+    <div class="flex flex-wrap gap-2 items-center">
+      <button type="button" class="btn btn-primary" data-api="connect">Import from API</button>
+      <button type="button" class="btn btn-quiet" data-api="disconnect" hidden>Disconnect</button>
+    </div>
+    <p class="text-[13px] empty:hidden" data-api="status" role="status"></p>
+  </div>
+</template>
+
 <dialog id="backup-dialog" class="dialog">
   <form method="dialog" class="float-right -mt-2 -mr-1.5">
     <button class="dialog-x" aria-label="Close">&times;</button>
@@ -282,6 +378,7 @@
   <div class="tabs mt-4" role="tablist">
     <button type="button" class="tab is-active" id="tab-export" role="tab" aria-selected="true">Export</button>
     <button type="button" class="tab" id="tab-import" role="tab" aria-selected="false">Import</button>
+    <button type="button" class="tab" id="tab-api" role="tab" aria-selected="false">From API</button>
   </div>
 
   <div class="flex flex-col gap-3" id="panel-export">
@@ -309,6 +406,8 @@
     <button type="button" class="btn btn-primary self-start" id="do-import">Import</button>
     <p class="text-[13px] empty:hidden" id="import-status" role="status"></p>
   </div>
+
+  <div id="panel-api" hidden></div>
 </dialog>
 
 <!-- Reserved for one-off events with nowhere else to show themselves: a renamed

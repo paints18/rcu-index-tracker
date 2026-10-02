@@ -9,6 +9,7 @@
  *   rcu:v1:profiles            -> [{ id, name, createdAt }]
  *   rcu:v1:activeProfile       -> profileId
  *   rcu:v1:progress:<id>       -> { "<pet-slug>": ["normal", "golden"] }
+ *   rcu:v1:link:<id>           -> { user, token, userId, syncedAt } (API import link)
  *
  * Progress is keyed by pet slug and variant id — never by array position — so
  * reordering or inserting pets in pets.json cannot disturb saved progress.
@@ -20,6 +21,7 @@ const NS = "rcu:v1";
 const KEY_PROFILES = `${NS}:profiles`;
 const KEY_ACTIVE = `${NS}:activeProfile`;
 const keyProgress = (profileId) => `${NS}:progress:${profileId}`;
+const keyLink = (profileId) => `${NS}:link:${profileId}`;
 
 export const MAX_NAME_LENGTH = 40;
 
@@ -45,10 +47,20 @@ function backing() {
 
 const memoryFallback = new Map();
 
+/**
+ * Anything in memoryFallback is newer than what storage holds: it only gets
+ * there when storage was absent, full, or refused a write. A `null` entry is a
+ * tombstone for a key storage would not let us remove.
+ */
 function readRaw(key) {
+  if (memoryFallback.has(key)) return memoryFallback.get(key);
   const store = backing();
-  if (store) return store.getItem(key);
-  return memoryFallback.has(key) ? memoryFallback.get(key) : null;
+  if (!store) return null;
+  try {
+    return store.getItem(key);
+  } catch {
+    return null;
+  }
 }
 
 function writeRaw(key, value) {
@@ -56,6 +68,7 @@ function writeRaw(key, value) {
   if (store) {
     try {
       store.setItem(key, value);
+      memoryFallback.delete(key);
       return true;
     } catch {
       // Quota exceeded — fall through to memory so the session still works.
@@ -67,7 +80,14 @@ function writeRaw(key, value) {
 
 function removeRaw(key) {
   const store = backing();
-  if (store) store.removeItem(key);
+  if (store) {
+    try {
+      store.removeItem(key);
+    } catch {
+      memoryFallback.set(key, null);
+      return;
+    }
+  }
   memoryFallback.delete(key);
 }
 
@@ -83,17 +103,36 @@ function readJSON(key, fallback) {
 }
 
 function makeId() {
-  if (crypto?.randomUUID) return crypto.randomUUID();
+  if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
   return `p_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
 }
 
 export function normalizeName(name) {
-  return String(name ?? "").trim().slice(0, MAX_NAME_LENGTH);
+  let clean = String(name ?? "").trim().slice(0, MAX_NAME_LENGTH);
+  // The cut can land inside a surrogate pair or leave a trailing space.
+  if (/[\ud800-\udbff]$/.test(clean)) clean = clean.slice(0, -1);
+  return clean.trimEnd();
 }
 
 /** Names are compared case-insensitively so "Paints" and "paints" are one profile. */
 function nameKey(name) {
   return normalizeName(name).toLowerCase();
+}
+
+/** The canonical link shape, or null when there is no usable user and token. */
+function normalizeLink(link) {
+  if (!link || typeof link !== "object" || Array.isArray(link)) return null;
+  if (typeof link.user !== "string" || !link.user) return null;
+  if (typeof link.token !== "string" || !link.token) return null;
+
+  const { userId, syncedAt } = link;
+  const validId = (typeof userId === "string" && userId !== "") || Number.isFinite(userId);
+  return {
+    user: link.user,
+    token: link.token,
+    userId: validId ? userId : null,
+    syncedAt: typeof syncedAt === "string" ? syncedAt : null,
+  };
 }
 
 export class Store {
@@ -110,7 +149,15 @@ export class Store {
   }
 
   emit(event) {
-    for (const fn of this.listeners) fn(event);
+    // One misbehaving listener must not abort the write that raised the event
+    // or starve the listeners after it.
+    for (const fn of this.listeners) {
+      try {
+        fn(event);
+      } catch (error) {
+        console.error("Store listener failed:", error);
+      }
+    }
   }
 
   /* ---------- profiles ---------- */
@@ -170,11 +217,38 @@ export class Store {
     return profile;
   }
 
+  /**
+   * Are this profile's ticks locked against hand edits? An explicit choice (see
+   * setLocked) wins; otherwise a profile is locked exactly when it is linked to
+   * the API, since the game is then the source of truth.
+   */
+  isLocked(profileId) {
+    const profile = this.getProfile(profileId);
+    if (!profile) return false;
+    if (typeof profile.locked === "boolean") return profile.locked;
+    return Boolean(this.getLink(profileId));
+  }
+
+  /** @param {boolean|null} locked null goes back to the default described above. */
+  setLocked(profileId, locked) {
+    const list = this.listProfiles();
+    const profile = list.find((p) => p.id === profileId);
+    if (!profile) return;
+    if (typeof locked === "boolean") profile.locked = locked;
+    else delete profile.locked;
+    this.saveProfiles(list);
+    this.emit({ type: "profiles" });
+  }
+
   deleteProfile(id) {
+    // Asked before the list is rewritten: afterwards the profile is gone and
+    // getActiveProfileId would already have fallen back to another one.
+    const wasActive = this.getActiveProfileId() === id;
     const list = this.listProfiles().filter((p) => p.id !== id);
     this.saveProfiles(list);
     removeRaw(keyProgress(id));
-    if (this.getActiveProfileId() === id) {
+    removeRaw(keyLink(id));
+    if (wasActive) {
       this.setActiveProfileId(list[0]?.id ?? null);
     }
     this.emit({ type: "profiles" });
@@ -192,6 +266,34 @@ export class Store {
     this.emit({ type: "activeProfile", profileId: id });
   }
 
+  /* ---------- API link ---------- */
+
+  /**
+   * The Roblox user and access token a profile imports from, so it can refresh
+   * itself. Local to this browser, like everything else here.
+   * `userId` is whatever the API returned (a number from Roblox); it is kept as
+   * stored so callers can compare it strictly against a fresh response.
+   * @returns {{user: string, token: string, userId: string|number|null, syncedAt: string|null}|null}
+   */
+  getLink(profileId) {
+    if (!profileId) return null;
+    return normalizeLink(readJSON(keyLink(profileId), null));
+  }
+
+  setLink(profileId, link) {
+    if (!profileId) return;
+    const clean = normalizeLink(link);
+    if (clean) writeRaw(keyLink(profileId), JSON.stringify(clean));
+    else removeRaw(keyLink(profileId));
+    this.emit({ type: "link", profileId });
+  }
+
+  clearLink(profileId) {
+    if (!profileId) return;
+    removeRaw(keyLink(profileId));
+    this.emit({ type: "link", profileId });
+  }
+
   /* ---------- progress ---------- */
 
   /** @returns {Record<string, string[]>} slug -> caught variant ids */
@@ -200,7 +302,9 @@ export class Store {
     const raw = readJSON(keyProgress(profileId), {});
     if (!raw || typeof raw !== "object" || Array.isArray(raw)) return {};
 
-    const clean = {};
+    // No prototype: a slug such as "__proto__" or "constructor" (a backup code
+    // can name anything) must be an ordinary key, not reach into Object.prototype.
+    const clean = Object.create(null);
     for (const [slug, variants] of Object.entries(raw)) {
       if (!Array.isArray(variants)) continue;
       const ids = [...new Set(variants.filter((v) => typeof v === "string"))];
@@ -211,7 +315,8 @@ export class Store {
 
   setProgress(profileId, progress) {
     if (!profileId) return;
-    writeRaw(keyProgress(profileId), JSON.stringify(progress));
+    const valid = progress && typeof progress === "object" && !Array.isArray(progress);
+    writeRaw(keyProgress(profileId), JSON.stringify(valid ? progress : {}));
     this.emit({ type: "progress", profileId });
   }
 
@@ -224,7 +329,7 @@ export class Store {
    * plus one variant id, with no dependence on the pet's position in the data.
    */
   setCaught(profileId, slug, variantId, caught) {
-    if (!profileId) return;
+    if (!profileId || typeof slug !== "string" || typeof variantId !== "string") return;
     const progress = this.getProgress(profileId);
     const current = new Set(progress[slug] ?? []);
 
@@ -259,12 +364,14 @@ export class Store {
    * @returns {number} boxes actually changed
    */
   setManyCaught(profileId, changes, caught) {
-    if (!profileId || !changes?.length) return 0;
+    if (!profileId || !Array.isArray(changes) || !changes.length) return 0;
 
     const progress = this.getProgress(profileId);
     let changed = 0;
 
-    for (const { slug, variantId } of changes) {
+    for (const change of changes) {
+      const { slug, variantId } = change ?? {};
+      if (typeof slug !== "string" || typeof variantId !== "string") continue;
       const current = new Set(progress[slug] ?? []);
       const before = current.size;
 
@@ -288,16 +395,23 @@ export class Store {
 
   /** Union of existing progress and incoming progress. Used by backup import. */
   mergeProgress(profileId, incoming) {
+    if (!profileId || !incoming || typeof incoming !== "object" || Array.isArray(incoming)) return 0;
+
     const progress = this.getProgress(profileId);
     let added = 0;
 
     for (const [slug, variants] of Object.entries(incoming)) {
+      if (!Array.isArray(variants)) continue;
       const current = new Set(progress[slug] ?? []);
       const before = current.size;
-      for (const v of variants) current.add(v);
+      for (const v of variants) if (typeof v === "string") current.add(v);
+      if (current.size === before) continue;
       added += current.size - before;
-      if (current.size) progress[slug] = [...current];
+      progress[slug] = [...current];
     }
+
+    // Nothing new: leave storage alone and raise no event.
+    if (!added) return 0;
 
     this.setProgress(profileId, progress);
     return added;
