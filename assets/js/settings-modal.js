@@ -6,10 +6,8 @@
  * the actual table instead of an empty preferences page — and closing it puts
  * you back exactly where you were.
  *
- * The markup is built here rather than written in HTML: this dialog is offered
- * from the tracker and from the editor, and two hand-kept copies of the same
- * form would drift. Building it also means it is lazy — a visitor who never
- * opens Settings never pays for the DOM.
+ * The markup is built here rather than written in HTML, so it is lazy — a visitor
+ * who never opens Settings never pays for the DOM.
  *
  * Pages opt in by calling mountSettingsModal() and marking a trigger with
  * `data-open-settings`.
@@ -581,8 +579,7 @@ export async function openSettings() {
  *   the page underneath can catch up — a deleted profile, new defaults.
  */
 export function mountSettingsModal(options = {}) {
-  // The first mount wins: the editor mounts this too, and inside the editor
-  // dialog that would otherwise throw away the tracker's getIndex/onChange.
+  // The first mount wins, so a second one cannot throw away getIndex/onChange.
   if (!mountTrigger("data-open-settings", OPEN_PARAM, openSettings)) return;
   host = options;
 

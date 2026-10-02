@@ -9,14 +9,6 @@ data/*.json.bak
 node_modules/
 package-lock.json
 
-# The editor: local-only by choice, not just unpublished. It never leaves this
-# machine, so it never appears in the GitHub repo's source either. Keep the
-# files themselves — npm run build still scans editor.html for Tailwind
-# classes, and opening it locally is how the weekly update happens.
-editor.html
-assets/js/editor.js
-assets/js/editor-save.js
-
 # Maintainer/dev notes — not ready for the public repo yet.
 docs/
 
@@ -24,7 +16,3 @@ docs/
 # etc. Not part of the site, and settings.local.json carries local machine
 # paths that shouldn't end up in a public repo.
 .claude/
-
-# Local-only shortcut that starts the server, opens the editor, and stops
-# the server again. Personal convenience, not part of the site.
-local/

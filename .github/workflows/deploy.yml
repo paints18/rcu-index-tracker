@@ -1,8 +1,7 @@
 name: Build and deploy
 
-# Replaces branch-based Pages deployment so the editor can be kept out of the
-# published site. Everything else about your workflow is unchanged: edit
-# data/pets.json, push, and this publishes it.
+# Publishes the site to GitHub Pages from an explicit allowlist of files:
+# edit data/pets.json, push, and this publishes it.
 #
 # This also absorbs what codes.yml used to do. Merging the two matters: a commit
 # pushed by GITHUB_TOKEN does NOT trigger further workflow runs, so if code
@@ -53,9 +52,7 @@ jobs:
 
       # Explicit allowlist rather than an ignore list: a new private tool added
       # later is excluded by default instead of leaking because someone forgot
-      # to update an exclusion. The editor itself never even reaches this
-      # checkout — editor.html, editor.js and editor-save.js are gitignored,
-      # not just unpublished — so there is nothing to strip out here anymore.
+      # to update an exclusion.
       - name: Assemble site
         run: |
           mkdir -p _site
@@ -83,17 +80,11 @@ jobs:
           find _site/assets/js -name '*.js' -exec \
             sed -i -E "s#from \"(\./[A-Za-z0-9_-]+\.js)\"#from \"\1?v=$v\"#" {} +
 
-      - name: Verify the editor is not published
+      - name: Verify the site is complete
         run: |
-          found=$(find _site -name 'editor*' -print)
-          if [ -n "$found" ]; then
-            echo "::error::Editor files leaked into the published site:"
-            echo "$found"
-            exit 1
-          fi
           test -f _site/index.html
           test -f _site/data/pets.json
-          echo "OK — editor excluded, site looks complete."
+          echo "OK — site looks complete."
 
       - uses: actions/upload-pages-artifact@v3
         with:

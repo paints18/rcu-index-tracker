@@ -1,7 +1,7 @@
 /**
  * Shared plumbing for the site's dialogs.
  *
- * The tracker is the only real page now — settings, updates and the editor are
+ * The tracker is the only real page now — settings, updates and help are
  * all dialogs opened from the nav. Each of those needs the same three things: a
  * <dialog> with a close ✕, a trigger that opens it, and a URL parameter so links
  * to the page it replaced still land in the right place. That is all this is;
@@ -42,7 +42,7 @@ export function showDialog(dialog) {
 }
 
 // Click-outside-to-close, for every dialog on the page — the ones built by
-// createDialog() above and the static ones in index.html/editor.html alike.
+// createDialog() above and the static ones in index.html alike.
 // A click on the ::backdrop targets the <dialog> element itself, same as a
 // click on the dialog's own padding — so target alone can't tell them apart.
 // The coordinates can: only a backdrop click falls outside the dialog's box.
@@ -71,8 +71,7 @@ const mounted = new Set();
  * @returns {boolean} False if this attribute was already mounted.
  */
 export function mountTrigger(attr, param, open) {
-  // The editor mounts the modals its own nav offers, and inside the editor
-  // dialog that is a page which has already mounted them.
+  // A trigger is only ever wired once, however many times a modal is mounted.
   if (mounted.has(attr)) return false;
   mounted.add(attr);
 

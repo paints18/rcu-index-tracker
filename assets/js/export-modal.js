@@ -4,8 +4,7 @@
  * code, which nobody is meant to read.
  *
  * Built here rather than in index.html for the same reason as the other
- * nav dialogs (see settings-modal.js): lazy DOM, and one copy shared by the
- * tracker and the editor.
+ * nav dialogs (see settings-modal.js): the DOM is only built when it is first opened.
  *
  * The list is built in stages: scope picks the pets, filters trim them, group-by
  * shapes them into lines, and a formatter turns those into text, a sheet (tab-separated,

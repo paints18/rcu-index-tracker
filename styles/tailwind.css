@@ -1,10 +1,8 @@
 @import "tailwindcss";
 
-/* index.html is the site; editor.html is its own local-only page (gitignored —
-   present on disk for whoever runs this build, absent for anyone else's clone).
-   settings.html and updates.html are redirect stubs with nothing to scan. */
+/* index.html is the site. settings.html and updates.html are redirect stubs with
+   nothing to scan. */
 @source "../index.html";
-@source "../editor.html";
 @source "../assets/js/**/*.js";
 
 /* ---------------------------------------------------------------------------
@@ -567,23 +565,6 @@
   .cat-pill.is-empty { @apply opacity-50; }
   .pill-count { @apply tabular-nums opacity-75 ml-1.5 text-xs; }
 
-  /* Reorderable pills — the editor only; the tracker's nav renders whatever
-     order pets.json is in and never sets these. Faded source and a marker on
-     the edge the dragged pill will land against, which is the same pair of
-     states .editor-row uses for a pet row. An inset shadow rather than a
-     border, because a border would be a pixel of layout and the whole row of
-     pills would twitch as the marker moved along it; it follows the pill's own
-     radius, so on a rounded-full pill it reads as a crescent down that side. */
-  .cat-pill.is-dragging { @apply opacity-40; }
-  .cat-pill.is-drop-before {
-    @apply border-edge-hi;
-    box-shadow: inset 3px 0 0 var(--c-accent);
-  }
-  .cat-pill.is-drop-after {
-    @apply border-edge-hi;
-    box-shadow: inset -3px 0 0 var(--c-accent);
-  }
-
   /* ---------- pet table ---------- */
 
   /* --table-radius is read back by the pet table's corner cells, so the two
@@ -593,8 +574,7 @@
     @apply overflow-x-auto border border-edge rounded-[var(--table-radius)] bg-raised;
   }
 
-  /* Only the pet table, whose <thead> is sticky — the editor's list wants a
-     plain scroller and has no header to pin.
+  /* Only the pet table, whose <thead> is sticky.
 
      `overflow-x: auto` forces `overflow-y` to `auto` as well, which turns this
      into a scroll container, and the sticky <thead> inside then sticks to *it*
@@ -987,27 +967,6 @@
      since the dialog is already a raised surface — but a little more air,
      because these are paragraphs to read rather than rows to scan. */
   .prose-group + .prose-group { @apply mt-5 pt-5 border-t border-edge; }
-
-  /* ---------- editor page ---------- */
-
-  .editor-grid {
-    grid-template-columns:
-      26px minmax(150px, 1.4fr) minmax(120px, 1fr) minmax(110px, 0.9fr)
-      88px repeat(4, 44px) minmax(190px, 1.2fr) 58px;
-  }
-
-  .editor-row { @apply grid gap-2 items-center border-t border-edge py-1.5; }
-  .drag-handle { @apply cursor-grab text-muted select-none px-1 active:cursor-grabbing; }
-  .editor-row.is-dragging { @apply opacity-40; }
-  .editor-row.is-drop-target { @apply border-t-2 border-t-accent; }
-  /* The live column count under a variant head. Tabular figures so the number
-     cannot change width as it counts up, in a fixed 44px column. */
-  .head-count {
-    @apply block font-normal normal-case tracking-normal text-[10px] leading-tight
-           text-muted tabular-nums;
-  }
-  .slug-preview { @apply font-mono text-[11px] text-muted truncate; }
-  .slug-preview.is-clash { @apply text-danger font-semibold; }
 }
 
 @utility toast-shadow {

@@ -4,9 +4,8 @@
  * Both are written as data — a list of sections, each holding paragraphs and
  * bullet lists — and rendered here, so neither module spends fifty lines of
  * createElement around its own prose. They are built in JS rather than written
- * into index.html for the same reason Settings is: the nav that offers them sits
- * on the tracker and on the editor, and a visitor who never opens Help should
- * never pay for its DOM.
+ * into index.html for the same reason Settings is: a visitor who never opens Help
+ * should never pay for its DOM.
  *
  * A section's blocks may be:
  *   "text"          a paragraph
