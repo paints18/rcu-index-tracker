@@ -401,7 +401,7 @@ function formatList(groups, labels) {
       (v) => !skip.has(v.id) && entries.some(({ pet }) => pet.variants.includes(v.id)),
     );
 
-    const rows = [["World", "Pet", ...columns.map((v) => labels.get(v.id) ?? v.id)]];
+    const rows = [["Category", "Pet", ...columns.map((v) => labels.get(v.id) ?? v.id)]];
     for (const { pet } of entries) {
       const caught = progress[pet.slug] ?? [];
       rows.push([
