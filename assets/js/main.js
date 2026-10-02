@@ -142,6 +142,8 @@ const state = {
   progress: {},
   categoryId: null,
   filters: { search: "", egg: "", rarities: [], status: "all", missing: "" },
+  /** List grouped by egg (the Egg header is toggled on) rather than in the data's own order. */
+  sortByEgg: false,
   /** Variant columns the current head was built with; syncTableHead needs them. */
   usedVariants: [],
 
@@ -577,14 +579,45 @@ function updateTableHead() {
   if (isLocked()) for (const input of headRow.querySelectorAll("input")) input.setAttribute("aria-disabled", "true");
 }
 
+/** Whether the Egg column is showing; with it hidden there is nothing to sort by. */
+function eggColumnShown() {
+  return !(document.documentElement.dataset.hideCols ?? "").split(" ").includes("egg");
+}
+
+/**
+ * The pets grouped by egg when the Egg header is on, otherwise in the data's own
+ * order. Not alphabetical: eggs are ranked by where each first appears in the
+ * category's own list (the in-game order), so every egg's pets come together and
+ * the eggs keep that order. Pets with no egg go last, and pets of one egg keep
+ * their list order.
+ */
+function sortPets(pets, category) {
+  if (!state.sortByEgg || !eggColumnShown()) return pets;
+
+  const rank = new Map();
+  for (const pet of category.pets) {
+    if (pet.egg && pet.egg !== "-" && !rank.has(pet.egg)) rank.set(pet.egg, rank.size);
+  }
+  const at = (pet) => rank.get(pet.egg) ?? rank.size;
+  return [...pets].sort((a, b) => at(a) - at(b));
+}
+
+/** Mark the Egg header when it is sorting, for the arrow and for screen readers. */
+function syncSortHeads() {
+  const th = dom.thead.querySelector("th.col-egg");
+  if (state.sortByEgg && eggColumnShown()) th?.setAttribute("aria-sort", "ascending");
+  else th?.removeAttribute("aria-sort");
+}
+
 function renderTable() {
   const category = activeCategory();
-  const pets = visiblePets(category);
+  const pets = sortPets(visiblePets(category), category);
 
   // Head after rows would be tidier, but the head owns the column set the rows
   // are built against, so it has to come first; it is handed the pet list
   // directly rather than reading the DOM it is about to precede.
   const used = renderTableHeadFor(category, pets);
+  syncSortHeads();
 
   dom.tbody.replaceChildren(renderRows(pets, state.progress, used, state.index.widest));
   dom.emptyState.hidden = pets.length > 0 || category.pets.length === 0;
@@ -1930,6 +1963,16 @@ function wireEvents() {
     const shiftKey = shiftOnClick;
     shiftOnClick = false;
     onTick(input, shiftKey);
+  });
+
+  // The Egg header toggles grouping by egg; clicking it again puts the order back.
+  dom.thead.addEventListener("click", (event) => {
+    if (!event.target.closest(".sort-btn")) return;
+    state.sortByEgg = !state.sortByEgg;
+    state.range = null; // an anchor row means nothing in a new order
+    renderBody();
+    // The head was rebuilt, so the button that had focus is gone.
+    dom.thead.querySelector(".sort-btn")?.focus();
   });
 
   // The head's bulk checkboxes. Separate from the tbody listener above because

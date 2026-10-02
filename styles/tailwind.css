@@ -702,6 +702,27 @@
 
   .col-name { @apply font-medium; }
   .col-egg, .col-rarity, .col-clicks { @apply text-muted text-[13px]; }
+
+  /* A sortable header. The label is a bare button in the header's own type, and
+     the arrow hangs off its right edge (into the column's padding) so adding it
+     does not change any column's width. aria-sort on the <th> says which way. */
+  .sort-btn {
+    @apply relative cursor-pointer bg-transparent border-0 p-0 uppercase hover:text-ink
+           font-[inherit] text-[inherit] tracking-[inherit];
+  }
+  .sort-btn::after {
+    content: "";
+    @apply absolute opacity-0;
+    left: calc(100% + 5px);
+    top: 50%;
+    margin-top: -3px;
+    border: 3.5px solid transparent;
+    border-bottom: 5px solid currentColor;
+    border-top-width: 0;
+  }
+  .sort-btn:hover::after { @apply opacity-40; }
+  th[aria-sort] .sort-btn { @apply text-ink; }
+  th[aria-sort] .sort-btn::after { @apply opacity-100; }
   .col-clicks { @apply tabular-nums; }
 
   /* Every width sample and the label share one grid cell, so the column is as

@@ -283,13 +283,24 @@ function headCell(className, columnId, label, variantId) {
  * .col-sizer's own font rules.
  *
  * @param {string[]} samples Candidates for the widest value (see widestValues).
+ * @param {string} [sortKey] Makes the label a button that sorts the list by this
+ *   column (only Egg does). Its arrow is drawn outside the label's box (see
+ *   .sort-btn), so a sortable header is exactly as wide as a plain one.
  */
-function textHead(className, label, samples = []) {
+function textHead(className, label, samples = [], sortKey = null) {
   const cell = el("th", className);
   cell.scope = "col";
 
   const stack = el("span", "head-stack");
-  stack.append(el("span", null, label));
+  if (sortKey) {
+    const button = el("button", "sort-btn", label);
+    button.type = "button";
+    button.dataset.sort = sortKey;
+    button.title = `Sort by ${label.toLowerCase()}`;
+    stack.append(button);
+  } else {
+    stack.append(el("span", null, label));
+  }
   for (const sample of samples) stack.append(el("span", "col-sizer", sample));
 
   cell.append(stack);
@@ -299,7 +310,7 @@ function textHead(className, label, samples = []) {
 export function renderTableHead(variants, category, counts, widest = {}) {
   const row = el("tr");
   row.append(textHead("col-name", "Pet", widest.name));
-  row.append(textHead("col-egg", "Egg", widest.egg));
+  row.append(textHead("col-egg", "Egg", widest.egg, "egg"));
   row.append(textHead("col-rarity", "Rarity", widest.rarity));
   row.append(textHead("col-clicks", "Clicks", widest.clicks));
 

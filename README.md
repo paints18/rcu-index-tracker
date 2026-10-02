@@ -19,7 +19,9 @@ profile name.
   Galaxy). The Missing menu is disabled and reset to No filter. The chosen view
   is remembered in this browser.
 - List view is a table with a box per variant. The **All** column shows a full
-  or partial ring depending on how many of a pet's variants you own.
+  or partial ring depending on how many of a pet's variants you own. Clicking the
+  Egg header groups the list by egg, with the eggs in list order; clicking it
+  again restores the default order.
 - Browse by category, or filter by name, egg, rarity, completion status, or
   a specific missing variant. Rarity is a checklist: tick any number of
   rarities, or none for all. The Egg, Rarity, Status and Missing menus are
