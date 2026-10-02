@@ -11,9 +11,10 @@ work the integers must be *permanent*:
   * new pets append at the end, so adding pets never shifts existing ones and
     every backup code ever issued stays valid.
 
-You do not run this by hand. The GitHub Action in .github/workflows/codes.yml
-runs it whenever data/pets.json changes on main and commits the result back.
-Your workflow stays: edit data/pets.json, push.
+You do not run this by hand. The pre-commit hook in .githooks runs it whenever
+data/pets.json is committed and stages the result (enable it once per clone with
+`git config core.hooksPath .githooks`). The deploy workflow runs it again as a
+safety net and commits the ledger back only if it still changed.
 
 Run manually if you want:  python tools/assign_codes.py
 Exits 0 if nothing changed, 0 after writing if it did, non-zero on error.

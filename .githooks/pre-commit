@@ -1,0 +1,14 @@
+#!/bin/sh
+# Keeps data/codes.json in step with data/pets.json at commit time, so the
+# deploy workflow finds nothing to assign and never commits to main itself.
+# Enable once per clone:  git config core.hooksPath .githooks
+
+git diff --cached --name-only | grep -qx 'data/pets.json' || exit 0
+
+PY=$(command -v python3 || command -v python) || {
+  echo "pre-commit: python not found; skipping code assignment (CI will do it)." >&2
+  exit 0
+}
+
+"$PY" tools/assign_codes.py || exit 1
+git add data/codes.json
