@@ -13,12 +13,16 @@ profile name.
 - Grid view (the default; Grid view/List view toggle in the category header)
   shows the in-game index layout: one variant at a time, 7 tiles per row,
   not-indexed pets as silhouettes, and a hover card with rarity, clicks and
-  egg. Clicking a tile ticks it. Filters, counts and Undo are shared with the
-  list. The chosen view is remembered in this browser.
+  egg. Clicking a tile ticks it. Search, Egg, Rarity, counts and Undo are shared
+  with the list. The Status menu offers only All pets and Not indexed, and the
+  Missing menu is disabled and reset to No filter. The chosen view is remembered in this browser.
 - List view is a table with a box per variant. The **All** column shows a full
   or partial ring depending on how many of a pet's variants you own.
 - Browse by category, or filter by name, egg, rarity, completion status, or
-  a specific missing variant.
+  a specific missing variant. Rarity is a checklist: tick any number of
+  rarities, or none for all. The Egg, Rarity, Status and Missing menus are
+  drawn by the page, not the browser, so they look and behave the same in
+  every browser. Status and Missing apply to List view only.
 - List view: fill a whole column at once for the pets currently shown, or
   shift-click to fill a range. Undo reverts any of these bulk edits.
 - Keyboard navigation in both views: arrow keys, Home/End, Ctrl+Home/Ctrl+End
@@ -51,7 +55,7 @@ profile name.
   can be copied or downloaded. Options are remembered in this browser.
 - Light/dark mode, colour themes, a compact density option, and the ability
   to hide unused columns (Egg, Rarity, Clicks). A default category and
-  hide-completed-pets option are also available in Settings.
+  hide-completed-pets option (List view only) are also available in Settings.
 
 ## Data
 

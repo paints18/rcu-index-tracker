@@ -33,8 +33,8 @@ import {
   renderRows,
   syncRow,
   syncTableHead,
-  fillSelect,
   fillSizer,
+  mountMenu,
   usedVariants,
   percent,
 } from "./ui.js";
@@ -71,12 +71,9 @@ const dom = {
   catCount: $("cat-count"),
 
   filterSearch: $("filter-search"),
-  filterEgg: $("filter-egg"),
-  filterRarity: $("filter-rarity"),
   eggSizer: $("egg-sizer"),
   raritySizer: $("rarity-sizer"),
-  filterStatus: $("filter-status"),
-  filterMissing: $("filter-missing"),
+  statusSizer: $("status-sizer"),
   missingSizer: $("missing-sizer"),
   filterReset: $("filter-reset"),
 
@@ -144,7 +141,7 @@ const state = {
   profileId: null,
   progress: {},
   categoryId: null,
-  filters: { search: "", egg: "", rarity: "", status: "all", missing: "" },
+  filters: { search: "", egg: "", rarities: [], status: "all", missing: "" },
   /** Variant columns the current head was built with; syncTableHead needs them. */
   usedVariants: [],
 
@@ -202,6 +199,68 @@ const UNDO_LIMIT = 200;
  * misread that way, even though it costs the visual parallel with Egg/Rarity.
  */
 const FILTER_ALL = { egg: "All eggs", rarity: "All rarities", missing: "No filter" };
+
+const STATUS_OPTIONS = [
+  { value: "all", label: "All pets" },
+  { value: "incomplete", label: "Incomplete" },
+  { value: "complete", label: "Complete" },
+  { value: "untouched", label: "Not indexed" },
+];
+
+/**
+ * Status choices for the view on screen. The grid shows one variant at a time, so
+ * "incomplete" and "complete" (judged across every variant of a pet) have nothing
+ * to say there; it keeps only the two that still make sense.
+ */
+function statusOptions() {
+  return state.view === "grid"
+    ? STATUS_OPTIONS.filter((o) => o.value === "all" || o.value === "untouched")
+    : STATUS_OPTIONS;
+}
+
+/** "No filter" plus the variants this category has. */
+function missingOptions(variants = usedVariants(state.index.variants, activeCategory())) {
+  return [{ value: "", label: FILTER_ALL.missing }, ...variants.map((v) => ({ value: v.id, label: v.label }))];
+}
+
+/** The filter menus. Rarity is the one that takes several values, so it is a checklist. */
+const menus = {
+  egg: mountMenu({
+    button: $("filter-egg"),
+    panel: $("egg-panel"),
+    onChange: (value) => {
+      state.filters.egg = value;
+      renderBody();
+    },
+  }),
+  rarity: mountMenu({
+    button: $("filter-rarity"),
+    panel: $("rarity-panel"),
+    multiple: true,
+    allLabel: FILTER_ALL.rarity,
+    countLabel: (n) => `${n} rarities`,
+    onChange: (value) => {
+      state.filters.rarities = value;
+      renderBody();
+    },
+  }),
+  status: mountMenu({
+    button: $("filter-status"),
+    panel: $("status-panel"),
+    onChange: (value) => {
+      state.filters.status = value;
+      renderBody();
+    },
+  }),
+  missing: mountMenu({
+    button: $("filter-missing"),
+    panel: $("missing-panel"),
+    onChange: (value) => {
+      state.filters.missing = value;
+      renderBody();
+    },
+  }),
+};
 
 /* ------------------------------------------------------------------ */
 /* helpers                                                             */
@@ -416,12 +475,17 @@ function renderCounts() {
 }
 
 function visiblePets(category) {
-  const { search, egg, rarity, status, missing } = state.filters;
+  const { search, egg, rarities, missing } = state.filters;
+  // A status the grid does not offer (say, hide-completed carried over from the
+  // list) is set aside there rather than filtering with no way to see or undo it.
+  const status = statusOptions().some((o) => o.value === state.filters.status)
+    ? state.filters.status
+    : "all";
   const needle = search.trim().toLowerCase();
 
   return category.pets.filter((pet) => {
     if (egg && pet.egg !== egg) return false;
-    if (rarity && pet.rarity !== rarity) return false;
+    if (rarities.length && !rarities.includes(pet.rarity)) return false;
 
     if (needle) {
       const haystack = `${pet.name} ${pet.egg ?? ""}`.toLowerCase();
@@ -826,24 +890,17 @@ function renderUndo() {
 
 function renderFilters() {
   const category = activeCategory();
-  fillSelect(dom.filterEgg, category.eggs.filter((e) => e !== "-"), {
-    placeholder: FILTER_ALL.egg,
-    value: state.filters.egg,
-  });
-  fillSelect(dom.filterRarity, category.rarities, {
-    placeholder: FILTER_ALL.rarity,
-    value: state.filters.rarity,
-  });
+  menus.egg.setOptions(
+    [{ value: "", label: FILTER_ALL.egg }, ...category.eggs.filter((e) => e !== "-")],
+    state.filters.egg,
+  );
+  menus.rarity.setOptions(category.rarities, state.filters.rarities);
   // Same variant set the tick columns show for this category (see
   // renderTableHead) — never an option guaranteed to match nothing.
   const variants = usedVariants(state.index.variants, category);
-  fillSelect(
-    dom.filterMissing,
-    variants.map((v) => ({ value: v.id, label: v.label })),
-    { placeholder: FILTER_ALL.missing, value: state.filters.missing },
-  );
+  menus.missing.setOptions(missingOptions(variants), state.filters.missing);
+  menus.status.setOptions(statusOptions(), state.filters.status);
   dom.filterSearch.value = state.filters.search;
-  dom.filterStatus.value = state.filters.status;
 }
 
 function renderAll() {
@@ -963,6 +1020,12 @@ function applyView() {
   for (const button of dom.viewButtons) {
     button.setAttribute("aria-pressed", String(button.dataset.view === state.view));
   }
+  // The grid already shows one variant at a time, so its Missing menu is turned
+  // off and cleared; a Missing choice made in the list does not come back.
+  if (grid) state.filters.missing = "";
+  menus.status.setOptions(statusOptions(), state.filters.status);
+  menus.missing.setOptions(missingOptions(), state.filters.missing);
+  menus.missing.setDisabled(grid);
 }
 
 async function setView(view) {
@@ -1075,7 +1138,7 @@ function selectCategory(categoryId) {
 
   state.categoryId = categoryId;
   state.filters.egg = "";
-  state.filters.rarity = "";
+  state.filters.rarities = [];
 
   // Unlike egg/rarity, a variant id means the same thing in every category, so
   // "Missing Golden" is left standing rather than cleared on every switch — it
@@ -1896,27 +1959,11 @@ function wireEvents() {
     }, 120);
   });
 
-  dom.filterEgg.addEventListener("change", () => {
-    state.filters.egg = dom.filterEgg.value;
-    renderBody();
-  });
-  dom.filterRarity.addEventListener("change", () => {
-    state.filters.rarity = dom.filterRarity.value;
-    renderBody();
-  });
-  dom.filterStatus.addEventListener("change", () => {
-    state.filters.status = dom.filterStatus.value;
-    renderBody();
-  });
-  dom.filterMissing.addEventListener("change", () => {
-    state.filters.missing = dom.filterMissing.value;
-    renderBody();
-  });
   dom.filterReset.addEventListener("click", () => {
     // "Reset" means back to your configured default, not back to showing
     // everything — otherwise it would undo the hide-completed preference.
     const status = loadSettings().hideCompleted ? "incomplete" : "all";
-    state.filters = { search: "", egg: "", rarity: "", status, missing: "" };
+    state.filters = { search: "", egg: "", rarities: [], status, missing: "" };
     renderFilters();
     renderBody();
   });
@@ -1969,6 +2016,7 @@ async function boot() {
   // change while the page is open.
   fillSizer(dom.eggSizer, [...state.index.widest.egg, FILTER_ALL.egg]);
   fillSizer(dom.raritySizer, [...state.index.widest.rarity, FILTER_ALL.rarity]);
+  fillSizer(dom.statusSizer, STATUS_OPTIONS.map((o) => o.label));
   fillSizer(dom.missingSizer, [...state.index.variants.map((v) => v.label), FILTER_ALL.missing]);
 
   state.categoryId = initialCategoryId(state.index, settings);

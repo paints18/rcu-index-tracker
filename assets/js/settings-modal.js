@@ -226,7 +226,7 @@ function buildDialog() {
   tracker.append(
     row(
       "Hide fully caught pets by default",
-      null,
+      "List view only. Grid view always shows every pet.",
       hideCompleted.label,
     ),
   );

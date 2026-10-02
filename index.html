@@ -164,34 +164,46 @@
         <input type="search" id="filter-search" placeholder="Pet or egg name…"
                autocomplete="off" spellcheck="false">
       </label>
-      <!-- The menus hold one category's eggs and rarities, so left to themselves
+      <!-- All four menus are buttons opening a list the page draws itself (see
+           mountMenu in ui.js) instead of native selects, so they open the same
+           way in every browser, and Rarity can be a checklist.
+
+           The menus hold one category's eggs and rarities, so left to themselves
            they are a different width in every world and the whole filter row
            reshuffles as you switch. The sizer next to each is filled with the
            longest values in the entire dataset and holds the width open; see
            .select-wrap. -->
-      <label class="field">
-        <span class="field-label">Egg</span>
-        <span class="select-wrap">
-          <select id="filter-egg"></select>
+      <div class="field">
+        <span class="field-label" id="egg-label">Egg</span>
+        <div class="select-wrap menu">
+          <button type="button" class="select-btn" id="filter-egg"
+                  aria-labelledby="egg-label filter-egg"
+                  aria-haspopup="listbox" aria-expanded="false"></button>
           <span class="select-sizer" id="egg-sizer"></span>
-        </span>
-      </label>
-      <label class="field">
-        <span class="field-label">Rarity</span>
-        <span class="select-wrap">
-          <select id="filter-rarity"></select>
+          <div class="menu-panel" id="egg-panel" hidden></div>
+        </div>
+      </div>
+      <!-- Several rarities can be ticked at once; nothing ticked means every rarity. -->
+      <div class="field">
+        <span class="field-label" id="rarity-label">Rarity</span>
+        <div class="select-wrap menu">
+          <button type="button" class="select-btn" id="filter-rarity"
+                  aria-labelledby="rarity-label filter-rarity"
+                  aria-haspopup="true" aria-expanded="false"></button>
           <span class="select-sizer" id="rarity-sizer"></span>
-        </span>
-      </label>
-      <label class="field">
-        <span class="field-label">Status</span>
-        <select id="filter-status">
-          <option value="all">All pets</option>
-          <option value="incomplete">Incomplete</option>
-          <option value="complete">Complete</option>
-          <option value="untouched">Not indexed</option>
-        </select>
-      </label>
+          <div class="menu-panel" id="rarity-panel" hidden></div>
+        </div>
+      </div>
+      <div class="field">
+        <span class="field-label" id="status-label">Status</span>
+        <div class="select-wrap menu">
+          <button type="button" class="select-btn" id="filter-status"
+                  aria-labelledby="status-label filter-status"
+                  aria-haspopup="listbox" aria-expanded="false"></button>
+          <span class="select-sizer" id="status-sizer"></span>
+          <div class="menu-panel" id="status-panel" hidden></div>
+        </div>
+      </div>
       <!-- Which variant is still unticked, not how far along the pet is overall
            — a separate axis from Status on purpose, so the two combine (e.g.
            Incomplete + Missing Golden) instead of one dropdown trying to hold
@@ -205,13 +217,16 @@
            than "not filtering by this". Its sizer is a fixed list of every
            variant rather than the per-category widest (see egg/rarity
            above), since the option set is the same small handful everywhere. -->
-      <label class="field">
-        <span class="field-label">Missing</span>
-        <span class="select-wrap">
-          <select id="filter-missing"></select>
+      <div class="field">
+        <span class="field-label" id="missing-label">Missing</span>
+        <div class="select-wrap menu">
+          <button type="button" class="select-btn" id="filter-missing"
+                  aria-labelledby="missing-label filter-missing"
+                  aria-haspopup="listbox" aria-expanded="false"></button>
           <span class="select-sizer" id="missing-sizer"></span>
-        </span>
-      </label>
+          <div class="menu-panel" id="missing-panel" hidden></div>
+        </div>
+      </div>
       <button type="button" class="btn btn-quiet" id="filter-reset">Clear filters</button>
 
       <!-- Always present, enabled only when there is something to roll back:

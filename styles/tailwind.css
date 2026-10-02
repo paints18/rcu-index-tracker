@@ -463,6 +463,43 @@
     grid-area: 1 / 1;
     @apply w-0 min-w-full;
   }
+  .select-wrap > .select-btn {
+    grid-area: 1 / 1;
+    @apply w-0 min-w-full bg-input text-ink border border-edge-hi rounded-lg py-[7px]
+           text-left cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap
+           bg-no-repeat font-[inherit] text-[inherit];
+    background-image: var(--select-arrow);
+    background-position: right 0.75rem center;
+    background-size: 11px 7px;
+    padding-left: var(--select-pad-x);
+    padding-right: var(--select-pad-right);
+  }
+  .select-btn:disabled { @apply opacity-50 cursor-not-allowed; }
+  .select-btn:focus-visible { @apply outline-2 outline-accent outline-offset-1; }
+
+  /* The list hangs under its button without taking any room in the filter row.
+     Wide enough for the longest option, never narrower than the button. It is
+     the page's own control rather than the browser's, so it looks the same in
+     every browser: the same fill and border as the buttons, rounded like
+     the cards, and the accent for whatever is picked, hovered or focused. */
+  .menu { @apply relative; }
+  .menu-panel {
+    @apply absolute left-0 top-full z-30 min-w-full w-max max-w-[80vw] max-h-[60vh] overflow-y-auto
+           flex flex-col gap-px p-1 mt-1 bg-input text-ink border border-edge-hi rounded-lg
+           font-[inherit] text-[inherit];
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.28);
+  }
+  .menu-panel[hidden] { @apply hidden; }
+  .menu-row {
+    @apply flex items-center gap-2 px-2 min-h-8 shrink-0 cursor-pointer whitespace-nowrap
+           text-left bg-transparent border-0 rounded-md font-[inherit] text-[inherit];
+  }
+  .menu-row:hover,
+  .menu-row:focus-within,
+  .menu-row:focus-visible { background-color: color-mix(in srgb, var(--c-accent) 16%, transparent); }
+  .menu-row:focus-visible { @apply outline-none; }
+  .menu-row.is-on { background-color: var(--c-accent-soft); }
+  .menu-row:disabled { @apply cursor-default text-muted bg-transparent; }
   .select-sizer {
     grid-area: 1 / 1;
     /* Its own samples stack inside it, same as the table's do. One line of text

@@ -507,27 +507,165 @@ export function fillSizer(sizer, samples = []) {
   sizer.replaceChildren(...samples.map((sample) => el("span", null, sample)));
 }
 
-export function fillSelect(select, options, { placeholder, value } = {}) {
-  select.replaceChildren();
+/**
+ * A drop-down made of a select-looking button and a list that opens under it,
+ * drawn by the page instead of the browser so every menu looks the same in
+ * every browser. Two kinds:
+ *
+ *  - single (default): pick one option and the list closes. The first option is
+ *    usually the "no filter" entry, e.g. { value: "", label: "All eggs" }.
+ *  - multiple: a checklist. Nothing ticked means "no filter", so the button
+ *    reads as `allLabel`; one tick shows its name, more show `countLabel(n)`.
+ *
+ * Dismissed by a click anywhere else, Escape, or focus leaving it. Arrow keys
+ * move between the rows. `setOptions` rebuilds the list, e.g. per category.
+ *
+ * @param {object} cfg
+ * @param {HTMLButtonElement} cfg.button
+ * @param {HTMLElement} cfg.panel  Child of the element that wraps the button.
+ * @param {boolean} [cfg.multiple]
+ * @param {string} [cfg.allLabel]  multiple only: button text while nothing is ticked.
+ * @param {(n: number) => string} [cfg.countLabel]  multiple only: text for 2 or more ticked.
+ * @param {(value: string | string[]) => void} cfg.onChange
+ */
+export function mountMenu({ button, panel, multiple = false, allLabel = "", countLabel, onChange }) {
+  const wrap = panel.parentElement;
+  let options = []; // [{ value, label }]
+  let selected = multiple ? [] : "";
 
-  if (placeholder) {
-    const opt = document.createElement("option");
-    opt.value = "";
-    opt.textContent = placeholder;
-    select.append(opt);
-  }
+  panel.setAttribute("role", multiple ? "group" : "listbox");
 
-  for (const option of options) {
-    const opt = document.createElement("option");
-    if (typeof option === "string") {
-      opt.value = option;
-      opt.textContent = option;
-    } else {
-      opt.value = option.value;
-      opt.textContent = option.label;
+  const rows = () => [...panel.querySelectorAll(".menu-row:not(:disabled)")];
+
+  const setOpen = (open, focusRow = false) => {
+    panel.hidden = !open;
+    button.setAttribute("aria-expanded", String(open));
+    if (open && focusRow) {
+      const list = rows();
+      const on = list.find((row) => row.classList.contains("is-on")) ?? list[0];
+      (on?.querySelector("input") ?? on)?.focus();
     }
-    select.append(opt);
-  }
+  };
 
-  if (value != null) select.value = value;
+  const labelOf = (value) => options.find((o) => o.value === value)?.label ?? "";
+
+  const renderButton = () => {
+    if (!multiple) {
+      button.textContent = labelOf(selected);
+    } else if (selected.length === 0) {
+      button.textContent = allLabel;
+    } else {
+      button.textContent = selected.length === 1 ? labelOf(selected[0]) : countLabel(selected.length);
+    }
+  };
+
+  const renderPanel = () => {
+    if (!multiple) {
+      panel.replaceChildren(
+        ...options.map((option) => {
+          const row = el("button", "menu-row", option.label);
+          row.type = "button";
+          row.setAttribute("role", "option");
+          row.setAttribute("aria-selected", String(option.value === selected));
+          row.classList.toggle("is-on", option.value === selected);
+          row.addEventListener("click", () => {
+            const changed = option.value !== selected;
+            selected = option.value;
+            renderButton();
+            renderPanel();
+            setOpen(false);
+            button.focus();
+            if (changed) onChange(selected);
+          });
+          return row;
+        }),
+      );
+      return;
+    }
+
+    const clear = el("button", "menu-row", "Clear");
+    clear.type = "button";
+    clear.disabled = selected.length === 0;
+    clear.addEventListener("click", () => {
+      selected = [];
+      for (const input of panel.querySelectorAll("input")) {
+        input.checked = false;
+        input.closest("label").classList.remove("is-on");
+      }
+      clear.disabled = true;
+      renderButton();
+      onChange([]);
+    });
+
+    const checks = options.map((option) => {
+      const row = el("label", "menu-row");
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.value = option.value;
+      input.checked = selected.includes(option.value);
+      row.classList.toggle("is-on", input.checked);
+      input.addEventListener("change", () => {
+        row.classList.toggle("is-on", input.checked);
+        // Kept in the list's own order, however the ticks were made.
+        selected = options.map((o) => o.value).filter((v) =>
+          v === option.value ? input.checked : selected.includes(v),
+        );
+        clear.disabled = selected.length === 0;
+        renderButton();
+        onChange([...selected]);
+      });
+      row.append(input, el("span", null, option.label));
+      return row;
+    });
+    panel.replaceChildren(...checks, clear);
+  };
+
+  button.addEventListener("click", () => setOpen(panel.hidden));
+  document.addEventListener("click", (event) => {
+    if (!panel.hidden && !wrap.contains(event.target)) setOpen(false);
+  });
+  wrap.addEventListener("focusout", (event) => {
+    if (!panel.hidden && event.relatedTarget && !wrap.contains(event.relatedTarget)) setOpen(false);
+  });
+  wrap.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !panel.hidden) {
+      setOpen(false);
+      button.focus();
+      return;
+    }
+    if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+    event.preventDefault();
+    if (panel.hidden) return setOpen(true, true);
+    const list = rows().map((row) => row.querySelector("input") ?? row);
+    const at = list.indexOf(document.activeElement);
+    const next = event.key === "ArrowDown" ? at + 1 : at - 1;
+    list[(next + list.length) % list.length]?.focus();
+  });
+
+  return {
+    /** Grey the menu out and shut its list; a disabled menu keeps its text. */
+    setDisabled(disabled) {
+      button.disabled = disabled;
+      if (disabled) setOpen(false);
+    },
+
+    /**
+     * Replace the choices. `value` is the current pick: a string, or for a
+     * multiple menu an array. Anything no longer on offer falls back to the
+     * first option (single) or is dropped (multiple).
+     *
+     * @param {(string | { value: string, label: string })[]} next
+     * @param {string | string[]} [value]
+     */
+    setOptions(next, value) {
+      options = next.map((o) => (typeof o === "string" ? { value: o, label: o } : o));
+      if (multiple) {
+        selected = options.map((o) => o.value).filter((v) => (value ?? []).includes(v));
+      } else {
+        selected = options.some((o) => o.value === value) ? value : (options[0]?.value ?? "");
+      }
+      renderButton();
+      renderPanel();
+    },
+  };
 }
