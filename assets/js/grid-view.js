@@ -1,12 +1,18 @@
 /**
  * Grid view: the in-game index layout as an alternative to the checklist table.
  *
- * Pure rendering. State and persistence stay in main.js; this module builds
- * tiles from a pet list and a progress object and exposes syncTile so a click
- * can update one tile in place instead of rebuilding the grid.
+ * Rendering only. State and persistence stay in main.js; this module builds tiles
+ * from a pet list and a progress object and exposes syncTile so a click can
+ * update one tile in place instead of rebuilding the grid.
+ *
+ * Only the rows near the scroll position exist in the page. The "All" category is
+ * well over a thousand pets, and a thousand image elements (each with a CSS filter
+ * for the silhouette) is what makes scrolling it crawl. The rest of the height is
+ * padding on the grid, so the scrollbar still spans the whole list, and tiles are
+ * added and removed as it scrolls.
  *
  * Icons come from data/pet-images.json (slug -> one asset id per variant, in
- * VARIANT_ORDER) and live at assets/pets/<id>.png. Regenerate both with
+ * VARIANT_ORDER) and live at assets/pets/<id>.webp. Regenerate both with
  * tools/fetch_pet_images.py. A pet with no image for a variant gets a text tile.
  */
 
@@ -15,6 +21,12 @@ const IMAGE_DIR = "assets/pets";
 
 /** The order of the ids in each pet-images.json entry. */
 const VARIANT_ORDER = ["normal", "golden", "toxic", "galaxy"];
+
+/** Rows kept above and below the visible window, so scrolling never shows a blank. */
+const BUFFER_ROWS = 3;
+
+/** Used while the grid is hidden and cannot be measured; corrected once it is shown. */
+const FALLBACK = { cols: 7, rowStep: 80, viewRows: 8 };
 
 let imagesPromise = null;
 
@@ -28,22 +40,51 @@ export function loadPetImages() {
 
 function imageUrl(images, slug, variantId) {
   const id = images[slug]?.[VARIANT_ORDER.indexOf(variantId)];
-  return id ? `${IMAGE_DIR}/${id}.png` : null;
+  return id ? `${IMAGE_DIR}/${id}.webp` : null;
 }
 
 function tileLabel(pet, variant, caught) {
   return `${pet.name} — ${variant.label}, ${caught ? "indexed" : "not indexed"}`;
 }
 
-function buildTile(pet, variant, images, caught) {
+/** The one grid on the page, as last drawn by renderGrid. */
+const grid = {
+  host: null,
+  scroller: null,
+  /** Pets that have the chosen variant, in display order. */
+  items: [],
+  /** slug -> position in items. */
+  position: new Map(),
+  variant: null,
+  images: {},
+  getProgress: () => ({}),
+  cols: FALLBACK.cols,
+  /** Height of one row including the gap below it. */
+  rowStep: FALLBACK.rowStep,
+  /** Rendered range of items: [from, to). */
+  from: 0,
+  to: 0,
+  /** Item index that holds the grid's Tab stop. */
+  stop: 0,
+};
+
+function buildTile(position) {
+  const { variant, images } = grid;
+  const pet = grid.items[position];
+  const caught = (grid.getProgress()[pet.slug] ?? []).includes(variant.id);
+
   const tile = document.createElement("button");
   tile.type = "button";
   tile.className = "gv-tile";
-  tile.tabIndex = -1; // one tile at a time is a Tab stop; see attachGridKeys
+  tile.tabIndex = position === grid.stop ? 0 : -1; // one tile at a time is a Tab stop
+  tile.dataset.position = String(position);
   tile.dataset.slug = pet.slug;
   tile.dataset.variant = variant.id;
+  tile.dataset.variantLabel = variant.label;
   tile.dataset.rarity = (pet.rarity ?? "").toLowerCase();
   tile.dataset.name = pet.name;
+  // Tiles made while scrolling must match the lock too; main.js only sees existing ones.
+  tile.setAttribute("aria-disabled", String(document.documentElement.hasAttribute("data-ticks-locked")));
 
   const src = imageUrl(images, pet.slug, variant.id);
   if (src) {
@@ -51,7 +92,6 @@ function buildTile(pet, variant, images, caught) {
     img.src = src;
     img.alt = "";
     img.draggable = false;
-    img.loading = "lazy";
     img.decoding = "async";
     tile.append(img);
   } else {
@@ -77,43 +117,179 @@ export function syncTile(tile, caught, pet, variant) {
   tile.setAttribute("aria-label", label);
 }
 
+/** Take a tile out; an icon still loading is told to stop, so scrolling fast does not queue them up. */
+function removeTile(tile) {
+  const img = tile.firstElementChild;
+  if (img?.tagName === "IMG" && !img.complete) img.removeAttribute("src");
+  tile.remove();
+}
+
+/** Column count and row height from the grid's real width, or the fallback while hidden. */
+function measure() {
+  const { host } = grid;
+  const width = host.getBoundingClientRect().width;
+  if (!width) {
+    grid.cols = FALLBACK.cols;
+    grid.rowStep = FALLBACK.rowStep;
+    return;
+  }
+  const style = getComputedStyle(host);
+  const cols = style.gridTemplateColumns.split(" ").filter(Boolean).length || FALLBACK.cols;
+  const gap = parseFloat(style.columnGap) || 0;
+  grid.cols = cols;
+  // Tiles are square, so a row is as tall as a column is wide.
+  grid.rowStep = (width - (cols - 1) * gap) / cols + gap;
+}
+
+function windowRows() {
+  const { scroller, cols, rowStep, items } = grid;
+  const totalRows = Math.ceil(items.length / cols);
+  const viewHeight = scroller.clientHeight || rowStep * FALLBACK.viewRows;
+  const first = Math.max(0, Math.floor(scroller.scrollTop / rowStep) - BUFFER_ROWS);
+  const last = Math.min(totalRows - 1, Math.ceil((scroller.scrollTop + viewHeight) / rowStep) + BUFFER_ROWS);
+  return { totalRows, first, last };
+}
+
+/** Make sure exactly one rendered tile can be reached with Tab. */
+function ensureTabStop() {
+  const { host } = grid;
+  if (host.querySelector('.gv-tile[tabindex="0"]')) return;
+  const tiles = [...host.children];
+  if (!tiles.length) return;
+  // The stop scrolled out of the window: use the first tile that is on screen instead.
+  const onScreen = Math.ceil(grid.scroller.scrollTop / grid.rowStep) * grid.cols;
+  const target = tiles.find((t) => Number(t.dataset.position) >= onScreen) ?? tiles[0];
+  target.tabIndex = 0;
+}
+
+/**
+ * Bring the rendered tiles in line with the scroll position. Cheap when nothing
+ * moved a whole row, so it can run on every scroll event.
+ *
+ * @param {boolean} force Rebuild every tile instead of keeping the ones in range.
+ */
+function renderWindow(force = false) {
+  const { host, items, cols, rowStep } = grid;
+  if (!items.length) return;
+
+  const { totalRows, first, last } = windowRows();
+  const from = first * cols;
+  const to = Math.min(items.length, (last + 1) * cols);
+  if (!force && from === grid.from && to === grid.to && host.firstElementChild) return;
+
+  host.style.paddingTop = `${first * rowStep}px`;
+  host.style.paddingBottom = `${(totalRows - 1 - last) * rowStep}px`;
+
+  const range = (a, b) => Array.from({ length: Math.max(0, b - a) }, (_, i) => buildTile(a + i));
+  const kept = [];
+  for (const tile of [...host.children]) {
+    const position = Number(tile.dataset.position);
+    if (!force && position >= from && position < to) kept.push(tile);
+    else removeTile(tile);
+  }
+
+  if (!kept.length) {
+    host.replaceChildren(...range(from, to));
+  } else {
+    // Added at either end rather than rebuilt, so a focused tile keeps its focus.
+    host.prepend(...range(from, Number(kept[0].dataset.position)));
+    host.append(...range(Number(kept.at(-1).dataset.position) + 1, to));
+  }
+  grid.from = from;
+  grid.to = to;
+  ensureTabStop();
+}
+
 /**
  * @param {HTMLElement} host The grid container.
  * @param {object[]} pets Already filtered; pets without this variant are skipped here.
- * @param {Record<string, string[]>} progress slug -> caught variant ids
+ * @param {() => Record<string, string[]>} getProgress slug -> caught variant ids. A
+ *   function, because tiles are made as you scroll and progress is replaced on each edit.
  * @param {{id: string, label: string}} variant
  * @param {Record<string, string[]>} images
  * @returns {{ done: number, total: number }} Counts over the pets shown.
  */
-export function renderGrid(host, pets, progress, variant, images) {
-  const fragment = document.createDocumentFragment();
+export function renderGrid(host, pets, getProgress, variant, images) {
+  grid.host = host;
+  grid.scroller = host.parentElement;
+  grid.variant = variant;
+  grid.images = images;
+  grid.getProgress = getProgress;
+  grid.items = pets.filter((pet) => pet.variants.includes(variant.id));
+  grid.position = new Map(grid.items.map((pet, i) => [pet.slug, i]));
+  grid.stop = 0;
+  grid.from = 0;
+  grid.to = 0;
+
+  grid.scroller.scrollTop = 0; // a new category, variant or filter starts at the top
+  host.replaceChildren();
+  host.style.paddingTop = "";
+  host.style.paddingBottom = "";
+  measure();
+  renderWindow(true);
+  return countGrid();
+}
+
+/** Empty the grid, for a category with no pets. */
+export function clearGrid(host) {
+  grid.items = [];
+  grid.position = new Map();
+  grid.from = 0;
+  grid.to = 0;
+  host.replaceChildren();
+  host.style.paddingTop = "";
+  host.style.paddingBottom = "";
+}
+
+/** Caught and total over every pet in the grid, rendered or not. */
+export function countGrid() {
+  const progress = grid.getProgress();
   let done = 0;
-  let total = 0;
-
-  for (const pet of pets) {
-    if (!pet.variants.includes(variant.id)) continue;
-    const caught = (progress[pet.slug] ?? []).includes(variant.id);
-    total += 1;
-    if (caught) done += 1;
-    const tile = buildTile(pet, variant, images, caught);
-    tile.dataset.variantLabel = variant.label;
-    fragment.append(tile);
+  for (const pet of grid.items) {
+    if ((progress[pet.slug] ?? []).includes(grid.variant.id)) done += 1;
   }
+  return { done, total: grid.items.length };
+}
 
-  host.replaceChildren(fragment);
-  if (host.firstElementChild) host.firstElementChild.tabIndex = 0;
-  return { done, total };
+/** Scroll a pet into view, draw its tile and focus it. No-op for a pet not in the grid. */
+export function focusGridPet(slug) {
+  const position = grid.position.get(slug);
+  if (position != null) focusPosition(position);
+}
+
+/** Scroll just far enough to show a row, draw the window around it, and focus the tile. */
+function focusPosition(position) {
+  const { scroller, cols, rowStep } = grid;
+  const gap = parseFloat(getComputedStyle(grid.host).rowGap) || 0;
+  const rowTop = Math.floor(position / cols) * rowStep;
+  const rowBottom = rowTop + rowStep - gap;
+  if (rowTop < scroller.scrollTop) scroller.scrollTop = rowTop;
+  else if (rowBottom > scroller.scrollTop + scroller.clientHeight) {
+    scroller.scrollTop = rowBottom - scroller.clientHeight;
+  }
+  renderWindow(); // the scroll event arrives later; the tile is needed now
+  grid.host.querySelector(`.gv-tile[data-position="${position}"]`)?.focus({ preventScroll: true });
+}
+
+/**
+ * Keep the rendered tiles following the scroll position and the grid's width.
+ *
+ * @param {HTMLElement} host The grid container.
+ * @param {HTMLElement} scroller The grid's scroll window.
+ */
+export function attachGridWindow(host, scroller) {
+  scroller.addEventListener("scroll", () => renderWindow(), { passive: true });
+
+  if (typeof ResizeObserver !== "function") return;
+  new ResizeObserver(() => {
+    if (!grid.items.length || grid.host !== host) return;
+    const before = `${grid.cols}/${grid.rowStep}`;
+    measure();
+    renderWindow(before !== `${grid.cols}/${grid.rowStep}`);
+  }).observe(scroller);
 }
 
 /* ---------- keyboard ---------- */
-
-/** How many tiles share the first row; the grid's column count at the current width. */
-function columnCount(tiles) {
-  const top = tiles[0].offsetTop;
-  let n = 1;
-  while (n < tiles.length && tiles[n].offsetTop === top) n += 1;
-  return n;
-}
 
 /**
  * Arrow-key movement across the tiles, and a single Tab stop for the whole grid.
@@ -123,30 +299,27 @@ function columnCount(tiles) {
  * on the tile that last had focus (the first one after a re-render) and the next
  * Tab leaves it. Space and Enter already tick a focused tile, being buttons.
  *
- * Movement stops at the edges rather than wrapping, as in the list view.
+ * Movement works on the whole list, not just the tiles that exist, and scrolls to
+ * wherever it lands. It stops at the edges rather than wrapping, as in the list view.
  *
  * @param {HTMLElement} host The grid container.
- * @param {HTMLElement} scroller The grid's scroll window, for the Page Up/Down distance.
  */
-export function attachGridKeys(host, scroller) {
-  let stop = null;
-
+export function attachGridKeys(host) {
   host.addEventListener("focusin", (event) => {
     const tile = event.target.closest?.(".gv-tile");
     if (!tile) return;
-    if (stop && stop !== tile) stop.tabIndex = -1;
+    host.querySelector('.gv-tile[tabindex="0"]')?.setAttribute("tabindex", "-1");
     tile.tabIndex = 0;
-    stop = tile;
+    grid.stop = Number(tile.dataset.position);
   });
 
   host.addEventListener("keydown", (event) => {
     const tile = event.target.closest?.(".gv-tile");
     if (!tile || event.altKey || event.metaKey) return;
 
-    const tiles = [...host.children];
-    const at = tiles.indexOf(tile);
-    const cols = columnCount(tiles);
-    const last = tiles.length - 1;
+    const at = Number(tile.dataset.position);
+    const { cols, rowStep, scroller } = grid;
+    const last = grid.items.length - 1;
     const rowStart = at - (at % cols);
     let next = at;
 
@@ -173,8 +346,7 @@ export function attachGridKeys(host, scroller) {
         break;
       case "PageUp":
       case "PageDown": {
-        const step = tiles[cols] ? tiles[cols].offsetTop - tiles[0].offsetTop : tile.offsetHeight;
-        const rows = Math.max(1, Math.floor(scroller.clientHeight / Math.max(step, 1)));
+        const rows = Math.max(1, Math.floor(scroller.clientHeight / Math.max(rowStep, 1)));
         const jump = rows * cols;
         next = event.key === "PageUp" ? Math.max(at - jump, at % cols) : Math.min(at + jump, last);
         break;
@@ -184,7 +356,7 @@ export function attachGridKeys(host, scroller) {
     }
 
     event.preventDefault(); // these keys would otherwise scroll the page
-    if (next !== at) tiles[next].focus();
+    if (next !== at) focusPosition(next);
   });
 }
 
@@ -296,6 +468,8 @@ export function attachHoverCard(host, scroller, lookup) {
   scroller.addEventListener("scroll", onScroll, { passive: true });
   addEventListener("scroll", onScroll, { passive: true });
   addEventListener("resize", hide);
-  // A re-render replaces the tiles out from under the pointer.
-  new MutationObserver(hide).observe(host, { childList: true });
+  // Scrolling adds and removes tiles; the card only has to go if its own tile did.
+  new MutationObserver(() => {
+    if (current && !current.isConnected) hide();
+  }).observe(host, { childList: true });
 }

@@ -3,9 +3,13 @@
 
 Reads the pet list from the Powerful Studio API, matches each pet in
 data/pets.json by name, and fetches a 150x150 thumbnail for every image id the
-API lists for it. Icons are saved as assets/pets/<asset id>.png; ids already on
-disk and valid are skipped, so re-running only downloads what is new. A file that
-is empty, truncated or not a PNG does not count as on disk and is fetched again.
+API lists for it. Each icon is scaled to 112x112 and converted to WebP (quality 60,
+about an eighth of the PNG's size, which matters because the grid loads hundreds of
+them at once) and saved as
+assets/pets/<asset id>.webp; ids already on disk and valid are skipped, so
+re-running only downloads what is new. A file that is empty, truncated or not a
+WebP does not count as on disk and is fetched again. Needs Pillow with WebP
+support (pip install pillow).
 Writes go through a temp file, so an interrupted run never leaves a partial icon
 behind, and a good icon is never overwritten.
 
@@ -35,6 +39,10 @@ IMAGES = ROOT / "assets" / "pets"
 API = "https://public-api.powerfulstudio.xyz/rcu/v1/directories/pets"
 THUMBS = "https://thumbnails.roblox.com/v1/assets?assetIds=%s&size=150x150&format=Png"
 BATCH = 100
+# Icons show at most about 78 px wide, so the 150 px download is scaled down to this
+# before being saved: roughly 3 KB each instead of 23 KB for the PNG.
+ICON_SIZE = 112
+ICON_QUALITY = 60
 
 
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
@@ -54,12 +62,36 @@ def is_png(data):
     )
 
 
-def png_on_disk(path):
-    """True if path is a readable, complete PNG. Empty/partial files are not."""
+def is_webp(data):
+    """True if data is a complete-looking WebP (RIFF header whose size matches the file)."""
+    return (
+        len(data) > 12
+        and data[:4] == b"RIFF"
+        and data[8:12] == b"WEBP"
+        and int.from_bytes(data[4:8], "little") == len(data) - 8
+    )
+
+
+def webp_on_disk(path):
+    """True if path is a readable, complete WebP. Empty/partial files are not."""
     try:
-        return is_png(path.read_bytes())
+        return is_webp(path.read_bytes())
     except OSError:
         return False
+
+
+def to_webp(png_data):
+    """Re-encode PNG bytes as WebP, keeping the alpha channel."""
+    from io import BytesIO
+
+    try:
+        from PIL import Image
+    except ImportError:
+        sys.exit("Pillow is required to convert icons to WebP: pip install pillow")
+    out = BytesIO()
+    image = Image.open(BytesIO(png_data)).convert("RGBA").resize((ICON_SIZE, ICON_SIZE), Image.LANCZOS)
+    image.save(out, "WEBP", quality=ICON_QUALITY, method=6, alpha_quality=100)
+    return out.getvalue()
 
 
 def retry_wait(error, attempt):
@@ -154,7 +186,7 @@ def main():
 
     IMAGES.mkdir(parents=True, exist_ok=True)
     wanted = sorted({i for ids in mapping.values() for i in ids if i})
-    todo = [i for i in wanted if not png_on_disk(IMAGES / f"{i}.png")]
+    todo = [i for i in wanted if not webp_on_disk(IMAGES / f"{i}.webp")]
     print("%d images wanted, %d to download" % (len(wanted), len(todo)))
 
     failed = set()
@@ -185,13 +217,13 @@ def main():
                 print("download of %s was not a complete PNG; skipped" % target, file=sys.stderr)
                 failed.add(target)
                 continue
-            write_atomic(IMAGES / f"{target}.png", data)
+            write_atomic(IMAGES / f"{target}.webp", to_webp(data))
         failed.update(i for i in batch if i not in seen)
         time.sleep(0.3)
 
     for ids in mapping.values():
         for position, i in enumerate(ids):
-            if i and not png_on_disk(IMAGES / f"{i}.png"):
+            if i and not webp_on_disk(IMAGES / f"{i}.webp"):
                 ids[position] = None
 
     write_atomic(OUT, json.dumps(mapping, separators=(",", ":")).encode("utf-8"))

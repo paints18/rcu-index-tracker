@@ -12,7 +12,7 @@ It checks the things that would quietly corrupt people's saved progress:
   * variant ids are ones the file declares
   * required fields are present and the right type
   * `clicks` is null or a well-formed value ("1.5K", "250", "110%")
-  * data/pet-images.json is well formed and points at real PNGs (warnings only
+  * data/pet-images.json is well formed and points at real WebP files (warnings only
     for pets with no entry, so a fresh weekly update does not fail CI before
     tools/fetch_pet_images.py has been run)
 
@@ -40,7 +40,6 @@ SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 IMAGES_JSON = ROOT / "data" / "pet-images.json"
 IMAGES_DIR = ROOT / "assets" / "pets"
-PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 # Position in each pet-images.json entry == position in this list.
 IMAGE_VARIANTS = ["normal", "golden", "toxic", "galaxy"]
 
@@ -118,15 +117,15 @@ def check_images(pet_variants):
                                 % (IMAGES_JSON.name, slug, len(ids), variant_id))
 
     for image_id in sorted(referenced):
-        path = IMAGES_DIR / ("%s.png" % image_id)
+        path = IMAGES_DIR / ("%s.webp" % image_id)
         try:
             with open(path, "rb") as handle:
-                head = handle.read(8)
+                head = handle.read(12)
         except OSError:
             bad_files.append("%s (missing)" % path.name)
             continue
-        if head != PNG_SIGNATURE:
-            bad_files.append("%s (empty or not a PNG)" % path.name)
+        if head[:4] != b"RIFF" or head[8:12] != b"WEBP":
+            bad_files.append("%s (empty or not a WebP)" % path.name)
     if bad_files:
         warnings.append(
             "%d referenced image file(s) unusable in assets/pets: %s%s"
@@ -138,10 +137,10 @@ def check_images(pet_variants):
             % (len(no_normal), ", ".join(no_normal[:10]), ", ..." if len(no_normal) > 10 else "")
         )
     if IMAGES_DIR.is_dir():
-        orphans = sorted(f.name for f in IMAGES_DIR.glob("*.png") if f.stem not in referenced)
+        orphans = sorted(f.name for f in IMAGES_DIR.glob("*.webp") if f.stem not in referenced)
         if orphans:
             warnings.append(
-                "%d png file(s) in assets/pets are not referenced by %s: %s%s"
+                "%d webp file(s) in assets/pets are not referenced by %s: %s%s"
                 % (len(orphans), IMAGES_JSON.name, ", ".join(orphans[:5]), ", ..." if len(orphans) > 5 else "")
             )
     return errors, warnings

@@ -15,7 +15,17 @@ import { loadIndex, countProgress, totalsByVariant } from "./data.js";
 import { Store, normalizeName, PROBE_KEY } from "./store.js";
 import { encodeBackup, decodeBackup, partitionKnown } from "./backup.js";
 import { fetchPlayerIndex, entriesToProgress, ApiImportError } from "./api-import.js";
-import { renderGrid, syncTile, loadPetImages, attachHoverCard, attachGridKeys } from "./grid-view.js";
+import {
+  renderGrid,
+  clearGrid,
+  countGrid,
+  focusGridPet,
+  syncTile,
+  loadPetImages,
+  attachHoverCard,
+  attachGridKeys,
+  attachGridWindow,
+} from "./grid-view.js";
 import {
   renderCategoryNav,
   renderVariantSummary,
@@ -890,7 +900,7 @@ function renderGridView() {
   );
 
   if (!variant) {
-    dom.grid.replaceChildren();
+    clearGrid(dom.grid);
     dom.gridCount.textContent = "";
     dom.gridEmpty.textContent = "No pets listed in this category yet.";
     dom.gridEmpty.hidden = false;
@@ -898,8 +908,9 @@ function renderGridView() {
   }
   dom.gridEmpty.textContent = "No pets match the current filters.";
 
-  const { done, total } = renderGrid(dom.grid, pets, state.progress, variant, state.petImages);
-  dom.grid.parentElement.scrollTop = 0; // a new category, variant or filter starts at the top
+  // Progress is passed as a function: tiles are drawn as you scroll, and state.progress
+  // is replaced on every edit.
+  const { done, total } = renderGrid(dom.grid, pets, () => state.progress, variant, state.petImages);
   dom.gridCount.textContent = `${variant.label} collected (${done}/${total})`;
   dom.gridEmpty.hidden = total > 0;
 }
@@ -915,16 +926,14 @@ function setGridVariant(variantId) {
   state.gridVariantId = variantId;
   renderGridView();
   applyLock(); // the new tiles need the locked state too
-  if (slug) dom.grid.querySelector(`.gv-tile[data-slug="${CSS.escape(slug)}"]`)?.focus();
+  if (slug) focusGridPet(slug);
 }
 
 function updateGridCount() {
   const variant = gridVariant();
   if (!variant) return;
-  let done = 0;
-  const tiles = dom.grid.children;
-  for (const tile of tiles) if (tile.classList.contains("is-caught")) done += 1;
-  dom.gridCount.textContent = `${variant.label} collected (${done}/${tiles.length})`;
+  const { done, total } = countGrid();
+  dom.gridCount.textContent = `${variant.label} collected (${done}/${total})`;
 }
 
 function applyView() {
@@ -1790,7 +1799,8 @@ function wireEvents() {
     setGridVariant(button.dataset.gridVariant);
   });
   attachHoverCard(dom.grid, dom.grid.parentElement, (slug) => state.index.bySlug.get(slug));
-  attachGridKeys(dom.grid, dom.grid.parentElement);
+  attachGridKeys(dom.grid);
+  attachGridWindow(dom.grid, dom.grid.parentElement);
   document.addEventListener("keydown", onShortcut);
   dom.grid.addEventListener("click", (event) => {
     const tile = event.target.closest(".gv-tile");
@@ -1956,6 +1966,19 @@ async function boot() {
   // A profile linked to the API refreshes itself on every load.
   renderApiLink();
   runApiRefresh({ quiet: true });
+  registerIconCache();
+}
+
+/**
+ * Pet icons are cached for good by sw.js (GitHub Pages only allows ten minutes).
+ * Registered after the page has settled so it never competes with first paint, and
+ * optional: without it, or over plain http, icons load exactly as before.
+ */
+function registerIconCache() {
+  if (!("serviceWorker" in navigator)) return;
+  const register = () => navigator.serviceWorker.register("sw.js").catch(() => {});
+  if (document.readyState === "complete") register();
+  else window.addEventListener("load", register, { once: true });
 }
 
 boot();

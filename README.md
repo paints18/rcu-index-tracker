@@ -72,9 +72,11 @@ browser's local storage so a linked profile can refresh on page load.
   `assets/grid-view.css` is hand-written.
 - `npm run check` (`python tools/validate.py`) validates `data/pets.json`.
 - `npm run serve` serves the site at `http://localhost:8765`.
-- `python tools/fetch_pet_images.py` downloads grid icons to `assets/pets/`
-  and writes `data/pet-images.json`. Run it after adding pets. It skips icons
-  already downloaded.
+- `python tools/fetch_pet_images.py` downloads grid icons, converts them to
+  WebP in `assets/pets/`, and writes `data/pet-images.json`. Run it after adding
+  pets. It skips icons already downloaded and needs Pillow (`pip install pillow`).
+- `sw.js` is a service worker that caches the pet icons in the visitor's browser,
+  because GitHub Pages only lets files be cached for ten minutes.
 - `worker/` holds the Cloudflare Worker used by the API import. It allows
   requests from `https://paints18.github.io` and `http://localhost:8765`;
   change `ALLOWED_ORIGINS` in `worker/index.js` to host elsewhere, and
