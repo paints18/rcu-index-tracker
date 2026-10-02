@@ -48,6 +48,16 @@ const PAYLOAD_VERSION = "3";
 /** Front coding caps the shared-prefix length at one base-36 digit. */
 const MAX_SHARED = 35;
 
+/**
+ * Limits on what a pasted code may expand to. A real payload is a few hundred
+ * bytes of bitset plus about 40 KB if every pet were named in the tail, and holds
+ * at most a few thousand ticks; these leave generous room above that while
+ * keeping a hostile code (a few hundred KB of deflate can inflate to hundreds of
+ * MB) from locking up the tab.
+ */
+const MAX_PAYLOAD_BYTES = 1024 * 1024;
+const MAX_TICKS = 100000;
+
 /* ---------- base64url ---------- */
 
 function bytesToBase64Url(bytes) {
@@ -73,9 +83,29 @@ function base64UrlToBytes(text) {
 const canCompress = typeof CompressionStream === "function";
 const canDecompress = typeof DecompressionStream === "function";
 
-async function streamThrough(bytes, stream) {
-  const response = new Response(new Blob([bytes]).stream().pipeThrough(stream));
-  return new Uint8Array(await response.arrayBuffer());
+async function streamThrough(bytes, stream, maxBytes = Infinity) {
+  const reader = new Blob([bytes]).stream().pipeThrough(stream).getReader();
+  const chunks = [];
+  let total = 0;
+
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.length;
+    if (total > maxBytes) {
+      await reader.cancel();
+      throw new Error("Stream exceeded its size limit.");
+    }
+    chunks.push(value);
+  }
+
+  const out = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of chunks) {
+    out.set(chunk, offset);
+    offset += chunk.length;
+  }
+  return out;
 }
 
 /* ---------- payload ---------- */
@@ -105,12 +135,37 @@ function frontCodeLines(slugs, progress, indexOf) {
   return lines;
 }
 
-function buildPayload(profileName, progress, index) {
+/**
+ * Only what the wire format can carry: string variants free of the separators
+ * (`,` and line breaks), no empty entries. Anything else would shift the lines
+ * and silently corrupt the pets after it.
+ */
+function encodableProgress(progress, index) {
+  const clean = Object.create(null);
+  if (!progress || typeof progress !== "object") return clean;
+
+  for (const [slug, variants] of Object.entries(progress)) {
+    if (!slug || !Array.isArray(variants)) continue;
+
+    const ids = [...new Set(variants)].filter((v) => typeof v === "string" && v && !/[,\r\n]/.test(v));
+    if (!ids.length) continue;
+
+    // A slug with a code is written as a bit, so its spelling never reaches the
+    // wire; one without is written out and must not contain a separator.
+    const coded = Number.isInteger(index?.bySlug.get(slug)?.code);
+    if (!coded && /[|\r\n]/.test(slug)) continue;
+
+    clean[slug] = ids;
+  }
+  return clean;
+}
+
+function buildPayload(profileName, rawProgress, index) {
+  const progress = encodableProgress(rawProgress, index);
+
   // Sorted so front coding has long shared prefixes to exploit, and so identical
   // progress always produces an identical code.
-  const slugs = Object.keys(progress)
-    .filter((slug) => Array.isArray(progress[slug]) && progress[slug].length)
-    .sort();
+  const slugs = Object.keys(progress).sort();
 
   // Alphabet in first-seen order, written into the payload so decoding never
   // needs to consult pets.json.
@@ -161,7 +216,7 @@ function buildPayload(profileName, progress, index) {
 /** v1 codes: one `slug|variant,variant` line per pet, no alphabet, no front coding. */
 function parsePayloadV1(lines) {
   const name = (lines.shift() ?? "").trim();
-  const progress = {};
+  const progress = Object.create(null);
 
   for (const line of lines) {
     if (!line.trim()) continue;
@@ -209,7 +264,7 @@ function readFrontCoded(lines, alphabet, progress) {
 function parsePayloadV2(lines) {
   const name = (lines.shift() ?? "").trim();
   const alphabet = (lines.shift() ?? "").split(",").map((v) => v.trim());
-  return { name, progress: readFrontCoded(lines, alphabet, {}) };
+  return { name, progress: readFrontCoded(lines, alphabet, Object.create(null)) };
 }
 
 function parsePayloadV3(lines, index) {
@@ -218,11 +273,19 @@ function parsePayloadV3(lines, index) {
   const encoded = (lines.shift() ?? "").trim();
 
   const width = alphabet.length;
-  if (!width) throw new Error("That backup code is missing its variant list.");
+  // An empty profile legitimately has no alphabet and no bits; bits with no
+  // alphabet to read them against are a code that lost its second line.
+  if (!alphabet.some(Boolean) && encoded) throw new Error("That backup code is missing its variant list.");
 
-  const progress = {};
-  const bits = encoded ? base64UrlToBytes(encoded) : new Uint8Array(0);
+  const progress = Object.create(null);
+  let bits;
+  try {
+    bits = encoded ? base64UrlToBytes(encoded) : new Uint8Array(0);
+  } catch {
+    throw new Error("That backup code is damaged. It may have been truncated when copied.");
+  }
 
+  let ticks = 0;
   for (let bit = 0; bit < bits.length * 8; bit += 1) {
     if (!(bits[bit >> 3] & (1 << (bit & 7)))) continue;
 
@@ -235,7 +298,10 @@ function parsePayloadV3(lines, index) {
     const code = Math.floor(bit / width);
     const slug = index?.byCode.get(code)?.slug ?? `#code-${code}`;
 
-    (progress[slug] ??= []).push(variant);
+    ticks += 1;
+    if (ticks > MAX_TICKS) throw new Error("That backup code is damaged. It may have been truncated when copied.");
+    const list = (progress[slug] ??= []);
+    if (!list.includes(variant)) list.push(variant);
   }
 
   // Remaining lines are pets that had no integer when the code was made.
@@ -251,7 +317,11 @@ function parsePayload(text, index) {
   if (version === "2") return parsePayloadV2(lines);
   if (version === "3") return parsePayloadV3(lines, index);
 
-  throw new Error(`That code was created by a newer version of the tracker (v${version}).`);
+  // Only a plain number is a version; anything else is a code that decoded to junk.
+  if (/^\d{1,3}$/.test(version ?? "") && Number(version) > Number(PAYLOAD_VERSION)) {
+    throw new Error(`That code was created by a newer version of the tracker (v${version}).`);
+  }
+  throw new Error("That backup code is damaged. It may have been truncated when copied.");
 }
 
 /* ---------- public API ---------- */
@@ -284,7 +354,11 @@ export async function encodeBackup(profileName, progress, index) {
  */
 export async function decodeBackup(code, index) {
   // Be forgiving: people paste these out of Discord, with wrapping and stray spaces.
-  const cleaned = String(code ?? "").replace(/\s+/g, "").trim();
+  // Chat apps also wrap codes in backticks or quotes, and add a full stop after.
+  // None of those can occur in base64url, so they are safe to strip.
+  const cleaned = String(code ?? "")
+    .replace(/\s+/g, "")
+    .replace(/^[`"'<(\[{\u201c\u2018]+|[`"'>)\]}\u201d\u2019.,;:!?]+$/g, "");
   if (!cleaned) throw new Error("Paste a backup code first.");
 
   let body;
@@ -300,6 +374,10 @@ export async function decodeBackup(code, index) {
     throw new Error("That does not look like a backup code. Backup codes begin with \"RCU1\".");
   }
 
+  if (body.length > Math.ceil((MAX_PAYLOAD_BYTES * 4) / 3) + 4) {
+    throw new Error("That backup code is too large to be one of ours.");
+  }
+
   let bytes;
   try {
     bytes = base64UrlToBytes(body);
@@ -312,10 +390,14 @@ export async function decodeBackup(code, index) {
       throw new Error("This browser cannot read compressed backup codes.");
     }
     try {
-      bytes = await streamThrough(bytes, new DecompressionStream("deflate-raw"));
+      bytes = await streamThrough(bytes, new DecompressionStream("deflate-raw"), MAX_PAYLOAD_BYTES);
     } catch {
       throw new Error("That backup code is damaged. It may have been truncated when copied.");
     }
+  }
+
+  if (bytes.length > MAX_PAYLOAD_BYTES) {
+    throw new Error("That backup code is too large to be one of ours.");
   }
 
   return parsePayload(new TextDecoder().decode(bytes), index);
@@ -326,7 +408,7 @@ export async function decodeBackup(code, index) {
  * does not, so the UI can tell the user rather than dropping ticks silently.
  */
 export function partitionKnown(progress, isKnownSlug) {
-  const known = {};
+  const known = Object.create(null);
   const unknown = [];
 
   for (const [slug, variants] of Object.entries(progress)) {

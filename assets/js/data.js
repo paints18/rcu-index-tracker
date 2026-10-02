@@ -21,9 +21,21 @@ async function loadCodes() {
     if (!response.ok) return new Map();
 
     const doc = await response.json();
-    const entries = Object.entries(doc?.codes ?? {}).filter(
-      ([, code]) => Number.isInteger(code) && code >= 0,
-    );
+    const codes = doc?.codes;
+    if (!codes || typeof codes !== "object" || Array.isArray(codes)) return new Map();
+
+    const entries = Object.entries(codes).filter(([, code]) => Number.isInteger(code) && code >= 0);
+
+    // Two pets on one integer would make every backup code that mentions it
+    // ambiguous. Neither gets a code, so both fall back to being named by slug.
+    const owners = new Map();
+    for (const [slug, code] of entries) owners.set(code, [...(owners.get(code) ?? []), slug]);
+    const shared = [...owners].filter(([, slugs]) => slugs.length > 1);
+    if (shared.length) {
+      console.error("data/codes.json gives the same integer to several pets:", shared);
+      const dropped = new Set(shared.flatMap(([, slugs]) => slugs));
+      return new Map(entries.filter(([slug]) => !dropped.has(slug)));
+    }
     return new Map(entries);
   } catch {
     // A missing or malformed ledger must never break the tracker.
@@ -111,13 +123,19 @@ export async function loadIndex() {
     throw new Error("Pet data is malformed: expected a `categories` array.");
   }
 
-  const variants = (doc.variants ?? []).map((v) => ({ id: v.id, label: v.label }));
+  const variants = (Array.isArray(doc.variants) ? doc.variants : [])
+    .filter(Boolean)
+    .map((v) => ({ id: v.id, label: v.label }));
   const bySlug = new Map();
   const byCode = new Map();
   const duplicates = [];
 
-  const categories = doc.categories.map((cat) => {
-    const pets = (cat.pets ?? []).map((pet) => {
+  const categories = doc.categories.filter(Boolean).map((cat) => {
+    // An entry with no slug cannot be ticked or backed up, so it is left out.
+    const listed = (Array.isArray(cat.pets) ? cat.pets : []).filter(
+      (pet) => pet && typeof pet.slug === "string" && pet.slug,
+    );
+    const pets = listed.map((pet) => {
       const entry = {
         slug: pet.slug,
         name: pet.name,
