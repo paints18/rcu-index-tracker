@@ -138,8 +138,8 @@ const state = {
   /** Variant columns the current head was built with; syncTableHead needs them. */
   usedVariants: [],
 
-  /** "list" (the checklist table) or "grid" (the in-game index layout). */
-  view: "list",
+  /** "grid" (the in-game index layout, the default) or "list" (the checklist table). */
+  view: "grid",
   /** Variant the grid is showing; falls back per category (see gridVariant). */
   gridVariantId: "normal",
   /** slug -> asset ids, loaded the first time the grid is opened. */
@@ -851,9 +851,10 @@ function initialView() {
   const fromQuery = new URLSearchParams(location.search).get("view");
   if (fromQuery === "grid" || fromQuery === "list") return fromQuery;
   try {
-    return localStorage.getItem(VIEW_KEY) === "grid" ? "grid" : "list";
+    // Grid unless the visitor has picked the list.
+    return localStorage.getItem(VIEW_KEY) === "list" ? "list" : "grid";
   } catch {
-    return "list";
+    return "grid";
   }
 }
 
@@ -1541,7 +1542,12 @@ function setApiBusy(busy) {
   apiBusy = busy;
   for (const form of apiForms) form.connect.disabled = busy;
   dom.apiRefresh.disabled = busy;
-  dom.apiRefresh.textContent = busy ? "Refreshing…" : "Refresh";
+  // An icon button: the label lives in aria-label/title, and the arrows spin while busy.
+  const label = busy ? "Refreshing from API…" : "Refresh from API";
+  dom.apiRefresh.setAttribute("aria-label", label);
+  dom.apiRefresh.title = label;
+  dom.apiRefresh.setAttribute("aria-busy", String(busy));
+  dom.apiRefresh.querySelector("svg").classList.toggle("animate-spin", busy);
 }
 
 const countTicks = (progress) => Object.values(progress).reduce((sum, v) => sum + v.length, 0);

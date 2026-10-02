@@ -18,7 +18,7 @@ import { el, rich, renderBlock } from "./prose-dialog.js";
 
 const OPEN_PARAM = "help";
 
-/** Shown in the Keyboard tab. A row with no Grid text applies to both views. */
+/** Shown in the Keyboard tab, as [key, list view, grid view]. A row with no grid text applies to both views. */
 const SHORTCUTS = [
   ["Arrow keys", "Move between boxes", "Move between pets"],
   ["Home / End", "First or last box in the row", "First or last pet in the row"],
@@ -42,7 +42,7 @@ function shortcutTable() {
 
   const head = el("div", `${cols} hidden text-muted text-[12px] uppercase tracking-wide py-1.5 font-semibold`);
   head.setAttribute("role", "row");
-  for (const label of ["Key", "List view", "Grid view"]) {
+  for (const label of ["Key", "Grid view", "List view"]) {
     const cell = el("div", null, label);
     cell.setAttribute("role", "columnheader");
     head.append(cell);
@@ -63,8 +63,11 @@ function shortcutTable() {
     const name = el("div", "text-sm font-semibold text-ink");
     name.setAttribute("role", "rowheader");
     name.textContent = key;
-    row.append(name, cell(list, grid === undefined ? "" : "List", grid === undefined));
-    if (grid !== undefined) row.append(cell(grid, "Grid"));
+    if (grid === undefined) {
+      row.append(name, cell(list, "", true));
+    } else {
+      row.append(name, cell(grid, "Grid"), cell(list, "List"));
+    }
     table.append(row);
   }
   return table;
@@ -92,11 +95,11 @@ const TABS = [
     id: "basics",
     label: "Basics",
     blocks: () => [
-      "Tick a box for each variant you have in your in-game index. The circle in " +
-        "the **All** column covers every variant that pet has, and shows a bar when " +
-        "you have some of them but not all.",
-      "**Grid view** (top right of the list) shows the in-game layout instead: pick a " +
-        "variant, then click a pet to tick it. Pets you don't have yet are silhouettes.",
+      "**Grid view** shows the in-game layout: pick a variant, then click a pet to " +
+        "tick it. Pets you don't have yet are silhouettes.",
+      "**List view** (top right) is a table with a box per variant. Tick each variant " +
+        "you have in your in-game index. The circle in the **All** column covers every " +
+        "variant that pet has, and shows a bar when you have some of them but not all.",
       el("h3", "section-title mt-5 mb-1", "Filling in a lot at once"),
       "In **List view**, every column has a checkbox at the top that fills that variant " +
         "in for the pets currently listed, so filter or search first and it only touches " +
@@ -121,7 +124,7 @@ const TABS = [
         "Open **Backup/Import > From API**, or use the first screen. Enter your " +
           "Roblox username and the token, then press **Import from API**.",
         "The profile refreshes whenever the page loads, or when you press " +
-          "**Refresh**. **Disconnect** unlinks it and keeps its ticks.",
+          "the refresh icon next to the profile name. **Disconnect** unlinks it and keeps its ticks.",
       ]),
       callout(
         "Your in-game index is the source of truth, so ticks that are not in it " +
@@ -137,11 +140,11 @@ const TABS = [
         "ones are made, so an alt's progress stays separate from your main's.",
       "A locked profile can't be ticked by accident. Lock or unlock any profile in " +
         "**Settings > Your data**.",
-      "**Export pets** builds a list of what you're missing (or have) as plain text, a " +
+      "**Export pets** builds a list of what you're missing, have, or all pets, as plain text, a " +
         "spreadsheet or a CSV file, for index services. To paste into Google Sheets or " +
         "Excel, choose **Spreadsheet** and copy. Spreadsheet and CSV have a column per " +
-        "variant: caught is marked ✓, missing is " +
-        "blank, and - means the pet has no such variant.",
+        "variant: caught is marked ✓, missing is blank, and - means the pet has no such " +
+        "variant.",
       el("h3", "section-title mt-5 mb-1", "Another device"),
       "Progress is saved in this browser, so a phone or a second browser starts empty. " +
         "**Backup/Import** turns a profile into a code; paste it into the Import tab there.",

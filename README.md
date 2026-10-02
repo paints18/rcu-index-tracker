@@ -10,30 +10,30 @@ profile name.
 
 ## Features
 
-- Tick individual variants per pet. The **All** column shows a full or
-  partial ring depending on how many of a pet's variants you own.
+- Grid view (the default; Grid view/List view toggle in the category header)
+  shows the in-game index layout: one variant at a time, 7 tiles per row,
+  not-indexed pets as silhouettes, and a hover card with rarity, clicks and
+  egg. Clicking a tile ticks it. Filters, counts and Undo are shared with the
+  list. The chosen view is remembered in this browser.
+- List view is a table with a box per variant. The **All** column shows a full
+  or partial ring depending on how many of a pet's variants you own.
 - Browse by category, or filter by name, egg, rarity, completion status, or
   a specific missing variant.
-- Fill a whole column at once for the pets currently shown, or shift-click
-  to fill a range. Undo reverts any of these bulk edits.
-- Keyboard navigation: arrow keys, Home/End, Ctrl+Home/Ctrl+End,
-  Enter/Shift+Enter, and Space to tick. In grid view the arrow keys move
-  between pets (Page Up/Page Down, Home/End and Ctrl+Home/Ctrl+End also work),
-  and 1-4 switch variant. `/` focuses Search and Ctrl+Z undoes, in both views.
+- List view: fill a whole column at once for the pets currently shown, or
+  shift-click to fill a range. Undo reverts any of these bulk edits.
+- Keyboard navigation in both views: arrow keys, Home/End, Ctrl+Home/Ctrl+End
+  and Space to tick. List view also has Enter/Shift+Enter to move down or up a
+  row. Grid view also has Page Up/Page Down, and 1-4 to switch variant. `/`
+  focuses Search and Ctrl+Z undoes.
 - Multiple profiles, each with its own checklist.
 - Backup/Import moves a profile between browsers or devices via a code.
-- Grid view (List view/Grid view toggle in the category header) shows the in-game
-  index layout: one variant at a time, 7 tiles per row, not-indexed pets as
-  silhouettes, and a hover card with rarity, clicks and egg. Clicking a tile
-  ticks it. Filters, counts and Undo are shared with the list. Column
-  checkboxes and shift-click are list-only.
 - Import from the Powerful Studio API with a Roblox username and access
   token, from the first-run screen or Backup/Import > From API. An import
   replaces the profile's ticks with the in-game index, so ticks not in the game
   are removed. Linking a profile that has ticks asks for confirmation first, and
   an empty API response never clears a profile. Linked profiles refresh on page
-  load, and the Refresh button re-imports on demand. Disconnect removes the link
-  and keeps the ticks.
+  load, and the refresh icon button next to the profile name re-imports on
+  demand. Disconnect removes the link and keeps the ticks.
 - Profiles linked to the API are locked by default. A locked profile cannot
   be edited (list, grid, column checkboxes and Undo); clicking a tick shows a
   message instead. Settings > Your data has a Lock/Unlock button for each

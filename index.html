@@ -102,7 +102,15 @@
         <div class="flex items-center justify-between gap-3 min-w-0">
           <p class="profile-name min-w-0" id="profile-name">&mdash;</p>
           <!-- Shown only for a profile linked to the API. -->
-          <button type="button" class="btn btn-quiet btn-sm shrink-0" id="api-refresh" hidden>Refresh</button>
+          <button type="button" class="btn btn-quiet btn-sm shrink-0" id="api-refresh" hidden
+                  aria-label="Refresh from API" title="Refresh from API">
+            <svg class="block motion-reduce:animate-none" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+              <path d="M21 3v5h-5"/>
+              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+              <path d="M8 16H3v5"/>
+            </svg></button>
         </div>
         <p class="text-muted text-[12px]" id="lock-note" hidden>
           Ticks are locked on this profile. Unlock it in Settings &gt; Your data.
@@ -145,8 +153,8 @@
       <h2 class="text-[17px] font-semibold" id="cat-title">World 1</h2>
       <p class="text-muted text-[13px] tabular-nums" id="cat-count"></p>
       <div class="ml-auto flex gap-1.5" role="group" aria-label="View">
-        <button type="button" class="btn btn-sm btn-toggle" id="view-list" data-view="list" aria-pressed="true">List view</button>
-        <button type="button" class="btn btn-sm btn-toggle" id="view-grid" data-view="grid" aria-pressed="false">Grid view</button>
+        <button type="button" class="btn btn-sm btn-toggle" id="view-grid" data-view="grid" aria-pressed="true">Grid view</button>
+        <button type="button" class="btn btn-sm btn-toggle" id="view-list" data-view="list" aria-pressed="false">List view</button>
       </div>
     </div>
 
@@ -212,7 +220,7 @@
       <button type="button" class="btn btn-quiet ml-auto" id="bulk-undo" disabled>Undo</button>
     </section>
 
-    <section aria-label="Pet checklist" id="list-view">
+    <section aria-label="Pet checklist" id="list-view" hidden>
       <!-- Shown only while the active profile has no ticks at all, so it retires
            itself the moment anyone does anything; Dismiss makes that permanent. -->
       <p class="text-muted text-[13px] flex flex-wrap items-center gap-2 mb-2" id="bulk-hint" hidden>
@@ -232,7 +240,7 @@
 
     <!-- Alternative to the checklist above: the in-game index layout. Tiles are
          buttons; clicking one toggles that pet's tick for the chosen variant. -->
-    <section aria-label="Pet index grid" id="grid-view" hidden>
+    <section aria-label="Pet index grid" id="grid-view">
       <div class="gv-bar">
         <div class="gv-variants" id="gv-variants" role="group" aria-label="Variant"></div>
         <p class="gv-count" id="gv-count"></p>
