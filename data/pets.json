@@ -305,7 +305,7 @@
           "name": "Sand Of Time",
           "egg": "Desert",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "2K",
           "variants": [
             "normal",
             "golden",
@@ -341,7 +341,7 @@
           "name": "Royal Cat",
           "egg": "Kingdom",
           "rarity": "Epic",
-          "clicks": "2.5K",
+          "clicks": "3.5K",
           "variants": [
             "normal",
             "golden",
@@ -809,7 +809,7 @@
           "name": "Crystal Gem",
           "egg": "Cave",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "7.5M",
           "variants": [
             "normal",
             "golden",
@@ -893,7 +893,7 @@
           "name": "Phoenix",
           "egg": "Volcano",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "24M",
           "variants": [
             "normal",
             "golden",
@@ -1025,7 +1025,7 @@
           "name": "Heaven Eye",
           "egg": "Heaven",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "75M",
           "variants": [
             "normal",
             "golden",
@@ -1241,7 +1241,7 @@
           "name": "Dark Lord",
           "egg": "Magic",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "1B",
           "variants": [
             "normal",
             "golden",
@@ -1289,7 +1289,7 @@
           "name": "Ringmaster",
           "egg": "Circus",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "2B",
           "variants": [
             "normal",
             "golden",
@@ -1337,7 +1337,7 @@
           "name": "Ancient Defender",
           "egg": "Jungle",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "3.5B",
           "variants": [
             "normal",
             "golden",
@@ -1361,7 +1361,7 @@
           "name": "Gears of Time",
           "egg": "Steampunk",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "7B",
           "variants": [
             "normal",
             "golden",
@@ -1397,7 +1397,7 @@
           "name": "Sakura Immortal",
           "egg": "Sakura",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "14B",
           "variants": [
             "normal",
             "golden",
@@ -1433,7 +1433,7 @@
           "name": "Lab Robot",
           "egg": "Lab",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "200B",
           "variants": [
             "normal",
             "golden",
@@ -1710,7 +1710,7 @@
           "name": "Space Dog",
           "egg": "Moon",
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "1.2B",
           "variants": [
             "normal",
             "golden",
@@ -1723,7 +1723,7 @@
           "name": "Alien",
           "egg": "Alien",
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "2.4B",
           "variants": [
             "normal",
             "golden",
@@ -1736,7 +1736,7 @@
           "name": "Meteor",
           "egg": "Moon",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "2.8B",
           "variants": [
             "normal",
             "golden",
@@ -1749,7 +1749,7 @@
           "name": "Rocket",
           "egg": "Moon",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "4B",
           "variants": [
             "normal",
             "golden",
@@ -1775,7 +1775,7 @@
           "name": "Alien Star",
           "egg": "Alien",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "5.6B",
           "variants": [
             "normal",
             "golden",
@@ -1788,7 +1788,7 @@
           "name": "UFO",
           "egg": "Alien",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "8B",
           "variants": [
             "normal",
             "golden",
@@ -1827,7 +1827,7 @@
           "name": "Midnight Dragon",
           "egg": "Moon",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "14B",
           "variants": [
             "normal",
             "golden",
@@ -1879,7 +1879,7 @@
           "name": "Alien Soldier",
           "egg": "Alien",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "28.8B",
           "variants": [
             "normal",
             "golden",
@@ -1892,7 +1892,7 @@
           "name": "Cyber Car",
           "egg": "Tech City",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "32B",
           "variants": [
             "normal",
             "golden",
@@ -1905,7 +1905,7 @@
           "name": "Nebula Hydra",
           "egg": "Nebula Forest",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "32B",
           "variants": [
             "normal",
             "golden",
@@ -1931,7 +1931,7 @@
           "name": "Void Slime",
           "egg": "Void",
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "40B",
           "variants": [
             "normal",
             "golden",
@@ -1944,7 +1944,7 @@
           "name": "Void Reaper",
           "egg": "Void",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "60B",
           "variants": [
             "normal",
             "golden",
@@ -1957,7 +1957,7 @@
           "name": "Moon Guardian",
           "egg": "Moon",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "60B",
           "variants": [
             "normal",
             "golden",
@@ -1970,7 +1970,7 @@
           "name": "Nebula Dragon",
           "egg": "Nebula Forest",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "64B",
           "variants": [
             "normal",
             "golden",
@@ -1996,7 +1996,7 @@
           "name": "Alien Bee",
           "egg": "Spaceship",
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "80B",
           "variants": [
             "normal",
             "golden",
@@ -2022,7 +2022,7 @@
           "name": "Space Jellyfish",
           "egg": "Spaceship",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "120B",
           "variants": [
             "normal",
             "golden",
@@ -2035,7 +2035,7 @@
           "name": "Cyber Mechanic",
           "egg": "Tech City",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "120B",
           "variants": [
             "normal",
             "golden",
@@ -2048,7 +2048,7 @@
           "name": "Space Wyvern",
           "egg": "Alien",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "120B",
           "variants": [
             "normal",
             "golden",
@@ -2061,7 +2061,7 @@
           "name": "Void Hexagon",
           "egg": "Void",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "125B",
           "variants": [
             "normal",
             "golden",
@@ -2113,7 +2113,7 @@
           "name": "Lunar Gladiator",
           "egg": "Moon",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "300B",
           "variants": [
             "normal",
             "golden",
@@ -2126,7 +2126,7 @@
           "name": "Void Orb",
           "egg": "Void",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "480B",
           "variants": [
             "normal",
             "golden",
@@ -2139,7 +2139,7 @@
           "name": "Laser Dragon",
           "egg": "Tech City",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "500B",
           "variants": [
             "normal",
             "golden",
@@ -2152,7 +2152,7 @@
           "name": "Sentient Mothership",
           "egg": "Alien",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "600B",
           "variants": [
             "normal",
             "golden",
@@ -2165,7 +2165,7 @@
           "name": "Amethyst Spaceship",
           "egg": "Space Warzone",
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "600B",
           "variants": [
             "normal",
             "golden",
@@ -2178,7 +2178,7 @@
           "name": "Crescent Overseer",
           "egg": "Moon",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "700B",
           "variants": [
             "normal",
             "golden",
@@ -2204,7 +2204,7 @@
           "name": "Round Bot",
           "egg": "Spaceship",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "950B",
           "variants": [
             "normal",
             "golden",
@@ -2217,7 +2217,7 @@
           "name": "Water Robot",
           "egg": "Space Warzone",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "1T",
           "variants": [
             "normal",
             "golden",
@@ -2230,7 +2230,7 @@
           "name": "Nebula Phantom",
           "egg": "Nebula Forest",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "1T",
           "variants": [
             "normal",
             "golden",
@@ -2243,7 +2243,7 @@
           "name": "Comet Golem",
           "egg": "Comet",
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "1.2T",
           "variants": [
             "normal",
             "golden",
@@ -2256,7 +2256,7 @@
           "name": "Queen Devourer",
           "egg": "Alien",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "1.4T",
           "variants": [
             "normal",
             "golden",
@@ -2269,7 +2269,7 @@
           "name": "Falling Comet",
           "egg": "Comet",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "2T",
           "variants": [
             "normal",
             "golden",
@@ -2282,7 +2282,7 @@
           "name": "Ruby Drone",
           "egg": "Space Warzone",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "2T",
           "variants": [
             "normal",
             "golden",
@@ -2295,7 +2295,7 @@
           "name": "Void Dragon",
           "egg": "Void",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "2T",
           "variants": [
             "normal",
             "golden",
@@ -2308,7 +2308,7 @@
           "name": "Rocket Reaver",
           "egg": "Tech City",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "2.4T",
           "variants": [
             "normal",
             "golden",
@@ -2334,7 +2334,7 @@
           "name": "Comet Alien",
           "egg": "Comet",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "4T",
           "variants": [
             "normal",
             "golden",
@@ -2347,7 +2347,7 @@
           "name": "Fuelroid",
           "egg": "Spaceship",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "4T",
           "variants": [
             "normal",
             "golden",
@@ -2360,7 +2360,7 @@
           "name": "Nebula Supernova",
           "egg": "Nebula Forest",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "5T",
           "variants": [
             "normal",
             "golden",
@@ -2386,7 +2386,7 @@
           "name": "Starfactory Worker",
           "egg": "Starfactory",
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "5T",
           "variants": [
             "normal",
             "golden",
@@ -2412,7 +2412,7 @@
           "name": "Coolfire Voltage",
           "egg": "Tech City",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "5.6T",
           "variants": [
             "normal",
             "golden",
@@ -2425,7 +2425,7 @@
           "name": "Gear Star",
           "egg": "Starfactory",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "8T",
           "variants": [
             "normal",
             "golden",
@@ -2438,7 +2438,7 @@
           "name": "Blizzard Drone",
           "egg": "Space Warzone",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "8T",
           "variants": [
             "normal",
             "golden",
@@ -2464,7 +2464,7 @@
           "name": "Frozen Rocket",
           "egg": "Glacier Moon",
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "10T",
           "variants": [
             "normal",
             "golden",
@@ -2477,7 +2477,7 @@
           "name": "Void Sentinel",
           "egg": "Void",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "10T",
           "variants": [
             "normal",
             "golden",
@@ -2490,7 +2490,7 @@
           "name": "Nebula Beast",
           "egg": "Nebula Forest",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "12T",
           "variants": [
             "normal",
             "golden",
@@ -2503,7 +2503,7 @@
           "name": "Gear Dragon",
           "egg": "Starfactory",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "16T",
           "variants": [
             "normal",
             "golden",
@@ -2516,7 +2516,7 @@
           "name": "Glacier Golem",
           "egg": "Glacier Moon",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "16T",
           "variants": [
             "normal",
             "golden",
@@ -2529,7 +2529,7 @@
           "name": "Comet Dragon",
           "egg": "Comet",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "16T",
           "variants": [
             "normal",
             "golden",
@@ -2555,7 +2555,7 @@
           "name": "Fuel Overlord",
           "egg": "Spaceship",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "20T",
           "variants": [
             "normal",
             "golden",
@@ -2568,7 +2568,7 @@
           "name": "Mars Fox",
           "egg": "Mars Colony",
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "20T",
           "variants": [
             "normal",
             "golden",
@@ -2581,7 +2581,7 @@
           "name": "Void Monarch",
           "egg": "Void",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "25T",
           "variants": [
             "normal",
             "golden",
@@ -2594,7 +2594,7 @@
           "name": "Ice Butterfly",
           "egg": "Glacier Moon",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "32T",
           "variants": [
             "normal",
             "golden",
@@ -2607,7 +2607,7 @@
           "name": "Colony Flower",
           "egg": "Mars Colony",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "32T",
           "variants": [
             "normal",
             "golden",
@@ -2620,7 +2620,7 @@
           "name": "Super Robot",
           "egg": "Space Warzone",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "36T",
           "variants": [
             "normal",
             "golden",
@@ -2633,7 +2633,7 @@
           "name": "Falling Star",
           "egg": "Starfall Valley",
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "40T",
           "variants": [
             "normal",
             "golden",
@@ -2646,7 +2646,7 @@
           "name": "Missile Lord",
           "egg": "Spaceship",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "50T",
           "variants": [
             "normal",
             "golden",
@@ -2672,7 +2672,7 @@
           "name": "Mars Heart",
           "egg": "Mars Colony",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "64T",
           "variants": [
             "normal",
             "golden",
@@ -2685,7 +2685,7 @@
           "name": "Stars Trio",
           "egg": "Starfall Valley",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "64T",
           "variants": [
             "normal",
             "golden",
@@ -2698,7 +2698,7 @@
           "name": "Factory Hexagon",
           "egg": "Starfactory",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "70T",
           "variants": [
             "normal",
             "golden",
@@ -2711,7 +2711,7 @@
           "name": "Comet Guard",
           "egg": "Comet",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "72T",
           "variants": [
             "normal",
             "golden",
@@ -2724,7 +2724,7 @@
           "name": "Star Dragon",
           "egg": "Starfall Valley",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "128T",
           "variants": [
             "normal",
             "golden",
@@ -2737,7 +2737,7 @@
           "name": "Glacier Striker",
           "egg": "Glacier Moon",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "140T",
           "variants": [
             "normal",
             "golden",
@@ -2750,7 +2750,7 @@
           "name": "Magic Tank",
           "egg": "Space Warzone",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "170T",
           "variants": [
             "normal",
             "golden",
@@ -2763,7 +2763,7 @@
           "name": "Mars Rover",
           "egg": "Mars Colony",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "280T",
           "variants": [
             "normal",
             "golden",
@@ -2776,7 +2776,7 @@
           "name": "Gear Overlord",
           "egg": "Starfactory",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "300T",
           "variants": [
             "normal",
             "golden",
@@ -2789,7 +2789,7 @@
           "name": "Black Hole Star",
           "egg": "Black Hole",
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "320T",
           "variants": [
             "normal",
             "golden",
@@ -2802,7 +2802,7 @@
           "name": "Comet Skull",
           "egg": "Comet",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "340T",
           "variants": [
             "normal",
             "golden",
@@ -2815,7 +2815,7 @@
           "name": "Crystal Destroyer",
           "egg": "Space Warzone",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "450T",
           "variants": [
             "normal",
             "golden",
@@ -2828,7 +2828,7 @@
           "name": "Black Hole",
           "egg": "Black Hole",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "500T",
           "variants": [
             "normal",
             "golden",
@@ -2841,7 +2841,7 @@
           "name": "Star Imp",
           "egg": "Starfall Valley",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "560T",
           "variants": [
             "normal",
             "golden",
@@ -2854,7 +2854,7 @@
           "name": "Ice Dragon",
           "egg": "Glacier Moon",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "600T",
           "variants": [
             "normal",
             "golden",
@@ -2867,7 +2867,7 @@
           "name": "Comet Monster",
           "egg": "Comet",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "900T",
           "variants": [
             "normal",
             "golden",
@@ -2880,7 +2880,7 @@
           "name": "Black Hole Hexagon",
           "egg": "Black Hole",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "1Qd",
           "variants": [
             "normal",
             "golden",
@@ -2893,7 +2893,7 @@
           "name": "Mars Dragon",
           "egg": "Mars Colony",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "1.2Qd",
           "variants": [
             "normal",
             "golden",
@@ -2906,7 +2906,7 @@
           "name": "Starfactory Core",
           "egg": "Starfactory",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "1.4Qd",
           "variants": [
             "normal",
             "golden",
@@ -2919,7 +2919,7 @@
           "name": "Star Monster",
           "egg": "Starfall Valley",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "2.5Qd",
           "variants": [
             "normal",
             "golden",
@@ -2932,7 +2932,7 @@
           "name": "Frozen Overlord",
           "egg": "Glacier Moon",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "2.8Qd",
           "variants": [
             "normal",
             "golden",
@@ -2945,7 +2945,7 @@
           "name": "Starfactory Robot",
           "egg": "Starfactory",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "3.6Qd",
           "variants": [
             "normal",
             "golden",
@@ -2958,7 +2958,7 @@
           "name": "Dark Host",
           "egg": "Black Hole",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "4.8Qd",
           "variants": [
             "normal",
             "golden",
@@ -2971,7 +2971,7 @@
           "name": "Mars Tornado",
           "egg": "Mars Colony",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "5.6Qd",
           "variants": [
             "normal",
             "golden",
@@ -2984,7 +2984,7 @@
           "name": "Moon Protector",
           "egg": "Glacier Moon",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "7.2Qd",
           "variants": [
             "normal",
             "golden",
@@ -2997,7 +2997,7 @@
           "name": "Star Warden",
           "egg": "Starfall Valley",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "12Qd",
           "variants": [
             "normal",
             "golden",
@@ -3010,7 +3010,7 @@
           "name": "Mars Immortal",
           "egg": "Mars Colony",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "14.4Qd",
           "variants": [
             "normal",
             "golden",
@@ -3023,7 +3023,7 @@
           "name": "Void Seer",
           "egg": "Black Hole",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "22Qd",
           "variants": [
             "normal",
             "golden",
@@ -3036,7 +3036,7 @@
           "name": "Star Emperor",
           "egg": "Starfall Valley",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "30Qd",
           "variants": [
             "normal",
             "golden",
@@ -3049,7 +3049,7 @@
           "name": "Space Devourer",
           "egg": "Black Hole",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "100Qd",
           "variants": [
             "normal",
             "golden",
@@ -3062,7 +3062,7 @@
           "name": "Nova Singularity",
           "egg": "Black Hole",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "250Qd",
           "variants": [
             "normal",
             "golden",
@@ -3536,7 +3536,7 @@
           "name": "Bloom Seraph",
           "egg": "Sky Garden",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "800Qd",
           "variants": [
             "normal",
             "golden",
@@ -3614,7 +3614,7 @@
           "name": "Flora Guardian",
           "egg": "Sky Garden",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "2Qn",
           "variants": [
             "normal",
             "golden",
@@ -3887,7 +3887,7 @@
           "name": "Ashen Wyvern",
           "egg": "Ashwind Realm",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "50Qn",
           "variants": [
             "normal",
             "golden",
@@ -3900,7 +3900,7 @@
           "name": "Sky Phoenix",
           "egg": "Cloudy World",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "64Qn",
           "variants": [
             "normal",
             "golden",
@@ -3939,7 +3939,7 @@
           "name": "Ice Monster",
           "egg": "Frozen Forest",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "100Qn",
           "variants": [
             "normal",
             "golden",
@@ -3952,7 +3952,7 @@
           "name": "Monochrome Wyvern",
           "egg": "Monochrome World",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "100Qn",
           "variants": [
             "normal",
             "golden",
@@ -4017,7 +4017,7 @@
           "name": "Frozen Owl",
           "egg": "Frozen Forest",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "250Qn",
           "variants": [
             "normal",
             "golden",
@@ -4056,7 +4056,7 @@
           "name": "Monochrome Fox",
           "egg": "Monochrome World",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "425Qn",
           "variants": [
             "normal",
             "golden",
@@ -4069,7 +4069,7 @@
           "name": "Elder Titan",
           "egg": "Ancient Ruins",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "500Qn",
           "variants": [
             "normal",
             "golden",
@@ -4121,7 +4121,7 @@
           "name": "Cactus Cowboy",
           "egg": "Wild West",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "800Qn",
           "variants": [
             "normal",
             "golden",
@@ -5463,7 +5463,7 @@
         },
         {
           "slug": "straw-dragon",
-          "name": "Straw Dragon",
+          "name": "Straw Golem",
           "egg": "Primitive Fields",
           "rarity": "Epic",
           "clicks": "64Sp",
@@ -6246,7 +6246,7 @@
           "name": "Adventure Immortal",
           "egg": null,
           "rarity": "Supreme",
-          "clicks": null,
+          "clicks": "110%",
           "variants": [
             "normal",
             "golden",
@@ -6272,7 +6272,7 @@
           "name": "Compass Overlord",
           "egg": null,
           "rarity": "Supreme",
-          "clicks": null,
+          "clicks": "110%",
           "variants": [
             "normal",
             "golden",
@@ -6291,7 +6291,7 @@
           "name": "Rebirth Dragon",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "50",
           "variants": [
             "normal",
             "golden",
@@ -6303,7 +6303,7 @@
           "name": "Tutel",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "111",
           "variants": [
             "normal",
             "golden",
@@ -6315,7 +6315,7 @@
           "name": "Fire Dominus",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "250",
           "variants": [
             "normal",
             "golden",
@@ -6327,7 +6327,7 @@
           "name": "Magic Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1.25K",
           "variants": [
             "normal",
             "golden",
@@ -6339,7 +6339,7 @@
           "name": "Storm Wisp",
           "egg": "Storm Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1.5K",
           "variants": [
             "normal",
             "golden",
@@ -6351,7 +6351,7 @@
           "name": "Storm Ghoul",
           "egg": "Storm Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "2K",
           "variants": [
             "normal",
             "golden",
@@ -6363,7 +6363,7 @@
           "name": "Storm Striker",
           "egg": "Storm Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "3K",
           "variants": [
             "normal",
             "golden",
@@ -6375,7 +6375,7 @@
           "name": "Flying Gumdrop",
           "egg": "Candy Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "60K",
           "variants": [
             "normal",
             "golden",
@@ -6387,7 +6387,7 @@
           "name": "Licorice Demon",
           "egg": "Candy Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "75K",
           "variants": [
             "normal",
             "golden",
@@ -6399,7 +6399,7 @@
           "name": "Sugar Serpent",
           "egg": "Candy Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "100K",
           "variants": [
             "normal",
             "golden",
@@ -6411,7 +6411,7 @@
           "name": "Hell Guardian",
           "egg": "Hell Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1M",
           "variants": [
             "normal",
             "golden",
@@ -6423,7 +6423,7 @@
           "name": "Dark Angel",
           "egg": "Hell Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1.5M",
           "variants": [
             "normal",
             "golden",
@@ -6435,7 +6435,7 @@
           "name": "Magma Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1.5M",
           "variants": [
             "normal",
             "golden",
@@ -6447,7 +6447,7 @@
           "name": "Sinner's Soul",
           "egg": "Hell Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "2.5M",
           "variants": [
             "normal",
             "golden",
@@ -6495,7 +6495,7 @@
           "name": "Boneca Ambalabu",
           "egg": "Brainrot Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "10M",
           "variants": [
             "normal",
             "golden",
@@ -6507,7 +6507,7 @@
           "name": "Lirili Larila",
           "egg": "Brainrot Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "15M",
           "variants": [
             "normal",
             "golden",
@@ -6519,7 +6519,7 @@
           "name": "Bobrito Bandito",
           "egg": "Brainrot Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "25M",
           "variants": [
             "normal",
             "golden",
@@ -6531,7 +6531,7 @@
           "name": "Shadow Ninja",
           "egg": "Samurai Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "25M",
           "variants": [
             "normal",
             "golden",
@@ -6543,7 +6543,7 @@
           "name": "Sakura Butterfly",
           "egg": "Samurai Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "40M",
           "variants": [
             "normal",
             "golden",
@@ -6555,7 +6555,7 @@
           "name": "Samurai Dragon",
           "egg": "Samurai Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "75M",
           "variants": [
             "normal",
             "golden",
@@ -6567,7 +6567,7 @@
           "name": "Glitched Butterfly",
           "egg": "Glitch Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "100M",
           "variants": [
             "normal",
             "golden",
@@ -6579,7 +6579,7 @@
           "name": "Glitched Mimic",
           "egg": "Glitch Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "150M",
           "variants": [
             "normal",
             "golden",
@@ -6591,7 +6591,7 @@
           "name": "Glitched Dragon",
           "egg": "Glitch Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "250M",
           "variants": [
             "normal",
             "golden",
@@ -6603,7 +6603,7 @@
           "name": "Deceitful Eye",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "400M",
           "variants": [
             "normal",
             "golden",
@@ -6663,7 +6663,7 @@
           "name": "Guard Fox",
           "egg": "Squid Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "10B",
           "variants": [
             "normal",
             "golden",
@@ -6675,7 +6675,7 @@
           "name": "Front Man Bunny",
           "egg": "Squid Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "20B",
           "variants": [
             "normal",
             "golden",
@@ -6687,7 +6687,7 @@
           "name": "Player Dominus",
           "egg": "Squid Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "30B",
           "variants": [
             "normal",
             "golden",
@@ -6699,7 +6699,7 @@
           "name": "Bumble Bee",
           "egg": "Bee Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "50B",
           "variants": [
             "normal",
             "golden",
@@ -6712,7 +6712,7 @@
           "name": "Worker Bee",
           "egg": "Bee Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "80B",
           "variants": [
             "normal",
             "golden",
@@ -6725,7 +6725,7 @@
           "name": "Galaxy Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "100B",
           "variants": [
             "normal",
             "golden",
@@ -6738,7 +6738,7 @@
           "name": "Drone Bee",
           "egg": "Bee Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "140B",
           "variants": [
             "normal",
             "golden",
@@ -6751,7 +6751,7 @@
           "name": "Chaos Bat",
           "egg": "Chaos Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "400B",
           "variants": [
             "normal",
             "golden",
@@ -6764,7 +6764,7 @@
           "name": "Classic UFO",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "600B",
           "variants": [
             "normal",
             "golden",
@@ -6777,7 +6777,7 @@
           "name": "Chaos Shock",
           "egg": "Chaos Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "600B",
           "variants": [
             "normal",
             "golden",
@@ -6790,7 +6790,7 @@
           "name": "Chaos Dragon",
           "egg": "Chaos Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "800B",
           "variants": [
             "normal",
             "golden",
@@ -6842,7 +6842,7 @@
           "name": "Spaceship",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "12.5T",
           "variants": [
             "normal",
             "golden",
@@ -6868,7 +6868,7 @@
           "name": "Speaker",
           "egg": "Melody Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "25T",
           "variants": [
             "normal",
             "golden",
@@ -6881,7 +6881,7 @@
           "name": "Fly Note",
           "egg": "Melody Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "35T",
           "variants": [
             "normal",
             "golden",
@@ -6894,7 +6894,7 @@
           "name": "Piano Dragon",
           "egg": "Melody Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "50T",
           "variants": [
             "normal",
             "golden",
@@ -6920,7 +6920,7 @@
           "name": "Fall Dominus",
           "egg": "Fall Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "150T",
           "variants": [
             "normal",
             "golden",
@@ -6933,7 +6933,7 @@
           "name": "Fall Hydra",
           "egg": "Fall Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "250T",
           "variants": [
             "normal",
             "golden",
@@ -6946,7 +6946,7 @@
           "name": "Fall Star",
           "egg": "Fall Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "500T",
           "variants": [
             "normal",
             "golden",
@@ -6959,7 +6959,7 @@
           "name": "Star Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "800T",
           "variants": [
             "normal",
             "golden",
@@ -6972,7 +6972,7 @@
           "name": "Obsidian Flower",
           "egg": "Obsidian Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1.2Qd",
           "variants": [
             "normal",
             "golden",
@@ -6985,7 +6985,7 @@
           "name": "Obsidian Dragon",
           "egg": "Obsidian Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1.4Qd",
           "variants": [
             "normal",
             "golden",
@@ -6998,7 +6998,7 @@
           "name": "Obsidian Star",
           "egg": "Obsidian Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "2Qd",
           "variants": [
             "normal",
             "golden",
@@ -7063,7 +7063,7 @@
           "name": "Hacker Dragon",
           "egg": "Rcx Exclusive Dragon",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "35Qd",
           "variants": [
             "normal",
             "golden",
@@ -7076,7 +7076,7 @@
           "name": "Godly Axolotl",
           "egg": "Rcx Exclusive Dragon",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "40Qd",
           "variants": [
             "normal",
             "golden",
@@ -7089,7 +7089,7 @@
           "name": "Cerberus",
           "egg": "Rcx Exclusive Dragon",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "50Qd",
           "variants": [
             "normal",
             "golden",
@@ -7102,7 +7102,7 @@
           "name": "Dust Spirit",
           "egg": "Mirage Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "90Qd",
           "variants": [
             "normal",
             "golden",
@@ -7115,7 +7115,7 @@
           "name": "Desert Heart",
           "egg": "Mirage Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "110Qd",
           "variants": [
             "normal",
             "golden",
@@ -7141,7 +7141,7 @@
           "name": "Dust Dragon",
           "egg": "Mirage Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "160Qd",
           "variants": [
             "normal",
             "golden",
@@ -7180,7 +7180,7 @@
           "name": "Bloom Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "750Qd",
           "variants": [
             "normal",
             "golden",
@@ -7232,7 +7232,7 @@
           "name": "Coral Fish",
           "egg": "Coral Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "10Qn",
           "variants": [
             "normal",
             "golden",
@@ -7258,7 +7258,7 @@
           "name": "Coral Dragon",
           "egg": "Coral Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "20Qn",
           "variants": [
             "normal",
             "golden",
@@ -7271,7 +7271,7 @@
           "name": "Coral Axolotl",
           "egg": "Coral Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "48Qn",
           "variants": [
             "normal",
             "golden",
@@ -7284,7 +7284,7 @@
           "name": "Cosmic Star",
           "egg": "Cosmic Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "80Qn",
           "variants": [
             "normal",
             "golden",
@@ -7297,7 +7297,7 @@
           "name": "Cosmic Butterfly",
           "egg": "Cosmic Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "100Qn",
           "variants": [
             "normal",
             "golden",
@@ -7310,7 +7310,7 @@
           "name": "Cosmic Wisp",
           "egg": "Cosmic Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "180Qn",
           "variants": [
             "normal",
             "golden",
@@ -7375,7 +7375,7 @@
           "name": "Lilac Pixie",
           "egg": "Fairy Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "900Qn",
           "variants": [
             "normal",
             "golden",
@@ -9075,7 +9075,7 @@
           "slug": "champion-tutel",
           "name": "Champion Tutel",
           "egg": "-",
-          "rarity": "Supreme",
+          "rarity": "Ultimate",
           "clicks": "400%",
           "variants": [
             "normal",
@@ -9335,7 +9335,7 @@
           "name": "5M Balloon",
           "egg": null,
           "rarity": "Uncommon",
-          "clicks": null,
+          "clicks": "7.5K",
           "variants": [
             "normal",
             "golden",
@@ -9347,7 +9347,7 @@
           "name": "5M Cupcake",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "9K",
           "variants": [
             "normal",
             "golden",
@@ -9359,7 +9359,7 @@
           "name": "5M Hexagon",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "12.5K",
           "variants": [
             "normal",
             "golden",
@@ -9371,7 +9371,7 @@
           "name": "15M Unicorn",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "30K",
           "variants": [
             "normal",
             "golden",
@@ -9383,7 +9383,7 @@
           "name": "15M Toast",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "50K",
           "variants": [
             "normal",
             "golden",
@@ -9395,7 +9395,7 @@
           "name": "5M Mimic",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "70K",
           "variants": [
             "normal",
             "golden",
@@ -9407,7 +9407,7 @@
           "name": "25M Golem",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "100K",
           "variants": [
             "normal",
             "golden",
@@ -9419,7 +9419,7 @@
           "name": "25M Dragon",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "170K",
           "variants": [
             "normal",
             "golden",
@@ -9431,7 +9431,7 @@
           "name": "15M Fireworks",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "175K",
           "variants": [
             "normal",
             "golden",
@@ -9443,7 +9443,7 @@
           "name": "5M Dragon",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "250K",
           "variants": [
             "normal",
             "golden",
@@ -9455,7 +9455,7 @@
           "name": "25M UFO",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "600K",
           "variants": [
             "normal",
             "golden",
@@ -9467,7 +9467,7 @@
           "name": "Trippi Troppi",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "750K",
           "variants": [
             "normal",
             "golden",
@@ -9479,7 +9479,7 @@
           "name": "15M Heart",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "750K",
           "variants": [
             "normal",
             "golden",
@@ -9491,7 +9491,7 @@
           "name": "5M Star",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "900K",
           "variants": [
             "normal",
             "golden",
@@ -9503,7 +9503,7 @@
           "name": "La Vaca Saturno Saturnita",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "1M",
           "variants": [
             "normal",
             "golden",
@@ -9515,7 +9515,7 @@
           "name": "50M Blob",
           "egg": "50M Exclusive Egg",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "2.5M",
           "variants": [
             "normal",
             "golden",
@@ -9527,7 +9527,7 @@
           "name": "25M Jellyfish",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "2.6M",
           "variants": [
             "normal",
             "golden",
@@ -9539,7 +9539,7 @@
           "name": "15M Overlord",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "3M",
           "variants": [
             "normal",
             "golden",
@@ -9551,7 +9551,7 @@
           "name": "Burbaloni Luliloli",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "3.5M",
           "variants": [
             "normal",
             "golden",
@@ -9563,7 +9563,7 @@
           "name": "5M Trophy",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "4M",
           "variants": [
             "normal",
             "golden",
@@ -9575,7 +9575,7 @@
           "name": "50M Imp",
           "egg": "50M Exclusive Egg",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "7.5M",
           "variants": [
             "normal",
             "golden",
@@ -9587,7 +9587,7 @@
           "name": "25M Hydra",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "9M",
           "variants": [
             "normal",
             "golden",
@@ -9599,7 +9599,7 @@
           "name": "Season 1 Bee",
           "egg": "Season 1 Egg",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "10M",
           "variants": [
             "normal",
             "golden",
@@ -9611,7 +9611,7 @@
           "name": "15M Trophy",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "14M",
           "variants": [
             "normal",
             "golden",
@@ -9623,7 +9623,7 @@
           "name": "Chimpanzini Bananini",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "15M",
           "variants": [
             "normal",
             "golden",
@@ -9635,7 +9635,7 @@
           "name": "50M Star",
           "egg": "50M Exclusive Egg",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "35M",
           "variants": [
             "normal",
             "golden",
@@ -9647,7 +9647,7 @@
           "name": "25M Trophy",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "40M",
           "variants": [
             "normal",
             "golden",
@@ -9659,7 +9659,7 @@
           "name": "Frigo Camelo",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "50M",
           "variants": [
             "normal",
             "golden",
@@ -9683,7 +9683,7 @@
           "name": "50M Star Dragon",
           "egg": "50M Exclusive Egg",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "130M",
           "variants": [
             "normal",
             "golden",
@@ -9695,7 +9695,7 @@
           "name": "Tung Tung Tung Sahur",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "175M",
           "variants": [
             "normal",
             "golden",
@@ -9719,7 +9719,7 @@
           "name": "Brr Brr Patapim",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "350M",
           "variants": [
             "normal",
             "golden",
@@ -9731,7 +9731,7 @@
           "name": "Season 1 Star",
           "egg": "Season 1 Egg",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "750M",
           "variants": [
             "normal",
             "golden",
@@ -9743,7 +9743,7 @@
           "name": "Classic Dog",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "4.8B",
           "variants": [
             "normal",
             "golden",
@@ -9756,7 +9756,7 @@
           "name": "Classic Bee",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "8B",
           "variants": [
             "normal",
             "golden",
@@ -9782,7 +9782,7 @@
           "name": "Classic Parrot",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "16B",
           "variants": [
             "normal",
             "golden",
@@ -9808,7 +9808,7 @@
           "name": "90M Balloon",
           "egg": "90M Exclusive Egg",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "30B",
           "variants": [
             "normal",
             "golden",
@@ -9834,7 +9834,7 @@
           "name": "90M Cake",
           "egg": "90M Exclusive Egg",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "50B",
           "variants": [
             "normal",
             "golden",
@@ -9860,7 +9860,7 @@
           "name": "Classic Axalotl",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "58B",
           "variants": [
             "normal",
             "golden",
@@ -9886,7 +9886,7 @@
           "name": "90M Shock",
           "egg": "90M Exclusive Egg",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "200B",
           "variants": [
             "normal",
             "golden",
@@ -9899,7 +9899,7 @@
           "name": "Classic Dragon",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "240B",
           "variants": [
             "normal",
             "golden",
@@ -9938,7 +9938,7 @@
           "name": "90M Dragon",
           "egg": "90M Exclusive Egg",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "800B",
           "variants": [
             "normal",
             "golden",
@@ -9951,7 +9951,7 @@
           "name": "Classic Immortal",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "1.2T",
           "variants": [
             "normal",
             "golden",
@@ -9964,7 +9964,7 @@
           "name": "Fall Bear",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "2.5T",
           "variants": [
             "normal",
             "golden",
@@ -9977,7 +9977,7 @@
           "name": "Classic Shard",
           "egg": null,
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "2.8T",
           "variants": [
             "normal",
             "golden",
@@ -10003,7 +10003,7 @@
           "name": "Fall Squirrel",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "4T",
           "variants": [
             "normal",
             "golden",
@@ -10016,7 +10016,7 @@
           "name": "Maple Dragon",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "8T",
           "variants": [
             "normal",
             "golden",
@@ -10055,7 +10055,7 @@
           "name": "Maple Imp",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "35T",
           "variants": [
             "normal",
             "golden",
@@ -10081,7 +10081,7 @@
           "name": "Fall Dragon",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "150T",
           "variants": [
             "normal",
             "golden",
@@ -10107,7 +10107,7 @@
           "name": "Fall Seraph",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "700T",
           "variants": [
             "normal",
             "golden",
@@ -10120,7 +10120,7 @@
           "name": "Pumpkin Pie",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "1.2Qd",
           "variants": [
             "normal",
             "golden",
@@ -10133,7 +10133,7 @@
           "name": "Fall Immortal",
           "egg": null,
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "1.8Qd",
           "variants": [
             "normal",
             "golden",
@@ -10146,7 +10146,7 @@
           "name": "Roast Turkey",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "2Qd",
           "variants": [
             "normal",
             "golden",
@@ -10159,7 +10159,7 @@
           "name": "Turkey",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "4Qd",
           "variants": [
             "normal",
             "golden",
@@ -10172,7 +10172,7 @@
           "name": "135M Balloon",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "5Qd",
           "variants": [
             "normal",
             "golden",
@@ -10185,7 +10185,7 @@
           "name": "135M Hydra",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "8Qd",
           "variants": [
             "normal",
             "golden",
@@ -10211,7 +10211,7 @@
           "name": "135M Dragon",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "16Qd",
           "variants": [
             "normal",
             "golden",
@@ -10224,7 +10224,7 @@
           "name": "Thanksgiving Dragon",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "20Qd",
           "variants": [
             "normal",
             "golden",
@@ -10263,7 +10263,7 @@
           "name": "135M Heart",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "80Qd",
           "variants": [
             "normal",
             "golden",
@@ -10276,7 +10276,7 @@
           "name": "Horn of Plenty",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "90Qd",
           "variants": [
             "normal",
             "golden",
@@ -10302,7 +10302,7 @@
           "name": "135M Guardian",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "360Qd",
           "variants": [
             "normal",
             "golden",
@@ -10315,7 +10315,7 @@
           "name": "Harvest Lord",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "400Qd",
           "variants": [
             "normal",
             "golden",
@@ -10328,7 +10328,7 @@
           "name": "Thanksgiving Queen",
           "egg": null,
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "1Qn",
           "variants": [
             "normal",
             "golden",
@@ -10367,7 +10367,7 @@
           "name": "135M Cake",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "1.6Qn",
           "variants": [
             "normal",
             "golden",
@@ -10380,7 +10380,7 @@
           "name": "135M King",
           "egg": null,
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "4Qn",
           "variants": [
             "normal",
             "golden",
@@ -10856,7 +10856,7 @@
           "name": "Party Shield",
           "egg": null,
           "rarity": "Supreme",
-          "clicks": "100%",
+          "clicks": "110%",
           "variants": [
             "normal",
             "golden",
@@ -10921,7 +10921,7 @@
           "name": "Tiki Shield",
           "egg": null,
           "rarity": "Supreme",
-          "clicks": "100%",
+          "clicks": "110%",
           "variants": [
             "normal",
             "golden",
@@ -10934,7 +10934,7 @@
           "name": "135M Dice",
           "egg": null,
           "rarity": "Supreme",
-          "clicks": "100%",
+          "clicks": "110%",
           "variants": [
             "normal",
             "golden",
@@ -11764,7 +11764,7 @@
           "name": "25M Alien",
           "egg": null,
           "rarity": "Supreme",
-          "clicks": "100%",
+          "clicks": "200%",
           "variants": [
             "normal",
             "golden",
@@ -14659,7 +14659,7 @@
           "name": "Lovely Guardian",
           "egg": null,
           "rarity": "Supreme",
-          "clicks": "110%",
+          "clicks": "125%",
           "variants": [
             "normal",
             "golden",
@@ -17206,7 +17206,7 @@
           "slug": "the-prototype",
           "name": "The Prototype",
           "egg": null,
-          "rarity": "Supreme",
+          "rarity": "Ultimate",
           "clicks": "400%",
           "variants": [
             "normal",

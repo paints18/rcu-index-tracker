@@ -11,6 +11,10 @@ It checks the things that would quietly corrupt people's saved progress:
   * no slug has changed since the last accepted run (tools/slugs.lock)
   * variant ids are ones the file declares
   * required fields are present and the right type
+  * `clicks` is null or a well-formed value ("1.5K", "250", "110%")
+  * data/pet-images.json is well formed and points at real PNGs (warnings only
+    for pets with no entry, so a fresh weekly update does not fail CI before
+    tools/fetch_pet_images.py has been run)
 
 Slug drift is the important one. Progress is stored per pet slug, so if a slug
 changes -- which happens if you rename a pet, because the agreed slug format is
@@ -33,6 +37,114 @@ DATA = ROOT / "data" / "pets.json"
 LOCK = ROOT / "tools" / "slugs.lock"
 
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+
+IMAGES_JSON = ROOT / "data" / "pet-images.json"
+IMAGES_DIR = ROOT / "assets" / "pets"
+PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
+# Position in each pet-images.json entry == position in this list.
+IMAGE_VARIANTS = ["normal", "golden", "toxic", "galaxy"]
+
+# `clicks` is a display string: a plain/decimal number with an optional
+# magnitude suffix ("250", "1.5K", "12Qd"), or a percentage ("110%").
+# No leading/trailing zeros, no zero values, no whitespace.
+CLICKS_NUMBER = r"(?:[1-9]\d*|0\.\d*[1-9]|[1-9]\d*\.\d*[1-9])"
+CLICKS_RE = re.compile(r"^%s(?:[A-Za-z]{1,2}|%%)?$" % CLICKS_NUMBER)
+CLICKS_SUFFIXES = {"K", "M", "B", "T", "Qd", "Qn", "Sx", "Sp", "O", "N"}
+
+
+def check_clicks(value):
+    """Return (error, warning) for a pet's `clicks` value; None where fine."""
+    if value is None:
+        return None, None
+    if not isinstance(value, str):
+        return "`clicks` must be a string or null, got %r" % (value,), None
+    if not CLICKS_RE.match(value):
+        return "`clicks` %r is not a number with optional suffix or percentage" % value, None
+    suffix = re.sub(r"^[\d.]+", "", value)
+    if suffix and suffix != "%" and suffix not in CLICKS_SUFFIXES:
+        return None, "unknown clicks suffix %r in %r" % (suffix, value)
+    return None, None
+
+
+def check_images(pet_variants):
+    """Cross-check data/pet-images.json against the pets.
+
+    pet_variants maps slug -> list of variant ids. Returns (errors, warnings).
+    """
+    errors, warnings = [], []
+    if not IMAGES_JSON.exists():
+        return errors, ["%s does not exist -- the grid view will show text tiles" % IMAGES_JSON.name]
+    try:
+        images = json.loads(IMAGES_JSON.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        return ["%s is not valid JSON -- %s" % (IMAGES_JSON.name, exc)], warnings
+    if not isinstance(images, dict):
+        return ["%s must be an object of slug -> ids" % IMAGES_JSON.name], warnings
+
+    missing_entry = sorted(s for s in pet_variants if s not in images)
+    if missing_entry:
+        warnings.append(
+            "%d pet(s) have no entry in %s (run tools/fetch_pet_images.py): %s%s"
+            % (len(missing_entry), IMAGES_JSON.name, ", ".join(missing_entry[:10]),
+               ", ..." if len(missing_entry) > 10 else "")
+        )
+    stale = sorted(s for s in images if s not in pet_variants)
+    if stale:
+        warnings.append(
+            "%d entr(ies) in %s match no pet: %s" % (len(stale), IMAGES_JSON.name, ", ".join(stale[:10]))
+        )
+
+    referenced = set()
+    bad_files = []
+    no_normal = []
+    for slug, ids in images.items():
+        if not isinstance(ids, list) or not 3 <= len(ids) <= len(IMAGE_VARIANTS):
+            errors.append("%s[%r] must be a list of 3-4 ids, got %r" % (IMAGES_JSON.name, slug, ids))
+            continue
+        for position, image_id in enumerate(ids):
+            if image_id is None:
+                continue
+            if not isinstance(image_id, str) or not image_id.isdigit():
+                errors.append("%s[%r][%d]: id %r is not a numeric string or null"
+                              % (IMAGES_JSON.name, slug, position, image_id))
+                continue
+            referenced.add(image_id)
+        if ids[0] is None and slug in pet_variants:
+            no_normal.append(slug)
+        # Variants the pet has but the entry cannot express.
+        for variant_id in pet_variants.get(slug, []):
+            if variant_id in IMAGE_VARIANTS and IMAGE_VARIANTS.index(variant_id) >= len(ids):
+                warnings.append("%s[%r] has %d ids but the pet has variant %r"
+                                % (IMAGES_JSON.name, slug, len(ids), variant_id))
+
+    for image_id in sorted(referenced):
+        path = IMAGES_DIR / ("%s.png" % image_id)
+        try:
+            with open(path, "rb") as handle:
+                head = handle.read(8)
+        except OSError:
+            bad_files.append("%s (missing)" % path.name)
+            continue
+        if head != PNG_SIGNATURE:
+            bad_files.append("%s (empty or not a PNG)" % path.name)
+    if bad_files:
+        warnings.append(
+            "%d referenced image file(s) unusable in assets/pets: %s%s"
+            % (len(bad_files), ", ".join(bad_files[:10]), ", ..." if len(bad_files) > 10 else "")
+        )
+    if no_normal:
+        warnings.append(
+            "%d pet(s) have no normal image: %s%s"
+            % (len(no_normal), ", ".join(no_normal[:10]), ", ..." if len(no_normal) > 10 else "")
+        )
+    if IMAGES_DIR.is_dir():
+        orphans = sorted(f.name for f in IMAGES_DIR.glob("*.png") if f.stem not in referenced)
+        if orphans:
+            warnings.append(
+                "%d png file(s) in assets/pets are not referenced by %s: %s%s"
+                % (len(orphans), IMAGES_JSON.name, ", ".join(orphans[:5]), ", ..." if len(orphans) > 5 else "")
+            )
+    return errors, warnings
 
 
 def load_lock():
@@ -83,6 +195,7 @@ def main():
         sys.exit("error: `categories` must be a list")
 
     slugs = Counter()
+    pet_variants = {}
     pet_count = 0
     tick_count = 0
     seen_category_ids = set()
@@ -117,9 +230,22 @@ def main():
                 errors.append("%s: slug %r is not lowercase-kebab-case" % (spot, slug))
             else:
                 slugs[slug] += 1
+                if isinstance(pet.get("variants"), list):
+                    pet_variants[slug] = pet["variants"]
 
             if not pet.get("name"):
                 errors.append("%s (%s): missing name" % (spot, slug))
+
+            if pet.get("egg") is not None and not isinstance(pet.get("egg"), str):
+                errors.append("%s (%s): `egg` must be a string or null" % (spot, slug))
+            if not pet.get("rarity") or not isinstance(pet.get("rarity"), str):
+                errors.append("%s (%s): missing rarity" % (spot, slug))
+
+            clicks_error, clicks_warning = check_clicks(pet.get("clicks"))
+            if clicks_error:
+                errors.append("%s (%s): %s" % (spot, slug, clicks_error))
+            if clicks_warning:
+                warnings.append("%s (%s): %s" % (spot, slug, clicks_warning))
 
             variants = pet.get("variants")
             if not isinstance(variants, list):
@@ -144,6 +270,10 @@ def main():
                 "slug %r appears %d times -- two pets (in any category) would share "
                 "one checklist entry" % (slug, count)
             )
+
+    image_errors, image_warnings = check_images(pet_variants)
+    errors.extend(image_errors)
+    warnings.extend(image_warnings)
 
     # Slug drift against the accepted baseline.
     current = set(slugs)
