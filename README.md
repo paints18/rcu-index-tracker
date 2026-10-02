@@ -16,14 +16,17 @@ profile name.
   egg. Clicking a tile ticks it. Search, Egg, Rarity, counts and Undo are shared
   with the list. The Status menu offers All pets and Missing, which lists
   the pets not yet ticked for the variant on show (Normal, Golden, Toxic or
-  Galaxy). The Missing menu is disabled and reset to No filter. The chosen view is remembered in this browser.
+  Galaxy). The Missing menu is disabled and reset to No filter. The chosen view
+  is remembered in this browser.
 - List view is a table with a box per variant. The **All** column shows a full
   or partial ring depending on how many of a pet's variants you own.
 - Browse by category, or filter by name, egg, rarity, completion status, or
   a specific missing variant. Rarity is a checklist: tick any number of
   rarities, or none for all. The Egg, Rarity, Status and Missing menus are
   drawn by the page, not the browser, so they look and behave the same in
-  every browser. Status and Missing apply to List view only.
+  every browser. Status and Missing apply to List view only. Filters stay set
+  when you change category; an egg or rarity the new category does not have is
+  skipped there and comes back when you return.
 - List view: fill a whole column at once for the pets currently shown, or
   shift-click to fill a range. Undo reverts any of these bulk edits.
 - Keyboard navigation in both views: arrow keys, Home/End, Ctrl+Home/Ctrl+End

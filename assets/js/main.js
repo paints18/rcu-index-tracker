@@ -477,7 +477,11 @@ function renderCounts() {
 }
 
 function visiblePets(category) {
-  const { search, egg, rarities, missing } = state.filters;
+  const { search, missing } = state.filters;
+  // Egg and rarity picks carry over between categories; the ones this category
+  // does not list simply do not apply here.
+  const egg = category.eggs.includes(state.filters.egg) ? state.filters.egg : "";
+  const rarities = state.filters.rarities.filter((r) => category.rarities.includes(r));
   // A status the grid does not offer (say, hide-completed carried over from the
   // list) is set aside there rather than filtering with no way to see or undo it.
   const status = statusOptions().some((o) => o.value === state.filters.status)
@@ -1142,15 +1146,13 @@ function selectCategory(categoryId) {
   const switching = categoryId !== state.categoryId;
 
   state.categoryId = categoryId;
-  state.filters.egg = "";
-  state.filters.rarities = [];
 
-  // Unlike egg/rarity, a variant id means the same thing in every category, so
-  // "Missing Golden" is left standing rather than cleared on every switch — it
-  // is meant to follow you from world to world. It only gets dropped here if
-  // the category you just landed in doesn't have that variant at all, which
-  // would otherwise leave the filter applying to a dropdown showing "Any
-  // variant".
+  // Filters follow you from category to category. Egg and rarity picks are kept
+  // even where a category lacks them (visiblePets and the menus skip what is not
+  // there, so they are back when you return). A variant id means the same thing
+  // everywhere, but it is dropped if the category you landed in does not have
+  // that variant, which would otherwise leave the filter applying to a menu
+  // showing "No filter".
   const stillValid = usedVariants(state.index.variants, activeCategory()).some(
     (v) => v.id === state.filters.missing,
   );
