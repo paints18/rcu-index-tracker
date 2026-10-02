@@ -32,7 +32,7 @@
   max-height: calc(var(--gv-rows) * var(--gv-tile) + (var(--gv-rows) - 1) * var(--gv-gap));
   overflow-y: auto;
   overscroll-behavior: contain;
-  scrollbar-width: thin;
+  /* the bar itself is styled with the other inner scrollers, in tailwind.css */
   scrollbar-gutter: stable;
 }
 .gv-grid {
@@ -155,3 +155,20 @@
    hover card, but do not react to clicks. */
 :root[data-ticks-locked] .gv-tile { cursor: not-allowed; }
 :root[data-ticks-locked] .gv-tile:hover { transform: none; box-shadow: none; }
+
+/* The list view is a window onto the table the same height as the grid's panel, so
+   the filters stay on screen in either view. The grid's panel is at most 640px wide,
+   centred, with 8px of padding and a 2px border; its rows are squares one seventh of
+   what is left, less the scrollbar gutter. Both views sit in .views, which is the
+   container this measures against, so the two heights stay equal at every width. */
+.views { container-type: inline-size; }
+
+.table-scroll.sticky-head {
+  --gv-gap: 6px;
+  --gv-rows: 8;
+  --gv-tile: calc((min(640px, 100cqw) - 20px - 12px - 6 * var(--gv-gap)) / 7);
+  /* + 20px: the panel's padding and border, so the two outer boxes match */
+  max-height: calc(var(--gv-rows) * var(--gv-tile) + (var(--gv-rows) - 1) * var(--gv-gap) + 20px);
+  /* keyboard movement scrolls a row into view; keep it clear of the pinned header */
+  scroll-padding-top: 3.25rem;
+}

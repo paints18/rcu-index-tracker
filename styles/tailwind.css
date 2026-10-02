@@ -335,6 +335,49 @@
     scrollbar-gutter: stable;
   }
 
+  /* Every scrollbar on the site — the page's own, the grid and list windows, dialogs,
+     text areas — shares one softer look in the theme's colours, in dark and light.
+
+     Firefox takes the standard properties: a thin bar with a themed thumb.
+     Chromium and Safari get a pill thumb, inset from the track, with no arrow
+     buttons, so nothing crowds the rounded corners of the panels. They ignore
+     ::-webkit-scrollbar once scrollbar-width or scrollbar-color is set, hence the
+     reset inside @supports. The 12px track matches the gutter the grid's tile
+     size already leaves for it (see --gv-tile in grid-view.css). */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--c-muted) 55%, transparent) transparent;
+  }
+
+  @supports selector(::-webkit-scrollbar) {
+    * {
+      scrollbar-width: auto;
+      scrollbar-color: auto;
+    }
+    *::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+    *::-webkit-scrollbar-track {
+      background: transparent;
+      margin: 4px;
+    }
+    *::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--c-muted) 45%, transparent) padding-box;
+      border: 3px solid transparent;
+      border-radius: 999px;
+    }
+    *::-webkit-scrollbar-thumb:hover {
+      background: color-mix(in srgb, var(--c-muted) 75%, transparent) padding-box;
+    }
+    *::-webkit-scrollbar-button {
+      display: none;
+    }
+    *::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+  }
+
   body {
     @apply bg-bg text-ink font-sans text-[15px] leading-normal;
   }
@@ -438,7 +481,7 @@
   }
 
   /* One heading scale, used on every page. */
-  .page-head { @apply mt-7 mb-5; }
+  .page-head { @apply mt-5 mb-4; }
   .page-title { @apply text-2xl font-semibold tracking-tight; }
   .page-sub { @apply text-muted text-sm mt-1; }
   .section-title { @apply text-[15px] font-semibold; }
@@ -567,41 +610,27 @@
 
   /* ---------- pet table ---------- */
 
-  /* --table-radius is read back by the pet table's corner cells, so the two
-     stay in step. */
+  /* The table's card. It is a scroll container, so it clips its own rounded corners;
+     the cells are left square on purpose. Rounding the header's corners as well
+     leaves a notch there, and the rows scrolling underneath show through it. */
   .table-scroll {
     --table-radius: 10px;
     @apply overflow-x-auto border border-edge rounded-[var(--table-radius)] bg-raised;
   }
 
-  /* Only the pet table, whose <thead> is sticky.
-
-     `overflow-x: auto` forces `overflow-y` to `auto` as well, which turns this
-     into a scroll container, and the sticky <thead> inside then sticks to *it*
-     rather than the viewport, so it scrolls away with the page. Nothing may
-     clip here, so the corners are rounded on the cells instead (below) — the
-     `overflow-x: clip` / `overflow-y: visible` pair looks like it would do the
-     job without a scrollport, but clipping one axis alone makes the clip
-     region an infinite vertical strip, which has no corners to round. */
-  .table-scroll.sticky-head { overflow: visible; }
-
-  /* Narrow viewports — which is also what a heavily zoomed-in desktop window
-     looks like — need the horizontal scroll back, and that unavoidably makes
-     this a scroll container. Cap the height so it is a *vertical* scrollport
-     too: the header then has something to pin against (top: 0, below) instead
-     of riding up out of view. */
-  @media (max-width: 899px) {
-    .table-scroll.sticky-head {
-      overflow: auto;
-      max-height: calc(100svh - var(--header-h) - 12px);
-    }
+  /* Only the pet table, whose <thead> is sticky. It is a window of fixed height
+     (see grid-view.css, which matches it to the grid's), so the filters above it
+     stay on screen. Being its own scroll container is also what the sticky
+     <thead> pins against, and it scrolls sideways when the columns do not fit. */
+  .table-scroll.sticky-head {
+    overflow: auto;
+    overscroll-behavior: contain;
   }
 
-  /* `separate` rather than `collapse`: border-radius is ignored on the cells of
-     a collapsed table, and rounding the corner cells is the only way to keep
-     the card's corners (see .table-scroll). border-spacing: 0 leaves the grid
-     looking identical — the cost is that <tr> stops painting borders and
-     backgrounds have to be set on the cells, which the rules below do. */
+  /* `separate` rather than `collapse`: a sticky header keeps its borders only in a
+     separate-borders table. border-spacing: 0 leaves the grid looking identical —
+     the cost is that <tr> stops painting borders and backgrounds have to be set on
+     the cells, which the rules below do. */
   .pet-table { @apply w-full text-sm; border-collapse: separate; border-spacing: 0; }
 
   .pet-table :is(th, td) {
@@ -611,22 +640,8 @@
   }
 
   .pet-table thead th {
-    @apply sticky z-[5] bg-raised border-b border-edge-hi text-[11px] uppercase
+    @apply sticky top-0 z-[5] bg-raised border-b border-edge-hi text-[11px] uppercase
            tracking-[0.05em] text-muted font-semibold align-middle;
-    /* One pixel of deliberate overlap. --header-h is measured in whole CSS
-       pixels, but at fractional browser zoom the header's painted bottom edge
-       lands mid-pixel, and parking exactly on the measured value leaves a
-       hairline the rows scroll through. The site header is opaque and sits at
-       z-20, so the covered pixel never shows. */
-    top: calc(var(--header-h) - 1px);
-  }
-
-  /* Paired with the capped .table-scroll height above: inside a scroll
-     container the offset is measured from the box, not the page, so the site
-     header's height is not part of it. Must come after the rule above — same
-     specificity, so source order decides. */
-  @media (max-width: 899px) {
-    .pet-table thead th { top: 0; }
   }
 
   .pet-table tbody tr > :is(th, td) { @apply border-t border-edge; }
@@ -646,19 +661,6 @@
   .pet-table tbody tr:hover > :is(th, td),
   .pet-table tbody tr:focus-within > :is(th, td) {
     background: color-mix(in srgb, var(--c-accent) 7%, transparent);
-  }
-
-  /* The rounded corners of the card, transplanted onto the cells that sit in
-     them — the wrapper cannot clip them itself without becoming a scroll
-     container and breaking the sticky header. One pixel smaller than the
-     wrapper's radius: this is the padding-box corner, inside its 1px border. */
-  .pet-table thead th:first-child { border-top-left-radius: calc(var(--table-radius) - 1px); }
-  .pet-table thead th:last-child { border-top-right-radius: calc(var(--table-radius) - 1px); }
-  .pet-table tbody tr:last-child > :is(th, td):first-child {
-    border-bottom-left-radius: calc(var(--table-radius) - 1px);
-  }
-  .pet-table tbody tr:last-child > :is(th, td):last-child {
-    border-bottom-right-radius: calc(var(--table-radius) - 1px);
   }
 
   .col-name { @apply font-medium; }
