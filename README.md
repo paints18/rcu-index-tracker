@@ -17,9 +17,27 @@ profile name.
 - Fill a whole column at once for the pets currently shown, or shift-click
   to fill a range. Undo reverts any of these bulk edits.
 - Keyboard navigation: arrow keys, Home/End, Ctrl+Home/Ctrl+End,
-  Enter/Shift+Enter, and Space to tick.
+  Enter/Shift+Enter, and Space to tick. In grid view the arrow keys move
+  between pets (Page Up/Page Down, Home/End and Ctrl+Home/Ctrl+End also work),
+  and 1-4 switch variant. `/` focuses Search and Ctrl+Z undoes, in both views.
 - Multiple profiles, each with its own checklist.
 - Backup/Import moves a profile between browsers or devices via a code.
+- Grid view (List view/Grid view toggle in the category header) shows the in-game
+  index layout: one variant at a time, 7 tiles per row, not-indexed pets as
+  silhouettes, and a hover card with rarity, clicks and egg. Clicking a tile
+  ticks it. Filters, counts and Undo are shared with the list. Column
+  checkboxes and shift-click are list-only.
+- Import from the Powerful Studio API with a Roblox username and access
+  token, from the first-run screen or Backup/Import > From API. An import
+  replaces the profile's ticks with the in-game index, so ticks not in the game
+  are removed. Linking a profile that has ticks asks for confirmation first, and
+  an empty API response never clears a profile. Linked profiles refresh on page
+  load, and the Refresh button re-imports on demand. Disconnect removes the link
+  and keeps the ticks.
+- Profiles linked to the API are locked by default. A locked profile cannot
+  be edited (list, grid, column checkboxes and Undo); clicking a tick shows a
+  message instead. Settings > Your data has a Lock/Unlock button for each
+  profile, so any profile can be locked or unlocked.
 - Export a plain-text list of what you're missing, for trading or paying
   someone to index for you.
 - Light/dark mode, colour themes, a compact density option, and the ability
@@ -29,8 +47,34 @@ profile name.
 ## Data
 
 Progress is stored locally in the browser. There is no account and no
-server, so progress does not leave your device and does not sync across
+database, so progress does not leave your device and does not sync across
 devices unless you use Backup/Import.
+
+The optional API import (Backup/Import > From API) sends the Roblox username
+and access token entered to a Cloudflare Worker (`worker/index.js`), which
+forwards them to the Powerful Studio API and Roblox's username lookup. The
+Worker does not store or log them. The username and token are kept in the
+browser's local storage so a linked profile can refresh on page load.
+
+## Development
+
+- `npm run build` compiles `styles/tailwind.css` to `assets/styles.css`. The
+  compiled file is committed and must be rebuilt after changing classes.
+  `assets/grid-view.css` is hand-written.
+- `npm run check` (`python tools/validate.py`) validates `data/pets.json`.
+- `npm run serve` serves the site at `http://localhost:8765`.
+- `python tools/fetch_pet_images.py` downloads grid icons to `assets/pets/`
+  and writes `data/pet-images.json`. Run it after adding pets. It skips icons
+  already downloaded.
+- `worker/` holds the Cloudflare Worker used by the API import. It allows
+  requests from `https://paints18.github.io` and `http://localhost:8765`;
+  change `ALLOWED_ORIGINS` in `worker/index.js` to host elsewhere, and
+  redeploy it from the Cloudflare dashboard after editing.
+- `.githooks/pre-commit` runs `tools/assign_codes.py` when `data/pets.json` is
+  committed and stages `data/codes.json`. Enable it once per clone with
+  `git config core.hooksPath .githooks`.
+- `.github/workflows/deploy.yml` publishes `index.html`, `updates.html`,
+  `settings.html`, `data/` and `assets/`.
 
 ## Reporting problems
 

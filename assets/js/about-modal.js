@@ -32,7 +32,7 @@ function sections() {
       blocks: [
         stats,
         "This tracker is updated manually. New pets may take a while to add.",
-        "Progress is saved locally in your browser and never leaves your device.",
+        "Progress is saved locally in your browser and never leaves your device. The optional API import is the one exception: it sends your Roblox username and access token through a proxy to the Powerful Studio API to read your index. The proxy does not store or log them, and they are kept in this browser so the profile can refresh.",
         "Made by **paints**. Ping me in the Powerful Studio Discord if a pet is missing or listed wrong, or if you have feedback for the tracker.",
         "Not affiliated with Rebirth Champions Ultimate or Roblox.",
       ],

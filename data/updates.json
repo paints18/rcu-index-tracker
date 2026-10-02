@@ -4,6 +4,25 @@
   "notice": "",
   "entries": [
     {
+      "id": "2026-10-02-update",
+      "date": "2026-10-02",
+      "title": "Grid view, API import, data fixes",
+      "tags": [
+        "added",
+        "changed",
+        "fixed"
+      ],
+      "body": "Added a grid view that mirrors the in-game index, and an option to import your index from the Powerful Studio API.",
+      "items": [
+        "Grid view: switch between List view and Grid view in the category header. Click a pet to tick it; filters and Undo work in both. Arrow keys move between pets, 1-4 switch variant, / focuses Search and Ctrl+Z undoes.",
+        "Import from API: use your Roblox username and an access token, from the first screen or Backup/Import > From API. Your in-game index is the source of truth, so ticks not in it are removed. Imported profiles are locked by default; Settings > Your data can lock or unlock any profile.",
+        "Renamed Straw Dragon to Straw Golem.",
+        "Champion Tutel and The Prototype are now Ultimate. Royal Cat clicks are 3.5K.",
+        "Fixed percentages for Party Shield, Tiki Shield, 135M Dice, 25M Alien, Lovely Guardian, Adventure Immortal and Compass Overlord.",
+        "Filled in clicks for about 230 pets."
+      ]
+    },
+    {
       "id": "2026-10-01-update",
       "date": "2026-10-01",
       "title": "Update 79 missing pets",

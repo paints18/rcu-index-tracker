@@ -30,7 +30,7 @@ export function el(tag, className, text) {
 }
 
 /** Text with its `**bold**` spans lifted out into <strong>. */
-function rich(text) {
+export function rich(text) {
   const fragment = document.createDocumentFragment();
 
   // Odd-numbered parts are what sat between a pair of markers.
@@ -41,7 +41,7 @@ function rich(text) {
   return fragment;
 }
 
-function renderBlock(block) {
+export function renderBlock(block) {
   if (block instanceof Element) return block;
 
   if (Array.isArray(block)) {
