@@ -1301,7 +1301,7 @@
           "name": "Ghost Overlord",
           "egg": "Skull",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "2B",
           "variants": [
             "normal",
             "golden",
@@ -1385,7 +1385,7 @@
           "name": "Dungeon Guardian",
           "egg": "Skull",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "10B",
           "variants": [
             "normal",
             "golden",
@@ -1601,7 +1601,7 @@
           "name": "Skeleton Jester",
           "egg": "Cursed",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "60O",
           "variants": [
             "normal",
             "golden",
@@ -1762,7 +1762,7 @@
           "name": "Miner Cat",
           "egg": "Miner",
           "rarity": "Common",
-          "clicks": null,
+          "clicks": "5B",
           "variants": [
             "normal",
             "golden",
@@ -1801,7 +1801,7 @@
           "name": "Miner Bunny",
           "egg": "Miner",
           "rarity": "Uncommon",
-          "clicks": null,
+          "clicks": "10B",
           "variants": [
             "normal",
             "golden",
@@ -1866,7 +1866,7 @@
           "name": "Miner Panda",
           "egg": "Miner",
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "25B",
           "variants": [
             "normal",
             "golden",
@@ -1918,7 +1918,7 @@
           "name": "Miner Mole",
           "egg": "Miner",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "35B",
           "variants": [
             "normal",
             "golden",
@@ -1983,7 +1983,7 @@
           "name": "Stone Crocodile",
           "egg": "Underground",
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "75B",
           "variants": [
             "normal",
             "golden",
@@ -2009,7 +2009,7 @@
           "name": "Underground Alien",
           "egg": "Underground",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "100B",
           "variants": [
             "normal",
             "golden",
@@ -2191,7 +2191,7 @@
           "name": "Titanium Gem",
           "egg": "Underground",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "800B",
           "variants": [
             "normal",
             "golden",
@@ -2321,7 +2321,7 @@
           "name": "Silver Bat",
           "egg": "Bat",
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "2.5T",
           "variants": [
             "normal",
             "golden",
@@ -2373,7 +2373,7 @@
           "name": "Miner Dragon",
           "egg": "Underground",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "5T",
           "variants": [
             "normal",
             "golden",
@@ -2399,7 +2399,7 @@
           "name": "Sapphire Bat",
           "egg": "Bat",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "5T",
           "variants": [
             "normal",
             "golden",
@@ -2451,7 +2451,7 @@
           "name": "Bat Trio",
           "egg": "Bat",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "10T",
           "variants": [
             "normal",
             "golden",
@@ -2542,7 +2542,7 @@
           "name": "Dark Bat",
           "egg": "Bat",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "20T",
           "variants": [
             "normal",
             "golden",
@@ -2659,7 +2659,7 @@
           "name": "Bat Overlord",
           "egg": "Bat",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "50T",
           "variants": [
             "normal",
             "golden",
@@ -4147,7 +4147,7 @@
           "name": "Blizzard Titan",
           "egg": "Frozen Forest",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "1.2Sx",
           "variants": [
             "normal",
             "golden",
@@ -4160,7 +4160,7 @@
           "name": "Monochrome Hydra",
           "egg": "Monochrome World",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "1.2Sx",
           "variants": [
             "normal",
             "golden",
@@ -4186,7 +4186,7 @@
           "name": "Ancient King",
           "egg": "Ancient Ruins",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "2.4Sx",
           "variants": [
             "normal",
             "golden",
@@ -4212,7 +4212,7 @@
           "name": "Neon Overlord",
           "egg": "Neon World",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "3.2Sx",
           "variants": [
             "normal",
             "golden",
@@ -4225,7 +4225,7 @@
           "name": "Rider's Prodigy",
           "egg": "Wild West",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "3.4Sx",
           "variants": [
             "normal",
             "golden",
@@ -4251,7 +4251,7 @@
           "name": "Monochrome Beast",
           "egg": "Monochrome World",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "5Sx",
           "variants": [
             "normal",
             "golden",
@@ -4303,7 +4303,7 @@
           "name": "Brazen Bull",
           "egg": "Wild West",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "9.6Sx",
           "variants": [
             "normal",
             "golden",
@@ -4342,7 +4342,7 @@
           "name": "Neon Phantom",
           "egg": "Neon World",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "17Sx",
           "variants": [
             "normal",
             "golden",
@@ -4381,7 +4381,7 @@
           "name": "Honey Titan",
           "egg": "Bee World",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "28.8Sx",
           "variants": [
             "normal",
             "golden",
@@ -4433,7 +4433,7 @@
           "name": "Ancient Crab",
           "egg": "Sunken Temple",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "42Sx",
           "variants": [
             "normal",
             "golden",
@@ -4446,7 +4446,7 @@
           "name": "Neon Robot",
           "egg": "Neon World",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "57.6Sx",
           "variants": [
             "normal",
             "golden",
@@ -4459,7 +4459,7 @@
           "name": "Western Dread",
           "egg": "Wild West",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "60Sx",
           "variants": [
             "normal",
             "golden",
@@ -4498,7 +4498,7 @@
           "name": "Empress Bee",
           "egg": "Bee World",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "120Sx",
           "variants": [
             "normal",
             "golden",
@@ -4524,7 +4524,7 @@
           "name": "Volt Phoenix",
           "egg": "Thunder Isles",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "140Sx",
           "variants": [
             "normal",
             "golden",
@@ -4537,7 +4537,7 @@
           "name": "Mushroom Dragon",
           "egg": "Swamp World",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "170Sx",
           "variants": [
             "normal",
             "golden",
@@ -4550,7 +4550,7 @@
           "name": "Temple Dragon",
           "egg": "Sunken Temple",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "210Sx",
           "variants": [
             "normal",
             "golden",
@@ -4563,7 +4563,7 @@
           "name": "Neon Monarch",
           "egg": "Neon World",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "240Sx",
           "variants": [
             "normal",
             "golden",
@@ -4576,7 +4576,7 @@
           "name": "Crystal Heart",
           "egg": "Crystal Islands",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "340Sx",
           "variants": [
             "normal",
             "golden",
@@ -4602,7 +4602,7 @@
           "name": "Storm Titan",
           "egg": "Thunder Isles",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "470Sx",
           "variants": [
             "normal",
             "golden",
@@ -4654,7 +4654,7 @@
           "name": "Frog King",
           "egg": "Swamp World",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "840Sx",
           "variants": [
             "normal",
             "golden",
@@ -4693,7 +4693,7 @@
           "name": "Reef Sphinx",
           "egg": "Sunken Temple",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "1.2Sp",
           "variants": [
             "normal",
             "golden",
@@ -4719,7 +4719,7 @@
           "name": "Crystal Orb",
           "egg": "Crystal Islands",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "1.7Sp",
           "variants": [
             "normal",
             "golden",
@@ -4758,7 +4758,7 @@
           "name": "Cotton Candy Spirit",
           "egg": "Blossom Clouds",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "3.4Sp",
           "variants": [
             "normal",
             "golden",
@@ -4771,7 +4771,7 @@
           "name": "Lighting Hydra",
           "egg": "Thunder Isles",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "4Sp",
           "variants": [
             "normal",
             "golden",
@@ -4784,7 +4784,7 @@
           "name": "Abyssal Guardian",
           "egg": "Sunken Temple",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "4Sp",
           "variants": [
             "normal",
             "golden",
@@ -4810,7 +4810,7 @@
           "name": "Moss Guardian",
           "egg": "Swamp World",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "5Sp",
           "variants": [
             "normal",
             "golden",
@@ -4836,7 +4836,7 @@
           "name": "Ore Monster",
           "egg": "Crystal Islands",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "10Sp",
           "variants": [
             "normal",
             "golden",
@@ -4888,7 +4888,7 @@
           "name": "Root Titan",
           "egg": "Swamp World",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "16Sp",
           "variants": [
             "normal",
             "golden",
@@ -4901,7 +4901,7 @@
           "name": "Bloom Guardian",
           "egg": "Blossom Clouds",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "20Sp",
           "variants": [
             "normal",
             "golden",
@@ -4927,7 +4927,7 @@
           "name": "Temple Leviathan",
           "egg": "Sunken Temple",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "25Sp",
           "variants": [
             "normal",
             "golden",
@@ -4966,7 +4966,7 @@
           "name": "Crystal Overlord",
           "egg": "Crystal Islands",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "32Sp",
           "variants": [
             "normal",
             "golden",
@@ -4992,7 +4992,7 @@
           "name": "Immortal Kitsune",
           "egg": "Blossom Clouds",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "70Sp",
           "variants": [
             "normal",
             "golden",
@@ -5005,7 +5005,7 @@
           "name": "Slime Empress",
           "egg": "Swamp World",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "100Sp",
           "variants": [
             "normal",
             "golden",
@@ -5057,7 +5057,7 @@
           "name": "Crystal Seraph",
           "egg": "Crystal Islands",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "200Sp",
           "variants": [
             "normal",
             "golden",
@@ -5083,7 +5083,7 @@
           "name": "Blossom Deity",
           "egg": "Blossom Clouds",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "400Sp",
           "variants": [
             "normal",
             "golden",
@@ -5148,7 +5148,7 @@
           "name": "Fallen Samurai",
           "egg": "Samurai World",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "2.25O",
           "variants": [
             "normal",
             "golden",
@@ -5161,7 +5161,7 @@
           "name": "Aurora Beast",
           "egg": "Aurora World",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "3.2O",
           "variants": [
             "normal",
             "golden",
@@ -5187,7 +5187,7 @@
           "name": "Obsidian Titan",
           "egg": "Obsidian Spires",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "6.4O",
           "variants": [
             "normal",
             "golden",
@@ -5200,7 +5200,7 @@
           "name": "Eternal Shogun",
           "egg": "Samurai World",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "12.8O",
           "variants": [
             "normal",
             "golden",
@@ -5213,7 +5213,7 @@
           "name": "Portal Guardian",
           "egg": "Skyward Falls",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "18O",
           "variants": [
             "normal",
             "golden",
@@ -5226,7 +5226,7 @@
           "name": "Aether Serpent",
           "egg": "Skyward Falls",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "100O",
           "variants": [
             "normal",
             "golden",
@@ -5921,7 +5921,7 @@
           "name": "Harvest Warden",
           "egg": "Primitive Fields",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "72O",
           "variants": [
             "normal",
             "golden",
@@ -6012,7 +6012,7 @@
           "name": "Paradox Beast",
           "egg": "Paradox Spawn",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "200O",
           "variants": [
             "normal",
             "golden",
@@ -6064,7 +6064,7 @@
           "name": "Scarecrow Immortal",
           "egg": "Primitive Fields",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "400O",
           "variants": [
             "normal",
             "golden",
@@ -6077,7 +6077,7 @@
           "name": "Reactor Spider",
           "egg": "Atomic World",
           "rarity": "Divine",
-          "clicks": "560O",
+          "clicks": "580O",
           "variants": [
             "normal",
             "golden",
@@ -6090,7 +6090,7 @@
           "name": "Ancient Terror",
           "egg": "Dino World",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "600O",
           "variants": [
             "normal",
             "golden",
@@ -6103,7 +6103,7 @@
           "name": "Magnet Shard",
           "egg": "Magnetar Yard",
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "1.15N",
           "variants": [
             "normal",
             "golden",
@@ -6142,7 +6142,7 @@
           "name": "Seaweed Immortal",
           "egg": "Sunken Village",
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "2.1N",
           "variants": [
             "normal",
             "golden",
@@ -6155,7 +6155,7 @@
           "name": "Core Overlord",
           "egg": "Atomic World",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "2.4N",
           "variants": [
             "normal",
             "golden",
@@ -6168,7 +6168,7 @@
           "name": "Magnetar Beast",
           "egg": "Magnetar Yard",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "4.8N",
           "variants": [
             "normal",
             "golden",
@@ -6220,7 +6220,7 @@
           "name": "Sunken Colossus",
           "egg": "Sunken Village",
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "30N",
           "variants": [
             "normal",
             "golden",
@@ -6459,7 +6459,7 @@
           "name": "Blazing Egg",
           "egg": "Easter Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "5M",
           "variants": [
             "normal",
             "golden",
@@ -6471,7 +6471,7 @@
           "name": "Solar Egg",
           "egg": "Easter Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "7.5M",
           "variants": [
             "normal",
             "golden",
@@ -6483,7 +6483,7 @@
           "name": "Luxury Egg",
           "egg": "Easter Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "10M",
           "variants": [
             "normal",
             "golden",
@@ -6615,7 +6615,7 @@
           "name": "Treasure Mimic",
           "egg": "Pirate Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1B",
           "variants": [
             "normal",
             "golden",
@@ -6627,7 +6627,7 @@
           "name": "Pirate Octopus",
           "egg": "Pirate Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "2B",
           "variants": [
             "normal",
             "golden",
@@ -6639,7 +6639,7 @@
           "name": "Pirate Parrot",
           "egg": "Pirate Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "4B",
           "variants": [
             "normal",
             "golden",
@@ -6651,7 +6651,7 @@
           "name": "Sakura Kitsune",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "5B",
           "variants": [
             "normal",
             "golden",
@@ -6803,7 +6803,7 @@
           "name": "Dynamite Dragon",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "5T",
           "variants": [
             "normal",
             "golden",
@@ -6816,7 +6816,7 @@
           "name": "Party Firework",
           "egg": "Party Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "5T",
           "variants": [
             "normal",
             "golden",
@@ -6829,7 +6829,7 @@
           "name": "Party Hydra",
           "egg": "Party Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "10T",
           "variants": [
             "normal",
             "golden",
@@ -6855,7 +6855,7 @@
           "name": "Party Dragon",
           "egg": "Party Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "20T",
           "variants": [
             "normal",
             "golden",
@@ -6907,7 +6907,7 @@
           "name": "Obsidian Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "75T",
           "variants": [
             "normal",
             "golden",
@@ -7011,7 +7011,7 @@
           "name": "Spider Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "4Qd",
           "variants": [
             "normal",
             "golden",
@@ -7024,7 +7024,7 @@
           "name": "Midnight Wailer",
           "egg": "Halloween Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "5Qd",
           "variants": [
             "normal",
             "golden",
@@ -7037,7 +7037,7 @@
           "name": "Venomspike",
           "egg": "Halloween Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "8Qd",
           "variants": [
             "normal",
             "golden",
@@ -7050,7 +7050,7 @@
           "name": "Evil Witch",
           "egg": "Halloween Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "15Qd",
           "variants": [
             "normal",
             "golden",
@@ -7128,7 +7128,7 @@
           "name": "Atlantis Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "150Qd",
           "variants": [
             "normal",
             "golden",
@@ -7154,7 +7154,7 @@
           "name": "Snowman",
           "egg": "Christmas Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "500Qd",
           "variants": [
             "normal",
             "golden",
@@ -7167,7 +7167,7 @@
           "name": "Gingerbread Shard",
           "egg": "Christmas Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "750Qd",
           "variants": [
             "normal",
             "golden",
@@ -7193,7 +7193,7 @@
           "name": "Festive Bell",
           "egg": "Christmas Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1Qn",
           "variants": [
             "normal",
             "golden",
@@ -7206,7 +7206,7 @@
           "name": "New Year Heart",
           "egg": "New Year Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "4Qn",
           "variants": [
             "normal",
             "golden",
@@ -7219,7 +7219,7 @@
           "name": "Happy Firework",
           "egg": "New Year Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "6Qn",
           "variants": [
             "normal",
             "golden",
@@ -7245,7 +7245,7 @@
           "name": "Party Kitsune",
           "egg": "New Year Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "10Qn",
           "variants": [
             "normal",
             "golden",
@@ -7323,7 +7323,7 @@
           "name": "Frozen Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "200Qn",
           "variants": [
             "normal",
             "golden",
@@ -7336,7 +7336,7 @@
           "name": "Lovely Axolotl",
           "egg": "Lovely Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "300Qn",
           "variants": [
             "normal",
             "golden",
@@ -7349,7 +7349,7 @@
           "name": "Lovely Butterfly",
           "egg": "Lovely Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "400Qn",
           "variants": [
             "normal",
             "golden",
@@ -7362,7 +7362,7 @@
           "name": "Lovely Surprise",
           "egg": "Lovely Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "750Qn",
           "variants": [
             "normal",
             "golden",
@@ -7388,7 +7388,7 @@
           "name": "Monochrome Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1Sx",
           "variants": [
             "normal",
             "golden",
@@ -7401,7 +7401,7 @@
           "name": "Fairy Dragon",
           "egg": "Fairy Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1.1Sx",
           "variants": [
             "normal",
             "golden",
@@ -7414,7 +7414,7 @@
           "name": "Sparkle Shock",
           "egg": "Fairy Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1.5Sx",
           "variants": [
             "normal",
             "golden",
@@ -7427,7 +7427,7 @@
           "name": "Anniversary Panda",
           "egg": "Anniversary Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "5Sx",
           "variants": [
             "normal",
             "golden",
@@ -7440,7 +7440,7 @@
           "name": "Anniversary Hexagon",
           "egg": "Anniversary Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "8Sx",
           "variants": [
             "normal",
             "golden",
@@ -7453,7 +7453,7 @@
           "name": "Anniversary Spirit",
           "egg": "Anniversary Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "15Sx",
           "variants": [
             "normal",
             "golden",
@@ -7466,7 +7466,7 @@
           "name": "Neon Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "20Sx",
           "variants": [
             "normal",
             "golden",
@@ -7479,7 +7479,7 @@
           "name": "Lilybud Chick",
           "egg": "Verdant Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "100Sx",
           "variants": [
             "normal",
             "golden",
@@ -7492,7 +7492,7 @@
           "name": "Spring Pixie",
           "egg": "Verdant Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "250Sx",
           "variants": [
             "normal",
             "golden",
@@ -7505,7 +7505,7 @@
           "name": "Lunar Star",
           "egg": "Lunar Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "500Sx",
           "variants": [
             "normal",
             "golden",
@@ -7518,7 +7518,7 @@
           "name": "Lunar Orb",
           "egg": "Lunar Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "600Sx",
           "variants": [
             "normal",
             "golden",
@@ -7531,7 +7531,7 @@
           "name": "Thornrose Regent",
           "egg": "Verdant Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "750Sx",
           "variants": [
             "normal",
             "golden",
@@ -7544,7 +7544,7 @@
           "name": "Royal Fox",
           "egg": "Royal Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "800Sx",
           "variants": [
             "normal",
             "golden",
@@ -7557,7 +7557,7 @@
           "name": "Eclipse Dragon",
           "egg": "Lunar Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1Sp",
           "variants": [
             "normal",
             "golden",
@@ -7570,7 +7570,7 @@
           "name": "Royal Vault",
           "egg": "Royal Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1.1Sp",
           "variants": [
             "normal",
             "golden",
@@ -7583,7 +7583,7 @@
           "name": "Diamond Dragon",
           "egg": "Royal Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "2.4Sp",
           "variants": [
             "normal",
             "golden",
@@ -7596,7 +7596,7 @@
           "name": "Inferno Golem",
           "egg": "Inferno Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "8Sp",
           "variants": [
             "normal",
             "golden",
@@ -7609,7 +7609,7 @@
           "name": "Inferno Dragon",
           "egg": "Inferno Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "12.5Sp",
           "variants": [
             "normal",
             "golden",
@@ -7622,7 +7622,7 @@
           "name": "Crystal Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "22.5Sp",
           "variants": [
             "normal",
             "golden",
@@ -7635,7 +7635,7 @@
           "name": "Abyssal Slime",
           "egg": "Abyssal Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "30Sp",
           "variants": [
             "normal",
             "golden",
@@ -7648,7 +7648,7 @@
           "name": "Inferno Phantom",
           "egg": "Inferno Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "30Sp",
           "variants": [
             "normal",
             "golden",
@@ -7661,7 +7661,7 @@
           "name": "Abyssal Jellyfish",
           "egg": "Abyssal Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "60Sp",
           "variants": [
             "normal",
             "golden",
@@ -7674,7 +7674,7 @@
           "name": "Abyssal Dragon",
           "egg": "Abyssal Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "130Sp",
           "variants": [
             "normal",
             "golden",
@@ -7687,7 +7687,7 @@
           "name": "Coral Crab",
           "egg": "Palm Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "200Sp",
           "variants": [
             "normal",
             "golden",
@@ -7713,7 +7713,7 @@
           "name": "Lunar Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "400Sp",
           "variants": [
             "normal",
             "golden",
@@ -7739,7 +7739,7 @@
           "name": "Palm Shock",
           "egg": "Palm Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "400Sp",
           "variants": [
             "normal",
             "golden",
@@ -7752,7 +7752,7 @@
           "name": "Gear Butterfly",
           "egg": "Clockwork Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1O",
           "variants": [
             "normal",
             "golden",
@@ -7778,7 +7778,7 @@
           "name": "Coconut Dragon",
           "egg": "Palm Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1O",
           "variants": [
             "normal",
             "golden",
@@ -7791,7 +7791,7 @@
           "name": "Clockwork Dragon",
           "egg": "Clockwork Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "1.5O",
           "variants": [
             "normal",
             "golden",
@@ -7804,7 +7804,7 @@
           "name": "Steampunk Hydra",
           "egg": "Clockwork Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "3O",
           "variants": [
             "normal",
             "golden",
@@ -7817,7 +7817,7 @@
           "name": "Potion Slime",
           "egg": "Alchemy Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "5O",
           "variants": [
             "normal",
             "golden",
@@ -7830,7 +7830,7 @@
           "name": "Elixir Dragon",
           "egg": "Alchemy Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "8O",
           "variants": [
             "normal",
             "golden",
@@ -7843,7 +7843,7 @@
           "name": "Alchemist Owl",
           "egg": "Alchemy Exclusive Egg",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "15O",
           "variants": [
             "normal",
             "golden",
@@ -7869,7 +7869,7 @@
           "name": "Flame Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "62O",
           "variants": [
             "normal",
             "golden",
@@ -7908,7 +7908,7 @@
           "name": "Mirage Shard",
           "egg": "-",
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "160O",
           "variants": [
             "normal",
             "golden",
@@ -10471,7 +10471,7 @@
           "name": "200M Cupcake",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "5Sx",
           "variants": [
             "normal",
             "golden",
@@ -10484,7 +10484,7 @@
           "name": "200M Balloon",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "8Sx",
           "variants": [
             "normal",
             "golden",
@@ -10497,7 +10497,7 @@
           "name": "200M Butterfly",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "16Sx",
           "variants": [
             "normal",
             "golden",
@@ -10523,7 +10523,7 @@
           "name": "200M Dragon",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "85Sx",
           "variants": [
             "normal",
             "golden",
@@ -10549,7 +10549,7 @@
           "name": "200M Demon",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "420Sx",
           "variants": [
             "normal",
             "golden",
@@ -10588,7 +10588,7 @@
           "name": "200M Immortal",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "2.4Sp",
           "variants": [
             "normal",
             "golden",
@@ -10614,7 +10614,7 @@
           "name": "200M Shard",
           "egg": null,
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "8Sp",
           "variants": [
             "normal",
             "golden",
@@ -10653,7 +10653,7 @@
           "name": "200M Samurai",
           "egg": null,
           "rarity": "Mysterious",
-          "clicks": null,
+          "clicks": "50Sp",
           "variants": [
             "normal",
             "golden",
@@ -12282,7 +12282,7 @@
           "name": "Gingerbread Dog",
           "egg": null,
           "rarity": "Common",
-          "clicks": null,
+          "clicks": "100T",
           "variants": [
             "normal",
             "golden",
@@ -12295,7 +12295,7 @@
           "name": "Gingerbread Bunny",
           "egg": null,
           "rarity": "Uncommon",
-          "clicks": null,
+          "clicks": "200T",
           "variants": [
             "normal",
             "golden",
@@ -12308,7 +12308,7 @@
           "name": "Gingerbread Butterfly",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "300T",
           "variants": [
             "normal",
             "golden",
@@ -12321,7 +12321,7 @@
           "name": "Gingerbread Dragon",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "500T",
           "variants": [
             "normal",
             "golden",
@@ -12334,7 +12334,7 @@
           "name": "Elf",
           "egg": null,
           "rarity": "Common",
-          "clicks": null,
+          "clicks": "1Qd",
           "variants": [
             "normal",
             "golden",
@@ -12347,7 +12347,7 @@
           "name": "Penguin",
           "egg": null,
           "rarity": "Uncommon",
-          "clicks": null,
+          "clicks": "2Qd",
           "variants": [
             "normal",
             "golden",
@@ -12360,7 +12360,7 @@
           "name": "Happy Gift",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "4Qd",
           "variants": [
             "normal",
             "golden",
@@ -12373,7 +12373,7 @@
           "name": "Frozen Heart",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "6Qd",
           "variants": [
             "normal",
             "golden",
@@ -12386,7 +12386,7 @@
           "name": "Christmas Tree",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "8Qd",
           "variants": [
             "normal",
             "golden",
@@ -12399,7 +12399,7 @@
           "name": "Wreath",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "10Qd",
           "variants": [
             "normal",
             "golden",
@@ -12412,7 +12412,7 @@
           "name": "Rudolph",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "16Qd",
           "variants": [
             "normal",
             "golden",
@@ -12425,7 +12425,7 @@
           "name": "Happy Ornament",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "20Qd",
           "variants": [
             "normal",
             "golden",
@@ -12438,7 +12438,7 @@
           "name": "Snow Globe",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "32Qd",
           "variants": [
             "normal",
             "golden",
@@ -12451,7 +12451,7 @@
           "name": "Winter Dragon",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "32Qd",
           "variants": [
             "normal",
             "golden",
@@ -12464,7 +12464,7 @@
           "name": "2026 Calendar",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "40Qd",
           "variants": [
             "normal",
             "golden",
@@ -12477,7 +12477,7 @@
           "name": "Candy Cane Dragon",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "64Qd",
           "variants": [
             "normal",
             "golden",
@@ -12490,7 +12490,7 @@
           "name": "2026 Firework",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "64Qd",
           "variants": [
             "normal",
             "golden",
@@ -12503,7 +12503,7 @@
           "name": "Santa Adaspo",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "75Qd",
           "variants": [
             "normal",
             "golden",
@@ -12516,7 +12516,7 @@
           "name": "Snowman Igor",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "100Qd",
           "variants": [
             "normal",
             "golden",
@@ -12529,7 +12529,7 @@
           "name": "2026 Dragon",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "128Qd",
           "variants": [
             "normal",
             "golden",
@@ -12542,7 +12542,7 @@
           "name": "Ornament Dragon",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "160Qd",
           "variants": [
             "normal",
             "golden",
@@ -12555,7 +12555,7 @@
           "name": "Woiz Gift",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "175Qd",
           "variants": [
             "normal",
             "golden",
@@ -12568,7 +12568,7 @@
           "name": "Grinch",
           "egg": "Grinch Exclusive Egg",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "250Qd",
           "variants": [
             "normal",
             "golden",
@@ -12581,7 +12581,7 @@
           "name": "Snow Hydra",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "320Qd",
           "variants": [
             "normal",
             "golden",
@@ -12594,7 +12594,7 @@
           "name": "Bitboy Ornament",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "350Qd",
           "variants": [
             "normal",
             "golden",
@@ -12607,7 +12607,7 @@
           "name": "Festive Guardian",
           "egg": null,
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "500Qd",
           "variants": [
             "normal",
             "golden",
@@ -12620,7 +12620,7 @@
           "name": "Santa Grinch",
           "egg": "Grinch Exclusive Egg",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "500Qd",
           "variants": [
             "normal",
             "golden",
@@ -12633,7 +12633,7 @@
           "name": "Sparky Owl",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "640Qd",
           "variants": [
             "normal",
             "golden",
@@ -12646,7 +12646,7 @@
           "name": "Dapper Mint",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "720Qd",
           "variants": [
             "normal",
             "golden",
@@ -12659,7 +12659,7 @@
           "name": "Star Ornament",
           "egg": null,
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "750Qd",
           "variants": [
             "normal",
             "golden",
@@ -12672,7 +12672,7 @@
           "name": "Grinch Roksek",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "1Qn",
           "variants": [
             "normal",
             "golden",
@@ -12685,7 +12685,7 @@
           "name": "Grinch Dragon",
           "egg": "Grinch Exclusive Egg",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "1Qn",
           "variants": [
             "normal",
             "golden",
@@ -12698,7 +12698,7 @@
           "name": "Ornamentium",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "1.5Qn",
           "variants": [
             "normal",
             "golden",
@@ -12711,7 +12711,7 @@
           "name": "Frozen Core",
           "egg": null,
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "2Qn",
           "variants": [
             "normal",
             "golden",
@@ -12724,7 +12724,7 @@
           "name": "2026 Wyvern",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "3Qn",
           "variants": [
             "normal",
             "golden",
@@ -12737,7 +12737,7 @@
           "name": "Santa Dragon",
           "egg": null,
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "3Qn",
           "variants": [
             "normal",
             "golden",
@@ -12750,7 +12750,7 @@
           "name": "Eternal Bell",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "3.2Qn",
           "variants": [
             "normal",
             "golden",
@@ -12763,7 +12763,7 @@
           "name": "Gifts Sack",
           "egg": "Grinch Exclusive Egg",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "3.5Qn",
           "variants": [
             "normal",
             "golden",
@@ -12776,7 +12776,7 @@
           "name": "Christmas Immortal",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "6.4Qn",
           "variants": [
             "normal",
             "golden",
@@ -12789,7 +12789,7 @@
           "name": "Glacial Yeti",
           "egg": null,
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "8Qn",
           "variants": [
             "normal",
             "golden",
@@ -12802,7 +12802,7 @@
           "name": "2026 Immortal",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "12.8Qn",
           "variants": [
             "normal",
             "golden",
@@ -12815,7 +12815,7 @@
           "name": "2026 Shard",
           "egg": null,
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "15Qn",
           "variants": [
             "normal",
             "golden",
@@ -12828,7 +12828,7 @@
           "name": "Christmas Robot",
           "egg": null,
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "16Qn",
           "variants": [
             "normal",
             "golden",
@@ -12841,7 +12841,7 @@
           "name": "2026 Sentinel",
           "egg": null,
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "32Qn",
           "variants": [
             "normal",
             "golden",
@@ -12977,7 +12977,7 @@
           "name": "Anniversary Balloon",
           "egg": null,
           "rarity": "Common",
-          "clicks": null,
+          "clicks": "100Qd",
           "variants": [
             "normal",
             "golden",
@@ -12990,7 +12990,7 @@
           "name": "Anniversary Cupcake",
           "egg": null,
           "rarity": "Uncommon",
-          "clicks": null,
+          "clicks": "200Qd",
           "variants": [
             "normal",
             "golden",
@@ -13003,7 +13003,7 @@
           "name": "Anniversary Gift",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "350Qd",
           "variants": [
             "normal",
             "golden",
@@ -13016,7 +13016,7 @@
           "name": "Disco Cat",
           "egg": null,
           "rarity": "Common",
-          "clicks": null,
+          "clicks": "400Qd",
           "variants": [
             "normal",
             "golden",
@@ -13029,7 +13029,7 @@
           "name": "Disco Ball",
           "egg": null,
           "rarity": "Uncommon",
-          "clicks": null,
+          "clicks": "500Qd",
           "variants": [
             "normal",
             "golden",
@@ -13042,7 +13042,7 @@
           "name": "Anniversary Cake",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "750Qd",
           "variants": [
             "normal",
             "golden",
@@ -13055,7 +13055,7 @@
           "name": "Disco Fox",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "1Qn",
           "variants": [
             "normal",
             "golden",
@@ -13068,7 +13068,7 @@
           "name": "Disco Goat",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "1.5Qn",
           "variants": [
             "normal",
             "golden",
@@ -13081,7 +13081,7 @@
           "name": "Disco Octopus",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "5Qn",
           "variants": [
             "normal",
             "golden",
@@ -13094,7 +13094,7 @@
           "name": "Anniversary Duck",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "80Qn",
           "variants": [
             "normal",
             "golden",
@@ -13107,7 +13107,7 @@
           "name": "Anniversary Butterfly",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "128Qn",
           "variants": [
             "normal",
             "golden",
@@ -13120,7 +13120,7 @@
           "name": "Sparkle Cat",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "160Qn",
           "variants": [
             "normal",
             "golden",
@@ -13133,7 +13133,7 @@
           "name": "Sparkle Slime",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "256Qn",
           "variants": [
             "normal",
             "golden",
@@ -13146,7 +13146,7 @@
           "name": "Anniversary Dragon",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "256Qn",
           "variants": [
             "normal",
             "golden",
@@ -13159,7 +13159,7 @@
           "name": "Sparkle Serpent",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "512Qn",
           "variants": [
             "normal",
             "golden",
@@ -13172,7 +13172,7 @@
           "name": "Happy Tutel",
           "egg": "Tutel Exclusive Egg",
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "1Sx",
           "variants": [
             "normal",
             "golden",
@@ -13185,7 +13185,7 @@
           "name": "Cupcake Trio",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "1.28Sx",
           "variants": [
             "normal",
             "golden",
@@ -13198,7 +13198,7 @@
           "name": "Sparkle Bat",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "2.6Sx",
           "variants": [
             "normal",
             "golden",
@@ -13211,7 +13211,7 @@
           "name": "Hacker Tutel",
           "egg": "Tutel Exclusive Egg",
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "3Sx",
           "variants": [
             "normal",
             "golden",
@@ -13224,7 +13224,7 @@
           "name": "Shocked Tutel",
           "egg": "Tutel Exclusive Egg",
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "6Sx",
           "variants": [
             "normal",
             "golden",
@@ -13237,7 +13237,7 @@
           "name": "Confetti Immortal",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "6.4Sx",
           "variants": [
             "normal",
             "golden",
@@ -13250,7 +13250,7 @@
           "name": "Royal Tutel",
           "egg": "Tutel Exclusive Egg",
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "12Sx",
           "variants": [
             "normal",
             "golden",
@@ -13263,7 +13263,7 @@
           "name": "Firework Wyvern",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "12.8Sx",
           "variants": [
             "normal",
             "golden",
@@ -13276,7 +13276,7 @@
           "name": "Anniversary Hydra",
           "egg": null,
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "15Sx",
           "variants": [
             "normal",
             "golden",
@@ -13289,7 +13289,7 @@
           "name": "Balloon Dragon",
           "egg": null,
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "15Sx",
           "variants": [
             "normal",
             "golden",
@@ -13302,7 +13302,7 @@
           "name": "Anniversary Gem",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "34Sx",
           "variants": [
             "normal",
             "golden",
@@ -13315,7 +13315,7 @@
           "name": "Birthday Deihy",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "68Sx",
           "variants": [
             "normal",
             "golden",
@@ -13328,7 +13328,7 @@
           "name": "Anniversary Shard",
           "egg": null,
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "115Sx",
           "variants": [
             "normal",
             "golden",
@@ -13341,7 +13341,7 @@
           "name": "Disco Immortal",
           "egg": null,
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "230Sx",
           "variants": [
             "normal",
             "golden",
@@ -13477,7 +13477,7 @@
           "name": "Pumpkin",
           "egg": null,
           "rarity": "Common",
-          "clicks": null,
+          "clicks": "1T",
           "variants": [
             "normal",
             "golden",
@@ -13490,7 +13490,7 @@
           "name": "Black Cat",
           "egg": null,
           "rarity": "Uncommon",
-          "clicks": null,
+          "clicks": "2T",
           "variants": [
             "normal",
             "golden",
@@ -13503,7 +13503,7 @@
           "name": "Reaper",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "4T",
           "variants": [
             "normal",
             "golden",
@@ -13516,7 +13516,7 @@
           "name": "Cauldron Fox",
           "egg": null,
           "rarity": "Common",
-          "clicks": null,
+          "clicks": "5T",
           "variants": [
             "normal",
             "golden",
@@ -13529,7 +13529,7 @@
           "name": "Screaming Book",
           "egg": null,
           "rarity": "Uncommon",
-          "clicks": null,
+          "clicks": "10T",
           "variants": [
             "normal",
             "golden",
@@ -13542,7 +13542,7 @@
           "name": "Venom Reaper",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "20T",
           "variants": [
             "normal",
             "golden",
@@ -13555,7 +13555,7 @@
           "name": "Zombie Bat",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "30T",
           "variants": [
             "normal",
             "golden",
@@ -13568,7 +13568,7 @@
           "name": "Cauldron Ghost",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "50T",
           "variants": [
             "normal",
             "golden",
@@ -13581,7 +13581,7 @@
           "name": "Halloween Dominus",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "80T",
           "variants": [
             "normal",
             "golden",
@@ -13594,7 +13594,7 @@
           "name": "Witch Hydra",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "125T",
           "variants": [
             "normal",
             "golden",
@@ -13607,7 +13607,7 @@
           "name": "Zombie Golem",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "160T",
           "variants": [
             "normal",
             "golden",
@@ -13620,7 +13620,7 @@
           "name": "Halloween Slime",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "250T",
           "variants": [
             "normal",
             "golden",
@@ -13633,7 +13633,7 @@
           "name": "Venom Monster",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "260T",
           "variants": [
             "normal",
             "golden",
@@ -13646,7 +13646,7 @@
           "name": "Skeleton Shock",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "520T",
           "variants": [
             "normal",
             "golden",
@@ -13659,7 +13659,7 @@
           "name": "Ghost Dragon",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "1.2Qd",
           "variants": [
             "normal",
             "golden",
@@ -13672,7 +13672,7 @@
           "name": "Spooky Dragon",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "2.4Qd",
           "variants": [
             "normal",
             "golden",
@@ -13685,7 +13685,7 @@
           "name": "Halloween Demon",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "5Qd",
           "variants": [
             "normal",
             "golden",
@@ -13698,7 +13698,7 @@
           "name": "Zombie Overlord",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "10Qd",
           "variants": [
             "normal",
             "golden",
@@ -13711,7 +13711,7 @@
           "name": "Impire",
           "egg": null,
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "15Qd",
           "variants": [
             "normal",
             "golden",
@@ -13724,7 +13724,7 @@
           "name": "Midnight Wraith",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "24Qd",
           "variants": [
             "normal",
             "golden",
@@ -13737,7 +13737,7 @@
           "name": "Tormented Wraith",
           "egg": null,
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "25Qd",
           "variants": [
             "normal",
             "golden",
@@ -13750,7 +13750,7 @@
           "name": "Pumpkin Overlord",
           "egg": null,
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "35Qd",
           "variants": [
             "normal",
             "golden",
@@ -13763,7 +13763,7 @@
           "name": "Reaper Immortal",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "48Qd",
           "variants": [
             "normal",
             "golden",
@@ -13776,7 +13776,7 @@
           "name": "Pumpkin Queen",
           "egg": null,
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "60Qd",
           "variants": [
             "normal",
             "golden",
@@ -13789,7 +13789,7 @@
           "name": "The Sinister",
           "egg": null,
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "120Qd",
           "variants": [
             "normal",
             "golden",
@@ -13899,7 +13899,7 @@
           "name": "Easter Cat",
           "egg": null,
           "rarity": "Common",
-          "clicks": null,
+          "clicks": "200Qd",
           "variants": [
             "normal",
             "golden",
@@ -13912,7 +13912,7 @@
           "name": "Rose Fox",
           "egg": null,
           "rarity": "Uncommon",
-          "clicks": null,
+          "clicks": "400Qd",
           "variants": [
             "normal",
             "golden",
@@ -13925,7 +13925,7 @@
           "name": "Spring Chick",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "700Qd",
           "variants": [
             "normal",
             "golden",
@@ -13938,7 +13938,7 @@
           "name": "Chocolate Dog",
           "egg": null,
           "rarity": "Common",
-          "clicks": null,
+          "clicks": "800Qd",
           "variants": [
             "normal",
             "golden",
@@ -13951,7 +13951,7 @@
           "name": "Chocolate Cat",
           "egg": null,
           "rarity": "Uncommon",
-          "clicks": null,
+          "clicks": "1Qn",
           "variants": [
             "normal",
             "golden",
@@ -13964,7 +13964,7 @@
           "name": "Flower Dragon",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "1.5Qn",
           "variants": [
             "normal",
             "golden",
@@ -13977,7 +13977,7 @@
           "name": "Chocolate Bunny",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "2Qn",
           "variants": [
             "normal",
             "golden",
@@ -13990,7 +13990,7 @@
           "name": "Chocolate Bee",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "3Qn",
           "variants": [
             "normal",
             "golden",
@@ -14003,7 +14003,7 @@
           "name": "Chocolate Heart",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "10Qn",
           "variants": [
             "normal",
             "golden",
@@ -14016,7 +14016,7 @@
           "name": "Petal Deer",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "640Qn",
           "variants": [
             "normal",
             "golden",
@@ -14029,7 +14029,7 @@
           "name": "Egg Dragon",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "1Sx",
           "variants": [
             "normal",
             "golden",
@@ -14042,7 +14042,7 @@
           "name": "Spring Ladybug",
           "egg": null,
           "rarity": "Rare",
-          "clicks": null,
+          "clicks": "1.28Sx",
           "variants": [
             "normal",
             "golden",
@@ -14055,7 +14055,7 @@
           "name": "Nesting Chick",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "2Sx",
           "variants": [
             "normal",
             "golden",
@@ -14068,7 +14068,7 @@
           "name": "Spring Bird",
           "egg": null,
           "rarity": "Epic",
-          "clicks": null,
+          "clicks": "2Sx",
           "variants": [
             "normal",
             "golden",
@@ -14081,7 +14081,7 @@
           "name": "Bloom Dragon",
           "egg": null,
           "rarity": "Legendary",
-          "clicks": null,
+          "clicks": "4Sx",
           "variants": [
             "normal",
             "golden",
@@ -14094,7 +14094,7 @@
           "name": "Hungry Bunny",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "10.5Sx",
           "variants": [
             "normal",
             "golden",
@@ -14107,7 +14107,7 @@
           "name": "Litten Kitten",
           "egg": null,
           "rarity": "Mythical",
-          "clicks": null,
+          "clicks": "21Sx",
           "variants": [
             "normal",
             "golden",
@@ -14120,7 +14120,7 @@
           "name": "Blossom Seraph",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "52Sx",
           "variants": [
             "normal",
             "golden",
@@ -14133,7 +14133,7 @@
           "name": "Honey Bear",
           "egg": null,
           "rarity": "Eternal",
-          "clicks": null,
+          "clicks": "105Sx",
           "variants": [
             "normal",
             "golden",
@@ -14146,7 +14146,7 @@
           "name": "Basket Surprise",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "280Sx",
           "variants": [
             "normal",
             "golden",
@@ -14159,7 +14159,7 @@
           "name": "Carrot Fiend",
           "egg": null,
           "rarity": "Exclusive",
-          "clicks": null,
+          "clicks": "350Sx",
           "variants": [
             "normal",
             "golden",
@@ -14172,7 +14172,7 @@
           "name": "Sunflower Spirit",
           "egg": null,
           "rarity": "Secret",
-          "clicks": null,
+          "clicks": "560Sx",
           "variants": [
             "normal",
             "golden",
@@ -14185,7 +14185,7 @@
           "name": "Egg Keeper",
           "egg": null,
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "1Sp",
           "variants": [
             "normal",
             "golden",
@@ -14198,7 +14198,7 @@
           "name": "Spring Paragon",
           "egg": null,
           "rarity": "Divine",
-          "clicks": null,
+          "clicks": "2Sp",
           "variants": [
             "normal",
             "golden",
@@ -14295,2367 +14295,6 @@
             "golden",
             "toxic",
             "galaxy"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "hearts",
-      "label": "Hearts",
-      "pets": [
-        {
-          "slug": "lovely-dog",
-          "name": "Lovely Dog",
-          "egg": null,
-          "rarity": "Common",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-cat",
-          "name": "Lovely Cat",
-          "egg": null,
-          "rarity": "Uncommon",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-bunny",
-          "name": "Lovely Bunny",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-cupcake",
-          "name": "Lovely Cupcake",
-          "egg": null,
-          "rarity": "Common",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-bee",
-          "name": "Lovely Bee",
-          "egg": null,
-          "rarity": "Uncommon",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-heart",
-          "name": "Lovely Heart",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-gift",
-          "name": "Lovely Gift",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "rose-bouquet",
-          "name": "Rose Bouquet",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-elephant",
-          "name": "Lovely Elephant",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-panda",
-          "name": "Lovely Panda",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-wolf",
-          "name": "Lovely Wolf",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "rose-dragon",
-          "name": "Rose Dragon",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "cotton-candy",
-          "name": "Cotton Candy",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "cupid-heart",
-          "name": "Cupid Heart",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-shock",
-          "name": "Lovely Shock",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "teddy-bear",
-          "name": "Teddy Bear",
-          "egg": null,
-          "rarity": "Mythical",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-kitsune",
-          "name": "Lovely Kitsune",
-          "egg": null,
-          "rarity": "Mythical",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-deity",
-          "name": "Lovely Deity",
-          "egg": null,
-          "rarity": "Eternal",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "cupid-ace",
-          "name": "Cupid Ace",
-          "egg": null,
-          "rarity": "Eternal",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "love-in-a-bottle",
-          "name": "Love in a Bottle",
-          "egg": null,
-          "rarity": "Secret",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-deer",
-          "name": "Lovely Deer",
-          "egg": null,
-          "rarity": "Secret",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "valentine-s-origin",
-          "name": "Valentine's Origin",
-          "egg": null,
-          "rarity": "Divine",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "cupid-dragon",
-          "name": "Cupid Dragon",
-          "egg": null,
-          "rarity": "Exclusive",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "duality-heart",
-          "name": "Duality Heart",
-          "egg": null,
-          "rarity": "Exclusive",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "harp-sentinel",
-          "name": "Harp Sentinel",
-          "egg": null,
-          "rarity": "Divine",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-phoenix",
-          "name": "Lovely Phoenix",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "110%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-shard",
-          "name": "Lovely Shard",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "110%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lovely-guardian",
-          "name": "Lovely Guardian",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "125%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "immortal-heart",
-          "name": "Immortal Heart",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "200%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "fallen-heart",
-          "name": "Fallen Heart",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "200%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "skulls",
-      "label": "Skulls",
-      "pets": [
-        {
-          "slug": "rune-slime",
-          "name": "Rune Slime",
-          "egg": null,
-          "rarity": "Common",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "rune-deer",
-          "name": "Rune Deer",
-          "egg": null,
-          "rarity": "Uncommon",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "rune-bee",
-          "name": "Rune Bee",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "enchanted-dog",
-          "name": "Enchanted Dog",
-          "egg": null,
-          "rarity": "Common",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "rune-hydra",
-          "name": "Rune Hydra",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "enchanted-cat",
-          "name": "Enchanted Cat",
-          "egg": null,
-          "rarity": "Uncommon",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "enchanted-bunny",
-          "name": "Enchanted Bunny",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "enchanted-heart",
-          "name": "Enchanted Heart",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "haunted-potion",
-          "name": "Haunted Potion",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "wizard",
-          "name": "Wizard",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "enchanted-dragon",
-          "name": "Enchanted Dragon",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "mystic-fox",
-          "name": "Mystic Fox",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "mystic-reaper",
-          "name": "Mystic Reaper",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "enchanted-orb",
-          "name": "Enchanted Orb",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "mystic-serpent",
-          "name": "Mystic Serpent",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "magic-owl",
-          "name": "Magic Owl",
-          "egg": null,
-          "rarity": "Mythical",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "magic-shock",
-          "name": "Magic Shock",
-          "egg": null,
-          "rarity": "Mythical",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "wizard-wisp",
-          "name": "Wizard Wisp",
-          "egg": null,
-          "rarity": "Eternal",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "mystic-griffin",
-          "name": "Mystic Griffin",
-          "egg": null,
-          "rarity": "Eternal",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "ghastly-keeper",
-          "name": "Ghastly Keeper",
-          "egg": null,
-          "rarity": "Secret",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "astral-witch",
-          "name": "Astral Witch",
-          "egg": null,
-          "rarity": "Secret",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "cursed-wizard",
-          "name": "Cursed Wizard",
-          "egg": null,
-          "rarity": "Divine",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lightborn-phoenix",
-          "name": "Lightborn Phoenix",
-          "egg": null,
-          "rarity": "Exclusive",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "soul-empress",
-          "name": "Soul Empress",
-          "egg": null,
-          "rarity": "Divine",
-          "clicks": "280Sp",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "magic-blobfish",
-          "name": "Magic Blobfish",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "110%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "darkflame-phoenix",
-          "name": "Darkflame Phoenix",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "110%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "dungeon-monster",
-          "name": "Dungeon Monster",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "110%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "nocturnal-beast",
-          "name": "Nocturnal Beast",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "110%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "magic-sentinel",
-          "name": "Magic Sentinel",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "200%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "magic-lord",
-          "name": "Magic Lord",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "200%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "summer-coins",
-      "label": "Summer Coins",
-      "pets": [
-        {
-          "slug": "tiki-cat",
-          "name": "Tiki Cat",
-          "egg": null,
-          "rarity": "Common",
-          "clicks": "600Qd",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "beach-parrot",
-          "name": "Beach Parrot",
-          "egg": null,
-          "rarity": "Uncommon",
-          "clicks": "1.2Qn",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "tiki-mask",
-          "name": "Tiki Mask",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": "2.1Qn",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "beach-bunny",
-          "name": "Beach Bunny",
-          "egg": null,
-          "rarity": "Common",
-          "clicks": "2.4Qn",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "surfer-duck",
-          "name": "Surfer Duck",
-          "egg": null,
-          "rarity": "Uncommon",
-          "clicks": "3Qn",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "tiki-dragon",
-          "name": "Tiki Dragon",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "pirate-crocodile",
-          "name": "Pirate Crocodile",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": "6Qn",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lagoon-jellyfish",
-          "name": "Lagoon Jellyfish",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": "9Qn",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "wave-dragon",
-          "name": "Wave Dragon",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": "30Qn",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "watermelon-jellyfish",
-          "name": "Watermelon Jellyfish",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": "3.2Sp",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "summer-serpent",
-          "name": "Summer Serpent",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": "4Sp",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "beach-panda",
-          "name": "Beach Panda",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": "6.4Sp",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "volcano-crab",
-          "name": "Volcano Crab",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": "8Sp",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "tropical-unicorn",
-          "name": "Tropical Unicorn",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": "8Sp",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "ocean-dragon",
-          "name": "Ocean Dragon",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": "16Sp",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "tsunami-dragon",
-          "name": "Tsunami Dragon",
-          "egg": null,
-          "rarity": "Mythical",
-          "clicks": "42Sp",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "tropical-heart",
-          "name": "Tropical Heart",
-          "egg": null,
-          "rarity": "Mythical",
-          "clicks": "84Sp",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "happy-seal",
-          "name": "Happy Seal",
-          "egg": null,
-          "rarity": "Eternal",
-          "clicks": "220Sp",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "sea-devil",
-          "name": "Sea Devil",
-          "egg": null,
-          "rarity": "Eternal",
-          "clicks": "440Sp",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "coral-guardian",
-          "name": "Coral Guardian",
-          "egg": null,
-          "rarity": "Secret",
-          "clicks": "1.28O",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "coconut-shard",
-          "name": "Coconut Shard",
-          "egg": null,
-          "rarity": "Exclusive",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "summer-immortal",
-          "name": "Summer Immortal",
-          "egg": null,
-          "rarity": "Secret",
-          "clicks": "2.56O",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "sea-sentinel",
-          "name": "Sea Sentinel",
-          "egg": null,
-          "rarity": "Divine",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "ocean-s-blessing",
-          "name": "Ocean's Blessing",
-          "egg": null,
-          "rarity": "Divine",
-          "clicks": "9O",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "tide-breaker",
-          "name": "Tide Breaker",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "110%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "magma-blobfish",
-          "name": "Magma Blobfish",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "110%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "trident-overlord",
-          "name": "Trident Overlord",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "110%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "shell-guardian",
-          "name": "Shell Guardian",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "125%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "tiki-tutel",
-          "name": "Tiki Tutel",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "200%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "cupcakes",
-      "label": "Cupcakes",
-      "pets": [
-        {
-          "slug": "100m-bunny",
-          "name": "100M Bunny",
-          "egg": null,
-          "rarity": "Common",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "100m-dog",
-          "name": "100M Dog",
-          "egg": null,
-          "rarity": "Uncommon",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "100m-cupcake",
-          "name": "100M Cupcake",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "100m-balloon",
-          "name": "100M Balloon",
-          "egg": null,
-          "rarity": "Common",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "lab-balloon",
-          "name": "Lab Balloon",
-          "egg": null,
-          "rarity": "Uncommon",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "happy-balloon",
-          "name": "Happy Balloon",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "bee-balloon",
-          "name": "Bee Balloon",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "100m-golem",
-          "name": "100M Golem",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "100m-firework",
-          "name": "100M Firework",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "balloons-trio",
-          "name": "Balloons Trio",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "party-dominus",
-          "name": "Party Dominus",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "100m-pinata",
-          "name": "100M Pinata",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "100m-blaster",
-          "name": "100M Blaster",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "pinata-gift",
-          "name": "Pinata Gift",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "100m-heart",
-          "name": "100M Heart",
-          "egg": null,
-          "rarity": "Mythical",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "pinata-dragon",
-          "name": "Pinata Dragon",
-          "egg": null,
-          "rarity": "Mythical",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "100m-dragon",
-          "name": "100M Dragon",
-          "egg": null,
-          "rarity": "Eternal",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "pinata-cake",
-          "name": "Pinata Cake",
-          "egg": null,
-          "rarity": "Eternal",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "party-gift",
-          "name": "Party Gift",
-          "egg": null,
-          "rarity": "Exclusive",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "100m-cake",
-          "name": "100M Cake",
-          "egg": null,
-          "rarity": "Secret",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "disco-dragon",
-          "name": "Disco Dragon",
-          "egg": null,
-          "rarity": "Exclusive",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "giant-pinata",
-          "name": "Giant Pinata",
-          "egg": null,
-          "rarity": "Secret",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "100m-dj",
-          "name": "100M DJ",
-          "egg": null,
-          "rarity": "Divine",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "party-lord",
-          "name": "Party Lord",
-          "egg": null,
-          "rarity": "Divine",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "firework-beast",
-          "name": "Firework Beast",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "110%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "party-mimic",
-          "name": "Party Mimic",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "110%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "party-star",
-          "name": "Party Star",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "110%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        },
-        {
-          "slug": "party-tutel",
-          "name": "Party Tutel",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "200%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic",
-            "galaxy"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "easter-eggs",
-      "label": "Easter Eggs",
-      "pets": [
-        {
-          "slug": "easter-dog",
-          "name": "Easter Dog",
-          "egg": null,
-          "rarity": "Common",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "carrot-golem",
-          "name": "Carrot Golem",
-          "egg": null,
-          "rarity": "Uncommon",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "choco-chick",
-          "name": "Choco Chick",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "easter-bunny",
-          "name": "Easter Bunny",
-          "egg": null,
-          "rarity": "Common",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "blossom-bunny",
-          "name": "Blossom Bunny",
-          "egg": null,
-          "rarity": "Uncommon",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "chick-bunny",
-          "name": "Chick Bunny",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "carrots-trio",
-          "name": "Carrots Trio",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "bunny-dominus",
-          "name": "Bunny Dominus",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "bunny-dragon",
-          "name": "Bunny Dragon",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "magic-egg",
-          "name": "Magic Egg",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "bee",
-          "name": "Bee",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "blossom-star",
-          "name": "Blossom Star",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "spring-butterfly",
-          "name": "Spring Butterfly",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "chocolate-golem",
-          "name": "Chocolate Golem",
-          "egg": "Chocolate Exclusive",
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "angel-egg",
-          "name": "Angel Egg",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "tulip-dragon",
-          "name": "Tulip Dragon",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "chocolate-serpent",
-          "name": "Chocolate Serpent",
-          "egg": "Chocolate Exclusive Egg",
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "blessed-chick",
-          "name": "Blessed Chick",
-          "egg": null,
-          "rarity": "Mythical",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "blossom-unicorn",
-          "name": "Blossom Unicorn",
-          "egg": null,
-          "rarity": "Mythical",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "chocolate-dragon",
-          "name": "Chocolate Dragon",
-          "egg": "Chocolate Exclusive Egg",
-          "rarity": "Mythical",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "yolk-spirit",
-          "name": "Yolk Spirit",
-          "egg": null,
-          "rarity": "Eternal",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "chocolate-shard",
-          "name": "Chocolate Shard",
-          "egg": "Chocolate Exclusive Egg",
-          "rarity": "Eternal",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "immortal-flower",
-          "name": "Immortal Flower",
-          "egg": null,
-          "rarity": "Eternal",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "easter-basket",
-          "name": "Easter Basket",
-          "egg": null,
-          "rarity": "Exclusive",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "royal-egg",
-          "name": "Royal Egg",
-          "egg": null,
-          "rarity": "Exclusive",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "tainted-egg",
-          "name": "Tainted Egg",
-          "egg": null,
-          "rarity": "Secret",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "diamond-egg",
-          "name": "Diamond Egg",
-          "egg": null,
-          "rarity": "Exclusive",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "blossom-robot",
-          "name": "Blossom Robot",
-          "egg": null,
-          "rarity": "Secret",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "easter-protector",
-          "name": "Easter Protector",
-          "egg": null,
-          "rarity": "Secret",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "sunflower-overlord",
-          "name": "Sunflower Overlord",
-          "egg": null,
-          "rarity": "Secret",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "chocolate-trophy",
-          "name": "Chocolate Trophy",
-          "egg": "Chocolate Exclusive Egg",
-          "rarity": "Supreme",
-          "clicks": "100%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "easter-overlord",
-          "name": "Easter Overlord",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "125%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "bunny-queen",
-          "name": "Bunny Queen",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "125%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "easter-tutel",
-          "name": "Easter Tutel",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "200%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "shells",
-      "label": "Shells",
-      "pets": [
-        {
-          "slug": "beach-dog",
-          "name": "Beach Dog",
-          "egg": null,
-          "rarity": "Common",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "ice-cream-trio",
-          "name": "Ice Cream Trio",
-          "egg": null,
-          "rarity": "Uncommon",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "summer-sun",
-          "name": "Summer Sun",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "pool-flamingo",
-          "name": "Pool Flamingo",
-          "egg": null,
-          "rarity": "Common",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "summer-coconut",
-          "name": "Summer Coconut",
-          "egg": null,
-          "rarity": "Uncommon",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "pirate-crab",
-          "name": "Pirate Crab",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "palm-dragon",
-          "name": "Palm Dragon",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "summer-octopus",
-          "name": "Summer Octopus",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "diver-dragon",
-          "name": "Diver Dragon",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "orca",
-          "name": "Orca",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "seahorse",
-          "name": "Seahorse",
-          "egg": null,
-          "rarity": "Rare",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "mr-coconut",
-          "name": "Mr Coconut",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "party-pineapple",
-          "name": "Party Pineapple",
-          "egg": "Pineapple Exclusive Egg",
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "bucketshell-crab",
-          "name": "Bucketshell Crab",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "watermelon-hydra",
-          "name": "Watermelon Hydra",
-          "egg": null,
-          "rarity": "Epic",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "anglerfish",
-          "name": "Anglerfish",
-          "egg": null,
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "beach-dragon",
-          "name": "Beach Dragon",
-          "egg": null,
-          "rarity": "Mythical",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "underwater-anchor",
-          "name": "Underwater Anchor",
-          "egg": "Pineapple Exclusive Egg",
-          "rarity": "Legendary",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "pearl-gem",
-          "name": "Pearl Gem",
-          "egg": null,
-          "rarity": "Mythical",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "blazing-sea-star",
-          "name": "Blazing Sea Star",
-          "egg": null,
-          "rarity": "Eternal",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "watermelon-dragon",
-          "name": "Watermelon Dragon",
-          "egg": "Pineapple Exclusive Egg",
-          "rarity": "Mythical",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "seamaster",
-          "name": "Seamaster",
-          "egg": null,
-          "rarity": "Eternal",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "treasure-keeper",
-          "name": "Treasure Keeper",
-          "egg": null,
-          "rarity": "Exclusive",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "pineapple-overlord",
-          "name": "Pineapple Overlord",
-          "egg": "Pineapple Exclusive Egg",
-          "rarity": "Eternal",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "drowned-wolf",
-          "name": "Drowned Wolf",
-          "egg": null,
-          "rarity": "Exclusive",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "heatwave-hydra",
-          "name": "Heatwave Hydra",
-          "egg": null,
-          "rarity": "Secret",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "sunblessed-siren",
-          "name": "Sunblessed Siren",
-          "egg": null,
-          "rarity": "Divine",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "underwater-queen",
-          "name": "Underwater Queen",
-          "egg": null,
-          "rarity": "Secret",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "the-kraken",
-          "name": "The Kraken",
-          "egg": null,
-          "rarity": "Divine",
-          "clicks": null,
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "summer-blobfish",
-          "name": "Summer Blobfish",
-          "egg": "Pineapple Exclusive Egg",
-          "rarity": "Supreme",
-          "clicks": "100%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "kraken-shipwreck",
-          "name": "Kraken Shipwreck",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "125%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "merkitty",
-          "name": "Merkitty",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "125%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
-          ]
-        },
-        {
-          "slug": "summer-tutel",
-          "name": "Summer Tutel",
-          "egg": null,
-          "rarity": "Supreme",
-          "clicks": "200%",
-          "variants": [
-            "normal",
-            "golden",
-            "toxic"
           ]
         }
       ]
@@ -17064,6 +14703,2367 @@
             "golden",
             "toxic",
             "galaxy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hearts",
+      "label": "Hearts",
+      "pets": [
+        {
+          "slug": "lovely-dog",
+          "name": "Lovely Dog",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "100Qd",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-cat",
+          "name": "Lovely Cat",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "200Qd",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-bunny",
+          "name": "Lovely Bunny",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "350Qd",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-cupcake",
+          "name": "Lovely Cupcake",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "400Qd",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-bee",
+          "name": "Lovely Bee",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "500Qd",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-heart",
+          "name": "Lovely Heart",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "750Qd",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-gift",
+          "name": "Lovely Gift",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "1Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "rose-bouquet",
+          "name": "Rose Bouquet",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "1.5Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-elephant",
+          "name": "Lovely Elephant",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "2.5Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-panda",
+          "name": "Lovely Panda",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "4Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-wolf",
+          "name": "Lovely Wolf",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "5Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "rose-dragon",
+          "name": "Rose Dragon",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "5Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "cotton-candy",
+          "name": "Cotton Candy",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "8Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "cupid-heart",
+          "name": "Cupid Heart",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "8Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-shock",
+          "name": "Lovely Shock",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "16Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "teddy-bear",
+          "name": "Teddy Bear",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "40Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-kitsune",
+          "name": "Lovely Kitsune",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "80Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-deity",
+          "name": "Lovely Deity",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "200Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "cupid-ace",
+          "name": "Cupid Ace",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "400Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "love-in-a-bottle",
+          "name": "Love in a Bottle",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "850Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-deer",
+          "name": "Lovely Deer",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "1.7Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "valentine-s-origin",
+          "name": "Valentine's Origin",
+          "egg": null,
+          "rarity": "Divine",
+          "clicks": "2.4Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "cupid-dragon",
+          "name": "Cupid Dragon",
+          "egg": null,
+          "rarity": "Exclusive",
+          "clicks": "2.5Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "duality-heart",
+          "name": "Duality Heart",
+          "egg": null,
+          "rarity": "Exclusive",
+          "clicks": "2.5Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "harp-sentinel",
+          "name": "Harp Sentinel",
+          "egg": null,
+          "rarity": "Divine",
+          "clicks": "4.8Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-phoenix",
+          "name": "Lovely Phoenix",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-shard",
+          "name": "Lovely Shard",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lovely-guardian",
+          "name": "Lovely Guardian",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "immortal-heart",
+          "name": "Immortal Heart",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "fallen-heart",
+          "name": "Fallen Heart",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skulls",
+      "label": "Skulls",
+      "pets": [
+        {
+          "slug": "rune-slime",
+          "name": "Rune Slime",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "2.5Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "rune-deer",
+          "name": "Rune Deer",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "5Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "rune-bee",
+          "name": "Rune Bee",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "7.5Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "enchanted-dog",
+          "name": "Enchanted Dog",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "10Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "rune-hydra",
+          "name": "Rune Hydra",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "25Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "enchanted-cat",
+          "name": "Enchanted Cat",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "30Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "enchanted-bunny",
+          "name": "Enchanted Bunny",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "50Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "enchanted-heart",
+          "name": "Enchanted Heart",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "70Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "haunted-potion",
+          "name": "Haunted Potion",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "100Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "wizard",
+          "name": "Wizard",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "125Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "enchanted-dragon",
+          "name": "Enchanted Dragon",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "150Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "mystic-fox",
+          "name": "Mystic Fox",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "200Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "mystic-reaper",
+          "name": "Mystic Reaper",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "250Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "enchanted-orb",
+          "name": "Enchanted Orb",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "250Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "mystic-serpent",
+          "name": "Mystic Serpent",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "500Sx",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "magic-owl",
+          "name": "Magic Owl",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "1.3Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "magic-shock",
+          "name": "Magic Shock",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "2.6Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "wizard-wisp",
+          "name": "Wizard Wisp",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "7Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "mystic-griffin",
+          "name": "Mystic Griffin",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "14Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "ghastly-keeper",
+          "name": "Ghastly Keeper",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "40Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "astral-witch",
+          "name": "Astral Witch",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "80Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "cursed-wizard",
+          "name": "Cursed Wizard",
+          "egg": null,
+          "rarity": "Divine",
+          "clicks": "140Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lightborn-phoenix",
+          "name": "Lightborn Phoenix",
+          "egg": null,
+          "rarity": "Exclusive",
+          "clicks": "150Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "soul-empress",
+          "name": "Soul Empress",
+          "egg": null,
+          "rarity": "Divine",
+          "clicks": "280Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "magic-blobfish",
+          "name": "Magic Blobfish",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "darkflame-phoenix",
+          "name": "Darkflame Phoenix",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "dungeon-monster",
+          "name": "Dungeon Monster",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "nocturnal-beast",
+          "name": "Nocturnal Beast",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "magic-sentinel",
+          "name": "Magic Sentinel",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "magic-lord",
+          "name": "Magic Lord",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "summer-coins",
+      "label": "Summer Coins",
+      "pets": [
+        {
+          "slug": "tiki-cat",
+          "name": "Tiki Cat",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "600Qd",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "beach-parrot",
+          "name": "Beach Parrot",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "1.2Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "tiki-mask",
+          "name": "Tiki Mask",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "2.1Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "beach-bunny",
+          "name": "Beach Bunny",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "2.4Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "surfer-duck",
+          "name": "Surfer Duck",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "3Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "tiki-dragon",
+          "name": "Tiki Dragon",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "4.5Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "pirate-crocodile",
+          "name": "Pirate Crocodile",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "6Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lagoon-jellyfish",
+          "name": "Lagoon Jellyfish",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "9Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "wave-dragon",
+          "name": "Wave Dragon",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "30Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "watermelon-jellyfish",
+          "name": "Watermelon Jellyfish",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "3.2Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "summer-serpent",
+          "name": "Summer Serpent",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "4Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "beach-panda",
+          "name": "Beach Panda",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "6.4Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "volcano-crab",
+          "name": "Volcano Crab",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "8Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "tropical-unicorn",
+          "name": "Tropical Unicorn",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "8Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "ocean-dragon",
+          "name": "Ocean Dragon",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "16Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "tsunami-dragon",
+          "name": "Tsunami Dragon",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "42Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "tropical-heart",
+          "name": "Tropical Heart",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "84Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "happy-seal",
+          "name": "Happy Seal",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "220Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "sea-devil",
+          "name": "Sea Devil",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "440Sp",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "coral-guardian",
+          "name": "Coral Guardian",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "1.28O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "coconut-shard",
+          "name": "Coconut Shard",
+          "egg": null,
+          "rarity": "Exclusive",
+          "clicks": "2.5O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "summer-immortal",
+          "name": "Summer Immortal",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "2.56O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "sea-sentinel",
+          "name": "Sea Sentinel",
+          "egg": null,
+          "rarity": "Divine",
+          "clicks": "4.5O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "ocean-s-blessing",
+          "name": "Ocean's Blessing",
+          "egg": null,
+          "rarity": "Divine",
+          "clicks": "9O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "tide-breaker",
+          "name": "Tide Breaker",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "magma-blobfish",
+          "name": "Magma Blobfish",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "trident-overlord",
+          "name": "Trident Overlord",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "shell-guardian",
+          "name": "Shell Guardian",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "tiki-tutel",
+          "name": "Tiki Tutel",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cupcakes",
+      "label": "Cupcakes",
+      "pets": [
+        {
+          "slug": "100m-bunny",
+          "name": "100M Bunny",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "10B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "100m-dog",
+          "name": "100M Dog",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "15B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "100m-cupcake",
+          "name": "100M Cupcake",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "20B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "100m-balloon",
+          "name": "100M Balloon",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "25B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "lab-balloon",
+          "name": "Lab Balloon",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "30B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "happy-balloon",
+          "name": "Happy Balloon",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "50B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "bee-balloon",
+          "name": "Bee Balloon",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "100B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "100m-golem",
+          "name": "100M Golem",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "160B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "100m-firework",
+          "name": "100M Firework",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "240B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "balloons-trio",
+          "name": "Balloons Trio",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "250B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "party-dominus",
+          "name": "Party Dominus",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "300B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "100m-pinata",
+          "name": "100M Pinata",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "500B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "100m-blaster",
+          "name": "100M Blaster",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "500B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "pinata-gift",
+          "name": "Pinata Gift",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "1T",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "100m-heart",
+          "name": "100M Heart",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "2T",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "pinata-dragon",
+          "name": "Pinata Dragon",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "4T",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "100m-dragon",
+          "name": "100M Dragon",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "8.5T",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "pinata-cake",
+          "name": "Pinata Cake",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "18T",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "party-gift",
+          "name": "Party Gift",
+          "egg": null,
+          "rarity": "Exclusive",
+          "clicks": "40T",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "100m-cake",
+          "name": "100M Cake",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "42T",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "disco-dragon",
+          "name": "Disco Dragon",
+          "egg": null,
+          "rarity": "Exclusive",
+          "clicks": "75T",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "giant-pinata",
+          "name": "Giant Pinata",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "85T",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "100m-dj",
+          "name": "100M DJ",
+          "egg": null,
+          "rarity": "Divine",
+          "clicks": "110T",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "party-lord",
+          "name": "Party Lord",
+          "egg": null,
+          "rarity": "Divine",
+          "clicks": "225T",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "firework-beast",
+          "name": "Firework Beast",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "party-mimic",
+          "name": "Party Mimic",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "party-star",
+          "name": "Party Star",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "party-tutel",
+          "name": "Party Tutel",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "easter-eggs",
+      "label": "Easter Eggs",
+      "pets": [
+        {
+          "slug": "easter-dog",
+          "name": "Easter Dog",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "100",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "carrot-golem",
+          "name": "Carrot Golem",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "250",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "choco-chick",
+          "name": "Choco Chick",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "3K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "easter-bunny",
+          "name": "Easter Bunny",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "5K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "blossom-bunny",
+          "name": "Blossom Bunny",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "7.5K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "chick-bunny",
+          "name": "Chick Bunny",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "14K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "carrots-trio",
+          "name": "Carrots Trio",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "15K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "bunny-dominus",
+          "name": "Bunny Dominus",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "25K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "bunny-dragon",
+          "name": "Bunny Dragon",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "100K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "magic-egg",
+          "name": "Magic Egg",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "180K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "bee",
+          "name": "Bee",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "300K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "blossom-star",
+          "name": "Blossom Star",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "340K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "spring-butterfly",
+          "name": "Spring Butterfly",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "450K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "chocolate-golem",
+          "name": "Chocolate Golem",
+          "egg": "Chocolate Exclusive",
+          "rarity": "Epic",
+          "clicks": "1M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "angel-egg",
+          "name": "Angel Egg",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "1.2M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "tulip-dragon",
+          "name": "Tulip Dragon",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "1.75M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "chocolate-serpent",
+          "name": "Chocolate Serpent",
+          "egg": "Chocolate Exclusive Egg",
+          "rarity": "Legendary",
+          "clicks": "3M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "blessed-chick",
+          "name": "Blessed Chick",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "5M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "blossom-unicorn",
+          "name": "Blossom Unicorn",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "7.5M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "chocolate-dragon",
+          "name": "Chocolate Dragon",
+          "egg": "Chocolate Exclusive Egg",
+          "rarity": "Mythical",
+          "clicks": "7.5M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "yolk-spirit",
+          "name": "Yolk Spirit",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "17.5M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "chocolate-shard",
+          "name": "Chocolate Shard",
+          "egg": "Chocolate Exclusive Egg",
+          "rarity": "Eternal",
+          "clicks": "20M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "immortal-flower",
+          "name": "Immortal Flower",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "25M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "easter-basket",
+          "name": "Easter Basket",
+          "egg": null,
+          "rarity": "Exclusive",
+          "clicks": "25M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "royal-egg",
+          "name": "Royal Egg",
+          "egg": null,
+          "rarity": "Exclusive",
+          "clicks": "50M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "tainted-egg",
+          "name": "Tainted Egg",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "65M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "diamond-egg",
+          "name": "Diamond Egg",
+          "egg": null,
+          "rarity": "Exclusive",
+          "clicks": "75M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "blossom-robot",
+          "name": "Blossom Robot",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "90M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "easter-protector",
+          "name": "Easter Protector",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "125M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "sunflower-overlord",
+          "name": "Sunflower Overlord",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "180M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "chocolate-trophy",
+          "name": "Chocolate Trophy",
+          "egg": "Chocolate Exclusive Egg",
+          "rarity": "Supreme",
+          "clicks": "100%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "easter-overlord",
+          "name": "Easter Overlord",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "bunny-queen",
+          "name": "Bunny Queen",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "easter-tutel",
+          "name": "Easter Tutel",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shells",
+      "label": "Shells",
+      "pets": [
+        {
+          "slug": "beach-dog",
+          "name": "Beach Dog",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "10K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "ice-cream-trio",
+          "name": "Ice Cream Trio",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "25K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "summer-sun",
+          "name": "Summer Sun",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "30K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "pool-flamingo",
+          "name": "Pool Flamingo",
+          "egg": null,
+          "rarity": "Common",
+          "clicks": "50K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "summer-coconut",
+          "name": "Summer Coconut",
+          "egg": null,
+          "rarity": "Uncommon",
+          "clicks": "75K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "pirate-crab",
+          "name": "Pirate Crab",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "140K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "palm-dragon",
+          "name": "Palm Dragon",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "150K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "summer-octopus",
+          "name": "Summer Octopus",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "250K",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "diver-dragon",
+          "name": "Diver Dragon",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "3M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "orca",
+          "name": "Orca",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "150M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "seahorse",
+          "name": "Seahorse",
+          "egg": null,
+          "rarity": "Rare",
+          "clicks": "300M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "mr-coconut",
+          "name": "Mr Coconut",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "350M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "party-pineapple",
+          "name": "Party Pineapple",
+          "egg": "Pineapple Exclusive Egg",
+          "rarity": "Epic",
+          "clicks": "500M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "bucketshell-crab",
+          "name": "Bucketshell Crab",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "500M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "watermelon-hydra",
+          "name": "Watermelon Hydra",
+          "egg": null,
+          "rarity": "Epic",
+          "clicks": "700M",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "anglerfish",
+          "name": "Anglerfish",
+          "egg": null,
+          "rarity": "Legendary",
+          "clicks": "1B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "beach-dragon",
+          "name": "Beach Dragon",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "1.8B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "underwater-anchor",
+          "name": "Underwater Anchor",
+          "egg": "Pineapple Exclusive Egg",
+          "rarity": "Legendary",
+          "clicks": "3B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "pearl-gem",
+          "name": "Pearl Gem",
+          "egg": null,
+          "rarity": "Mythical",
+          "clicks": "3.6B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "blazing-sea-star",
+          "name": "Blazing Sea Star",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "6.5B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "watermelon-dragon",
+          "name": "Watermelon Dragon",
+          "egg": "Pineapple Exclusive Egg",
+          "rarity": "Mythical",
+          "clicks": "10B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "seamaster",
+          "name": "Seamaster",
+          "egg": null,
+          "rarity": "Eternal",
+          "clicks": "13B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "treasure-keeper",
+          "name": "Treasure Keeper",
+          "egg": null,
+          "rarity": "Exclusive",
+          "clicks": "15B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "pineapple-overlord",
+          "name": "Pineapple Overlord",
+          "egg": "Pineapple Exclusive Egg",
+          "rarity": "Eternal",
+          "clicks": "17.5B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "drowned-wolf",
+          "name": "Drowned Wolf",
+          "egg": null,
+          "rarity": "Exclusive",
+          "clicks": "20B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "heatwave-hydra",
+          "name": "Heatwave Hydra",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "30B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "sunblessed-siren",
+          "name": "Sunblessed Siren",
+          "egg": null,
+          "rarity": "Divine",
+          "clicks": "50B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "underwater-queen",
+          "name": "Underwater Queen",
+          "egg": null,
+          "rarity": "Secret",
+          "clicks": "60B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "the-kraken",
+          "name": "The Kraken",
+          "egg": null,
+          "rarity": "Divine",
+          "clicks": "100B",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "summer-blobfish",
+          "name": "Summer Blobfish",
+          "egg": "Pineapple Exclusive Egg",
+          "rarity": "Supreme",
+          "clicks": "100%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "kraken-shipwreck",
+          "name": "Kraken Shipwreck",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "merkitty",
+          "name": "Merkitty",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
+          "slug": "summer-tutel",
+          "name": "Summer Tutel",
+          "egg": null,
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
           ]
         }
       ]
