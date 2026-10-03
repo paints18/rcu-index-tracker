@@ -4,6 +4,19 @@
   "notice": "",
   "entries": [
     {
+      "id": "2026-10-03-update",
+      "date": "2026-10-03",
+      "title": "Update 80: Fall Event Part 2",
+      "tags": [
+        "added"
+      ],
+      "body": "Added the Leaf Egg pets and the Chestnut Shop pets to the Acorns tab.",
+      "items": [
+        "Acorns: Leaf Duck, Fall Serpent, Fall Mimic, Leaf Axolotl, Fall Shock, Leaf Griffin, Fallen Leaf (Leaf Egg).",
+        "Acorns: Chestnut Overlord, Tree Beast (Chestnut Shop)."
+      ]
+    },
+    {
       "id": "2026-10-02-update",
       "date": "2026-10-02",
       "title": "Grid view, API import, data fixes",

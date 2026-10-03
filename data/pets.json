@@ -16886,6 +16886,110 @@
           ]
         },
         {
+          "slug": "leaf-duck",
+          "name": "Leaf Duck",
+          "egg": "Leaf",
+          "rarity": "Rare",
+          "clicks": "40O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "fall-serpent",
+          "name": "Fall Serpent",
+          "egg": "Leaf",
+          "rarity": "Epic",
+          "clicks": "60O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "fall-mimic",
+          "name": "Fall Mimic",
+          "egg": "Leaf",
+          "rarity": "Legendary",
+          "clicks": "120O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "leaf-axolotl",
+          "name": "Leaf Axolotl",
+          "egg": "Leaf",
+          "rarity": "Mythical",
+          "clicks": "550O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "fall-shock",
+          "name": "Fall Shock",
+          "egg": "Leaf",
+          "rarity": "Eternal",
+          "clicks": "2.99N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "leaf-griffin",
+          "name": "Leaf Griffin",
+          "egg": "Leaf",
+          "rarity": "Secret",
+          "clicks": "17N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "fallen-leaf",
+          "name": "Fallen Leaf",
+          "egg": "Leaf",
+          "rarity": "Divine",
+          "clicks": "58N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "chestnut-overlord",
+          "name": "Chestnut Overlord",
+          "egg": "Chestnut Shop",
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "autumn-kitsune",
           "name": "Autumn Kitsune",
           "egg": null,
@@ -16934,6 +17038,19 @@
             "normal",
             "golden",
             "toxic"
+          ]
+        },
+        {
+          "slug": "tree-beast",
+          "name": "Tree Beast",
+          "egg": "Chestnut Shop",
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
           ]
         },
         {
