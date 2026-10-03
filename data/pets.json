@@ -16667,7 +16667,7 @@
         {
           "slug": "acorn-dog",
           "name": "Acorn Dog",
-          "egg": "Acorn Egg",
+          "egg": "Acorn",
           "rarity": "Common",
           "clicks": "600Qd",
           "variants": [
@@ -16680,7 +16680,7 @@
         {
           "slug": "acorn-fox",
           "name": "Acorn Fox",
-          "egg": "Acorn Egg",
+          "egg": "Acorn",
           "rarity": "Uncommon",
           "clicks": "1.2Qn",
           "variants": [
@@ -16693,7 +16693,7 @@
         {
           "slug": "leaf-hedgehog",
           "name": "Leaf Hedgehog",
-          "egg": "Acorn Egg",
+          "egg": "Acorn",
           "rarity": "Rare",
           "clicks": "2.1Qn",
           "variants": [
@@ -16706,7 +16706,7 @@
         {
           "slug": "apple-slime",
           "name": "Apple Slime",
-          "egg": "Orchard Egg",
+          "egg": "Orchard",
           "rarity": "Common",
           "clicks": "2.4Qn",
           "variants": [
@@ -16719,7 +16719,7 @@
         {
           "slug": "apple-bunny",
           "name": "Apple Bunny",
-          "egg": "Orchard Egg",
+          "egg": "Orchard",
           "rarity": "Uncommon",
           "clicks": "3Qn",
           "variants": [
@@ -16732,7 +16732,7 @@
         {
           "slug": "acorn-dragon",
           "name": "Acorn Dragon",
-          "egg": "Acorn Egg",
+          "egg": "Acorn",
           "rarity": "Epic",
           "clicks": "4.5Qn",
           "variants": [
@@ -16745,7 +16745,7 @@
         {
           "slug": "orchard-deer",
           "name": "Orchard Deer",
-          "egg": "Orchard Egg",
+          "egg": "Orchard",
           "rarity": "Rare",
           "clicks": "6Qn",
           "variants": [
@@ -16758,7 +16758,7 @@
         {
           "slug": "apple-golem",
           "name": "Apple Golem",
-          "egg": "Orchard Egg",
+          "egg": "Orchard",
           "rarity": "Epic",
           "clicks": "9Qn",
           "variants": [
@@ -16771,7 +16771,7 @@
         {
           "slug": "orchard-spirit",
           "name": "Orchard Spirit",
-          "egg": "Orchard Egg",
+          "egg": "Orchard",
           "rarity": "Legendary",
           "clicks": "30Qn",
           "variants": [
@@ -16797,7 +16797,7 @@
         {
           "slug": "happy-leaf",
           "name": "Happy Leaf",
-          "egg": "Fall 2026 Egg",
+          "egg": "Fall 2026",
           "rarity": "Rare",
           "clicks": "20O",
           "variants": [
@@ -16810,7 +16810,7 @@
         {
           "slug": "maple-cat",
           "name": "Maple Cat",
-          "egg": "Fall 2026 Egg",
+          "egg": "Fall 2026",
           "rarity": "Epic",
           "clicks": "30O",
           "variants": [
@@ -16823,7 +16823,7 @@
         {
           "slug": "autumn-heart",
           "name": "Autumn Heart",
-          "egg": "Fall 2026 Egg",
+          "egg": "Fall 2026",
           "rarity": "Legendary",
           "clicks": "60O",
           "variants": [
@@ -16836,7 +16836,7 @@
         {
           "slug": "maple-owl",
           "name": "Maple Owl",
-          "egg": "Fall 2026 Egg",
+          "egg": "Fall 2026",
           "rarity": "Mythical",
           "clicks": "270O",
           "variants": [
@@ -16849,7 +16849,7 @@
         {
           "slug": "rain-dragon",
           "name": "Rain Dragon",
-          "egg": "Fall 2026 Egg",
+          "egg": "Fall 2026",
           "rarity": "Eternal",
           "clicks": "1.44N",
           "variants": [
@@ -16862,7 +16862,7 @@
         {
           "slug": "autumn-moth",
           "name": "Autumn Moth",
-          "egg": "Fall 2026 Egg",
+          "egg": "Fall 2026",
           "rarity": "Secret",
           "clicks": "8.4N",
           "variants": [
@@ -16875,7 +16875,7 @@
         {
           "slug": "fall-phoenix",
           "name": "Fall Phoenix",
-          "egg": "Fall 2026 Egg",
+          "egg": "Fall 2026",
           "rarity": "Divine",
           "clicks": "28.8N",
           "variants": [
@@ -17056,7 +17056,7 @@
         {
           "slug": "acorn-tutel",
           "name": "Acorn Tutel",
-          "egg": "Fall 2026 Egg",
+          "egg": "Fall 2026",
           "rarity": "Supreme",
           "clicks": "200%",
           "variants": [
