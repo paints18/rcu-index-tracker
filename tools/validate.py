@@ -14,7 +14,7 @@ It checks the things that would quietly corrupt people's saved progress:
   * `clicks` is null or a well-formed value ("1.5K", "250", "110%")
   * data/pet-images.json is well formed and points at real WebP files (warnings only
     for pets with no entry, so a fresh weekly update does not fail CI before
-    tools/fetch_pet_images.py has been run)
+    tools/add_new_pets.py has been run)
 
 Slug drift is the important one. Progress is stored per pet slug, so if a slug
 changes -- which happens if you rename a pet, because the agreed slug format is
@@ -83,7 +83,7 @@ def check_images(pet_variants):
     missing_entry = sorted(s for s in pet_variants if s not in images)
     if missing_entry:
         warnings.append(
-            "%d pet(s) have no entry in %s (run tools/fetch_pet_images.py): %s%s"
+            "%d pet(s) have no entry in %s (run tools/add_new_pets.py): %s%s"
             % (len(missing_entry), IMAGES_JSON.name, ", ".join(missing_entry[:10]),
                ", ..." if len(missing_entry) > 10 else "")
         )

@@ -19,12 +19,10 @@
 .gv-variants { display: flex; flex-wrap: wrap; gap: 6px; }
 .gv-count { font-weight: 600; font-variant-numeric: tabular-nums; }
 
-/* Seven columns, like the game's index, inside a window that shows about four
-   and a half rows and scrolls within itself. The window's height is derived from
+/* Seven columns, like the game's index, inside a window that shows --gv-rows rows
+   (set on .views) and scrolls within itself. The window's height is derived from
    the tile size (container width), so it keeps that proportion at every width. */
 .gv-panel {
-  --gv-gap: 6px;
-  --gv-rows: 8;
   container-type: inline-size;
   width: 100%;
   max-width: 640px;
@@ -169,7 +167,14 @@
    centred, with 8px of padding and a 2px border; its rows are squares one seventh of
    what is left, less the scrollbar gutter. Both views sit in .views, which is the
    container this measures against, so the two heights stay equal at every width. */
-.views { container-type: inline-size; position: relative; }
+.views {
+  container-type: inline-size;
+  position: relative;
+  /* How many rows both windows show, and the gap between tiles. Defined once here
+     so the grid's panel and the list's window cannot drift apart. */
+  --gv-rows: 8;
+  --gv-gap: 6px;
+}
 
 /* Out of the flow and invisible: it only exists to be measured (see syncListHeight in
    main.js). Not a spacer, so nothing shows above the list. */
@@ -182,8 +187,6 @@
 }
 
 .table-scroll.sticky-head {
-  --gv-gap: 6px;
-  --gv-rows: 8;
   --gv-tile: calc((min(640px, 100cqw) - 20px - 12px - 6 * var(--gv-gap)) / 7);
   /* + 20px: the panel's padding and border, so the two outer boxes match. Plus the
      grid's variant row, which the list lacks, so the two views end at the same bottom. */

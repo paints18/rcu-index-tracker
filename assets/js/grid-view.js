@@ -13,7 +13,7 @@
  *
  * Icons come from data/pet-images.json (slug -> one asset id per variant, in
  * VARIANT_ORDER) and live at assets/pets/<id>.webp. Regenerate both with
- * tools/fetch_pet_images.py. A pet with no image for a variant gets a text tile.
+ * tools/add_new_pets.py. A pet with no image for a variant gets a text tile.
  */
 
 const IMAGES_URL = "data/pet-images.json";
