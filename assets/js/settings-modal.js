@@ -26,6 +26,7 @@ import {
 import { Store, PROBE_KEY } from "./store.js";
 import { loadIndex, countProgress } from "./data.js";
 import { createDialog, showDialog, mountTrigger } from "./modal.js";
+import { createMenu } from "./ui.js";
 
 /** Old settings.html bookmarks land on the tracker with ?settings — see settings.html. */
 const OPEN_PARAM = "settings";
@@ -231,12 +232,17 @@ function buildDialog() {
     ),
   );
 
-  const defaultCategory = el("select", "min-w-[190px]");
+  const defaultCategory = createMenu({
+    id: "setting-default-category",
+    ariaLabel: "Category to open by default",
+    className: "min-w-[190px]",
+    onChange: (value) => update({ defaultCategory: value }),
+  });
   tracker.append(
     row(
       "Category to open by default",
       null,
-      defaultCategory,
+      defaultCategory.element,
     ),
   );
 
@@ -392,28 +398,23 @@ function renderPreferences() {
 }
 
 function renderCategoryChoices() {
-  const select = ui.defaultCategory;
-  select.replaceChildren();
+  const menu = ui.defaultCategory;
 
   if (!index) {
-    const loading = document.createElement("option");
-    loading.textContent = "Loading categories…";
-    loading.disabled = true;
-    select.append(loading);
+    menu.setOptions([{ value: "", label: "Loading categories…", disabled: true }], "");
     return;
   }
 
-  for (const category of index.categories) {
-    const option = document.createElement("option");
-    option.value = category.id;
-    option.textContent = category.pets.length
-      ? `${category.label} (${category.pets.length})`
-      : `${category.label} (empty)`;
-    option.disabled = category.pets.length === 0;
-    select.append(option);
-  }
-
-  select.value = settings.defaultCategory;
+  menu.setOptions(
+    index.categories.map((category) => ({
+      value: category.id,
+      label: category.pets.length
+        ? `${category.label} (${category.pets.length})`
+        : `${category.label} (empty)`,
+      disabled: category.pets.length === 0,
+    })),
+    settings.defaultCategory,
+  );
 }
 
 function renderProfiles() {
@@ -543,9 +544,6 @@ function wire() {
   }
   ui.hideCompleted.addEventListener("change", (event) =>
     update({ hideCompleted: event.target.checked }),
-  );
-  ui.defaultCategory.addEventListener("change", (event) =>
-    update({ defaultCategory: event.target.value }),
   );
 
   ui.resetButton.addEventListener("click", resetPreferences);

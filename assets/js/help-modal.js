@@ -141,11 +141,12 @@ const TABS = [
         "ones are made, so an alt's progress stays separate from your main's.",
       "A locked profile can't be ticked by accident. Lock or unlock any profile in " +
         "**Settings > Your data**.",
-      "**Export pets** builds a list of what you're missing, have, or all pets, as plain text, a " +
-        "spreadsheet or a CSV file, for index services. To paste into Google Sheets or " +
-        "Excel, choose **Spreadsheet** and copy. Spreadsheet and CSV have a column per " +
-        "variant: caught is marked ✓, missing is blank, and - means the pet has no such " +
-        "variant.",
+      "**Export pets** builds a list of what you're missing, what's indexed, or all pets, as text or a " +
+        "spreadsheet, for index services. Filter by category, source and rarity, and choose " +
+        "whether to show the category, source and rarity. To paste into Google Sheets or " +
+        "Excel, choose **Spreadsheet** and copy; Download gives a CSV file. A spreadsheet has " +
+        "a column per variant: caught is marked ✓, missing is blank, and - means the pet has " +
+        "no such variant.",
       el("h3", "section-title mt-5 mb-1", "Another device"),
       "Progress is saved in this browser, so a phone or a second browser starts empty. " +
         "**Backup/Import** turns a profile into a code; paste it into the Import tab there.",

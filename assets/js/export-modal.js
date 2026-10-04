@@ -6,91 +6,77 @@
  * Built here rather than in index.html for the same reason as the other
  * nav dialogs (see settings-modal.js): the DOM is only built when it is first opened.
  *
- * The list is built in stages: scope picks the pets, filters trim them, group-by
- * shapes them into lines, and a formatter turns those into text, a sheet (tab-separated,
- * for pasting into Sheets or Excel) or a CSV file.
+ * What goes in comes from the filters (categories, sources, rarities, variants and
+ * the List option), or from the page itself when "Match page filters" is ticked.
+ * What it looks like comes from Format and the Show toggles. The pipeline that does
+ * the work is in export-format.js; this file is the dialog around it.
  * The preview is an editable textarea; changing any option regenerates it.
  */
 
 import { showDialog, mountTrigger } from "./modal.js";
-import { loadIndex } from "./data.js";
+import { loadIndex, sourceOptions } from "./data.js";
+import { createMenu } from "./ui.js";
+import { buildExport, tsvToCsv, SEPARATORS } from "./export-format.js";
 
 const OPEN_PARAM = "export";
 const PREFS_KEY = "rcu:v1:export";
 
 const MODES = [
   { id: "missing", label: "Missing pets", noun: "missing", empty: "Nothing missing" },
-  { id: "have", label: "Pets I have", noun: "caught", empty: "Nothing caught" },
+  { id: "have", label: "Indexed pets", noun: "indexed", empty: "Nothing indexed" },
   { id: "all", label: "All pets", noun: "listed", empty: "Nothing to list" },
 ];
 
-const SCOPES = [
-  { id: "all", label: "Whole index" },
-  { id: "category", label: "Current tab" },
-  { id: "filtered", label: "Match current filters" },
-];
-
-const SEPARATORS = [
-  { id: "comma", label: "Comma (Golden, Toxic)", join: ", " },
-  { id: "slash", label: "Slash (Golden/Toxic)", join: "/" },
-];
-
-const GROUPS = [
-  { id: "pet", label: "Pet (one line per pet)" },
-  { id: "variant", label: "Variant (one line per variant)" },
-];
-
-/**
- * What a spreadsheet cell holds. A caught variant gets a tick; a missing one is
- * left blank, so the sheet reads as a filled-in checklist; and a variant the pet
- * does not have gets a dash, so "no such variant" is not mistaken for "not caught
- * yet".
- */
-const CAUGHT_MARK = "✓";
-const NOT_AVAILABLE = "-";
-
+// A sheet is copied tab-separated (Sheets and Excel split pasted text on tabs, so
+// a copied CSV would land in one column) and downloaded as CSV.
 const FORMATS = [
-  { id: "text", label: "Plain text", ext: "txt", mime: "text/plain" },
-  // Sheets and Excel split pasted text on tabs, not commas, so a copied CSV lands in
-  // one column. Copying wants the tab-separated format; a downloaded file wants CSV.
-  { id: "tsv", label: "Spreadsheet (paste into Sheets or Excel)", ext: "tsv", mime: "text/tab-separated-values" },
-  { id: "csv", label: "CSV file", ext: "csv", mime: "text/csv" },
+  { id: "text", label: "Text", ext: "txt", mime: "text/plain" },
+  { id: "sheet", label: "Spreadsheet", ext: "csv", mime: "text/csv" },
 ];
 
-/**
- * The dropdowns, in dialog order. `key` is both the prefs key and the lookup.
- * Format comes first because it decides which of the others apply.
- */
+const LAYOUTS = [
+  { id: "single", label: "One table" },
+  { id: "perCategory", label: "A table per category" },
+];
+
+/** The dropdowns; `key` is both the prefs key and the lookup. */
 const FIELDS = [
   { key: "format", label: "Format", options: FORMATS },
   { key: "mode", label: "List", options: MODES },
-  { key: "scope", label: "Scope", options: SCOPES },
-  { key: "groupBy", label: "Group by", options: GROUPS },
+  { key: "sheetLayout", label: "Spreadsheet layout", options: LAYOUTS },
   { key: "separator", label: "Separator", options: SEPARATORS },
 ];
 
-/**
- * Only 4 variants exist in the whole dataset, so a hand-picked map reads
- * better than deriving codes from the label (e.g. Golden and Galaxy both
- * start with G).
- */
-const ABBREVIATIONS = { normal: "N", golden: "G", toxic: "T", galaxy: "Gal" };
+/** What the list shows besides the pet's name, each a Show toggle. */
+const SHOW = [
+  { key: "showCategory", label: "Category" },
+  { key: "showSource", label: "Source" },
+  { key: "showRarity", label: "Rarity" },
+];
 
 /**
- * Filters are stored as what is switched OFF, not what is on, so a variant or
- * rarity added to the data later starts out included instead of silently
- * missing from everyone's saved export.
+ * Variants are stored as what is switched OFF, not what is on, so one added to
+ * the data later starts out included instead of silently missing from everyone's
+ * saved export. The others are picks, with none picked meaning all.
  */
 const DEFAULT_PREFS = {
-  mode: "missing",
-  scope: "all",
-  groupBy: "pet",
   format: "text",
+  mode: "missing",
+  matchPage: false,
+  categories: [],
+  sources: [],
+  rarities: [],
+  excludedVariants: [],
+  showCategory: true,
+  showSource: false,
+  showRarity: false,
+  sheetLayout: "single",
   separator: "comma",
   abbreviate: false,
-  excludedVariants: [],
-  excludedRarities: [],
 };
+
+const LIST_KEYS = ["categories", "sources", "rarities", "excludedVariants"];
+const FLAG_KEYS = ["matchPage", "showCategory", "showSource", "showRarity", "abbreviate"];
 
 function loadPrefs() {
   const prefs = { ...DEFAULT_PREFS };
@@ -98,11 +84,16 @@ function loadPrefs() {
     const stored = JSON.parse(localStorage.getItem(PREFS_KEY));
     if (!stored || typeof stored !== "object" || Array.isArray(stored)) return prefs;
 
+    // Saved before the sheet and CSV were one format, and before "match the
+    // page" was a checkbox rather than a Scope choice.
+    if (stored.format === "tsv" || stored.format === "csv") stored.format = "sheet";
+    if (stored.scope === "filtered" && stored.matchPage == null) stored.matchPage = true;
+
     for (const { key, options } of FIELDS) {
       if (options.some((o) => o.id === stored[key])) prefs[key] = stored[key];
     }
-    if (typeof stored.abbreviate === "boolean") prefs.abbreviate = stored.abbreviate;
-    for (const key of ["excludedVariants", "excludedRarities"]) {
+    for (const key of FLAG_KEYS) if (typeof stored[key] === "boolean") prefs[key] = stored[key];
+    for (const key of LIST_KEYS) {
       if (Array.isArray(stored[key])) prefs[key] = stored[key].filter((v) => typeof v === "string");
     }
   } catch {
@@ -162,6 +153,41 @@ function toast(message) {
   }, 2600);
 }
 
+/** A labelled checkbox; `input` is returned so the caller can wire and sync it. */
+function checkbox(label, checked, className = "text-sm flex gap-1.5 items-center") {
+  const row = el("label", className);
+  const input = document.createElement("input");
+  input.type = "checkbox";
+  input.checked = checked;
+  row.append(input, document.createTextNode(label));
+  return { row, input };
+}
+
+/** A labelled drop-down (see createMenu); `onChange` gets the new value. */
+function buildField(id, label, config) {
+  const field = el("div", "flex flex-col gap-1 min-w-0");
+  const labelNode = el("span", "field-label", label);
+  labelNode.id = `export-${id}-label`;
+  const control = createMenu({ id: `export-${id}`, labelledBy: labelNode.id, fill: true, ...config });
+  field.append(labelNode, control.element);
+  return { field, control };
+}
+
+/** A multi-select over the index's categories, sources or rarities. */
+function buildMenu(id, label, config) {
+  const { field, control } = buildField(id, label, {
+    multiple: true,
+    ...config,
+    onChange: (value) => {
+      prefs[id] = value;
+      savePrefs();
+      render();
+    },
+  });
+  control.setOptions([], []);
+  return { field, menu: control };
+}
+
 function buildDialog() {
   const dialog = document.createElement("dialog");
   dialog.className = "dialog";
@@ -179,46 +205,71 @@ function buildDialog() {
   const heading = el("h2", null, "Export pets");
   const intro = el("p", "text-muted text-[13px]", "Build a list to copy, download or edit.");
 
-  const grid = el("div", "grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-3 mt-4");
-  const selects = new Map();
-  for (const { key, label, options } of FIELDS) {
-    const wrap = el("label", "flex flex-col gap-1");
-    wrap.append(el("span", "field-label", label));
-    const select = document.createElement("select");
-    select.className = "w-full";
-    for (const option of options) {
-      const node = el("option", null, option.label);
-      node.value = option.id;
-      select.append(node);
-    }
-    select.value = prefs[key];
-    wrap.append(select);
-    grid.append(wrap);
-    selects.set(key, select);
+  // The single-choice fields; a pick is saved and the preview rebuilt.
+  const fieldFor = (key) => {
+    const { label, options } = FIELDS.find((f) => f.key === key);
+    const { field, control } = buildField(key, label, {
+      onChange: (value) => {
+        prefs[key] = value;
+        savePrefs();
+        render();
+      },
+    });
+    control.setOptions(
+      options.map((o) => ({ value: o.id, label: o.label })),
+      prefs[key],
+    );
+    return field;
+  };
+
+  const topGrid = el("div", "grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-3 mt-4");
+  topGrid.append(fieldFor("format"), fieldFor("mode"));
+
+  // What goes in: the page's own view, or picks made here.
+  const matchPage = checkbox("", prefs.matchPage, "text-sm flex gap-2 items-center mt-3");
+  const matchPageText = matchPage.row.lastChild;
+
+  const menus = {
+    categories: buildMenu("categories", "Categories", {
+      allLabel: "All categories",
+      countLabel: (n) => `${n} categories`,
+    }),
+    sources: buildMenu("sources", "Sources", {
+      allLabel: "All sources",
+      countLabel: (n) => `${n} sources`,
+      searchLabel: "Search sources",
+    }),
+    rarities: buildMenu("rarities", "Rarities", {
+      allLabel: "All rarities",
+      countLabel: (n) => `${n} rarities`,
+    }),
+  };
+  const pickGrid = el("div", "grid grid-cols-1 sm:grid-cols-3 gap-x-3 gap-y-3 mt-3");
+  pickGrid.append(...Object.values(menus).map((m) => m.field));
+
+  // Filled in once the index is loaded; the variants are data.
+  const variantBox = el("div", "flex flex-wrap items-center gap-x-4 gap-y-1 mt-3");
+  const filtersReset = el("button", "linkish text-[13px] ml-auto", "Reset filters");
+  filtersReset.type = "button";
+
+  // What it looks like.
+  const showBox = el("div", "flex flex-wrap items-center gap-x-4 gap-y-1 mt-3");
+  showBox.append(el("span", "text-muted text-[13px]", "Show"));
+  const shows = new Map();
+  for (const { key, label } of SHOW) {
+    const box = checkbox(label, prefs[key]);
+    shows.set(key, box.input);
+    showBox.append(box.row);
   }
 
-  const abbrLabel = el("label", "text-sm flex gap-2 items-center mt-3");
-  const abbrInput = document.createElement("input");
-  abbrInput.type = "checkbox";
-  abbrInput.checked = prefs.abbreviate;
-  abbrLabel.append(abbrInput, document.createTextNode("Use abbreviations (N, G, T, Gal)"));
-
-  // Filled in once the index is loaded; the variants and rarities are data.
-  const filters = el("details", "mt-3");
-  const filtersSummary = el("summary", "text-sm cursor-pointer", "Filters");
-  const filtersBody = el("div", "flex flex-col gap-2.5 mt-2");
-  const variantBox = el("div", "flex flex-wrap gap-x-4 gap-y-1");
-  const rarityBox = el("div", "flex flex-wrap gap-x-4 gap-y-1");
-  const filtersReset = el("button", "btn btn-quiet btn-sm self-start", "Reset filters");
-  filtersReset.type = "button";
-  filtersBody.append(
-    el("span", "text-muted text-[13px]", "Variants"),
-    variantBox,
-    el("span", "text-muted text-[13px]", "Rarity"),
-    rarityBox,
-    filtersReset,
-  );
-  filters.append(filtersSummary, filtersBody);
+  const more = el("details", "mt-3");
+  more.append(el("summary", "text-sm cursor-pointer", "More options"));
+  const moreBody = el("div", "grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-3 mt-2");
+  const layoutField = fieldFor("sheetLayout");
+  const separatorField = fieldFor("separator");
+  const abbr = checkbox("Use abbreviations (N, G, T, Gal)", prefs.abbreviate, "text-sm flex gap-2 items-center sm:col-span-2");
+  moreBody.append(layoutField, separatorField, abbr.row);
+  more.append(moreBody);
 
   const meta = el("p", "text-muted text-[13px] mt-3");
   const textarea = document.createElement("textarea");
@@ -240,13 +291,19 @@ function buildDialog() {
   downloadButton.type = "button";
   actions.append(copyButton, downloadButton);
 
+  variantBox.append(el("span", "text-muted text-[13px]", "Variants"));
+  variantBox.append(filtersReset);
+
   dialog.append(
     closeForm,
     heading,
     intro,
-    grid,
-    abbrLabel,
-    filters,
+    topGrid,
+    matchPage.row,
+    pickGrid,
+    variantBox,
+    showBox,
+    more,
     meta,
     textarea,
     editNote,
@@ -257,13 +314,18 @@ function buildDialog() {
 
   return {
     dialog,
-    selects,
-    abbrLabel,
-    abbrInput,
-    filtersSummary,
+    matchPage: matchPage.input,
+    matchPageRow: matchPage.row,
+    matchPageText,
+    menus,
+    pickGrid,
     variantBox,
-    rarityBox,
     filtersReset,
+    shows,
+    layoutField,
+    separatorField,
+    abbrRow: abbr.row,
+    abbrInput: abbr.input,
     meta,
     textarea,
     editNote,
@@ -272,11 +334,6 @@ function buildDialog() {
     downloadButton,
     toast: dialog.lastElementChild,
   };
-}
-
-/** Variant id -> display label, from the loaded index. */
-function labelMap() {
-  return new Map(index.variants.map((v) => [v.id, v.label]));
 }
 
 /**
@@ -295,150 +352,7 @@ function rarityRank() {
   return rank;
 }
 
-/**
- * `[{ label, pets }]` for the chosen scope, before any filtering. Pets stay in
- * the table's own order: grouped by world and, within a world, ascending by
- * Clicks, which is how the source data is entered.
- */
-function scopedGroups() {
-  if (prefs.scope === "category" || prefs.scope === "filtered") {
-    const category = host.getActiveCategory?.();
-    if (!category) return [];
-    const pets =
-      prefs.scope === "filtered" ? (host.filterPets?.(category) ?? category.pets) : category.pets;
-    return [{ label: category.label, pets }];
-  }
-
-  // The "All" category holds the same pets as every other category, reused
-  // rather than copied — walking it here alongside the rest would export
-  // everything twice.
-  return index.categories.filter((c) => !c.virtual).map((c) => ({ label: c.label, pets: c.pets }));
-}
-
-/**
- * Apply the mode and filters: `[{ label, entries: [{ pet, variants }] }]`, where
- * `variants` are the ids that made the cut. Pets with none left, and groups with
- * no pets left, are dropped.
- */
-function collect() {
-  const progress = host.getProgress?.() ?? {};
-  const wantCaught = prefs.mode === "have";
-  const skipVariants = new Set(prefs.excludedVariants);
-  const skipRarities = new Set(prefs.excludedRarities);
-  const groups = [];
-
-  for (const { label, pets } of scopedGroups()) {
-    const entries = [];
-    for (const pet of pets) {
-      if (skipRarities.has(pet.rarity ?? "")) continue;
-      const caught = progress[pet.slug] ?? [];
-      const variants = pet.variants.filter(
-        (v) => !skipVariants.has(v) && (prefs.mode === "all" || caught.includes(v) === wantCaught),
-      );
-      if (variants.length) entries.push({ pet, variants });
-    }
-    if (entries.length) groups.push({ label, entries });
-  }
-  return groups;
-}
-
-/** Regroup a group's entries as `[{ variant, pets }]`, in the data's variant order. */
-function byVariant(entries) {
-  const grouped = new Map(index.variants.map((v) => [v.id, []]));
-  for (const { pet, variants } of entries) {
-    for (const id of variants) {
-      if (!grouped.has(id)) grouped.set(id, []);
-      grouped.get(id).push(pet);
-    }
-  }
-  return [...grouped].filter(([, pets]) => pets.length).map(([variant, pets]) => ({ variant, pets }));
-}
-
-function variantName(id, labels) {
-  return (prefs.abbreviate ? ABBREVIATIONS[id] : null) ?? labels.get(id) ?? id;
-}
-
-/** A cell, quoted when it holds the delimiter, a quote or a line break. */
-function sheetCell(value, delimiter) {
-  const text = value == null ? "" : String(value);
-  const special = text.includes(delimiter) || /["\r\n]/.test(text);
-  return special ? `"${text.replace(/"/g, '""')}"` : text;
-}
-
-/** The sheet format and CSV are the same matrix; only the delimiter differs. */
-const isMatrix = () => prefs.format === "csv" || prefs.format === "tsv";
-
-/**
- * One line per pet or per variant, as `{ head, parts }`: "Dog - Golden, Toxic"
- * grouped by pet, "Golden - Dog, Cat" grouped by variant.
- */
-function linesOf(entries, labels) {
-  if (prefs.groupBy === "variant") {
-    return byVariant(entries).map(({ variant, pets }) => ({
-      head: variantName(variant, labels),
-      parts: pets.map((p) => p.name),
-    }));
-  }
-  return entries.map(({ pet, variants }) => ({
-    head: pet.name,
-    parts: variants.map((v) => variantName(v, labels)),
-  }));
-}
-
-function formatList(groups, labels) {
-  const join = SEPARATORS.find((s) => s.id === prefs.separator)?.join ?? ", ";
-
-  if (isMatrix()) {
-    // One row per pet and one column per variant, like the list view; a caught
-    // variant gets the mark and a missing one stays blank. The List option picks the
-    // rows. Group by, Separator and abbreviations do not apply. Columns nobody in
-    // the export has (say Galaxy, in a world with no Galaxy pets) are left out.
-    const progress = host.getProgress?.() ?? {};
-    const worldOf = new Map(index.categories.map((c) => [c.id, c.label]));
-    const skip = new Set(prefs.excludedVariants);
-    const entries = groups.flatMap((g) => g.entries);
-    const columns = index.variants.filter(
-      (v) => !skip.has(v.id) && entries.some(({ pet }) => pet.variants.includes(v.id)),
-    );
-
-    const rows = [["Category", "Pet", ...columns.map((v) => labels.get(v.id) ?? v.id)]];
-    for (const { pet } of entries) {
-      const caught = progress[pet.slug] ?? [];
-      rows.push([
-        worldOf.get(pet.categoryId),
-        pet.name,
-        ...columns.map((v) => {
-          if (!pet.variants.includes(v.id)) return NOT_AVAILABLE;
-          return caught.includes(v.id) ? CAUGHT_MARK : "";
-        }),
-      ]);
-    }
-    const delimiter = prefs.format === "tsv" ? "\t" : ",";
-    return rows.map((row) => row.map((c) => sheetCell(c, delimiter)).join(delimiter)).join("\n");
-  }
-
-  // A header would just repeat what the Scope dropdown already said when there
-  // is only one group.
-  const headed = groups.length > 1;
-
-  return groups
-    .map(({ label, entries }) => {
-      const lines = linesOf(entries, labels).map(({ head, parts }) => `${head} - ${parts.join(join)}`);
-      return (headed ? [label, ...lines] : lines).join("\n");
-    })
-    .join("\n\n");
-}
-
-/** @returns {{text: string, pets: number, variants: number}} */
-function buildExport() {
-  const groups = collect();
-  const entries = groups.flatMap((g) => g.entries);
-  return {
-    text: formatList(groups, labelMap()),
-    pets: entries.length,
-    variants: entries.reduce((sum, e) => sum + e.variants.length, 0),
-  };
-}
+const isSheet = () => prefs.format === "sheet";
 
 function setEdited(value) {
   edited = value;
@@ -453,22 +367,28 @@ function setPreview(text, meta) {
   setEdited(false);
 }
 
-/**
- * Group by, Separator and abbreviations shape the text list; a sheet or CSV is
- * always pets by variant columns, so they are hidden there.
- */
+/** Which controls apply: the page-match checkbox hides the picks, the format hides what it ignores. */
 function syncFieldStates() {
-  const csv = isMatrix();
-  for (const key of ["groupBy", "separator"]) ui.selects.get(key).parentElement.hidden = csv;
-  ui.abbrLabel.hidden = csv;
+  const sheet = isSheet();
+  ui.pickGrid.hidden = prefs.matchPage;
+  ui.layoutField.hidden = !sheet;
+  for (const node of [ui.separatorField, ui.abbrRow]) node.hidden = sheet;
   // A row per line: wrapping would make one pet look like several.
-  ui.textarea.wrap = csv ? "off" : "soft";
+  ui.textarea.wrap = sheet ? "off" : "soft";
 
-  // "Current world" is whatever tab the table is on, which is the whole index when
-  // that tab is All. Naming it here keeps that from looking like Scope is ignored.
+  // "The page" is whatever tab the table is on, which is the whole index when that
+  // tab is All. The tooltip names it so the checkbox does not look like it does nothing.
   const tab = host.getActiveCategory?.()?.label;
-  const current = ui.selects.get("scope").querySelector('option[value="category"]');
-  current.textContent = tab ? `Current tab (${tab})` : "Current tab";
+  ui.matchPageText.textContent = "Match page filters";
+  ui.matchPageRow.title = tab ? `The ${tab} tab, with the filters set on the page` : "";
+}
+
+/** The pets the page is showing now, or null when the picks here are in charge. */
+function pagePets() {
+  if (!prefs.matchPage) return null;
+  const category = host.getActiveCategory?.();
+  if (!category) return [];
+  return host.filterPets?.(category) ?? category.pets;
 }
 
 function render() {
@@ -478,12 +398,14 @@ function render() {
   if (!host.getProfileId?.()) return setPreview("", "Create a profile first.");
 
   const mode = MODES.find((m) => m.id === prefs.mode);
-  const { text, pets, variants } = buildExport();
+  const { text, pets, variants } = buildExport({
+    index,
+    prefs,
+    progress: host.getProgress?.() ?? {},
+    pagePets: pagePets(),
+  });
 
-  if (!pets) {
-    const filtered = prefs.excludedVariants.length || prefs.excludedRarities.length;
-    return setPreview("", `${mode.empty} in this scope${filtered ? " with these filters" : ""}.`);
-  }
+  if (!pets) return setPreview("", `${mode.empty} with these settings.`);
 
   setPreview(
     text,
@@ -491,53 +413,59 @@ function render() {
   );
 }
 
-/** The checkbox rows and the summary count; the checkboxes need the index. */
-function renderFilters() {
-  const off = prefs.excludedVariants.length + prefs.excludedRarities.length;
-  ui.filtersSummary.textContent = off ? `Filters (${off} off)` : "Filters";
+/** Keep only picks that still exist, so a saved pick the data no longer has cannot silently empty the export. */
+const stillExist = (picks, options) => picks.filter((p) => options.some((o) => o.value === p));
 
-  if (!index || filtersBuilt) return;
+/** The menus' options and the variant checkboxes; both need the index. */
+function renderFilters() {
+  if (!index) return;
+
+  const categories = index.categories
+    .filter((c) => !c.virtual && c.pets.length)
+    .map((c) => ({ value: c.id, label: c.label }));
+  const everything = index.categories.find((c) => c.virtual) ?? index.categories[0];
+  const sources = sourceOptions(index, everything);
+  const rarities = [...rarityRank()].sort((a, b) => a[1] - b[1]).map(([name]) => ({ value: name, label: name }));
+  if ([...index.bySlug.values()].some((p) => !p.rarity)) rarities.push({ value: "", label: "No rarity listed" });
+
+  const options = { categories, sources, rarities };
+  for (const [key, list] of Object.entries(options)) {
+    prefs[key] = stillExist(prefs[key], list);
+    ui.menus[key].menu.setOptions(list, prefs[key]);
+  }
+
+  if (filtersBuilt) return;
   filtersBuilt = true;
 
-  const addCheck = (box, listKey, id, label) => {
-    const row = el("label", "text-sm flex gap-1.5 items-center");
-    const input = document.createElement("input");
-    input.type = "checkbox";
-    input.checked = !prefs[listKey].includes(id);
-    input.dataset.id = id;
-    input.addEventListener("change", () => {
-      prefs[listKey] = input.checked
-        ? prefs[listKey].filter((x) => x !== id)
-        : [...prefs[listKey], id];
+  for (const v of index.variants) {
+    const box = checkbox(v.label, !prefs.excludedVariants.includes(v.id));
+    box.input.dataset.id = v.id;
+    box.input.addEventListener("change", () => {
+      prefs.excludedVariants = box.input.checked
+        ? prefs.excludedVariants.filter((x) => x !== v.id)
+        : [...prefs.excludedVariants, v.id];
       savePrefs();
-      renderFilters();
       render();
     });
-    row.append(input, document.createTextNode(label));
-    box.append(row);
-  };
-
-  for (const v of index.variants) addCheck(ui.variantBox, "excludedVariants", v.id, v.label);
-
-  const rarities = [...rarityRank()].sort((a, b) => a[1] - b[1]).map(([name]) => name);
-  if ([...index.bySlug.values()].some((p) => !p.rarity)) rarities.push("");
-  for (const r of rarities) addCheck(ui.rarityBox, "excludedRarities", r, r || "No rarity listed");
+    ui.variantBox.insertBefore(box.row, ui.filtersReset);
+  }
 }
 
 function resetFilters() {
-  prefs.excludedVariants = [];
-  prefs.excludedRarities = [];
+  Object.assign(prefs, { matchPage: false, categories: [], sources: [], rarities: [], excludedVariants: [] });
   savePrefs();
-  for (const input of ui.dialog.querySelectorAll("details input[type=checkbox]")) input.checked = true;
+  ui.matchPage.checked = false;
+  for (const input of ui.variantBox.querySelectorAll("input[type=checkbox]")) input.checked = true;
   renderFilters();
   render();
 }
 
 function download() {
   const format = FORMATS.find((f) => f.id === prefs.format);
-  // Excel reads a CSV as the system code page unless it starts with a BOM, which
-  // turns any accented pet name into mojibake.
-  const body = (isMatrix() ? "\uFEFF" : "") + ui.textarea.value;
+  // The preview holds the tab-separated sheet; a file wants commas. Excel reads a
+  // CSV as the system code page unless it starts with a BOM, which turns any
+  // accented pet name into mojibake.
+  const body = isSheet() ? "﻿" + tsvToCsv(ui.textarea.value) : ui.textarea.value;
   const url = URL.createObjectURL(new Blob([body], { type: `${format.mime};charset=utf-8` }));
   const link = el("a");
   link.href = url;
@@ -549,19 +477,15 @@ function download() {
 }
 
 function wire() {
-  for (const [key, select] of ui.selects) {
-    select.addEventListener("change", () => {
-      prefs[key] = select.value;
+  const flag = (input, key) =>
+    input.addEventListener("change", () => {
+      prefs[key] = input.checked;
       savePrefs();
       render();
     });
-  }
-
-  ui.abbrInput.addEventListener("change", () => {
-    prefs.abbreviate = ui.abbrInput.checked;
-    savePrefs();
-    render();
-  });
+  flag(ui.matchPage, "matchPage");
+  flag(ui.abbrInput, "abbreviate");
+  for (const [key, input] of ui.shows) flag(input, key);
 
   ui.filtersReset.addEventListener("click", resetFilters);
 
@@ -623,7 +547,7 @@ export async function openExport() {
  * @param {Function} [options.getActiveCategory] Returns the category currently
  *   showing on the table.
  * @param {Function} [options.filterPets] `(category) => pets[]`, the table's own
- *   filter predicate, so "match current filters" can never drift from the table.
+ *   filter predicate, so "Match page filters" can never drift from the table.
  */
 export function mountExportModal(options = {}) {
   if (!mountTrigger("data-open-export", OPEN_PARAM, openExport)) return;

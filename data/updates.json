@@ -4,6 +4,21 @@
   "notice": "",
   "entries": [
     {
+      "id": "2026-10-04-update",
+      "date": "2026-10-04",
+      "title": "Export pets rework",
+      "tags": [
+        "added",
+        "changed"
+      ],
+      "body": "Export pets has been reworked, with more control over what goes into your list and how it looks.",
+      "items": [
+        "Export pets: more filters and display options, and a way to export exactly what the page is showing.",
+        "The spreadsheet export can be split up by category.",
+        "Various UI improvements."
+      ]
+    },
+    {
       "id": "2026-10-03-update",
       "date": "2026-10-03",
       "title": "Update 80: Fall Event Part 2",
