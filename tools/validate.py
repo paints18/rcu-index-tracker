@@ -19,7 +19,7 @@ It checks the things that would quietly corrupt people's saved progress:
 Slug drift is the important one. Progress is stored per pet slug, so if a slug
 changes -- which happens if you rename a pet, because the agreed slug format is
 the pet name alone -- everyone who had that pet ticked silently loses it. This
-script makes that loud. Moving a pet between eggs or categories is free.
+script makes that loud. Moving a pet between sources or categories is free.
 
 If a slug change is intentional, re-run with --accept to update the lock file.
 Exits non-zero on any error, so CI can gate on it.
@@ -235,8 +235,8 @@ def main():
             if not pet.get("name"):
                 errors.append("%s (%s): missing name" % (spot, slug))
 
-            if pet.get("egg") is not None and not isinstance(pet.get("egg"), str):
-                errors.append("%s (%s): `egg` must be a string or null" % (spot, slug))
+            if pet.get("source") is not None and not isinstance(pet.get("source"), str):
+                errors.append("%s (%s): `source` must be a string or null" % (spot, slug))
             if not pet.get("rarity") or not isinstance(pet.get("rarity"), str):
                 errors.append("%s (%s): missing rarity" % (spot, slug))
 

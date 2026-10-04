@@ -22,7 +22,8 @@
     if (theme && theme !== "periwinkle") r.dataset.theme = theme;
     if (s.density === "compact") r.dataset.density = "compact";
     var cols = s.columns || (s.showClicks === false ? { clicks: false } : {});
-    var hide = ["egg", "rarity", "clicks"].filter(function (c) { return cols[c] === false; });
+    if (cols.source == null && cols.egg === false) cols.source = false; // Source was the Egg column
+    var hide = ["source", "rarity", "clicks"].filter(function (c) { return cols[c] === false; });
     if (hide.length) r.dataset.hideCols = hide.join(" ");
   } catch (e) {}
 })();
@@ -161,26 +162,26 @@
     <section class="card flex flex-wrap items-end gap-2.5 mb-3.5" aria-label="Filters">
       <label class="field flex-1 min-w-[220px]">
         <span class="field-label">Search</span>
-        <input type="search" id="filter-search" placeholder="Pet or egg name…"
+        <input type="search" id="filter-search" placeholder="Pet or source name…"
                autocomplete="off" spellcheck="false">
       </label>
       <!-- All four menus are buttons opening a list the page draws itself (see
            mountMenu in ui.js) instead of native selects, so they open the same
-           way in every browser, and Rarity can be a checklist.
+           way in every browser, and Source and Rarity can be checklists.
 
-           The menus hold one category's eggs and rarities, so left to themselves
+           The menus hold one category's sources and rarities, so left to themselves
            they are a different width in every world and the whole filter row
            reshuffles as you switch. The sizer next to each is filled with the
            longest values in the entire dataset and holds the width open; see
            .select-wrap. -->
       <div class="field">
-        <span class="field-label" id="egg-label">Egg</span>
+        <span class="field-label" id="source-label">Source</span>
         <div class="select-wrap menu">
-          <button type="button" class="select-btn" id="filter-egg"
-                  aria-labelledby="egg-label filter-egg"
+          <button type="button" class="select-btn" id="filter-source"
+                  aria-labelledby="source-label filter-source"
                   aria-haspopup="listbox" aria-expanded="false"></button>
-          <span class="select-sizer" id="egg-sizer"></span>
-          <div class="menu-panel" id="egg-panel" hidden></div>
+          <span class="select-sizer" id="source-sizer"></span>
+          <div class="menu-panel" id="source-panel" hidden></div>
         </div>
       </div>
       <!-- Several rarities can be ticked at once; nothing ticked means every rarity. -->
@@ -211,11 +212,11 @@
            has, same as the tick columns; see usedVariants in ui.js.
 
            Its placeholder is "No filter" rather than "All variants" — it
-           reads fine paired with a neutral label like Egg or Rarity, but
+           reads fine paired with a neutral label like Source or Rarity, but
            "Missing" is already a state verb, and "Missing: All variants"
            reads as "missing every variant" (a real, different status) rather
            than "not filtering by this". Its sizer is a fixed list of every
-           variant rather than the per-category widest (see egg/rarity
+           variant rather than the per-category widest (see source/rarity
            above), since the option set is the same small handful everywhere. -->
       <div class="field">
         <span class="field-label" id="missing-label">Missing</span>

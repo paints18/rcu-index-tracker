@@ -68,7 +68,7 @@ export const DENSITIES = [
  * variant tick columns are the point of the table, so they are not in here.
  */
 export const COLUMNS = [
-  { id: "egg", label: "Egg" },
+  { id: "source", label: "Source" },
   { id: "rarity", label: "Rarity" },
   { id: "clicks", label: "Clicks" },
 ];
@@ -111,6 +111,10 @@ function withDefaults(stored) {
       ? stored.columns
       : {};
   const columns = { ...DEFAULTS.columns, ...storedColumns };
+
+  // The Source column was the Egg column; carry a saved "hidden" over.
+  if (storedColumns.source == null && typeof storedColumns.egg === "boolean") columns.source = storedColumns.egg;
+  delete columns.egg;
 
   // Settings saved before this was a per-column list carried a single flag.
   if (stored.columns == null && showClicks === false) columns.clicks = false;
@@ -182,7 +186,7 @@ export function applySettings(settings = loadSettings()) {
   root.dataset.bulk = "on";
 
   // One space-separated list rather than an attribute per column, matched in CSS
-  // with `[data-hide-cols~="egg"]`.
+  // with `[data-hide-cols~="source"]`.
   const hidden = COLUMNS.filter((c) => settings.columns?.[c.id] === false).map((c) => c.id);
   if (hidden.length) root.dataset.hideCols = hidden.join(" ");
   else delete root.dataset.hideCols;

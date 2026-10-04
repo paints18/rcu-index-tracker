@@ -13,21 +13,22 @@ profile name.
 - Grid view (the default; Grid view/List view toggle in the category header)
   shows the in-game index layout: one variant at a time, 7 tiles per row,
   not-indexed pets as silhouettes, and a hover card with rarity, clicks and
-  egg. Clicking a tile ticks it. Search, Egg, Rarity, counts and Undo are shared
+  source. Clicking a tile ticks it. Search, Source, Rarity, counts and Undo are shared
   with the list. The Status menu offers All pets and Missing, which lists
   the pets not yet ticked for the variant on show (Normal, Golden, Toxic or
   Galaxy). The Missing menu is disabled and reset to No filter. The chosen view
   is remembered in this browser.
 - List view is a table with a box per variant. The **All** column shows a full
   or partial ring depending on how many of a pet's variants you own. Clicking the
-  Egg header groups the list by egg, with the eggs in list order; clicking it
+  Source header groups the list by source, with the sources in list order; clicking it
   again restores the default order.
-- Browse by category, or filter by name, egg, rarity, completion status, or
-  a specific missing variant. Rarity is a checklist: tick any number of
-  rarities, or none for all. The Egg, Rarity, Status and Missing menus are
+- Browse by category, or filter by name, source, rarity, completion status, or
+  a specific missing variant. Source and Rarity are checklists: tick any number
+  of either, or none for all. The Source menu has a search box, and on the All
+  tab it is sectioned by tab. The Source, Rarity, Status and Missing menus are
   drawn by the page, not the browser, so they look and behave the same in
   every browser. Status and Missing apply to List view only. Filters stay set
-  when you change category; an egg or rarity the new category does not have is
+  when you change category; a source or rarity the new category does not have is
   skipped there and comes back when you return.
 - List view: fill a whole column at once for the pets currently shown, or
   shift-click to fill a range. Undo reverts any of these bulk edits.
@@ -48,19 +49,22 @@ profile name.
   be edited (list, grid, column checkboxes and Undo); clicking a tick shows a
   message instead. Settings > Your data has a Lock/Unlock button for each
   profile, so any profile can be locked or unlocked.
-- Export pets builds a list of the pets you're missing, have, or all of them,
-  as plain text, a spreadsheet or a CSV file, for trading or paying someone to
-  index for you. Options: whole index, the tab the table is on, or the current
-  filters; group by pet or by variant; comma or slash separator; abbreviated
-  variant names; variant and rarity filters. The Spreadsheet format is
-  tab-separated, for pasting into Google Sheets or Excel. Spreadsheet and CSV
-  have one row per pet and a column per variant. A caught variant is marked ✓, a
-  missing one is left blank, and a variant the pet does not have shows -. The
-  List option chooses which pets get a row. Group by, separator and
-  abbreviations apply to plain text only. The preview is editable, and the list
-  can be copied or downloaded. Options are remembered in this browser.
+- Export pets builds a list of the pets you're missing, the ones indexed, or all of them,
+  as text (for Discord or notes) or as a spreadsheet, for trading or paying
+  someone to index for you. Filters: categories, sources and rarities (each
+  a multi-select, none picked meaning all), variants, and the List option. A
+  checkbox, Match page filters, limits the export to the page's tab and
+  filters. Show toggles add the category header, source and rarity; the
+  default is a category header and each pet with its missing variants. Text
+  options: comma or slash separator, abbreviated variant names (with the comma
+  separator these run together, N,G,T). The spreadsheet has one row per pet and a column per variant,
+  as one table or as a table per category. A caught variant is marked ✓, a
+  missing one is left blank, and a variant the pet does not have shows -. A
+  copied spreadsheet is tab-separated, for pasting into Google Sheets or
+  Excel; a downloaded one is CSV. The preview is editable, and the list can be
+  copied or downloaded. Options are remembered in this browser.
 - Light/dark mode, colour themes, a compact density option, and the ability
-  to hide unused columns (Egg, Rarity, Clicks). A default category and
+  to hide unused columns (Source, Rarity, Clicks). A default category and
   hide-completed-pets option (List view only) are also available in Settings.
 
 ## Data
@@ -84,7 +88,7 @@ browser's local storage so a linked profile can refresh on page load.
 - `npm run serve` serves the site at `http://localhost:8765`.
 - `python tools/add_new_pets.py` is a dry run that lists pets in the API that are
   not in `data/pets.json`, and blank `clicks` it can fill. With `--write` it
-  appends new pets to the end of their tab (egg left blank), fills blank `clicks`,
+  appends new pets to the end of their tab (source left blank), fills blank `clicks`,
   downloads grid icons as WebP into `assets/pets/`, and writes
   `data/pet-images.json`. It never changes a pet that is already in the file other
   than filling a blank `clicks`. Icons need Pillow (`pip install pillow`);

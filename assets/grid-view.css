@@ -123,7 +123,7 @@
   .gv-tile:hover { transform: none; }
 }
 
-/* Hover card, like the game's: name, rarity, then clicks and egg rows. */
+/* Hover card, like the game's: name, rarity, then clicks and source rows. */
 .gv-tip {
   position: fixed;
   z-index: 60;

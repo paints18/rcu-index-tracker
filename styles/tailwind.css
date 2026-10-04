@@ -67,9 +67,9 @@
   --c-text: var(--dark-text);
   --c-muted: var(--dark-muted);
 
-  /* The drop-down marker is ours rather than the UA's — see the `select` rule
-     for why — so its colour has to follow the surface set, and both light blocks
-     below redefine it. Muted, matching the one it replaces. */
+  /* The menus' drop-down marker is drawn by us rather than the UA (see
+     .select-btn), so its colour has to follow the surface set, and both light
+     blocks below redefine it. Muted. */
   --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%23949cad' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M1.75 2 6 6.25 10.25 2'/%3E%3C/svg%3E");
 
   /* One source for a menu's horizontal padding, because two things depend on it:
@@ -389,30 +389,9 @@
   input[type="password"],
   input[type="date"],
   input[type="number"],
-  select,
   textarea {
     @apply bg-input text-ink border border-edge-hi rounded-lg px-2.5 py-[7px] min-w-0
            font-[inherit] text-[inherit];
-  }
-
-  /* The drop-down marker is drawn here rather than left to the UA, because the
-     native one is painted a fixed few pixels off the BORDER box — no amount of
-     padding moves it — and that sat too tight against these rounded corners.
-     Ours is a background image, so its distance from the edge is just a
-     background-position, and every menu on every platform gets the same one.
-     `appearance: none` is what stops the native arrow being drawn beside it.
-
-     The width reserved on the right is a token, because the sizers that hold
-     these menus to a fixed width have to reserve exactly the same (see
-     .select-sizer). Nothing else about the control changes: the popup list is
-     still the UA's, painted from color-scheme. */
-  select {
-    @apply appearance-none bg-no-repeat;
-    background-image: var(--select-arrow);
-    background-position: right 0.75rem center;
-    background-size: 11px 7px;
-    padding-left: var(--select-pad-x);
-    padding-right: var(--select-pad-right);
   }
 
   textarea { @apply w-full resize-y font-mono text-xs; }
@@ -424,7 +403,7 @@
   input[type="checkbox"],
   input[type="radio"] { accent-color: var(--c-accent); }
 
-  :is(input, select, textarea, button, a, summary):focus-visible {
+  :is(input, textarea, button, a, summary):focus-visible {
     @apply outline-2 outline-accent outline-offset-1;
   }
 }
@@ -448,21 +427,24 @@
 
   .field { @apply flex flex-col gap-1; }
 
-  /* A <select> is as wide as its widest option, and these are refilled per
-     category — so the row of filters jumped every time you changed world. The
-     sizer holds a fixed width open the same way the table's column sizers do:
-     the longest values in the whole dataset, drawn invisibly at zero height in
-     the same grid cell as the menu.
+  /* A menu is as wide as its widest option, and these are refilled per category
+     — so the row of filters jumped every time you changed world. The sizer holds
+     a fixed width open the same way the table's column sizers do: the longest
+     values in the whole dataset, drawn invisibly at zero height in the same grid
+     cell as the menu. (A menu that fills a column of its own has no sizer; see
+     createMenu's `fill`.)
 
-     The select is given a zero preferred width so that ONLY the sizer can size
+     The button is given a zero preferred width so that ONLY the sizer can size
      the wrapper; min-width stretches it back over the whole cell afterwards.
      Without that the menu would still push the wrapper wider in whichever world
-     happens to hold the longest option — the exact thing being fixed. */
+     happens to hold the longest option — the exact thing being fixed.
+
+     The drop-down marker is drawn here rather than left to the UA: the native one
+     was painted a fixed few pixels off the border box, which sat too tight against
+     these rounded corners. Ours is a background image, so its distance from the
+     edge is just a background-position. The width reserved on the right is a token
+     because the sizer has to reserve exactly the same (see .select-sizer). */
   .select-wrap { @apply grid; }
-  .select-wrap > select {
-    grid-area: 1 / 1;
-    @apply w-0 min-w-full;
-  }
   .select-wrap > .select-btn {
     grid-area: 1 / 1;
     @apply w-0 min-w-full bg-input text-ink border border-edge-hi rounded-lg py-[7px]
@@ -490,6 +472,7 @@
     box-shadow: 0 8px 24px rgb(0 0 0 / 0.28);
   }
   .menu-panel[hidden] { @apply hidden; }
+  .menu-panel:focus { @apply outline-none; }
   .menu-row {
     @apply flex items-center gap-2 px-2 min-h-8 shrink-0 cursor-pointer whitespace-nowrap
            text-left bg-transparent border-0 rounded-md font-[inherit] text-[inherit];
@@ -500,6 +483,22 @@
   .menu-row:focus-visible { @apply outline-none; }
   .menu-row.is-on { background-color: var(--c-accent-soft); }
   .menu-row:disabled { @apply cursor-default text-muted bg-transparent; }
+  .menu-row[hidden] { @apply hidden; }
+  /* The search box rides at the top of a long list while the rows scroll under
+     it; top-0 pins it to the scrollport edge so nothing shows above it. */
+  .menu-search {
+    @apply sticky top-0 z-10 shrink-0 w-full min-h-8 px-2 mb-1 bg-input text-ink border border-edge-hi
+           rounded-md font-[inherit] text-[inherit];
+  }
+  .menu-search:focus { @apply outline-2 outline-accent -outline-offset-1; }
+  /* Section heading inside a menu list: the same small caps as a field label. */
+  .menu-group {
+    @apply shrink-0 px-2 pt-2 pb-1 text-[11px] uppercase tracking-[0.06em] text-muted font-semibold
+           cursor-default select-none;
+  }
+  .menu-group[hidden] { @apply hidden; }
+  .menu-empty { @apply px-2 min-h-8 flex items-center text-muted whitespace-nowrap; }
+  .menu-empty[hidden] { @apply hidden; }
   .select-sizer {
     grid-area: 1 / 1;
     /* Its own samples stack inside it, same as the table's do. One line of text
@@ -701,7 +700,7 @@
   }
 
   .col-name { @apply font-medium; }
-  .col-egg, .col-rarity, .col-clicks { @apply text-muted text-[13px]; }
+  .col-source, .col-rarity, .col-clicks { @apply text-muted text-[13px]; }
 
   /* A sortable header. The label is a bare button in the header's own type, and
      the arrow hangs off its right edge (into the column's padding) so adding it
@@ -775,7 +774,7 @@
      name column holding all the slack in the table. The wider gutter here is
      that slack being handed back: the name column is the only thing that can pay
      for it, and it has the most to spare. */
-  .pet-table :is(th, td):is(.col-egg, .col-rarity, .col-clicks) { @apply w-px px-5; }
+  .pet-table :is(th, td):is(.col-source, .col-rarity, .col-clicks) { @apply w-px px-5; }
 
   /* Written as `:is(th, td).col-variant` rather than plain `.col-variant`: the
      `.pet-table :is(th, td)` rule above scores (0,1,1) and would otherwise win,
@@ -791,7 +790,7 @@
 
   /* Optional columns, switched off in Settings. `~=` matches one id inside the
      space-separated list written by applySettings(). */
-  :root[data-hide-cols~="egg"] .col-egg,
+  :root[data-hide-cols~="source"] .col-source,
   :root[data-hide-cols~="rarity"] .col-rarity,
   :root[data-hide-cols~="clicks"] .col-clicks { @apply hidden; }
 

@@ -10,7 +10,7 @@ One run does three things, in order:
 It is a dry run unless you pass --write.
 
 What it never does to a pet that is already in data/pets.json: change its slug,
-name, egg, rarity, variants or position, or overwrite a `clicks` value that is
+name, source, rarity, variants or position, or overwrite a `clicks` value that is
 filled in. Progress is stored per slug, so slugs are never regenerated, and
 everything you have entered by hand stays as it is. Before writing, the result is
 compared against the original and the run is aborted if anything but a blank
@@ -26,7 +26,7 @@ pet gets:
   rarity    from the API
   variants  3 image slots -> normal, golden, toxic; 4 -> adds galaxy
   clicks    see below
-  egg       null: the API has no egg, so you fill it in
+  source    null: the API has no source, so you fill it in
   tab       world 1-4 and exclusives as the API says; event pets by their currency
             (`special.name`), no currency -> no-currency
   position  appended to the end of the tab: the API has no order, so you move it
@@ -240,7 +240,7 @@ def find_new(data, entries, ignored):
         pet = {
             "slug": slug,
             "name": name,
-            "egg": None,
+            "source": None,
             "rarity": rarity,
             "clicks": None,
             "variants": variant_ids[:slots],
@@ -469,7 +469,7 @@ def main():
     for tab, pet in added:
         print("  %-18s %-26s %-10s %-8s %s" % (tab, pet["name"], pet["rarity"], pet["clicks"] or "-", ",".join(v[0] for v in pet["variants"])))
     if added:
-        print("  (egg is null and each is at the end of its tab: set the egg and move it into place)")
+        print("  (source is null and each is at the end of its tab: set the source and move it into place)")
     if skipped:
         print("not added (%d):" % len(skipped))
         for name, reason in skipped:

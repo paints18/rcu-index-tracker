@@ -11,7 +11,7 @@ import { mountSettingsModal } from "./settings-modal.js";
 import { mountUpdatesModal } from "./updates-modal.js";
 import { mountAboutModal } from "./about-modal.js";
 import { mountExportModal } from "./export-modal.js";
-import { loadIndex, countProgress, totalsByVariant } from "./data.js";
+import { loadIndex, countProgress, totalsByVariant, sourceOptions } from "./data.js";
 import { Store, normalizeName, PROBE_KEY } from "./store.js";
 import { encodeBackup, decodeBackup, partitionKnown } from "./backup.js";
 import { fetchPlayerIndex, entriesToProgress, ApiImportError } from "./api-import.js";
@@ -71,7 +71,7 @@ const dom = {
   catCount: $("cat-count"),
 
   filterSearch: $("filter-search"),
-  eggSizer: $("egg-sizer"),
+  sourceSizer: $("source-sizer"),
   raritySizer: $("rarity-sizer"),
   statusSizer: $("status-sizer"),
   missingSizer: $("missing-sizer"),
@@ -141,9 +141,9 @@ const state = {
   profileId: null,
   progress: {},
   categoryId: null,
-  filters: { search: "", egg: "", rarities: [], status: "all", missing: "" },
-  /** List grouped by egg (the Egg header is toggled on) rather than in the data's own order. */
-  sortByEgg: false,
+  filters: { search: "", sources: [], rarities: [], status: "all", missing: "" },
+  /** List grouped by source (the Source header is toggled on) rather than in the data's own order. */
+  sortBySource: false,
   /** Variant columns the current head was built with; syncTableHead needs them. */
   usedVariants: [],
 
@@ -190,7 +190,7 @@ const UNDO_LIMIT = 200;
 
 /**
  * The "no filter" option at the top of each menu. Named here because the
- * Egg/Rarity menus' width sizers have to account for it too — "All rarities"
+ * Source/Rarity menus' width sizers have to account for it too — "All rarities"
  * is longer than every rarity there is, so a sizer built from the data alone
  * would leave the menu too narrow to show its own placeholder.
  *
@@ -198,9 +198,9 @@ const UNDO_LIMIT = 200;
  * so "Missing: All variants" reads as "missing every variant" — a real,
  * different status (see "Not indexed") — rather than "not filtering by this
  * at all". "No filter" doesn't parse as a variant name, so it can't be
- * misread that way, even though it costs the visual parallel with Egg/Rarity.
+ * misread that way, even though it costs the visual parallel with Source/Rarity.
  */
-const FILTER_ALL = { egg: "All eggs", rarity: "All rarities", missing: "No filter" };
+const FILTER_ALL = { source: "All sources", rarity: "All rarities", missing: "No filter" };
 
 const STATUS_OPTIONS = [
   { value: "all", label: "All pets" },
@@ -227,13 +227,17 @@ function missingOptions(variants = usedVariants(state.index.variants, activeCate
   return [{ value: "", label: FILTER_ALL.missing }, ...variants.map((v) => ({ value: v.id, label: v.label }))];
 }
 
-/** The filter menus. Rarity is the one that takes several values, so it is a checklist. */
+/** The filter menus. Source and rarity take several values, so they are checklists. */
 const menus = {
-  egg: mountMenu({
-    button: $("filter-egg"),
-    panel: $("egg-panel"),
+  source: mountMenu({
+    button: $("filter-source"),
+    panel: $("source-panel"),
+    searchLabel: "Search sources",
+    multiple: true,
+    allLabel: FILTER_ALL.source,
+    countLabel: (n) => `${n} sources`,
     onChange: (value) => {
-      state.filters.egg = value;
+      state.filters.sources = value;
       renderBody();
     },
   }),
@@ -480,9 +484,9 @@ function renderCounts() {
 
 function visiblePets(category) {
   const { search, missing } = state.filters;
-  // Egg and rarity picks carry over between categories; the ones this category
+  // Source and rarity picks carry over between categories; the ones this category
   // does not list simply do not apply here.
-  const egg = category.eggs.includes(state.filters.egg) ? state.filters.egg : "";
+  const sources = state.filters.sources.filter((s) => category.sources.includes(s));
   const rarities = state.filters.rarities.filter((r) => category.rarities.includes(r));
   // A status the grid does not offer (say, hide-completed carried over from the
   // list) is set aside there rather than filtering with no way to see or undo it.
@@ -492,11 +496,11 @@ function visiblePets(category) {
   const needle = search.trim().toLowerCase();
 
   return category.pets.filter((pet) => {
-    if (egg && pet.egg !== egg) return false;
+    if (sources.length && !sources.includes(pet.source)) return false;
     if (rarities.length && !rarities.includes(pet.rarity)) return false;
 
     if (needle) {
-      const haystack = `${pet.name} ${pet.egg ?? ""}`.toLowerCase();
+      const haystack = `${pet.name} ${pet.source ?? ""}`.toLowerCase();
       if (!haystack.includes(needle)) return false;
     }
 
@@ -579,33 +583,33 @@ function updateTableHead() {
   if (isLocked()) for (const input of headRow.querySelectorAll("input")) input.setAttribute("aria-disabled", "true");
 }
 
-/** Whether the Egg column is showing; with it hidden there is nothing to sort by. */
-function eggColumnShown() {
-  return !(document.documentElement.dataset.hideCols ?? "").split(" ").includes("egg");
+/** Whether the Source column is showing; with it hidden there is nothing to sort by. */
+function sourceColumnShown() {
+  return !(document.documentElement.dataset.hideCols ?? "").split(" ").includes("source");
 }
 
 /**
- * The pets grouped by egg when the Egg header is on, otherwise in the data's own
- * order. Not alphabetical: eggs are ranked by where each first appears in the
- * category's own list (the in-game order), so every egg's pets come together and
- * the eggs keep that order. Pets with no egg go last, and pets of one egg keep
+ * The pets grouped by source when the Source header is on, otherwise in the data's own
+ * order. Not alphabetical: sources are ranked by where each first appears in the
+ * category's own list (the in-game order), so every source's pets come together and
+ * the sources keep that order. Pets with no source go last, and pets of one source keep
  * their list order.
  */
 function sortPets(pets, category) {
-  if (!state.sortByEgg || !eggColumnShown()) return pets;
+  if (!state.sortBySource || !sourceColumnShown()) return pets;
 
   const rank = new Map();
   for (const pet of category.pets) {
-    if (pet.egg && pet.egg !== "-" && !rank.has(pet.egg)) rank.set(pet.egg, rank.size);
+    if (pet.source && pet.source !== "-" && !rank.has(pet.source)) rank.set(pet.source, rank.size);
   }
-  const at = (pet) => rank.get(pet.egg) ?? rank.size;
+  const at = (pet) => rank.get(pet.source) ?? rank.size;
   return [...pets].sort((a, b) => at(a) - at(b));
 }
 
-/** Mark the Egg header when it is sorting, for the arrow and for screen readers. */
+/** Mark the Source header when it is sorting, for the arrow and for screen readers. */
 function syncSortHeads() {
-  const th = dom.thead.querySelector("th.col-egg");
-  if (state.sortByEgg && eggColumnShown()) th?.setAttribute("aria-sort", "ascending");
+  const th = dom.thead.querySelector("th.col-source");
+  if (state.sortBySource && sourceColumnShown()) th?.setAttribute("aria-sort", "ascending");
   else th?.removeAttribute("aria-sort");
 }
 
@@ -932,10 +936,7 @@ function renderUndo() {
 
 function renderFilters() {
   const category = activeCategory();
-  menus.egg.setOptions(
-    [{ value: "", label: FILTER_ALL.egg }, ...category.eggs.filter((e) => e !== "-")],
-    state.filters.egg,
-  );
+  menus.source.setOptions(sourceOptions(state.index, category), state.filters.sources);
   menus.rarity.setOptions(category.rarities, state.filters.rarities);
   // Same variant set the tick columns show for this category (see
   // renderTableHead) — never an option guaranteed to match nothing.
@@ -1180,7 +1181,7 @@ function selectCategory(categoryId) {
 
   state.categoryId = categoryId;
 
-  // Filters follow you from category to category. Egg and rarity picks are kept
+  // Filters follow you from category to category. Source and rarity picks are kept
   // even where a category lacks them (visiblePets and the menus skip what is not
   // there, so they are back when you return). A variant id means the same thing
   // everywhere, but it is dropped if the category you landed in does not have
@@ -1965,10 +1966,10 @@ function wireEvents() {
     onTick(input, shiftKey);
   });
 
-  // The Egg header toggles grouping by egg; clicking it again puts the order back.
+  // The Source header toggles grouping by source; clicking it again puts the order back.
   dom.thead.addEventListener("click", (event) => {
     if (!event.target.closest(".sort-btn")) return;
-    state.sortByEgg = !state.sortByEgg;
+    state.sortBySource = !state.sortBySource;
     state.range = null; // an anchor row means nothing in a new order
     renderBody();
     // The head was rebuilt, so the button that had focus is gone.
@@ -2013,7 +2014,7 @@ function wireEvents() {
     // "Reset" means back to your configured default, not back to showing
     // everything — otherwise it would undo the hide-completed preference.
     const status = loadSettings().hideCompleted ? "incomplete" : "all";
-    state.filters = { search: "", egg: "", rarities: [], status, missing: "" };
+    state.filters = { search: "", sources: [], rarities: [], status, missing: "" };
     renderFilters();
     renderBody();
   });
@@ -2064,7 +2065,7 @@ async function boot() {
 
   // Once, not per render: the samples come from the whole dataset, which cannot
   // change while the page is open.
-  fillSizer(dom.eggSizer, [...state.index.widest.egg, FILTER_ALL.egg]);
+  fillSizer(dom.sourceSizer, [...state.index.widest.source, FILTER_ALL.source]);
   fillSizer(dom.raritySizer, [...state.index.widest.rarity, FILTER_ALL.rarity]);
   fillSizer(dom.statusSizer, STATUS_OPTIONS.map((o) => o.label));
   fillSizer(dom.missingSizer, [...state.index.variants.map((v) => v.label), FILTER_ALL.missing]);

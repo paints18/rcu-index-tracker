@@ -28,7 +28,7 @@ SKIP_SHEETS = {"Read Me"}
 # header, pet rows start at row 3.
 HEADER_ROW = 2
 FIRST_DATA_ROW = 3
-COL_EGG, COL_NAME, COL_RARITY, COL_CLICKS = 0, 1, 2, 3
+COL_SOURCE, COL_NAME, COL_RARITY, COL_CLICKS = 0, 1, 2, 3
 FIRST_VARIANT_COL = 4
 LAST_VARIANT_COL = 8  # exclusive
 
@@ -87,7 +87,7 @@ def parse_sheet(worksheet):
 
         pets.append({
             "name": name,
-            "egg": cell_text(row[COL_EGG]),
+            "source": cell_text(row[COL_SOURCE]),
             "rarity": cell_text(row[COL_RARITY]),
             "clicks": cell_text(row[COL_CLICKS]),
             "variants": available,
@@ -97,7 +97,7 @@ def parse_sheet(worksheet):
 
 
 def build_slug(pet):
-    """Slug is the pet name alone, so moving a pet between eggs or categories
+    """Slug is the pet name alone, so moving a pet between sources or categories
     keeps its identity. Names are unique across the whole index; the collision
     check in main() refuses to write if that ever stops being true.
     """
@@ -141,7 +141,7 @@ def main():
                 {
                     "slug": p["slug"],
                     "name": p["name"],
-                    "egg": p["egg"],
+                    "source": p["source"],
                     "rarity": p["rarity"],
                     "clicks": p["clicks"],
                     "variants": p["variants"],

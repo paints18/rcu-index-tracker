@@ -284,7 +284,7 @@ function headCell(className, columnId, label, variantId) {
  *
  * @param {string[]} samples Candidates for the widest value (see widestValues).
  * @param {string} [sortKey] Makes the label a button that sorts the list by this
- *   column (only Egg does). Its arrow is drawn outside the label's box (see
+ *   column (only Source does). Its arrow is drawn outside the label's box (see
  *   .sort-btn), so a sortable header is exactly as wide as a plain one.
  */
 function textHead(className, label, samples = [], sortKey = null) {
@@ -310,7 +310,7 @@ function textHead(className, label, samples = [], sortKey = null) {
 export function renderTableHead(variants, category, counts, widest = {}) {
   const row = el("tr");
   row.append(textHead("col-name", "Pet", widest.name));
-  row.append(textHead("col-egg", "Egg", widest.egg, "egg"));
+  row.append(textHead("col-source", "Source", widest.source, "source"));
   row.append(textHead("col-rarity", "Rarity", widest.rarity));
   row.append(textHead("col-clicks", "Clicks", widest.clicks));
 
@@ -422,7 +422,7 @@ export function renderRows(pets, progress, usedVariantList, widest = {}) {
     row.dataset.slug = pet.slug;
 
     row.append(textCell("name", pet.name, widest.name));
-    row.append(textCell("egg", pet.egg && pet.egg !== "-" ? pet.egg : "—", widest.egg));
+    row.append(textCell("source", pet.source && pet.source !== "-" ? pet.source : "—", widest.source));
     row.append(textCell("rarity", pet.rarity ?? "—", widest.rarity));
     row.append(textCell("clicks", pet.clicks ?? "—", widest.clicks));
 
@@ -524,9 +524,23 @@ export function fillSizer(sizer, samples = []) {
  * every browser. Two kinds:
  *
  *  - single (default): pick one option and the list closes. The first option is
- *    usually the "no filter" entry, e.g. { value: "", label: "All eggs" }.
+ *    usually the "no filter" entry, e.g. { value: "", label: "All sources" }.
  *  - multiple: a checklist. Nothing ticked means "no filter", so the button
  *    reads as `allLabel`; one tick shows its name, more show `countLabel(n)`.
+ *
+ * Single options may be `disabled`: shown greyed out and not pickable.
+ *
+ * A checklist can be searchable: a search box sits at the top of the list, takes
+ * focus when the list opens, and narrows the rows as you type (Enter ticks the
+ * first match). A searchable checklist puts Clear under the search box rather than
+ * at the foot, where a long list would bury it. Checklist options may also carry a
+ * `group`; the list then shows a heading above each run of options that share one,
+ * so the caller has to keep an option's group-mates next to each other. The
+ * headings are separators only, and are hidden when a search leaves none of their
+ * rows.
+ *
+ * Inside a dialog the list is placed against the window rather than its menu; see
+ * `floating` below for why.
  *
  * Dismissed by a click anywhere else, Escape, or focus leaving it. Arrow keys
  * move between the rows. `setOptions` rebuilds the list, e.g. per category.
@@ -535,26 +549,128 @@ export function fillSizer(sizer, samples = []) {
  * @param {HTMLButtonElement} cfg.button
  * @param {HTMLElement} cfg.panel  Child of the element that wraps the button.
  * @param {boolean} [cfg.multiple]
+ * @param {string} [cfg.searchLabel]  multiple only: turns on the search box; used as its placeholder and label.
  * @param {string} [cfg.allLabel]  multiple only: button text while nothing is ticked.
  * @param {(n: number) => string} [cfg.countLabel]  multiple only: text for 2 or more ticked.
  * @param {(value: string | string[]) => void} cfg.onChange
  */
-export function mountMenu({ button, panel, multiple = false, allLabel = "", countLabel, onChange }) {
+export function mountMenu({ button, panel, multiple = false, searchLabel = "", allLabel = "", countLabel, onChange }) {
   const wrap = panel.parentElement;
-  let options = []; // [{ value, label }]
+  let options = []; // [{ value, label, group? (checklist), disabled? (single) }]
   let selected = multiple ? [] : "";
 
   panel.setAttribute("role", multiple ? "group" : "listbox");
+  // Pressing on part of the list that cannot take focus (a row's blank space, a
+  // heading) moves focus to the nearest ancestor that can, which in a dialog is
+  // the dialog itself and so reads as focus leaving the menu. Letting the list
+  // take it keeps focus inside.
+  panel.tabIndex = -1;
 
-  const rows = () => [...panel.querySelectorAll(".menu-row:not(:disabled)")];
+  const rows = () => [...panel.querySelectorAll(".menu-row:not(:disabled):not([hidden])")];
+
+  // Built once and kept across renderPanel, so typing is not lost when the rows are rebuilt.
+  const search = multiple && searchLabel ? el("input", "menu-search") : null;
+  const noMatch = search ? el("div", "menu-empty", "No matches") : null;
+  if (search) {
+    search.type = "text";
+    search.placeholder = searchLabel;
+    search.autocomplete = "off";
+    search.spellcheck = false;
+    search.setAttribute("aria-label", searchLabel);
+    noMatch.hidden = true;
+  }
+
+  /** Show only the rows whose label contains what was typed. */
+  const applyFilter = () => {
+    if (!search) return;
+    const query = search.value.trim().toLowerCase();
+    let shown = 0;
+    // A section heading stays only while at least one of its rows does.
+    let heading = null;
+    let headingShown = false;
+    const closeHeading = () => {
+      if (heading) heading.hidden = !headingShown;
+    };
+    for (const node of panel.children) {
+      if (node.classList.contains("menu-group")) {
+        closeHeading();
+        heading = node;
+        headingShown = false;
+      } else if (node.classList.contains("menu-row") && !node.classList.contains("menu-clear")) {
+        const match = !query || node.textContent.toLowerCase().includes(query);
+        node.hidden = !match;
+        if (match) {
+          shown++;
+          headingShown = true;
+        }
+      }
+    }
+    closeHeading();
+    noMatch.hidden = shown > 0;
+  };
+
+  // Inside a dialog the list is placed against the window instead of its menu. An
+  // absolutely placed list that runs past the foot of a scrolling dialog makes the
+  // dialog grow a scrollbar of its own, and a tall list near the bottom would sit
+  // half out of view; placed this way it can also flip to open upward.
+  // Asked each time rather than once, because a menu can be built before it is in the dialog.
+  const floating = () => Boolean(panel.closest("dialog"));
+
+  const place = () => {
+    const box = button.getBoundingClientRect();
+    const below = innerHeight - box.bottom - 12;
+    const above = box.top - 12;
+    const up = below < 220 && above > below;
+    const room = Math.max(120, Math.min(innerHeight * 0.6, up ? above : below));
+    const width = panel.getBoundingClientRect().width;
+    Object.assign(panel.style, {
+      position: "fixed",
+      margin: "0",
+      left: `${Math.max(8, Math.min(box.left, innerWidth - width - 8))}px`,
+      top: up ? "auto" : `${box.bottom + 4}px`,
+      bottom: up ? `${innerHeight - box.top + 4}px` : "auto",
+      maxHeight: `${room}px`,
+    });
+  };
 
   const setOpen = (open, focusRow = false) => {
+    const wasOpen = !panel.hidden;
+    // Measured, and taken out of the flow, before the list is shown: an in-flow
+    // list can stretch a dialog for an instant, which narrows the button.
+    const buttonWidth = button.getBoundingClientRect().width;
+    if (open !== wasOpen) {
+      panel.style.cssText = "";
+      if (open && floating()) panel.style.position = "fixed";
+    }
     panel.hidden = !open;
     button.setAttribute("aria-expanded", String(open));
+    if (open !== wasOpen) {
+      if (search) {
+        search.value = "";
+        applyFilter();
+      }
+      if (open) {
+        // At least as wide as the button. `min-w-full` means the window, not the
+        // button, once the list is placed against the window.
+        panel.style.minWidth = `${buttonWidth}px`;
+        if (floating()) place();
+        // Hold the full list's width while the rows are narrowed, or the list
+        // would shrink and jump about under the cursor as you type.
+        if (search) panel.style.minWidth = `${Math.max(buttonWidth, panel.getBoundingClientRect().width)}px`;
+        if (floating()) place();
+      }
+      if (floating()) {
+        const method = open ? "addEventListener" : "removeEventListener";
+        window[method]("resize", place);
+        window[method]("scroll", place, true);
+      }
+    }
     if (open && focusRow) {
       const list = rows();
       const on = list.find((row) => row.classList.contains("is-on")) ?? list[0];
       (on?.querySelector("input") ?? on)?.focus();
+    } else if (open && search) {
+      search.focus();
     }
   };
 
@@ -576,6 +692,7 @@ export function mountMenu({ button, panel, multiple = false, allLabel = "", coun
         ...options.map((option) => {
           const row = el("button", "menu-row", option.label);
           row.type = "button";
+          row.disabled = Boolean(option.disabled);
           row.setAttribute("role", "option");
           row.setAttribute("aria-selected", String(option.value === selected));
           row.classList.toggle("is-on", option.value === selected);
@@ -594,12 +711,12 @@ export function mountMenu({ button, panel, multiple = false, allLabel = "", coun
       return;
     }
 
-    const clear = el("button", "menu-row", "Clear");
+    const clear = el("button", "menu-row menu-clear", "Clear");
     clear.type = "button";
     clear.disabled = selected.length === 0;
     clear.addEventListener("click", () => {
       selected = [];
-      for (const input of panel.querySelectorAll("input")) {
+      for (const input of panel.querySelectorAll("input[type=checkbox]")) {
         input.checked = false;
         input.closest("label").classList.remove("is-on");
       }
@@ -608,7 +725,8 @@ export function mountMenu({ button, panel, multiple = false, allLabel = "", coun
       onChange([]);
     });
 
-    const checks = options.map((option) => {
+    let group = null;
+    const checks = options.flatMap((option) => {
       const row = el("label", "menu-row");
       const input = document.createElement("input");
       input.type = "checkbox";
@@ -626,10 +744,23 @@ export function mountMenu({ button, panel, multiple = false, allLabel = "", coun
         onChange([...selected]);
       });
       row.append(input, el("span", null, option.label));
-      return row;
+      if (!option.group || option.group === group) return [row];
+      group = option.group;
+      const heading = el("div", "menu-group", group);
+      heading.setAttribute("role", "presentation");
+      return [heading, row];
     });
-    panel.replaceChildren(...checks, clear);
+    panel.replaceChildren(...(search ? [search, clear] : []), ...checks, ...(search ? [noMatch] : [clear]));
+    applyFilter();
   };
+
+  search?.addEventListener("input", applyFilter);
+  search?.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+    event.preventDefault();
+    const first = rows().find((row) => !row.classList.contains("menu-clear"));
+    first?.querySelector("input")?.click();
+  });
 
   button.addEventListener("click", () => setOpen(panel.hidden));
   document.addEventListener("click", (event) => {
@@ -647,7 +778,7 @@ export function mountMenu({ button, panel, multiple = false, allLabel = "", coun
     if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
     event.preventDefault();
     if (panel.hidden) return setOpen(true, true);
-    const list = rows().map((row) => row.querySelector("input") ?? row);
+    const list = [...(search ? [search] : []), ...rows().map((row) => row.querySelector("input") ?? row)];
     const at = list.indexOf(document.activeElement);
     const next = event.key === "ArrowDown" ? at + 1 : at - 1;
     list[(next + list.length) % list.length]?.focus();
@@ -677,6 +808,51 @@ export function mountMenu({ button, panel, multiple = false, allLabel = "", coun
       }
       renderButton();
       renderPanel();
+    },
+  };
+}
+
+/**
+ * A drop-down built from nothing, for places with no markup to mount onto (the
+ * dialogs): the button, the width sizer and the list, inside a `.select-wrap`, then
+ * mounted with mountMenu. The sizer holds the width open at the widest option, as
+ * the page's own menus do, so the menu does not change size as its options do.
+ *
+ * Takes mountMenu's options, plus:
+ *
+ * @param {object} cfg
+ * @param {string} cfg.id  The button's id.
+ * @param {string} [cfg.labelledBy]  Id of the element that labels it.
+ * @param {string} [cfg.ariaLabel]  Label to use when there is no such element.
+ * @param {string} [cfg.className]  Extra classes for the wrapper, e.g. a minimum width.
+ * @param {boolean} [cfg.fill]  The menu takes the width of whatever holds it (a grid
+ *   column, say) instead of the width of its widest option. There is then no sizer: a
+ *   sizer wider than the column would spill into the next one.
+ * @returns {{ element: HTMLElement, button: HTMLButtonElement, setOptions: Function, setDisabled: Function }}
+ */
+export function createMenu({ id, labelledBy, ariaLabel, className = "", fill = false, ...config }) {
+  const element = el("div", `select-wrap menu${fill ? " w-full min-w-0" : ""}${className ? ` ${className}` : ""}`);
+  const button = el("button", "select-btn");
+  button.type = "button";
+  button.id = id;
+  if (labelledBy) button.setAttribute("aria-labelledby", `${labelledBy} ${id}`);
+  else if (ariaLabel) button.setAttribute("aria-label", ariaLabel);
+  button.setAttribute("aria-haspopup", config.multiple ? "true" : "listbox");
+  button.setAttribute("aria-expanded", "false");
+  const sizer = el("span", "select-sizer");
+  const panel = el("div", "menu-panel");
+  panel.hidden = true;
+  element.append(button, ...(fill ? [] : [sizer]), panel);
+
+  const menu = mountMenu({ button, panel, ...config });
+  return {
+    element,
+    button,
+    setDisabled: menu.setDisabled,
+    setOptions(next, value) {
+      menu.setOptions(next, value);
+      const labels = next.map((o) => (typeof o === "string" ? o : o.label));
+      fillSizer(sizer, config.multiple ? [...labels, config.allLabel ?? ""] : labels);
     },
   };
 }

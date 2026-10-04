@@ -60,7 +60,7 @@ async function loadCodes() {
  * the cap, since past a point shrinking is worse than a wider column, but not
  * for a single long name.
  */
-const WIDTH_CAP = { name: 21, egg: 25, rarity: 10, clicks: 6 };
+const WIDTH_CAP = { name: 21, source: 25, rarity: 10, clicks: 6 };
 
 /**
  * The longest values in the WHOLE dataset, per column, for the layout to reserve
@@ -98,7 +98,7 @@ function widestValues(pets) {
 
   return {
     name: pick(pets.map((p) => p.name), WIDTH_CAP.name),
-    egg: pick(pets.map((p) => p.egg), WIDTH_CAP.egg),
+    source: pick(pets.map((p) => p.source), WIDTH_CAP.source),
     rarity: pick(pets.map((p) => p.rarity), WIDTH_CAP.rarity),
     clicks: pick(pets.map((p) => p.clicks), WIDTH_CAP.clicks),
   };
@@ -106,6 +106,23 @@ function widestValues(pets) {
 
 function minBy(values, score) {
   return values.reduce((best, v) => (score(v) < score(best) ? v : best));
+}
+
+/**
+ * The menu options for a category's sources. On the All tab they are sectioned by
+ * the tab each source belongs to (World 1, World 2, ...), taken from the first pet
+ * that has it; pets are in tab order, so a section is one unbroken run. A single
+ * tab gets no headings: they would all say the same thing.
+ */
+export function sourceOptions(index, category) {
+  const tabOf = new Map(); // source -> label of the first tab it appears in
+  for (const pet of category.pets) {
+    if (pet.source && pet.source !== "-" && !tabOf.has(pet.source)) {
+      tabOf.set(pet.source, index.categories.find((c) => c.id === pet.categoryId)?.label);
+    }
+  }
+  const sectioned = category.virtual === true && new Set(tabOf.values()).size > 1;
+  return [...tabOf].map(([value, tab]) => (sectioned ? { value, label: value, group: tab } : { value, label: value }));
 }
 
 export async function loadIndex() {
@@ -139,7 +156,7 @@ export async function loadIndex() {
       const entry = {
         slug: pet.slug,
         name: pet.name,
-        egg: pet.egg ?? null,
+        source: pet.source ?? null,
         rarity: pet.rarity ?? null,
         clicks: pet.clicks ?? null,
         variants: Array.isArray(pet.variants) ? pet.variants : [],
@@ -159,8 +176,8 @@ export async function loadIndex() {
       id: cat.id,
       label: cat.label,
       pets,
-      // Distinct eggs and rarities, in first-seen order, for the filter menus.
-      eggs: [...new Set(pets.map((p) => p.egg).filter(Boolean))],
+      // Distinct sources and rarities, in first-seen order, for the filter menus.
+      sources: [...new Set(pets.map((p) => p.source).filter(Boolean))],
       rarities: [...new Set(pets.map((p) => p.rarity).filter(Boolean))],
       // Total tickable boxes: pets times the variants that actually exist for them.
       totalTicks: pets.reduce((sum, p) => sum + p.variants.length, 0),
@@ -188,7 +205,7 @@ export async function loadIndex() {
     label: "All",
     virtual: true,
     pets: allPets,
-    eggs: [...new Set(allPets.map((p) => p.egg).filter(Boolean))],
+    sources: [...new Set(allPets.map((p) => p.source).filter(Boolean))],
     rarities: [...new Set(allPets.map((p) => p.rarity).filter(Boolean))],
     totalTicks,
   });

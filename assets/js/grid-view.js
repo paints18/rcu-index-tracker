@@ -16,6 +16,8 @@
  * tools/add_new_pets.py. A pet with no image for a variant gets a text tile.
  */
 
+import { sourceKind } from "./source-kinds.js";
+
 const IMAGES_URL = "data/pet-images.json";
 const IMAGE_DIR = "assets/pets";
 
@@ -365,8 +367,55 @@ export function attachGridKeys(host) {
 
 const ICON_CLICK =
   '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 3l14 8-6.2 1.6L10 19z" fill="#5aa9f0" stroke="#1d5fa8" stroke-width="1.5" stroke-linejoin="round"/></svg>';
-const ICON_EGG =
-  '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2.5c-3.6 0-6.5 5.4-6.5 10.2A6.5 6.5 0 0 0 12 19.2a6.5 6.5 0 0 0 6.5-6.5C18.5 7.9 15.6 2.5 12 2.5z" fill="#e7c98e" stroke="#8a6a2f" stroke-width="1.5"/></svg>';
+const icon = (inner) =>
+  `<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">${inner}</svg>`;
+
+const ICON_EGG = icon(
+  '<path d="M12 2.5c-3.6 0-6.5 5.4-6.5 10.2A6.5 6.5 0 0 0 12 19.2a6.5 6.5 0 0 0 6.5-6.5C18.5 7.9 15.6 2.5 12 2.5z" fill="#e7c98e" stroke="#8a6a2f"/>',
+);
+const ICON_TROPHY = icon(
+  '<path d="M7 5.5H4.5c0 2.5 1 3.8 2.8 4.2M17 5.5h2.5c0 2.5-1 3.8-2.8 4.2" fill="none" stroke="#a9791c"/>' +
+    '<path d="M7 3.5h10v5.5a5 5 0 0 1-10 0z" fill="#f2c14e" stroke="#a9791c"/>' +
+    '<path d="M12 14v3.5M8 20.5h8l-1-3H9z" fill="#f2c14e" stroke="#a9791c"/>',
+);
+const ICON_PACK = icon(
+  '<rect x="4" y="10" width="16" height="10" rx="1.5" fill="#e0675f" stroke="#8f2e2a"/>' +
+    '<rect x="3" y="7" width="18" height="3.5" rx="1" fill="#ec7d75" stroke="#8f2e2a"/>' +
+    '<path d="M12 7v13" stroke="#f6d36a" stroke-width="3" stroke-linecap="butt"/>' +
+    '<path d="M12 7C10 3.5 6.5 4 7.5 6.5 8.2 7.4 10 7 12 7zM12 7c2-3.5 5.5-3 4.5-.5-.7.9-2.5.5-4.5.5z" fill="none" stroke="#8f2e2a"/>',
+);
+const ICON_SHOP = icon(
+  '<path d="M9 8V7a3 3 0 0 1 6 0v1" fill="none" stroke="#2f7a52"/>' +
+    '<path d="M5 8h14l-1 12H6z" fill="#6fbf8e" stroke="#2f7a52"/>',
+);
+const ICON_CHEST = icon(
+  '<path d="M3.5 11h17v8.5h-17z" fill="#b9824a" stroke="#6b4421"/>' +
+    '<path d="M3.5 11V9a5 5 0 0 1 5-5h7a5 5 0 0 1 5 5v2z" fill="#cf9a5e" stroke="#6b4421"/>' +
+    '<rect x="10.5" y="10" width="3" height="4.5" rx=".6" fill="#f2c14e" stroke="#a9791c"/>',
+);
+const ICON_GAME = icon(
+  '<path d="M7 8h10a4.5 4.5 0 0 1 4.4 5.4l-.7 3.4a2.4 2.4 0 0 1-4 1.3L14.5 16h-5l-2.2 2.1a2.4 2.4 0 0 1-4-1.3l-.7-3.4A4.5 4.5 0 0 1 7 8z" fill="#9a8cf0" stroke="#4b3fa6"/>' +
+    '<path d="M8 10.5v3M6.5 12h3" fill="none" stroke="#fff"/>' +
+    '<circle cx="15.5" cy="11" r=".9" fill="#fff" stroke="none"/><circle cx="17.5" cy="13" r=".9" fill="#fff" stroke="none"/>',
+);
+const ICON_STAR = icon(
+  '<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" fill="#f2c14e" stroke="#a9791c"/>',
+);
+
+/** The hover card's icon for a source, by its kind (see source-kinds.js). */
+const KIND_ICONS = {
+  egg: ICON_EGG,
+  leaderboard: ICON_TROPHY,
+  pack: ICON_PACK,
+  shop: ICON_SHOP,
+  chest: ICON_CHEST,
+  minigame: ICON_GAME,
+  other: ICON_STAR,
+};
+
+function sourceIcon(source) {
+  return KIND_ICONS[sourceKind(source).id] ?? ICON_STAR;
+}
 
 /** "150" and "1.5K" read as a multiplier; a percentage is shown as it is. */
 function clicksText(clicks) {
@@ -386,7 +435,7 @@ function row(icon, text) {
 
 /**
  * A card that follows the tile under the pointer or keyboard focus: name, rarity,
- * clicks and egg, as in the game. One element, reused for every tile.
+ * clicks and source, as in the game. One element, reused for every tile.
  *
  * @param {HTMLElement} host The grid container (listeners are delegated to it).
  * @param {HTMLElement} scroller The grid's scroll window, so scrolling hides the card.
@@ -435,8 +484,8 @@ export function attachHoverCard(host, scroller, lookup) {
     const parts = [name, rarity];
     const clicks = clicksText(pet.clicks);
     if (clicks) parts.push(Object.assign(document.createElement("hr"), { className: "gv-tip-rule" }), row(ICON_CLICK, clicks));
-    if (pet.egg && pet.egg !== "-") {
-      parts.push(Object.assign(document.createElement("hr"), { className: "gv-tip-rule" }), row(ICON_EGG, pet.egg));
+    if (pet.source && pet.source !== "-") {
+      parts.push(Object.assign(document.createElement("hr"), { className: "gv-tip-rule" }), row(sourceIcon(pet.source), pet.source));
     }
 
     card.replaceChildren(...parts);
