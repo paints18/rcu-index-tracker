@@ -27,7 +27,7 @@
         {
           "slug": "dog",
           "name": "Dog",
-          "egg": "Basic",
+          "egg": "Basic Egg",
           "rarity": "Common",
           "clicks": "1.2",
           "variants": [
@@ -39,7 +39,7 @@
         {
           "slug": "cat",
           "name": "Cat",
-          "egg": "Basic",
+          "egg": "Basic Egg",
           "rarity": "Uncommon",
           "clicks": "1.5",
           "variants": [
@@ -51,7 +51,7 @@
         {
           "slug": "bunny",
           "name": "Bunny",
-          "egg": "Basic",
+          "egg": "Basic Egg",
           "rarity": "Rare",
           "clicks": "2",
           "variants": [
@@ -63,7 +63,7 @@
         {
           "slug": "bear",
           "name": "Bear",
-          "egg": "Forest",
+          "egg": "Forest Egg",
           "rarity": "Common",
           "clicks": "10",
           "variants": [
@@ -75,7 +75,7 @@
         {
           "slug": "wolf",
           "name": "Wolf",
-          "egg": "Forest",
+          "egg": "Forest Egg",
           "rarity": "Uncommon",
           "clicks": "20",
           "variants": [
@@ -87,7 +87,7 @@
         {
           "slug": "fox",
           "name": "Fox",
-          "egg": "Forest",
+          "egg": "Forest Egg",
           "rarity": "Rare",
           "clicks": "30",
           "variants": [
@@ -99,7 +99,7 @@
         {
           "slug": "pig",
           "name": "Pig",
-          "egg": "Farm",
+          "egg": "Farm Egg",
           "rarity": "Common",
           "clicks": "50",
           "variants": [
@@ -111,7 +111,7 @@
         {
           "slug": "duck",
           "name": "Duck",
-          "egg": "Farm",
+          "egg": "Farm Egg",
           "rarity": "Uncommon",
           "clicks": "75",
           "variants": [
@@ -123,7 +123,7 @@
         {
           "slug": "forest-dragon",
           "name": "Forest Dragon",
-          "egg": "Forest",
+          "egg": "Forest Egg",
           "rarity": "Epic",
           "clicks": "75",
           "variants": [
@@ -135,7 +135,7 @@
         {
           "slug": "lion",
           "name": "Lion",
-          "egg": "Desert",
+          "egg": "Desert Egg",
           "rarity": "Common",
           "clicks": "100",
           "variants": [
@@ -147,7 +147,7 @@
         {
           "slug": "cow",
           "name": "Cow",
-          "egg": "Farm",
+          "egg": "Farm Egg",
           "rarity": "Rare",
           "clicks": "120",
           "variants": [
@@ -159,7 +159,7 @@
         {
           "slug": "desert-fox",
           "name": "Desert Fox",
-          "egg": "Desert",
+          "egg": "Desert Egg",
           "rarity": "Uncommon",
           "clicks": "150",
           "variants": [
@@ -171,7 +171,7 @@
         {
           "slug": "nuclear-golem",
           "name": "Nuclear Golem",
-          "egg": "Nuclear",
+          "egg": "Nuclear Egg",
           "rarity": "Common",
           "clicks": "200",
           "variants": [
@@ -183,7 +183,7 @@
         {
           "slug": "goat",
           "name": "Goat",
-          "egg": "Farm",
+          "egg": "Farm Egg",
           "rarity": "Epic",
           "clicks": "200",
           "variants": [
@@ -195,7 +195,7 @@
         {
           "slug": "elephant",
           "name": "Elephant",
-          "egg": "Desert",
+          "egg": "Desert Egg",
           "rarity": "Rare",
           "clicks": "200",
           "variants": [
@@ -207,7 +207,7 @@
         {
           "slug": "eagle",
           "name": "Eagle",
-          "egg": "Desert",
+          "egg": "Desert Egg",
           "rarity": "Epic",
           "clicks": "250",
           "variants": [
@@ -219,7 +219,7 @@
         {
           "slug": "nuclear-hydra",
           "name": "Nuclear Hydra",
-          "egg": "Nuclear",
+          "egg": "Nuclear Egg",
           "rarity": "Rare",
           "clicks": "500",
           "variants": [
@@ -231,7 +231,7 @@
         {
           "slug": "fish",
           "name": "Fish",
-          "egg": "Atlantis",
+          "egg": "Atlantis Egg",
           "rarity": "Uncommon",
           "clicks": "750",
           "variants": [
@@ -243,7 +243,7 @@
         {
           "slug": "hazmat-demon",
           "name": "Hazmat Demon",
-          "egg": "Nuclear",
+          "egg": "Nuclear Egg",
           "rarity": "Epic",
           "clicks": "750",
           "variants": [
@@ -255,7 +255,7 @@
         {
           "slug": "crab",
           "name": "Crab",
-          "egg": "Atlantis",
+          "egg": "Atlantis Egg",
           "rarity": "Rare",
           "clicks": "1K",
           "variants": [
@@ -267,7 +267,7 @@
         {
           "slug": "octopus",
           "name": "Octopus",
-          "egg": "Atlantis",
+          "egg": "Atlantis Egg",
           "rarity": "Epic",
           "clicks": "1.5K",
           "variants": [
@@ -279,7 +279,7 @@
         {
           "slug": "royal-panda",
           "name": "Royal Panda",
-          "egg": "Kingdom",
+          "egg": "Kingdom Egg",
           "rarity": "Uncommon",
           "clicks": "1.5K",
           "variants": [
@@ -291,7 +291,7 @@
         {
           "slug": "apple-dragon",
           "name": "Apple Dragon",
-          "egg": "Farm",
+          "egg": "Farm Egg",
           "rarity": "Legendary",
           "clicks": "1.5K",
           "variants": [
@@ -303,7 +303,7 @@
         {
           "slug": "sand-of-time",
           "name": "Sand Of Time",
-          "egg": "Desert",
+          "egg": "Desert Egg",
           "rarity": "Legendary",
           "clicks": "2K",
           "variants": [
@@ -315,7 +315,7 @@
         {
           "slug": "royal-dog",
           "name": "Royal Dog",
-          "egg": "Kingdom",
+          "egg": "Kingdom Egg",
           "rarity": "Rare",
           "clicks": "2K",
           "variants": [
@@ -327,7 +327,7 @@
         {
           "slug": "abomination",
           "name": "Abomination",
-          "egg": "Nuclear",
+          "egg": "Nuclear Egg",
           "rarity": "Legendary",
           "clicks": "3K",
           "variants": [
@@ -339,7 +339,7 @@
         {
           "slug": "royal-cat",
           "name": "Royal Cat",
-          "egg": "Kingdom",
+          "egg": "Kingdom Egg",
           "rarity": "Epic",
           "clicks": "3.5K",
           "variants": [
@@ -351,7 +351,7 @@
         {
           "slug": "skate-cat",
           "name": "Skate Cat",
-          "egg": "City",
+          "egg": "City Egg",
           "rarity": "Uncommon",
           "clicks": "3.5K",
           "variants": [
@@ -363,7 +363,7 @@
         {
           "slug": "atlantean-guardian",
           "name": "Atlantean Guardian",
-          "egg": "Atlantis",
+          "egg": "Atlantis Egg",
           "rarity": "Legendary",
           "clicks": "5K",
           "variants": [
@@ -375,7 +375,7 @@
         {
           "slug": "desert-prophecy",
           "name": "Desert Prophecy",
-          "egg": "Desert",
+          "egg": "Desert Egg",
           "rarity": "Mythical",
           "clicks": "5K",
           "variants": [
@@ -387,7 +387,7 @@
         {
           "slug": "police-wolf",
           "name": "Police Wolf",
-          "egg": "City",
+          "egg": "City Egg",
           "rarity": "Rare",
           "clicks": "7.5K",
           "variants": [
@@ -399,7 +399,7 @@
         {
           "slug": "hacker",
           "name": "Hacker",
-          "egg": "City",
+          "egg": "City Egg",
           "rarity": "Epic",
           "clicks": "10K",
           "variants": [
@@ -411,7 +411,7 @@
         {
           "slug": "nuclear-beast",
           "name": "Nuclear Beast",
-          "egg": "Nuclear",
+          "egg": "Nuclear Egg",
           "rarity": "Mythical",
           "clicks": "10K",
           "variants": [
@@ -423,7 +423,7 @@
         {
           "slug": "diamond-golem",
           "name": "Diamond Golem",
-          "egg": "Cave",
+          "egg": "Cave Egg",
           "rarity": "Uncommon",
           "clicks": "10.5K",
           "variants": [
@@ -435,7 +435,7 @@
         {
           "slug": "miner-dog",
           "name": "Miner Dog",
-          "egg": "Cave",
+          "egg": "Cave Egg",
           "rarity": "Rare",
           "clicks": "15K",
           "variants": [
@@ -447,7 +447,7 @@
         {
           "slug": "the-fool",
           "name": "The Fool",
-          "egg": "Kingdom",
+          "egg": "Kingdom Egg",
           "rarity": "Legendary",
           "clicks": "15K",
           "variants": [
@@ -459,7 +459,7 @@
         {
           "slug": "pearl-maiden",
           "name": "Pearl Maiden",
-          "egg": "Atlantis",
+          "egg": "Atlantis Egg",
           "rarity": "Mythical",
           "clicks": "25K",
           "variants": [
@@ -471,7 +471,7 @@
         {
           "slug": "cave-bat",
           "name": "Cave Bat",
-          "egg": "Cave",
+          "egg": "Cave Egg",
           "rarity": "Epic",
           "clicks": "25K",
           "variants": [
@@ -483,7 +483,7 @@
         {
           "slug": "skyscraper-stack",
           "name": "Skyscraper Stack",
-          "egg": "City",
+          "egg": "City Egg",
           "rarity": "Legendary",
           "clicks": "45K",
           "variants": [
@@ -495,7 +495,7 @@
         {
           "slug": "magma-slime",
           "name": "Magma Slime",
-          "egg": "Volcano",
+          "egg": "Volcano Egg",
           "rarity": "Uncommon",
           "clicks": "50K",
           "variants": [
@@ -507,7 +507,7 @@
         {
           "slug": "dragon-queen",
           "name": "Dragon Queen",
-          "egg": "Kingdom",
+          "egg": "Kingdom Egg",
           "rarity": "Mythical",
           "clicks": "60K",
           "variants": [
@@ -519,7 +519,7 @@
         {
           "slug": "cthulhu",
           "name": "Cthulhu",
-          "egg": "Atlantis",
+          "egg": "Atlantis Egg",
           "rarity": "Eternal",
           "clicks": "75K",
           "variants": [
@@ -531,7 +531,7 @@
         {
           "slug": "volcanic-lion",
           "name": "Volcanic Lion",
-          "egg": "Volcano",
+          "egg": "Volcano Egg",
           "rarity": "Rare",
           "clicks": "80K",
           "variants": [
@@ -543,7 +543,7 @@
         {
           "slug": "royal-ruby",
           "name": "Royal Ruby",
-          "egg": "Cave",
+          "egg": "Cave Egg",
           "rarity": "Legendary",
           "clicks": "100K",
           "variants": [
@@ -555,7 +555,7 @@
         {
           "slug": "magma-book",
           "name": "Magma Book",
-          "egg": "Volcano",
+          "egg": "Volcano Egg",
           "rarity": "Epic",
           "clicks": "120K",
           "variants": [
@@ -567,7 +567,7 @@
         {
           "slug": "ox-of-justice",
           "name": "Ox of Justice",
-          "egg": "City",
+          "egg": "City Egg",
           "rarity": "Mythical",
           "clicks": "150K",
           "variants": [
@@ -579,7 +579,7 @@
         {
           "slug": "angel-cloud",
           "name": "Angel Cloud",
-          "egg": "Heaven",
+          "egg": "Heaven Egg",
           "rarity": "Uncommon",
           "clicks": "150K",
           "variants": [
@@ -591,7 +591,7 @@
         {
           "slug": "dragon-king",
           "name": "Dragon King",
-          "egg": "Kingdom",
+          "egg": "Kingdom Egg",
           "rarity": "Eternal",
           "clicks": "200K",
           "variants": [
@@ -603,7 +603,7 @@
         {
           "slug": "angel-cat",
           "name": "Angel Cat",
-          "egg": "Heaven",
+          "egg": "Heaven Egg",
           "rarity": "Rare",
           "clicks": "250K",
           "variants": [
@@ -615,7 +615,7 @@
         {
           "slug": "inferno-skull",
           "name": "Inferno Skull",
-          "egg": "Volcano",
+          "egg": "Volcano Egg",
           "rarity": "Legendary",
           "clicks": "300K",
           "variants": [
@@ -627,7 +627,7 @@
         {
           "slug": "heaven-dove",
           "name": "Heaven Dove",
-          "egg": "Heaven",
+          "egg": "Heaven Egg",
           "rarity": "Epic",
           "clicks": "350K",
           "variants": [
@@ -639,7 +639,7 @@
         {
           "slug": "sapphire-seeker",
           "name": "Sapphire Seeker",
-          "egg": "Cave",
+          "egg": "Cave Egg",
           "rarity": "Mythical",
           "clicks": "500K",
           "variants": [
@@ -651,7 +651,7 @@
         {
           "slug": "the-broadcasting",
           "name": "The Broadcasting",
-          "egg": "City",
+          "egg": "City Egg",
           "rarity": "Eternal",
           "clicks": "600K",
           "variants": [
@@ -663,7 +663,7 @@
         {
           "slug": "cherub",
           "name": "Cherub",
-          "egg": "Heaven",
+          "egg": "Heaven Egg",
           "rarity": "Legendary",
           "clicks": "1.1M",
           "variants": [
@@ -675,7 +675,7 @@
         {
           "slug": "magma-fiend",
           "name": "Magma Fiend",
-          "egg": "Volcano",
+          "egg": "Volcano Egg",
           "rarity": "Mythical",
           "clicks": "1.25M",
           "variants": [
@@ -687,7 +687,7 @@
         {
           "slug": "gem-lord",
           "name": "Gem Lord",
-          "egg": "Cave",
+          "egg": "Cave Egg",
           "rarity": "Eternal",
           "clicks": "1.5M",
           "variants": [
@@ -699,7 +699,7 @@
         {
           "slug": "magic-cat",
           "name": "Magic Cat",
-          "egg": "Magic",
+          "egg": "Magic Egg",
           "rarity": "Rare",
           "clicks": "1.5M",
           "variants": [
@@ -711,7 +711,7 @@
         {
           "slug": "magic-pot",
           "name": "Magic Pot",
-          "egg": "Magic",
+          "egg": "Magic Egg",
           "rarity": "Epic",
           "clicks": "2.5M",
           "variants": [
@@ -723,7 +723,7 @@
         {
           "slug": "clown",
           "name": "Clown",
-          "egg": "Circus",
+          "egg": "Circus Egg",
           "rarity": "Rare",
           "clicks": "3M",
           "variants": [
@@ -735,7 +735,7 @@
         {
           "slug": "the-admin",
           "name": "The Admin",
-          "egg": "City",
+          "egg": "City Egg",
           "rarity": "Secret",
           "clicks": "3M",
           "variants": [
@@ -747,7 +747,7 @@
         {
           "slug": "heavenly-harp",
           "name": "Heavenly Harp",
-          "egg": "Heaven",
+          "egg": "Heaven Egg",
           "rarity": "Mythical",
           "clicks": "4M",
           "variants": [
@@ -759,7 +759,7 @@
         {
           "slug": "volcanic-overlord",
           "name": "Volcanic Overlord",
-          "egg": "Volcano",
+          "egg": "Volcano Egg",
           "rarity": "Eternal",
           "clicks": "5M",
           "variants": [
@@ -771,7 +771,7 @@
         {
           "slug": "circus-elephant",
           "name": "Circus Elephant",
-          "egg": "Circus",
+          "egg": "Circus Egg",
           "rarity": "Epic",
           "clicks": "5M",
           "variants": [
@@ -783,7 +783,7 @@
         {
           "slug": "tiger",
           "name": "Tiger",
-          "egg": "Jungle",
+          "egg": "Jungle Egg",
           "rarity": "Rare",
           "clicks": "6M",
           "variants": [
@@ -795,7 +795,7 @@
         {
           "slug": "star-sage",
           "name": "Star Sage",
-          "egg": "Magic",
+          "egg": "Magic Egg",
           "rarity": "Legendary",
           "clicks": "7.2M",
           "variants": [
@@ -807,7 +807,7 @@
         {
           "slug": "crystal-gem",
           "name": "Crystal Gem",
-          "egg": "Cave",
+          "egg": "Cave Egg",
           "rarity": "Secret",
           "clicks": "7.5M",
           "variants": [
@@ -819,7 +819,7 @@
         {
           "slug": "monkey",
           "name": "Monkey",
-          "egg": "Jungle",
+          "egg": "Jungle Egg",
           "rarity": "Epic",
           "clicks": "8M",
           "variants": [
@@ -831,7 +831,7 @@
         {
           "slug": "steampunk-dog",
           "name": "Steampunk Dog",
-          "egg": "Steampunk",
+          "egg": "Steampunk Egg",
           "rarity": "Rare",
           "clicks": "12M",
           "variants": [
@@ -843,7 +843,7 @@
         {
           "slug": "circus-seal",
           "name": "Circus Seal",
-          "egg": "Circus",
+          "egg": "Circus Egg",
           "rarity": "Legendary",
           "clicks": "14M",
           "variants": [
@@ -855,7 +855,7 @@
         {
           "slug": "holy-valkyrie",
           "name": "Holy Valkyrie",
-          "egg": "Heaven",
+          "egg": "Heaven Egg",
           "rarity": "Eternal",
           "clicks": "15M",
           "variants": [
@@ -867,7 +867,7 @@
         {
           "slug": "steampunk-balloon",
           "name": "Steampunk Balloon",
-          "egg": "Steampunk",
+          "egg": "Steampunk Egg",
           "rarity": "Epic",
           "clicks": "16M",
           "variants": [
@@ -879,7 +879,7 @@
         {
           "slug": "slime",
           "name": "Slime",
-          "egg": "Zombie",
+          "egg": "Zombie Egg",
           "rarity": "Common",
           "clicks": "20M",
           "variants": [
@@ -891,7 +891,7 @@
         {
           "slug": "phoenix",
           "name": "Phoenix",
-          "egg": "Volcano",
+          "egg": "Volcano Egg",
           "rarity": "Secret",
           "clicks": "24M",
           "variants": [
@@ -903,7 +903,7 @@
         {
           "slug": "sakura-cat",
           "name": "Sakura Cat",
-          "egg": "Sakura",
+          "egg": "Sakura Egg",
           "rarity": "Rare",
           "clicks": "24M",
           "variants": [
@@ -915,7 +915,7 @@
         {
           "slug": "zombie",
           "name": "Zombie",
-          "egg": "Zombie",
+          "egg": "Zombie Egg",
           "rarity": "Uncommon",
           "clicks": "30M",
           "variants": [
@@ -927,7 +927,7 @@
         {
           "slug": "parrot",
           "name": "Parrot",
-          "egg": "Jungle",
+          "egg": "Jungle Egg",
           "rarity": "Legendary",
           "clicks": "30M",
           "variants": [
@@ -939,7 +939,7 @@
         {
           "slug": "fairydust-dragon",
           "name": "Fairydust Dragon",
-          "egg": "Magic",
+          "egg": "Magic Egg",
           "rarity": "Mythical",
           "clicks": "30M",
           "variants": [
@@ -951,7 +951,7 @@
         {
           "slug": "sakura-flower",
           "name": "Sakura Flower",
-          "egg": "Sakura",
+          "egg": "Sakura Egg",
           "rarity": "Epic",
           "clicks": "32M",
           "variants": [
@@ -963,7 +963,7 @@
         {
           "slug": "skeleton-cat",
           "name": "Skeleton Cat",
-          "egg": "Skeleton",
+          "egg": "Skeleton Egg",
           "rarity": "Common",
           "clicks": "35M",
           "variants": [
@@ -975,7 +975,7 @@
         {
           "slug": "zombie-mimic",
           "name": "Zombie Mimic",
-          "egg": "Zombie",
+          "egg": "Zombie Egg",
           "rarity": "Rare",
           "clicks": "40M",
           "variants": [
@@ -987,7 +987,7 @@
         {
           "slug": "steampunk-dragon",
           "name": "Steampunk Dragon",
-          "egg": "Steampunk",
+          "egg": "Steampunk Egg",
           "rarity": "Legendary",
           "clicks": "60M",
           "variants": [
@@ -999,7 +999,7 @@
         {
           "slug": "shadow-puppeteer",
           "name": "Shadow Puppeteer",
-          "egg": "Circus",
+          "egg": "Circus Egg",
           "rarity": "Mythical",
           "clicks": "60M",
           "variants": [
@@ -1011,7 +1011,7 @@
         {
           "slug": "skeleton-golem",
           "name": "Skeleton Golem",
-          "egg": "Skeleton",
+          "egg": "Skeleton Egg",
           "rarity": "Uncommon",
           "clicks": "60M",
           "variants": [
@@ -1023,7 +1023,7 @@
         {
           "slug": "heaven-eye",
           "name": "Heaven Eye",
-          "egg": "Heaven",
+          "egg": "Heaven Egg",
           "rarity": "Secret",
           "clicks": "75M",
           "variants": [
@@ -1035,7 +1035,7 @@
         {
           "slug": "skeleton-bat",
           "name": "Skeleton Bat",
-          "egg": "Skeleton",
+          "egg": "Skeleton Egg",
           "rarity": "Rare",
           "clicks": "80M",
           "variants": [
@@ -1047,7 +1047,7 @@
         {
           "slug": "rune-sentinel",
           "name": "Rune Sentinel",
-          "egg": "Magic",
+          "egg": "Magic Egg",
           "rarity": "Eternal",
           "clicks": "100M",
           "variants": [
@@ -1059,7 +1059,7 @@
         {
           "slug": "ghost",
           "name": "Ghost",
-          "egg": "Skull",
+          "egg": "Skull Egg",
           "rarity": "Uncommon",
           "clicks": "100M",
           "variants": [
@@ -1071,7 +1071,7 @@
         {
           "slug": "lost-reaper",
           "name": "Lost Reaper",
-          "egg": "Skeleton",
+          "egg": "Skeleton Egg",
           "rarity": "Epic",
           "clicks": "100M",
           "variants": [
@@ -1083,7 +1083,7 @@
         {
           "slug": "banana-dragon",
           "name": "Banana Dragon",
-          "egg": "Jungle",
+          "egg": "Jungle Egg",
           "rarity": "Mythical",
           "clicks": "110M",
           "variants": [
@@ -1095,7 +1095,7 @@
         {
           "slug": "sakura-dragon",
           "name": "Sakura Dragon",
-          "egg": "Sakura",
+          "egg": "Sakura Egg",
           "rarity": "Legendary",
           "clicks": "120M",
           "variants": [
@@ -1107,7 +1107,7 @@
         {
           "slug": "circus-dragon",
           "name": "Circus Dragon",
-          "egg": "Circus",
+          "egg": "Circus Egg",
           "rarity": "Eternal",
           "clicks": "200M",
           "variants": [
@@ -1119,7 +1119,7 @@
         {
           "slug": "blast-furnace",
           "name": "Blast Furnace",
-          "egg": "Steampunk",
+          "egg": "Steampunk Egg",
           "rarity": "Mythical",
           "clicks": "230M",
           "variants": [
@@ -1131,7 +1131,7 @@
         {
           "slug": "skeleton-hydra",
           "name": "Skeleton Hydra",
-          "egg": "Skull",
+          "egg": "Skull Egg",
           "rarity": "Rare",
           "clicks": "250M",
           "variants": [
@@ -1143,7 +1143,7 @@
         {
           "slug": "slime-dragon",
           "name": "Slime Dragon",
-          "egg": "Skull",
+          "egg": "Skull Egg",
           "rarity": "Epic",
           "clicks": "350M",
           "variants": [
@@ -1155,7 +1155,7 @@
         {
           "slug": "tiger-s-eye",
           "name": "Tiger's Eye",
-          "egg": "Jungle",
+          "egg": "Jungle Egg",
           "rarity": "Eternal",
           "clicks": "370M",
           "variants": [
@@ -1167,7 +1167,7 @@
         {
           "slug": "spirit-caster",
           "name": "Spirit Caster",
-          "egg": "Magic",
+          "egg": "Magic Egg",
           "rarity": "Secret",
           "clicks": "400M",
           "variants": [
@@ -1179,7 +1179,7 @@
         {
           "slug": "sakura-panda",
           "name": "Sakura Panda",
-          "egg": "Sakura",
+          "egg": "Sakura Egg",
           "rarity": "Mythical",
           "clicks": "460M",
           "variants": [
@@ -1191,7 +1191,7 @@
         {
           "slug": "scientist",
           "name": "Scientist",
-          "egg": "Lab",
+          "egg": "Lab Egg",
           "rarity": "Rare",
           "clicks": "600M",
           "variants": [
@@ -1203,7 +1203,7 @@
         {
           "slug": "steampunk-conductor",
           "name": "Steampunk Conductor",
-          "egg": "Steampunk",
+          "egg": "Steampunk Egg",
           "rarity": "Eternal",
           "clicks": "700M",
           "variants": [
@@ -1215,7 +1215,7 @@
         {
           "slug": "dark-skull",
           "name": "Dark Skull",
-          "egg": "Skull",
+          "egg": "Skull Egg",
           "rarity": "Legendary",
           "clicks": "750M",
           "variants": [
@@ -1227,7 +1227,7 @@
         {
           "slug": "circus-monster",
           "name": "Circus Monster",
-          "egg": "Circus",
+          "egg": "Circus Egg",
           "rarity": "Secret",
           "clicks": "800M",
           "variants": [
@@ -1239,7 +1239,7 @@
         {
           "slug": "dark-lord",
           "name": "Dark Lord",
-          "egg": "Magic",
+          "egg": "Magic Egg",
           "rarity": "Divine",
           "clicks": "1B",
           "variants": [
@@ -1251,7 +1251,7 @@
         {
           "slug": "overgrowth",
           "name": "Overgrowth",
-          "egg": "Jungle",
+          "egg": "Jungle Egg",
           "rarity": "Secret",
           "clicks": "1.4B",
           "variants": [
@@ -1263,7 +1263,7 @@
         {
           "slug": "bloom-spirit",
           "name": "Bloom Spirit",
-          "egg": "Sakura",
+          "egg": "Sakura Egg",
           "rarity": "Eternal",
           "clicks": "1.4B",
           "variants": [
@@ -1275,7 +1275,7 @@
         {
           "slug": "potion-trio",
           "name": "Potion Trio",
-          "egg": "Lab",
+          "egg": "Lab Egg",
           "rarity": "Epic",
           "clicks": "1.4B",
           "variants": [
@@ -1287,7 +1287,7 @@
         {
           "slug": "ringmaster",
           "name": "Ringmaster",
-          "egg": "Circus",
+          "egg": "Circus Egg",
           "rarity": "Divine",
           "clicks": "2B",
           "variants": [
@@ -1299,7 +1299,7 @@
         {
           "slug": "ghost-overlord",
           "name": "Ghost Overlord",
-          "egg": "Skull",
+          "egg": "Skull Egg",
           "rarity": "Mythical",
           "clicks": "2B",
           "variants": [
@@ -1311,7 +1311,7 @@
         {
           "slug": "hologram-hexagon",
           "name": "Hologram Hexagon",
-          "egg": "Lab",
+          "egg": "Lab Egg",
           "rarity": "Legendary",
           "clicks": "2B",
           "variants": [
@@ -1323,7 +1323,7 @@
         {
           "slug": "armored-bot",
           "name": "Armored Bot",
-          "egg": "Steampunk",
+          "egg": "Steampunk Egg",
           "rarity": "Secret",
           "clicks": "3B",
           "variants": [
@@ -1335,7 +1335,7 @@
         {
           "slug": "ancient-defender",
           "name": "Ancient Defender",
-          "egg": "Jungle",
+          "egg": "Jungle Egg",
           "rarity": "Divine",
           "clicks": "3.5B",
           "variants": [
@@ -1347,7 +1347,7 @@
         {
           "slug": "bladed-darkness",
           "name": "Bladed Darkness",
-          "egg": "Sakura",
+          "egg": "Sakura Egg",
           "rarity": "Secret",
           "clicks": "6B",
           "variants": [
@@ -1359,7 +1359,7 @@
         {
           "slug": "gears-of-time",
           "name": "Gears of Time",
-          "egg": "Steampunk",
+          "egg": "Steampunk Egg",
           "rarity": "Divine",
           "clicks": "7B",
           "variants": [
@@ -1371,7 +1371,7 @@
         {
           "slug": "dna-overlord",
           "name": "DNA Overlord",
-          "egg": "Lab",
+          "egg": "Lab Egg",
           "rarity": "Mythical",
           "clicks": "7.2B",
           "variants": [
@@ -1383,7 +1383,7 @@
         {
           "slug": "dungeon-guardian",
           "name": "Dungeon Guardian",
-          "egg": "Skull",
+          "egg": "Skull Egg",
           "rarity": "Eternal",
           "clicks": "10B",
           "variants": [
@@ -1395,7 +1395,7 @@
         {
           "slug": "sakura-immortal",
           "name": "Sakura Immortal",
-          "egg": "Sakura",
+          "egg": "Sakura Egg",
           "rarity": "Divine",
           "clicks": "14B",
           "variants": [
@@ -1407,7 +1407,7 @@
         {
           "slug": "brain-dragon",
           "name": "Brain Dragon",
-          "egg": "Lab",
+          "egg": "Lab Egg",
           "rarity": "Eternal",
           "clicks": "26B",
           "variants": [
@@ -1419,7 +1419,7 @@
         {
           "slug": "potion-monster",
           "name": "Potion Monster",
-          "egg": "Lab",
+          "egg": "Lab Egg",
           "rarity": "Secret",
           "clicks": "110B",
           "variants": [
@@ -1431,7 +1431,7 @@
         {
           "slug": "lab-robot",
           "name": "Lab Robot",
-          "egg": "Lab",
+          "egg": "Lab Egg",
           "rarity": "Divine",
           "clicks": "200B",
           "variants": [
@@ -1443,7 +1443,7 @@
         {
           "slug": "spider",
           "name": "Spider",
-          "egg": "Spider",
+          "egg": "Spider Egg",
           "rarity": "Rare",
           "clicks": "200T",
           "variants": [
@@ -1456,7 +1456,7 @@
         {
           "slug": "dark-mimic",
           "name": "Dark Mimic",
-          "egg": "Spider",
+          "egg": "Spider Egg",
           "rarity": "Epic",
           "clicks": "250T",
           "variants": [
@@ -1469,7 +1469,7 @@
         {
           "slug": "spider-dragon",
           "name": "Spider Dragon",
-          "egg": "Spider",
+          "egg": "Spider Egg",
           "rarity": "Legendary",
           "clicks": "400T",
           "variants": [
@@ -1482,7 +1482,7 @@
         {
           "slug": "dark-moth",
           "name": "Dark Moth",
-          "egg": "Spider",
+          "egg": "Spider Egg",
           "rarity": "Mythical",
           "clicks": "650T",
           "variants": [
@@ -1495,7 +1495,7 @@
         {
           "slug": "spider-overlord",
           "name": "Spider Overlord",
-          "egg": "Spider",
+          "egg": "Spider Egg",
           "rarity": "Eternal",
           "clicks": "1.5Qd",
           "variants": [
@@ -1508,7 +1508,7 @@
         {
           "slug": "spider-lord",
           "name": "Spider Lord",
-          "egg": "Spider",
+          "egg": "Spider Egg",
           "rarity": "Secret",
           "clicks": "450Qn",
           "variants": [
@@ -1521,7 +1521,7 @@
         {
           "slug": "dungeon-protector",
           "name": "Dungeon Protector",
-          "egg": "Spider",
+          "egg": "Spider Egg",
           "rarity": "Divine",
           "clicks": "10Sp",
           "variants": [
@@ -1534,7 +1534,7 @@
         {
           "slug": "dungeon-slime",
           "name": "Dungeon Slime",
-          "egg": "Cursed",
+          "egg": "Cursed Egg",
           "rarity": "Rare",
           "clicks": "150Sp",
           "variants": [
@@ -1547,7 +1547,7 @@
         {
           "slug": "cursed-bat",
           "name": "Cursed Bat",
-          "egg": "Cursed",
+          "egg": "Cursed Egg",
           "rarity": "Epic",
           "clicks": "192Sp",
           "variants": [
@@ -1560,7 +1560,7 @@
         {
           "slug": "chain-dragon",
           "name": "Chain Dragon",
-          "egg": "Cursed",
+          "egg": "Cursed Egg",
           "rarity": "Legendary",
           "clicks": "384Sp",
           "variants": [
@@ -1573,7 +1573,7 @@
         {
           "slug": "cursed-ghost",
           "name": "Cursed Ghost",
-          "egg": "Cursed",
+          "egg": "Cursed Egg",
           "rarity": "Mythical",
           "clicks": "2O",
           "variants": [
@@ -1586,7 +1586,7 @@
         {
           "slug": "warden-s-eye",
           "name": "Warden's Eye",
-          "egg": "Cursed",
+          "egg": "Cursed Egg",
           "rarity": "Eternal",
           "clicks": "10O",
           "variants": [
@@ -1599,7 +1599,7 @@
         {
           "slug": "skeleton-jester",
           "name": "Skeleton Jester",
-          "egg": "Cursed",
+          "egg": "Cursed Egg",
           "rarity": "Secret",
           "clicks": "60O",
           "variants": [
@@ -1612,7 +1612,7 @@
         {
           "slug": "cursed-beast",
           "name": "Cursed Beast",
-          "egg": "Cursed",
+          "egg": "Cursed Egg",
           "rarity": "Divine",
           "clicks": "210O",
           "variants": [
@@ -1650,7 +1650,7 @@
         {
           "slug": "cursed-immortal",
           "name": "Cursed Immortal",
-          "egg": "Cursed",
+          "egg": "Cursed Egg",
           "rarity": "Supreme",
           "clicks": "110%",
           "variants": [
@@ -1708,7 +1708,7 @@
         {
           "slug": "space-dog",
           "name": "Space Dog",
-          "egg": "Moon",
+          "egg": "Moon Egg",
           "rarity": "Rare",
           "clicks": "1.2B",
           "variants": [
@@ -1721,7 +1721,7 @@
         {
           "slug": "alien",
           "name": "Alien",
-          "egg": "Alien",
+          "egg": "Alien Egg",
           "rarity": "Rare",
           "clicks": "2.4B",
           "variants": [
@@ -1734,7 +1734,7 @@
         {
           "slug": "meteor",
           "name": "Meteor",
-          "egg": "Moon",
+          "egg": "Moon Egg",
           "rarity": "Epic",
           "clicks": "2.8B",
           "variants": [
@@ -1747,7 +1747,7 @@
         {
           "slug": "rocket",
           "name": "Rocket",
-          "egg": "Moon",
+          "egg": "Moon Egg",
           "rarity": "Legendary",
           "clicks": "4B",
           "variants": [
@@ -1760,7 +1760,7 @@
         {
           "slug": "miner-cat",
           "name": "Miner Cat",
-          "egg": "Miner",
+          "egg": "Miner Egg",
           "rarity": "Common",
           "clicks": "5B",
           "variants": [
@@ -1773,7 +1773,7 @@
         {
           "slug": "alien-star",
           "name": "Alien Star",
-          "egg": "Alien",
+          "egg": "Alien Egg",
           "rarity": "Epic",
           "clicks": "5.6B",
           "variants": [
@@ -1786,7 +1786,7 @@
         {
           "slug": "ufo",
           "name": "UFO",
-          "egg": "Alien",
+          "egg": "Alien Egg",
           "rarity": "Legendary",
           "clicks": "8B",
           "variants": [
@@ -1799,7 +1799,7 @@
         {
           "slug": "miner-bunny",
           "name": "Miner Bunny",
-          "egg": "Miner",
+          "egg": "Miner Egg",
           "rarity": "Uncommon",
           "clicks": "10B",
           "variants": [
@@ -1812,7 +1812,7 @@
         {
           "slug": "cyber-golem",
           "name": "Cyber Golem",
-          "egg": "Tech City",
+          "egg": "Tech City Egg",
           "rarity": "Rare",
           "clicks": "10B",
           "variants": [
@@ -1825,7 +1825,7 @@
         {
           "slug": "midnight-dragon",
           "name": "Midnight Dragon",
-          "egg": "Moon",
+          "egg": "Moon Egg",
           "rarity": "Mythical",
           "clicks": "14B",
           "variants": [
@@ -1838,7 +1838,7 @@
         {
           "slug": "cyber-guard",
           "name": "Cyber Guard",
-          "egg": "Tech City",
+          "egg": "Tech City Egg",
           "rarity": "Epic",
           "clicks": "16B",
           "variants": [
@@ -1851,7 +1851,7 @@
         {
           "slug": "nebula-planet",
           "name": "Nebula Planet",
-          "egg": "Nebula Forest",
+          "egg": "Nebula Forest Egg",
           "rarity": "Rare",
           "clicks": "20B",
           "variants": [
@@ -1864,7 +1864,7 @@
         {
           "slug": "miner-panda",
           "name": "Miner Panda",
-          "egg": "Miner",
+          "egg": "Miner Egg",
           "rarity": "Rare",
           "clicks": "25B",
           "variants": [
@@ -1877,7 +1877,7 @@
         {
           "slug": "alien-soldier",
           "name": "Alien Soldier",
-          "egg": "Alien",
+          "egg": "Alien Egg",
           "rarity": "Mythical",
           "clicks": "28.8B",
           "variants": [
@@ -1890,7 +1890,7 @@
         {
           "slug": "cyber-car",
           "name": "Cyber Car",
-          "egg": "Tech City",
+          "egg": "Tech City Egg",
           "rarity": "Legendary",
           "clicks": "32B",
           "variants": [
@@ -1903,7 +1903,7 @@
         {
           "slug": "nebula-hydra",
           "name": "Nebula Hydra",
-          "egg": "Nebula Forest",
+          "egg": "Nebula Forest Egg",
           "rarity": "Epic",
           "clicks": "32B",
           "variants": [
@@ -1916,7 +1916,7 @@
         {
           "slug": "miner-mole",
           "name": "Miner Mole",
-          "egg": "Miner",
+          "egg": "Miner Egg",
           "rarity": "Epic",
           "clicks": "35B",
           "variants": [
@@ -1929,7 +1929,7 @@
         {
           "slug": "void-slime",
           "name": "Void Slime",
-          "egg": "Void",
+          "egg": "Void Egg",
           "rarity": "Rare",
           "clicks": "40B",
           "variants": [
@@ -1942,7 +1942,7 @@
         {
           "slug": "void-reaper",
           "name": "Void Reaper",
-          "egg": "Void",
+          "egg": "Void Egg",
           "rarity": "Epic",
           "clicks": "60B",
           "variants": [
@@ -1955,7 +1955,7 @@
         {
           "slug": "moon-guardian",
           "name": "Moon Guardian",
-          "egg": "Moon",
+          "egg": "Moon Egg",
           "rarity": "Eternal",
           "clicks": "60B",
           "variants": [
@@ -1968,7 +1968,7 @@
         {
           "slug": "nebula-dragon",
           "name": "Nebula Dragon",
-          "egg": "Nebula Forest",
+          "egg": "Nebula Forest Egg",
           "rarity": "Legendary",
           "clicks": "64B",
           "variants": [
@@ -1981,7 +1981,7 @@
         {
           "slug": "stone-crocodile",
           "name": "Stone Crocodile",
-          "egg": "Underground",
+          "egg": "Underground Egg",
           "rarity": "Rare",
           "clicks": "75B",
           "variants": [
@@ -1994,7 +1994,7 @@
         {
           "slug": "alien-bee",
           "name": "Alien Bee",
-          "egg": "Spaceship",
+          "egg": "Spaceship Egg",
           "rarity": "Rare",
           "clicks": "80B",
           "variants": [
@@ -2007,7 +2007,7 @@
         {
           "slug": "underground-alien",
           "name": "Underground Alien",
-          "egg": "Underground",
+          "egg": "Underground Egg",
           "rarity": "Epic",
           "clicks": "100B",
           "variants": [
@@ -2020,7 +2020,7 @@
         {
           "slug": "space-jellyfish",
           "name": "Space Jellyfish",
-          "egg": "Spaceship",
+          "egg": "Spaceship Egg",
           "rarity": "Epic",
           "clicks": "120B",
           "variants": [
@@ -2033,7 +2033,7 @@
         {
           "slug": "cyber-mechanic",
           "name": "Cyber Mechanic",
-          "egg": "Tech City",
+          "egg": "Tech City Egg",
           "rarity": "Mythical",
           "clicks": "120B",
           "variants": [
@@ -2046,7 +2046,7 @@
         {
           "slug": "space-wyvern",
           "name": "Space Wyvern",
-          "egg": "Alien",
+          "egg": "Alien Egg",
           "rarity": "Eternal",
           "clicks": "120B",
           "variants": [
@@ -2059,7 +2059,7 @@
         {
           "slug": "void-hexagon",
           "name": "Void Hexagon",
-          "egg": "Void",
+          "egg": "Void Egg",
           "rarity": "Legendary",
           "clicks": "125B",
           "variants": [
@@ -2072,7 +2072,7 @@
         {
           "slug": "nebula-wyvern",
           "name": "Nebula Wyvern",
-          "egg": "Nebula Forest",
+          "egg": "Nebula Forest Egg",
           "rarity": "Mythical",
           "clicks": "240B",
           "variants": [
@@ -2085,7 +2085,7 @@
         {
           "slug": "research-hydra",
           "name": "Research Hydra",
-          "egg": "Spaceship",
+          "egg": "Spaceship Egg",
           "rarity": "Legendary",
           "clicks": "250B",
           "variants": [
@@ -2098,7 +2098,7 @@
         {
           "slug": "underground-butterfly",
           "name": "Underground Butterfly",
-          "egg": "Underground",
+          "egg": "Underground Egg",
           "rarity": "Legendary",
           "clicks": "300B",
           "variants": [
@@ -2111,7 +2111,7 @@
         {
           "slug": "lunar-gladiator",
           "name": "Lunar Gladiator",
-          "egg": "Moon",
+          "egg": "Moon Egg",
           "rarity": "Secret",
           "clicks": "300B",
           "variants": [
@@ -2124,7 +2124,7 @@
         {
           "slug": "void-orb",
           "name": "Void Orb",
-          "egg": "Void",
+          "egg": "Void Egg",
           "rarity": "Mythical",
           "clicks": "480B",
           "variants": [
@@ -2137,7 +2137,7 @@
         {
           "slug": "laser-dragon",
           "name": "Laser Dragon",
-          "egg": "Tech City",
+          "egg": "Tech City Egg",
           "rarity": "Eternal",
           "clicks": "500B",
           "variants": [
@@ -2150,7 +2150,7 @@
         {
           "slug": "sentient-mothership",
           "name": "Sentient Mothership",
-          "egg": "Alien",
+          "egg": "Alien Egg",
           "rarity": "Secret",
           "clicks": "600B",
           "variants": [
@@ -2163,7 +2163,7 @@
         {
           "slug": "amethyst-spaceship",
           "name": "Amethyst Spaceship",
-          "egg": "Space Warzone",
+          "egg": "Space Warzone Egg",
           "rarity": "Rare",
           "clicks": "600B",
           "variants": [
@@ -2176,7 +2176,7 @@
         {
           "slug": "crescent-overseer",
           "name": "Crescent Overseer",
-          "egg": "Moon",
+          "egg": "Moon Egg",
           "rarity": "Divine",
           "clicks": "700B",
           "variants": [
@@ -2189,7 +2189,7 @@
         {
           "slug": "titanium-gem",
           "name": "Titanium Gem",
-          "egg": "Underground",
+          "egg": "Underground Egg",
           "rarity": "Mythical",
           "clicks": "800B",
           "variants": [
@@ -2202,7 +2202,7 @@
         {
           "slug": "round-bot",
           "name": "Round Bot",
-          "egg": "Spaceship",
+          "egg": "Spaceship Egg",
           "rarity": "Mythical",
           "clicks": "950B",
           "variants": [
@@ -2215,7 +2215,7 @@
         {
           "slug": "water-robot",
           "name": "Water Robot",
-          "egg": "Space Warzone",
+          "egg": "Space Warzone Egg",
           "rarity": "Epic",
           "clicks": "1T",
           "variants": [
@@ -2228,7 +2228,7 @@
         {
           "slug": "nebula-phantom",
           "name": "Nebula Phantom",
-          "egg": "Nebula Forest",
+          "egg": "Nebula Forest Egg",
           "rarity": "Eternal",
           "clicks": "1T",
           "variants": [
@@ -2241,7 +2241,7 @@
         {
           "slug": "comet-golem",
           "name": "Comet Golem",
-          "egg": "Comet",
+          "egg": "Comet Egg",
           "rarity": "Rare",
           "clicks": "1.2T",
           "variants": [
@@ -2254,7 +2254,7 @@
         {
           "slug": "queen-devourer",
           "name": "Queen Devourer",
-          "egg": "Alien",
+          "egg": "Alien Egg",
           "rarity": "Divine",
           "clicks": "1.4T",
           "variants": [
@@ -2267,7 +2267,7 @@
         {
           "slug": "falling-comet",
           "name": "Falling Comet",
-          "egg": "Comet",
+          "egg": "Comet Egg",
           "rarity": "Epic",
           "clicks": "2T",
           "variants": [
@@ -2280,7 +2280,7 @@
         {
           "slug": "ruby-drone",
           "name": "Ruby Drone",
-          "egg": "Space Warzone",
+          "egg": "Space Warzone Egg",
           "rarity": "Legendary",
           "clicks": "2T",
           "variants": [
@@ -2293,7 +2293,7 @@
         {
           "slug": "void-dragon",
           "name": "Void Dragon",
-          "egg": "Void",
+          "egg": "Void Egg",
           "rarity": "Eternal",
           "clicks": "2T",
           "variants": [
@@ -2306,7 +2306,7 @@
         {
           "slug": "rocket-reaver",
           "name": "Rocket Reaver",
-          "egg": "Tech City",
+          "egg": "Tech City Egg",
           "rarity": "Secret",
           "clicks": "2.4T",
           "variants": [
@@ -2319,7 +2319,7 @@
         {
           "slug": "silver-bat",
           "name": "Silver Bat",
-          "egg": "Bat",
+          "egg": "Bat Egg",
           "rarity": "Rare",
           "clicks": "2.5T",
           "variants": [
@@ -2332,7 +2332,7 @@
         {
           "slug": "comet-alien",
           "name": "Comet Alien",
-          "egg": "Comet",
+          "egg": "Comet Egg",
           "rarity": "Legendary",
           "clicks": "4T",
           "variants": [
@@ -2345,7 +2345,7 @@
         {
           "slug": "fueldroid",
           "name": "Fuelroid",
-          "egg": "Spaceship",
+          "egg": "Spaceship Egg",
           "rarity": "Eternal",
           "clicks": "4T",
           "variants": [
@@ -2358,7 +2358,7 @@
         {
           "slug": "nebula-supernova",
           "name": "Nebula Supernova",
-          "egg": "Nebula Forest",
+          "egg": "Nebula Forest Egg",
           "rarity": "Secret",
           "clicks": "5T",
           "variants": [
@@ -2371,7 +2371,7 @@
         {
           "slug": "miner-dragon",
           "name": "Miner Dragon",
-          "egg": "Underground",
+          "egg": "Underground Egg",
           "rarity": "Eternal",
           "clicks": "5T",
           "variants": [
@@ -2384,7 +2384,7 @@
         {
           "slug": "starfactory-worker",
           "name": "Starfactory Worker",
-          "egg": "Starfactory",
+          "egg": "Starfactory Egg",
           "rarity": "Rare",
           "clicks": "5T",
           "variants": [
@@ -2397,7 +2397,7 @@
         {
           "slug": "sapphire-bat",
           "name": "Sapphire Bat",
-          "egg": "Bat",
+          "egg": "Bat Egg",
           "rarity": "Epic",
           "clicks": "5T",
           "variants": [
@@ -2410,7 +2410,7 @@
         {
           "slug": "coolfire-voltage",
           "name": "Coolfire Voltage",
-          "egg": "Tech City",
+          "egg": "Tech City Egg",
           "rarity": "Divine",
           "clicks": "5.6T",
           "variants": [
@@ -2423,7 +2423,7 @@
         {
           "slug": "gear-star",
           "name": "Gear Star",
-          "egg": "Starfactory",
+          "egg": "Starfactory Egg",
           "rarity": "Epic",
           "clicks": "8T",
           "variants": [
@@ -2436,7 +2436,7 @@
         {
           "slug": "blizzard-drone",
           "name": "Blizzard Drone",
-          "egg": "Space Warzone",
+          "egg": "Space Warzone Egg",
           "rarity": "Mythical",
           "clicks": "8T",
           "variants": [
@@ -2449,7 +2449,7 @@
         {
           "slug": "bat-trio",
           "name": "Bat Trio",
-          "egg": "Bat",
+          "egg": "Bat Egg",
           "rarity": "Legendary",
           "clicks": "10T",
           "variants": [
@@ -2462,7 +2462,7 @@
         {
           "slug": "frozen-rocket",
           "name": "Frozen Rocket",
-          "egg": "Glacier Moon",
+          "egg": "Glacier Moon Egg",
           "rarity": "Rare",
           "clicks": "10T",
           "variants": [
@@ -2475,7 +2475,7 @@
         {
           "slug": "void-sentinel",
           "name": "Void Sentinel",
-          "egg": "Void",
+          "egg": "Void Egg",
           "rarity": "Secret",
           "clicks": "10T",
           "variants": [
@@ -2488,7 +2488,7 @@
         {
           "slug": "nebula-beast",
           "name": "Nebula Beast",
-          "egg": "Nebula Forest",
+          "egg": "Nebula Forest Egg",
           "rarity": "Divine",
           "clicks": "12T",
           "variants": [
@@ -2501,7 +2501,7 @@
         {
           "slug": "gear-dragon",
           "name": "Gear Dragon",
-          "egg": "Starfactory",
+          "egg": "Starfactory Egg",
           "rarity": "Legendary",
           "clicks": "16T",
           "variants": [
@@ -2514,7 +2514,7 @@
         {
           "slug": "glacier-golem",
           "name": "Glacier Golem",
-          "egg": "Glacier Moon",
+          "egg": "Glacier Moon Egg",
           "rarity": "Epic",
           "clicks": "16T",
           "variants": [
@@ -2527,7 +2527,7 @@
         {
           "slug": "comet-dragon",
           "name": "Comet Dragon",
-          "egg": "Comet",
+          "egg": "Comet Egg",
           "rarity": "Mythical",
           "clicks": "16T",
           "variants": [
@@ -2540,7 +2540,7 @@
         {
           "slug": "dark-bat",
           "name": "Dark Bat",
-          "egg": "Bat",
+          "egg": "Bat Egg",
           "rarity": "Mythical",
           "clicks": "20T",
           "variants": [
@@ -2553,7 +2553,7 @@
         {
           "slug": "fuel-overlord",
           "name": "Fuel Overlord",
-          "egg": "Spaceship",
+          "egg": "Spaceship Egg",
           "rarity": "Secret",
           "clicks": "20T",
           "variants": [
@@ -2566,7 +2566,7 @@
         {
           "slug": "mars-fox",
           "name": "Mars Fox",
-          "egg": "Mars Colony",
+          "egg": "Mars Colony Egg",
           "rarity": "Rare",
           "clicks": "20T",
           "variants": [
@@ -2579,7 +2579,7 @@
         {
           "slug": "void-monarch",
           "name": "Void Monarch",
-          "egg": "Void",
+          "egg": "Void Egg",
           "rarity": "Divine",
           "clicks": "25T",
           "variants": [
@@ -2592,7 +2592,7 @@
         {
           "slug": "ice-butterfly",
           "name": "Ice Butterfly",
-          "egg": "Glacier Moon",
+          "egg": "Glacier Moon Egg",
           "rarity": "Legendary",
           "clicks": "32T",
           "variants": [
@@ -2605,7 +2605,7 @@
         {
           "slug": "colony-flower",
           "name": "Colony Flower",
-          "egg": "Mars Colony",
+          "egg": "Mars Colony Egg",
           "rarity": "Epic",
           "clicks": "32T",
           "variants": [
@@ -2618,7 +2618,7 @@
         {
           "slug": "super-robot",
           "name": "Super Robot",
-          "egg": "Space Warzone",
+          "egg": "Space Warzone Egg",
           "rarity": "Eternal",
           "clicks": "36T",
           "variants": [
@@ -2631,7 +2631,7 @@
         {
           "slug": "falling-star",
           "name": "Falling Star",
-          "egg": "Starfall Valley",
+          "egg": "Starfall Valley Egg",
           "rarity": "Rare",
           "clicks": "40T",
           "variants": [
@@ -2644,7 +2644,7 @@
         {
           "slug": "missile-lord",
           "name": "Missile Lord",
-          "egg": "Spaceship",
+          "egg": "Spaceship Egg",
           "rarity": "Divine",
           "clicks": "50T",
           "variants": [
@@ -2657,7 +2657,7 @@
         {
           "slug": "bat-overlord",
           "name": "Bat Overlord",
-          "egg": "Bat",
+          "egg": "Bat Egg",
           "rarity": "Eternal",
           "clicks": "50T",
           "variants": [
@@ -2670,7 +2670,7 @@
         {
           "slug": "mars-heart",
           "name": "Mars Heart",
-          "egg": "Mars Colony",
+          "egg": "Mars Colony Egg",
           "rarity": "Legendary",
           "clicks": "64T",
           "variants": [
@@ -2683,7 +2683,7 @@
         {
           "slug": "stars-trio",
           "name": "Stars Trio",
-          "egg": "Starfall Valley",
+          "egg": "Starfall Valley Egg",
           "rarity": "Epic",
           "clicks": "64T",
           "variants": [
@@ -2696,7 +2696,7 @@
         {
           "slug": "factory-hexagon",
           "name": "Factory Hexagon",
-          "egg": "Starfactory",
+          "egg": "Starfactory Egg",
           "rarity": "Mythical",
           "clicks": "70T",
           "variants": [
@@ -2709,7 +2709,7 @@
         {
           "slug": "comet-guard",
           "name": "Comet Guard",
-          "egg": "Comet",
+          "egg": "Comet Egg",
           "rarity": "Eternal",
           "clicks": "72T",
           "variants": [
@@ -2722,7 +2722,7 @@
         {
           "slug": "star-dragon",
           "name": "Star Dragon",
-          "egg": "Starfall Valley",
+          "egg": "Starfall Valley Egg",
           "rarity": "Legendary",
           "clicks": "128T",
           "variants": [
@@ -2735,7 +2735,7 @@
         {
           "slug": "glacier-striker",
           "name": "Glacier Striker",
-          "egg": "Glacier Moon",
+          "egg": "Glacier Moon Egg",
           "rarity": "Mythical",
           "clicks": "140T",
           "variants": [
@@ -2748,7 +2748,7 @@
         {
           "slug": "magic-tank",
           "name": "Magic Tank",
-          "egg": "Space Warzone",
+          "egg": "Space Warzone Egg",
           "rarity": "Secret",
           "clicks": "170T",
           "variants": [
@@ -2761,7 +2761,7 @@
         {
           "slug": "mars-rover",
           "name": "Mars Rover",
-          "egg": "Mars Colony",
+          "egg": "Mars Colony Egg",
           "rarity": "Mythical",
           "clicks": "280T",
           "variants": [
@@ -2774,7 +2774,7 @@
         {
           "slug": "gear-overlord",
           "name": "Gear Overlord",
-          "egg": "Starfactory",
+          "egg": "Starfactory Egg",
           "rarity": "Eternal",
           "clicks": "300T",
           "variants": [
@@ -2787,7 +2787,7 @@
         {
           "slug": "black-hole-star",
           "name": "Black Hole Star",
-          "egg": "Black Hole",
+          "egg": "Black Hole Egg",
           "rarity": "Rare",
           "clicks": "320T",
           "variants": [
@@ -2800,7 +2800,7 @@
         {
           "slug": "comet-skull",
           "name": "Comet Skull",
-          "egg": "Comet",
+          "egg": "Comet Egg",
           "rarity": "Secret",
           "clicks": "340T",
           "variants": [
@@ -2813,7 +2813,7 @@
         {
           "slug": "crystal-destroyer",
           "name": "Crystal Destroyer",
-          "egg": "Space Warzone",
+          "egg": "Space Warzone Egg",
           "rarity": "Divine",
           "clicks": "450T",
           "variants": [
@@ -2826,7 +2826,7 @@
         {
           "slug": "black-hole",
           "name": "Black Hole",
-          "egg": "Black Hole",
+          "egg": "Black Hole Egg",
           "rarity": "Epic",
           "clicks": "500T",
           "variants": [
@@ -2839,7 +2839,7 @@
         {
           "slug": "star-imp",
           "name": "Star Imp",
-          "egg": "Starfall Valley",
+          "egg": "Starfall Valley Egg",
           "rarity": "Mythical",
           "clicks": "560T",
           "variants": [
@@ -2852,7 +2852,7 @@
         {
           "slug": "ice-dragon",
           "name": "Ice Dragon",
-          "egg": "Glacier Moon",
+          "egg": "Glacier Moon Egg",
           "rarity": "Eternal",
           "clicks": "600T",
           "variants": [
@@ -2865,7 +2865,7 @@
         {
           "slug": "comet-monster",
           "name": "Comet Monster",
-          "egg": "Comet",
+          "egg": "Comet Egg",
           "rarity": "Divine",
           "clicks": "900T",
           "variants": [
@@ -2878,7 +2878,7 @@
         {
           "slug": "black-hole-hexagon",
           "name": "Black Hole Hexagon",
-          "egg": "Black Hole",
+          "egg": "Black Hole Egg",
           "rarity": "Legendary",
           "clicks": "1Qd",
           "variants": [
@@ -2891,7 +2891,7 @@
         {
           "slug": "mars-dragon",
           "name": "Mars Dragon",
-          "egg": "Mars Colony",
+          "egg": "Mars Colony Egg",
           "rarity": "Eternal",
           "clicks": "1.2Qd",
           "variants": [
@@ -2904,7 +2904,7 @@
         {
           "slug": "starfactory-core",
           "name": "Starfactory Core",
-          "egg": "Starfactory",
+          "egg": "Starfactory Egg",
           "rarity": "Secret",
           "clicks": "1.4Qd",
           "variants": [
@@ -2917,7 +2917,7 @@
         {
           "slug": "star-monster",
           "name": "Star Monster",
-          "egg": "Starfall Valley",
+          "egg": "Starfall Valley Egg",
           "rarity": "Eternal",
           "clicks": "2.5Qd",
           "variants": [
@@ -2930,7 +2930,7 @@
         {
           "slug": "frozen-overlord",
           "name": "Frozen Overlord",
-          "egg": "Glacier Moon",
+          "egg": "Glacier Moon Egg",
           "rarity": "Secret",
           "clicks": "2.8Qd",
           "variants": [
@@ -2943,7 +2943,7 @@
         {
           "slug": "starfactory-robot",
           "name": "Starfactory Robot",
-          "egg": "Starfactory",
+          "egg": "Starfactory Egg",
           "rarity": "Divine",
           "clicks": "3.6Qd",
           "variants": [
@@ -2956,7 +2956,7 @@
         {
           "slug": "dark-host",
           "name": "Dark Host",
-          "egg": "Black Hole",
+          "egg": "Black Hole Egg",
           "rarity": "Mythical",
           "clicks": "4.8Qd",
           "variants": [
@@ -2969,7 +2969,7 @@
         {
           "slug": "mars-tornado",
           "name": "Mars Tornado",
-          "egg": "Mars Colony",
+          "egg": "Mars Colony Egg",
           "rarity": "Secret",
           "clicks": "5.6Qd",
           "variants": [
@@ -2982,7 +2982,7 @@
         {
           "slug": "moon-protector",
           "name": "Moon Protector",
-          "egg": "Glacier Moon",
+          "egg": "Glacier Moon Egg",
           "rarity": "Divine",
           "clicks": "7.2Qd",
           "variants": [
@@ -2995,7 +2995,7 @@
         {
           "slug": "star-warden",
           "name": "Star Warden",
-          "egg": "Starfall Valley",
+          "egg": "Starfall Valley Egg",
           "rarity": "Secret",
           "clicks": "12Qd",
           "variants": [
@@ -3008,7 +3008,7 @@
         {
           "slug": "mars-immortal",
           "name": "Mars Immortal",
-          "egg": "Mars Colony",
+          "egg": "Mars Colony Egg",
           "rarity": "Divine",
           "clicks": "14.4Qd",
           "variants": [
@@ -3021,7 +3021,7 @@
         {
           "slug": "void-seer",
           "name": "Void Seer",
-          "egg": "Black Hole",
+          "egg": "Black Hole Egg",
           "rarity": "Eternal",
           "clicks": "22Qd",
           "variants": [
@@ -3034,7 +3034,7 @@
         {
           "slug": "star-emperor",
           "name": "Star Emperor",
-          "egg": "Starfall Valley",
+          "egg": "Starfall Valley Egg",
           "rarity": "Divine",
           "clicks": "30Qd",
           "variants": [
@@ -3047,7 +3047,7 @@
         {
           "slug": "space-devourer",
           "name": "Space Devourer",
-          "egg": "Black Hole",
+          "egg": "Black Hole Egg",
           "rarity": "Secret",
           "clicks": "100Qd",
           "variants": [
@@ -3060,7 +3060,7 @@
         {
           "slug": "nova-singularity",
           "name": "Nova Singularity",
-          "egg": "Black Hole",
+          "egg": "Black Hole Egg",
           "rarity": "Divine",
           "clicks": "250Qd",
           "variants": [
@@ -3086,7 +3086,7 @@
         {
           "slug": "underground-phoenix",
           "name": "Underground Phoenix",
-          "egg": "Bat",
+          "egg": "Bat Egg",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
@@ -3118,7 +3118,7 @@
         {
           "slug": "starfish",
           "name": "Starfish",
-          "egg": "Fish",
+          "egg": "Fish Egg",
           "rarity": "Common",
           "clicks": "150T",
           "variants": [
@@ -3131,7 +3131,7 @@
         {
           "slug": "moorish-idol",
           "name": "Moorish idol",
-          "egg": "Fish",
+          "egg": "Fish Egg",
           "rarity": "Uncommon",
           "clicks": "200T",
           "variants": [
@@ -3144,7 +3144,7 @@
         {
           "slug": "goldfish",
           "name": "Goldfish",
-          "egg": "Fish",
+          "egg": "Fish Egg",
           "rarity": "Rare",
           "clicks": "250T",
           "variants": [
@@ -3157,7 +3157,7 @@
         {
           "slug": "shark",
           "name": "Shark",
-          "egg": "Underwater",
+          "egg": "Underwater Egg",
           "rarity": "Rare",
           "clicks": "500T",
           "variants": [
@@ -3170,7 +3170,7 @@
         {
           "slug": "sky-bunny",
           "name": "Sky Bunny",
-          "egg": "Skylands",
+          "egg": "Skylands Egg",
           "rarity": "Rare",
           "clicks": "600T",
           "variants": [
@@ -3183,7 +3183,7 @@
         {
           "slug": "clownfish",
           "name": "Clownfish",
-          "egg": "Fish",
+          "egg": "Fish Egg",
           "rarity": "Epic",
           "clicks": "750T",
           "variants": [
@@ -3196,7 +3196,7 @@
         {
           "slug": "cloud-golem",
           "name": "Cloud Golem",
-          "egg": "Skylands",
+          "egg": "Skylands Egg",
           "rarity": "Epic",
           "clicks": "1Qd",
           "variants": [
@@ -3209,7 +3209,7 @@
         {
           "slug": "jellyfish",
           "name": "Jellyfish",
-          "egg": "Underwater",
+          "egg": "Underwater Egg",
           "rarity": "Epic",
           "clicks": "1Qd",
           "variants": [
@@ -3222,7 +3222,7 @@
         {
           "slug": "sky-serpent",
           "name": "Sky Serpent",
-          "egg": "Skylands",
+          "egg": "Skylands Egg",
           "rarity": "Legendary",
           "clicks": "2Qd",
           "variants": [
@@ -3235,7 +3235,7 @@
         {
           "slug": "flower-bunny",
           "name": "Flower Bunny",
-          "egg": "Sky Garden",
+          "egg": "Sky Garden Egg",
           "rarity": "Rare",
           "clicks": "2.4Qd",
           "variants": [
@@ -3248,7 +3248,7 @@
         {
           "slug": "swordfish",
           "name": "Swordfish",
-          "egg": "Underwater",
+          "egg": "Underwater Egg",
           "rarity": "Legendary",
           "clicks": "3Qd",
           "variants": [
@@ -3261,7 +3261,7 @@
         {
           "slug": "bloom-heart",
           "name": "Bloom Heart",
-          "egg": "Sky Garden",
+          "egg": "Sky Garden Egg",
           "rarity": "Epic",
           "clicks": "4Qd",
           "variants": [
@@ -3274,7 +3274,7 @@
         {
           "slug": "petal-dragon",
           "name": "Petal Dragon",
-          "egg": "Sky Garden",
+          "egg": "Sky Garden Egg",
           "rarity": "Legendary",
           "clicks": "8Qd",
           "variants": [
@@ -3287,7 +3287,7 @@
         {
           "slug": "windy-dragon",
           "name": "Windy Dragon",
-          "egg": "Skylands",
+          "egg": "Skylands Egg",
           "rarity": "Mythical",
           "clicks": "10Qd",
           "variants": [
@@ -3300,7 +3300,7 @@
         {
           "slug": "clownfish-dragon",
           "name": "Clownfish Dragon",
-          "egg": "Underwater",
+          "egg": "Underwater Egg",
           "rarity": "Mythical",
           "clicks": "15Qd",
           "variants": [
@@ -3313,7 +3313,7 @@
         {
           "slug": "flower-wyvern",
           "name": "Flower Wyvern",
-          "egg": "Sky Garden",
+          "egg": "Sky Garden Egg",
           "rarity": "Mythical",
           "clicks": "40Qd",
           "variants": [
@@ -3326,7 +3326,7 @@
         {
           "slug": "sky-overlord",
           "name": "Sky Overlord",
-          "egg": "Skylands",
+          "egg": "Skylands Egg",
           "rarity": "Eternal",
           "clicks": "45Qd",
           "variants": [
@@ -3339,7 +3339,7 @@
         {
           "slug": "sunken-treasure",
           "name": "Sunken Treasure",
-          "egg": "Underwater",
+          "egg": "Underwater Egg",
           "rarity": "Eternal",
           "clicks": "50Qd",
           "variants": [
@@ -3352,7 +3352,7 @@
         {
           "slug": "happy-cloud",
           "name": "Happy Cloud",
-          "egg": "Cloudy World",
+          "egg": "Cloudy World Egg",
           "rarity": "Rare",
           "clicks": "80Qd",
           "variants": [
@@ -3365,7 +3365,7 @@
         {
           "slug": "storm-cloud",
           "name": "Storm Cloud",
-          "egg": "Cloudy World",
+          "egg": "Cloudy World Egg",
           "rarity": "Epic",
           "clicks": "125Qd",
           "variants": [
@@ -3378,7 +3378,7 @@
         {
           "slug": "ashen-golem",
           "name": "Ashen Golem",
-          "egg": "Ashwind Realm",
+          "egg": "Ashwind Realm Egg",
           "rarity": "Rare",
           "clicks": "160Qd",
           "variants": [
@@ -3391,7 +3391,7 @@
         {
           "slug": "petal-spirit",
           "name": "Petal Spirit",
-          "egg": "Sky Garden",
+          "egg": "Sky Garden Egg",
           "rarity": "Eternal",
           "clicks": "180Qd",
           "variants": [
@@ -3404,7 +3404,7 @@
         {
           "slug": "pegasus",
           "name": "Pegasus",
-          "egg": "Skylands",
+          "egg": "Skylands Egg",
           "rarity": "Secret",
           "clicks": "200Qd",
           "variants": [
@@ -3417,7 +3417,7 @@
         {
           "slug": "fire-hexagon",
           "name": "Fire Hexagon",
-          "egg": "Ashwind Realm",
+          "egg": "Ashwind Realm Egg",
           "rarity": "Epic",
           "clicks": "250Qd",
           "variants": [
@@ -3430,7 +3430,7 @@
         {
           "slug": "cloudy-dragon",
           "name": "Cloudy Dragon",
-          "egg": "Cloudy World",
+          "egg": "Cloudy World Egg",
           "rarity": "Legendary",
           "clicks": "250Qd",
           "variants": [
@@ -3443,7 +3443,7 @@
         {
           "slug": "sunken-ring",
           "name": "Sunken Ring",
-          "egg": "Treasure",
+          "egg": "Treasure Egg",
           "rarity": "Rare",
           "clicks": "300Qd",
           "variants": [
@@ -3456,7 +3456,7 @@
         {
           "slug": "frozen-bear",
           "name": "Frozen Bear",
-          "egg": "Frozen Forest",
+          "egg": "Frozen Forest Egg",
           "rarity": "Rare",
           "clicks": "320Qd",
           "variants": [
@@ -3469,7 +3469,7 @@
         {
           "slug": "diamond-butterfly",
           "name": "Diamond Butterfly",
-          "egg": "Treasure",
+          "egg": "Treasure Egg",
           "rarity": "Epic",
           "clicks": "400Qd",
           "variants": [
@@ -3482,7 +3482,7 @@
         {
           "slug": "gryphon",
           "name": "Gryphon",
-          "egg": "Skylands",
+          "egg": "Skylands Egg",
           "rarity": "Divine",
           "clicks": "500Qd",
           "variants": [
@@ -3495,7 +3495,7 @@
         {
           "slug": "blaze-dragon",
           "name": "Blaze Dragon",
-          "egg": "Ashwind Realm",
+          "egg": "Ashwind Realm Egg",
           "rarity": "Legendary",
           "clicks": "500Qd",
           "variants": [
@@ -3508,7 +3508,7 @@
         {
           "slug": "frozen-fox",
           "name": "Frozen Fox",
-          "egg": "Frozen Forest",
+          "egg": "Frozen Forest Egg",
           "rarity": "Epic",
           "clicks": "500Qd",
           "variants": [
@@ -3521,7 +3521,7 @@
         {
           "slug": "ancient-soul",
           "name": "Ancient Soul",
-          "egg": "Ancient Ruins",
+          "egg": "Ancient Ruins Egg",
           "rarity": "Rare",
           "clicks": "640Qd",
           "variants": [
@@ -3534,7 +3534,7 @@
         {
           "slug": "bloom-seraph",
           "name": "Bloom Seraph",
-          "egg": "Sky Garden",
+          "egg": "Sky Garden Egg",
           "rarity": "Secret",
           "clicks": "800Qd",
           "variants": [
@@ -3547,7 +3547,7 @@
         {
           "slug": "treasure-crab",
           "name": "Treasure Crab",
-          "egg": "Treasure",
+          "egg": "Treasure Egg",
           "rarity": "Legendary",
           "clicks": "800Qd",
           "variants": [
@@ -3560,7 +3560,7 @@
         {
           "slug": "stone-golem",
           "name": "Stone Golem",
-          "egg": "Ancient Ruins",
+          "egg": "Ancient Ruins Egg",
           "rarity": "Epic",
           "clicks": "1Qn",
           "variants": [
@@ -3573,7 +3573,7 @@
         {
           "slug": "frozen-deer",
           "name": "Frozen Deer",
-          "egg": "Frozen Forest",
+          "egg": "Frozen Forest Egg",
           "rarity": "Legendary",
           "clicks": "1Qn",
           "variants": [
@@ -3586,7 +3586,7 @@
         {
           "slug": "monochrome-slime",
           "name": "Monochrome Slime",
-          "egg": "Monochrome World",
+          "egg": "Monochrome World Egg",
           "rarity": "Rare",
           "clicks": "1.25Qn",
           "variants": [
@@ -3599,7 +3599,7 @@
         {
           "slug": "sun-shock",
           "name": "Sun Shock",
-          "egg": "Cloudy World",
+          "egg": "Cloudy World Egg",
           "rarity": "Mythical",
           "clicks": "1.25Qn",
           "variants": [
@@ -3612,7 +3612,7 @@
         {
           "slug": "flora-guardian",
           "name": "Flora Guardian",
-          "egg": "Sky Garden",
+          "egg": "Sky Garden Egg",
           "rarity": "Divine",
           "clicks": "2Qn",
           "variants": [
@@ -3625,7 +3625,7 @@
         {
           "slug": "moss-heart",
           "name": "Moss Heart",
-          "egg": "Ancient Ruins",
+          "egg": "Ancient Ruins Egg",
           "rarity": "Legendary",
           "clicks": "2Qn",
           "variants": [
@@ -3638,7 +3638,7 @@
         {
           "slug": "monochrome-heart",
           "name": "Monochrome Heart",
-          "egg": "Monochrome World",
+          "egg": "Monochrome World Egg",
           "rarity": "Epic",
           "clicks": "2Qn",
           "variants": [
@@ -3651,7 +3651,7 @@
         {
           "slug": "rocky-ember",
           "name": "Rocky Ember",
-          "egg": "Ashwind Realm",
+          "egg": "Ashwind Realm Egg",
           "rarity": "Mythical",
           "clicks": "2.5Qn",
           "variants": [
@@ -3664,7 +3664,7 @@
         {
           "slug": "coin-dragon",
           "name": "Coin Dragon",
-          "egg": "Treasure",
+          "egg": "Treasure Egg",
           "rarity": "Mythical",
           "clicks": "4Qn",
           "variants": [
@@ -3677,7 +3677,7 @@
         {
           "slug": "monochrome-dragon",
           "name": "Monochrome Dragon",
-          "egg": "Monochrome World",
+          "egg": "Monochrome World Egg",
           "rarity": "Legendary",
           "clicks": "4Qn",
           "variants": [
@@ -3690,7 +3690,7 @@
         {
           "slug": "blizzard-orb",
           "name": "Blizzard Orb",
-          "egg": "Frozen Forest",
+          "egg": "Frozen Forest Egg",
           "rarity": "Mythical",
           "clicks": "5Qn",
           "variants": [
@@ -3703,7 +3703,7 @@
         {
           "slug": "thunder-guardian",
           "name": "Thunder Guardian",
-          "egg": "Cloudy World",
+          "egg": "Cloudy World Egg",
           "rarity": "Eternal",
           "clicks": "6Qn",
           "variants": [
@@ -3716,7 +3716,7 @@
         {
           "slug": "cactus-golem",
           "name": "Cactus Golem",
-          "egg": "Wild West",
+          "egg": "Wild West Egg",
           "rarity": "Rare",
           "clicks": "10Qn",
           "variants": [
@@ -3729,7 +3729,7 @@
         {
           "slug": "stone-dragon",
           "name": "Stone Dragon",
-          "egg": "Ancient Ruins",
+          "egg": "Ancient Ruins Egg",
           "rarity": "Mythical",
           "clicks": "10Qn",
           "variants": [
@@ -3742,7 +3742,7 @@
         {
           "slug": "fire-knight",
           "name": "Fire Knight",
-          "egg": "Ashwind Realm",
+          "egg": "Ashwind Realm Egg",
           "rarity": "Eternal",
           "clicks": "12Qn",
           "variants": [
@@ -3755,7 +3755,7 @@
         {
           "slug": "mr-cactus",
           "name": "Mr. Cactus",
-          "egg": "Wild West",
+          "egg": "Wild West Egg",
           "rarity": "Epic",
           "clicks": "16Qn",
           "variants": [
@@ -3768,7 +3768,7 @@
         {
           "slug": "happy-bee",
           "name": "Happy Bee",
-          "egg": "Bee World",
+          "egg": "Bee World Egg",
           "rarity": "Rare",
           "clicks": "20Qn",
           "variants": [
@@ -3781,7 +3781,7 @@
         {
           "slug": "monochrome-samurai",
           "name": "Monochrome Samurai",
-          "egg": "Monochrome World",
+          "egg": "Monochrome World Egg",
           "rarity": "Mythical",
           "clicks": "20Qn",
           "variants": [
@@ -3794,7 +3794,7 @@
         {
           "slug": "snow-dragon",
           "name": "Snow Dragon",
-          "egg": "Frozen Forest",
+          "egg": "Frozen Forest Egg",
           "rarity": "Eternal",
           "clicks": "24Qn",
           "variants": [
@@ -3807,7 +3807,7 @@
         {
           "slug": "windy-eagle",
           "name": "Windy Eagle",
-          "egg": "Cloudy World",
+          "egg": "Cloudy World Egg",
           "rarity": "Secret",
           "clicks": "26Qn",
           "variants": [
@@ -3820,7 +3820,7 @@
         {
           "slug": "cowboy-dragon",
           "name": "Cowboy Dragon",
-          "egg": "Wild West",
+          "egg": "Wild West Egg",
           "rarity": "Legendary",
           "clicks": "32Qn",
           "variants": [
@@ -3833,7 +3833,7 @@
         {
           "slug": "bees-trio",
           "name": "Bees Trio",
-          "egg": "Bee World",
+          "egg": "Bee World Egg",
           "rarity": "Epic",
           "clicks": "32Qn",
           "variants": [
@@ -3846,7 +3846,7 @@
         {
           "slug": "sapphire-immortal",
           "name": "Sapphire Immortal",
-          "egg": "Treasure",
+          "egg": "Treasure Egg",
           "rarity": "Eternal",
           "clicks": "40Qn",
           "variants": [
@@ -3859,7 +3859,7 @@
         {
           "slug": "neon-cat",
           "name": "Neon Cat",
-          "egg": "Neon World",
+          "egg": "Neon World Egg",
           "rarity": "Rare",
           "clicks": "40Qn",
           "variants": [
@@ -3872,7 +3872,7 @@
         {
           "slug": "ruins-guardian",
           "name": "Ruins Guardian",
-          "egg": "Ancient Ruins",
+          "egg": "Ancient Ruins Egg",
           "rarity": "Eternal",
           "clicks": "48Qn",
           "variants": [
@@ -3885,7 +3885,7 @@
         {
           "slug": "ashen-wyvern",
           "name": "Ashen Wyvern",
-          "egg": "Ashwind Realm",
+          "egg": "Ashwind Realm Egg",
           "rarity": "Secret",
           "clicks": "50Qn",
           "variants": [
@@ -3898,7 +3898,7 @@
         {
           "slug": "sky-phoenix",
           "name": "Sky Phoenix",
-          "egg": "Cloudy World",
+          "egg": "Cloudy World Egg",
           "rarity": "Divine",
           "clicks": "64Qn",
           "variants": [
@@ -3911,7 +3911,7 @@
         {
           "slug": "honey-shock",
           "name": "Honey Shock",
-          "egg": "Bee World",
+          "egg": "Bee World Egg",
           "rarity": "Legendary",
           "clicks": "64Qn",
           "variants": [
@@ -3924,7 +3924,7 @@
         {
           "slug": "neon-alien",
           "name": "Neon Alien",
-          "egg": "Neon World",
+          "egg": "Neon World Egg",
           "rarity": "Epic",
           "clicks": "64Qn",
           "variants": [
@@ -3937,7 +3937,7 @@
         {
           "slug": "ice-monster",
           "name": "Ice Monster",
-          "egg": "Frozen Forest",
+          "egg": "Frozen Forest Egg",
           "rarity": "Secret",
           "clicks": "100Qn",
           "variants": [
@@ -3950,7 +3950,7 @@
         {
           "slug": "monochrome-wyvern",
           "name": "Monochrome Wyvern",
-          "egg": "Monochrome World",
+          "egg": "Monochrome World Egg",
           "rarity": "Eternal",
           "clicks": "100Qn",
           "variants": [
@@ -3963,7 +3963,7 @@
         {
           "slug": "blazen-lion",
           "name": "Blazen Lion",
-          "egg": "Ashwind Realm",
+          "egg": "Ashwind Realm Egg",
           "rarity": "Divine",
           "clicks": "125Qn",
           "variants": [
@@ -3976,7 +3976,7 @@
         {
           "slug": "neon-heart",
           "name": "Neon Heart",
-          "egg": "Neon World",
+          "egg": "Neon World Egg",
           "rarity": "Legendary",
           "clicks": "128Qn",
           "variants": [
@@ -3989,7 +3989,7 @@
         {
           "slug": "desert-terror",
           "name": "Desert Terror",
-          "egg": "Wild West",
+          "egg": "Wild West Egg",
           "rarity": "Mythical",
           "clicks": "160Qn",
           "variants": [
@@ -4002,7 +4002,7 @@
         {
           "slug": "ancient-overlord",
           "name": "Ancient Overlord",
-          "egg": "Ancient Ruins",
+          "egg": "Ancient Ruins Egg",
           "rarity": "Secret",
           "clicks": "200Qn",
           "variants": [
@@ -4015,7 +4015,7 @@
         {
           "slug": "frozen-owl",
           "name": "Frozen Owl",
-          "egg": "Frozen Forest",
+          "egg": "Frozen Forest Egg",
           "rarity": "Divine",
           "clicks": "250Qn",
           "variants": [
@@ -4028,7 +4028,7 @@
         {
           "slug": "thunder-cat",
           "name": "Thunder Cat",
-          "egg": "Thunder Isles",
+          "egg": "Thunder Isles Egg",
           "rarity": "Rare",
           "clicks": "320Qn",
           "variants": [
@@ -4041,7 +4041,7 @@
         {
           "slug": "hive-dragon",
           "name": "Hive Dragon",
-          "egg": "Bee World",
+          "egg": "Bee World Egg",
           "rarity": "Mythical",
           "clicks": "320Qn",
           "variants": [
@@ -4054,7 +4054,7 @@
         {
           "slug": "monochrome-fox",
           "name": "Monochrome Fox",
-          "egg": "Monochrome World",
+          "egg": "Monochrome World Egg",
           "rarity": "Secret",
           "clicks": "425Qn",
           "variants": [
@@ -4067,7 +4067,7 @@
         {
           "slug": "elder-titan",
           "name": "Elder Titan",
-          "egg": "Ancient Ruins",
+          "egg": "Ancient Ruins Egg",
           "rarity": "Divine",
           "clicks": "500Qn",
           "variants": [
@@ -4080,7 +4080,7 @@
         {
           "slug": "storm-bunny",
           "name": "Storm Bunny",
-          "egg": "Thunder Isles",
+          "egg": "Thunder Isles Egg",
           "rarity": "Epic",
           "clicks": "512Qn",
           "variants": [
@@ -4093,7 +4093,7 @@
         {
           "slug": "flowing-blaze",
           "name": "Flowing Blaze",
-          "egg": "Ashwind Realm",
+          "egg": "Ashwind Realm Egg",
           "rarity": "Mysterious",
           "clicks": "600Qn",
           "variants": [
@@ -4106,7 +4106,7 @@
         {
           "slug": "neon-hexagon",
           "name": "Neon Hexagon",
-          "egg": "Neon World",
+          "egg": "Neon World Egg",
           "rarity": "Mythical",
           "clicks": "640Qn",
           "variants": [
@@ -4119,7 +4119,7 @@
         {
           "slug": "cactus-cowboy",
           "name": "Cactus Cowboy",
-          "egg": "Wild West",
+          "egg": "Wild West Egg",
           "rarity": "Eternal",
           "clicks": "800Qn",
           "variants": [
@@ -4132,7 +4132,7 @@
         {
           "slug": "thunder-dragon",
           "name": "Thunder Dragon",
-          "egg": "Thunder Isles",
+          "egg": "Thunder Isles Egg",
           "rarity": "Legendary",
           "clicks": "1Sx",
           "variants": [
@@ -4145,7 +4145,7 @@
         {
           "slug": "blizzard-titan",
           "name": "Blizzard Titan",
-          "egg": "Frozen Forest",
+          "egg": "Frozen Forest Egg",
           "rarity": "Mysterious",
           "clicks": "1.2Sx",
           "variants": [
@@ -4158,7 +4158,7 @@
         {
           "slug": "monochrome-hydra",
           "name": "Monochrome Hydra",
-          "egg": "Monochrome World",
+          "egg": "Monochrome World Egg",
           "rarity": "Divine",
           "clicks": "1.2Sx",
           "variants": [
@@ -4171,7 +4171,7 @@
         {
           "slug": "bee-overlord",
           "name": "Bee Overlord",
-          "egg": "Bee World",
+          "egg": "Bee World Egg",
           "rarity": "Eternal",
           "clicks": "1.6Sx",
           "variants": [
@@ -4184,7 +4184,7 @@
         {
           "slug": "ancient-king",
           "name": "Ancient King",
-          "egg": "Ancient Ruins",
+          "egg": "Ancient Ruins Egg",
           "rarity": "Mysterious",
           "clicks": "2.4Sx",
           "variants": [
@@ -4197,7 +4197,7 @@
         {
           "slug": "ruins-axolotl",
           "name": "Ruins Axolotl",
-          "egg": "Sunken Temple",
+          "egg": "Sunken Temple Egg",
           "rarity": "Rare",
           "clicks": "2.5Sx",
           "variants": [
@@ -4210,7 +4210,7 @@
         {
           "slug": "neon-overlord",
           "name": "Neon Overlord",
-          "egg": "Neon World",
+          "egg": "Neon World Egg",
           "rarity": "Eternal",
           "clicks": "3.2Sx",
           "variants": [
@@ -4223,7 +4223,7 @@
         {
           "slug": "rider-s-prodigy",
           "name": "Rider's Prodigy",
-          "egg": "Wild West",
+          "egg": "Wild West Egg",
           "rarity": "Secret",
           "clicks": "3.4Sx",
           "variants": [
@@ -4236,7 +4236,7 @@
         {
           "slug": "ancient-koi",
           "name": "Ancient Koi",
-          "egg": "Sunken Temple",
+          "egg": "Sunken Temple Egg",
           "rarity": "Epic",
           "clicks": "4Sx",
           "variants": [
@@ -4249,7 +4249,7 @@
         {
           "slug": "monochrome-beast",
           "name": "Monochrome Beast",
-          "egg": "Monochrome World",
+          "egg": "Monochrome World Egg",
           "rarity": "Mysterious",
           "clicks": "5Sx",
           "variants": [
@@ -4262,7 +4262,7 @@
         {
           "slug": "spark-owl",
           "name": "Spark Owl",
-          "egg": "Thunder Isles",
+          "egg": "Thunder Isles Egg",
           "rarity": "Mythical",
           "clicks": "5.2Sx",
           "variants": [
@@ -4275,7 +4275,7 @@
         {
           "slug": "underwater-mimic",
           "name": "Underwater Mimic",
-          "egg": "Sunken Temple",
+          "egg": "Sunken Temple Egg",
           "rarity": "Legendary",
           "clicks": "8Sx",
           "variants": [
@@ -4288,7 +4288,7 @@
         {
           "slug": "hive-guardian",
           "name": "Hive Guardian",
-          "egg": "Bee World",
+          "egg": "Bee World Egg",
           "rarity": "Secret",
           "clicks": "8.5Sx",
           "variants": [
@@ -4301,7 +4301,7 @@
         {
           "slug": "brazen-bull",
           "name": "Brazen Bull",
-          "egg": "Wild West",
+          "egg": "Wild West Egg",
           "rarity": "Divine",
           "clicks": "9.6Sx",
           "variants": [
@@ -4314,7 +4314,7 @@
         {
           "slug": "root-bunny",
           "name": "Root Bunny",
-          "egg": "Swamp World",
+          "egg": "Swamp World Egg",
           "rarity": "Rare",
           "clicks": "10Sx",
           "variants": [
@@ -4327,7 +4327,7 @@
         {
           "slug": "swamp-snail",
           "name": "Swamp Snail",
-          "egg": "Swamp World",
+          "egg": "Swamp World Egg",
           "rarity": "Epic",
           "clicks": "16Sx",
           "variants": [
@@ -4340,7 +4340,7 @@
         {
           "slug": "neon-phantom",
           "name": "Neon Phantom",
-          "egg": "Neon World",
+          "egg": "Neon World Egg",
           "rarity": "Secret",
           "clicks": "17Sx",
           "variants": [
@@ -4353,7 +4353,7 @@
         {
           "slug": "crystal-fox",
           "name": "Crystal Fox",
-          "egg": "Crystal Islands",
+          "egg": "Crystal Islands Egg",
           "rarity": "Rare",
           "clicks": "20Sx",
           "variants": [
@@ -4366,7 +4366,7 @@
         {
           "slug": "thunder-overlord",
           "name": "Thunder Overlord",
-          "egg": "Thunder Isles",
+          "egg": "Thunder Isles Egg",
           "rarity": "Eternal",
           "clicks": "26Sx",
           "variants": [
@@ -4379,7 +4379,7 @@
         {
           "slug": "honey-titan",
           "name": "Honey Titan",
-          "egg": "Bee World",
+          "egg": "Bee World Egg",
           "rarity": "Divine",
           "clicks": "28.8Sx",
           "variants": [
@@ -4392,7 +4392,7 @@
         {
           "slug": "crystal-panda",
           "name": "Crystal Panda",
-          "egg": "Crystal Islands",
+          "egg": "Crystal Islands Egg",
           "rarity": "Epic",
           "clicks": "32Sx",
           "variants": [
@@ -4405,7 +4405,7 @@
         {
           "slug": "slime-heart",
           "name": "Slime Heart",
-          "egg": "Swamp World",
+          "egg": "Swamp World Egg",
           "rarity": "Legendary",
           "clicks": "32Sx",
           "variants": [
@@ -4418,7 +4418,7 @@
         {
           "slug": "blossom-cat",
           "name": "Blossom Cat",
-          "egg": "Blossom Clouds",
+          "egg": "Blossom Clouds Egg",
           "rarity": "Rare",
           "clicks": "40Sx",
           "variants": [
@@ -4431,7 +4431,7 @@
         {
           "slug": "ancient-crab",
           "name": "Ancient Crab",
-          "egg": "Sunken Temple",
+          "egg": "Sunken Temple Egg",
           "rarity": "Mythical",
           "clicks": "42Sx",
           "variants": [
@@ -4444,7 +4444,7 @@
         {
           "slug": "neon-robot",
           "name": "Neon Robot",
-          "egg": "Neon World",
+          "egg": "Neon World Egg",
           "rarity": "Divine",
           "clicks": "57.6Sx",
           "variants": [
@@ -4457,7 +4457,7 @@
         {
           "slug": "western-dread",
           "name": "Western Dread",
-          "egg": "Wild West",
+          "egg": "Wild West Egg",
           "rarity": "Mysterious",
           "clicks": "60Sx",
           "variants": [
@@ -4470,7 +4470,7 @@
         {
           "slug": "sakura-deer",
           "name": "Sakura Deer",
-          "egg": "Blossom Clouds",
+          "egg": "Blossom Clouds Egg",
           "rarity": "Epic",
           "clicks": "64Sx",
           "variants": [
@@ -4483,7 +4483,7 @@
         {
           "slug": "happy-crystal",
           "name": "Happy Crystal",
-          "egg": "Crystal Islands",
+          "egg": "Crystal Islands Egg",
           "rarity": "Legendary",
           "clicks": "64Sx",
           "variants": [
@@ -4496,7 +4496,7 @@
         {
           "slug": "empress-bee",
           "name": "Empress Bee",
-          "egg": "Bee World",
+          "egg": "Bee World Egg",
           "rarity": "Mysterious",
           "clicks": "120Sx",
           "variants": [
@@ -4509,7 +4509,7 @@
         {
           "slug": "sakura-bat",
           "name": "Sakura Bat",
-          "egg": "Blossom Clouds",
+          "egg": "Blossom Clouds Egg",
           "rarity": "Legendary",
           "clicks": "125Sx",
           "variants": [
@@ -4522,7 +4522,7 @@
         {
           "slug": "volt-phoenix",
           "name": "Volt Phoenix",
-          "egg": "Thunder Isles",
+          "egg": "Thunder Isles Egg",
           "rarity": "Secret",
           "clicks": "140Sx",
           "variants": [
@@ -4535,7 +4535,7 @@
         {
           "slug": "mushroom-dragon",
           "name": "Mushroom Dragon",
-          "egg": "Swamp World",
+          "egg": "Swamp World Egg",
           "rarity": "Mythical",
           "clicks": "170Sx",
           "variants": [
@@ -4548,7 +4548,7 @@
         {
           "slug": "temple-dragon",
           "name": "Temple Dragon",
-          "egg": "Sunken Temple",
+          "egg": "Sunken Temple Egg",
           "rarity": "Eternal",
           "clicks": "210Sx",
           "variants": [
@@ -4561,7 +4561,7 @@
         {
           "slug": "neon-monarch",
           "name": "Neon Monarch",
-          "egg": "Neon World",
+          "egg": "Neon World Egg",
           "rarity": "Mysterious",
           "clicks": "240Sx",
           "variants": [
@@ -4574,7 +4574,7 @@
         {
           "slug": "crystal-heart",
           "name": "Crystal Heart",
-          "egg": "Crystal Islands",
+          "egg": "Crystal Islands Egg",
           "rarity": "Mythical",
           "clicks": "340Sx",
           "variants": [
@@ -4587,7 +4587,7 @@
         {
           "slug": "aurora-fox",
           "name": "Aurora Fox",
-          "egg": "Aurora World",
+          "egg": "Aurora World Egg",
           "rarity": "Rare",
           "clicks": "400Sx",
           "variants": [
@@ -4600,7 +4600,7 @@
         {
           "slug": "storm-titan",
           "name": "Storm Titan",
-          "egg": "Thunder Isles",
+          "egg": "Thunder Isles Egg",
           "rarity": "Divine",
           "clicks": "470Sx",
           "variants": [
@@ -4613,7 +4613,7 @@
         {
           "slug": "aurora-wolf",
           "name": "Aurora Wolf",
-          "egg": "Aurora World",
+          "egg": "Aurora World Egg",
           "rarity": "Epic",
           "clicks": "500Sx",
           "variants": [
@@ -4626,7 +4626,7 @@
         {
           "slug": "blossom-dragon",
           "name": "Blossom Dragon",
-          "egg": "Blossom Clouds",
+          "egg": "Blossom Clouds Egg",
           "rarity": "Mythical",
           "clicks": "680Sx",
           "variants": [
@@ -4639,7 +4639,7 @@
         {
           "slug": "obsidian-golem",
           "name": "Obsidian Golem",
-          "egg": "Obsidian Spires",
+          "egg": "Obsidian Spires Egg",
           "rarity": "Rare",
           "clicks": "800Sx",
           "variants": [
@@ -4652,7 +4652,7 @@
         {
           "slug": "frog-king",
           "name": "Frog King",
-          "egg": "Swamp World",
+          "egg": "Swamp World Egg",
           "rarity": "Eternal",
           "clicks": "840Sx",
           "variants": [
@@ -4665,7 +4665,7 @@
         {
           "slug": "aurora-wisp",
           "name": "Aurora Wisp",
-          "egg": "Aurora World",
+          "egg": "Aurora World Egg",
           "rarity": "Legendary",
           "clicks": "1Sp",
           "variants": [
@@ -4678,7 +4678,7 @@
         {
           "slug": "obsidian-raven",
           "name": "Obsidian Raven",
-          "egg": "Obsidian Spires",
+          "egg": "Obsidian Spires Egg",
           "rarity": "Epic",
           "clicks": "1Sp",
           "variants": [
@@ -4691,7 +4691,7 @@
         {
           "slug": "reef-sphinx",
           "name": "Reef Sphinx",
-          "egg": "Sunken Temple",
+          "egg": "Sunken Temple Egg",
           "rarity": "Secret",
           "clicks": "1.2Sp",
           "variants": [
@@ -4704,7 +4704,7 @@
         {
           "slug": "bamboo-bunny",
           "name": "Bamboo Bunny",
-          "egg": "Samurai World",
+          "egg": "Samurai World Egg",
           "rarity": "Rare",
           "clicks": "1.6Sp",
           "variants": [
@@ -4717,7 +4717,7 @@
         {
           "slug": "crystal-orb",
           "name": "Crystal Orb",
-          "egg": "Crystal Islands",
+          "egg": "Crystal Islands Egg",
           "rarity": "Eternal",
           "clicks": "1.7Sp",
           "variants": [
@@ -4730,7 +4730,7 @@
         {
           "slug": "bamboo-panda",
           "name": "Bamboo Panda",
-          "egg": "Samurai World",
+          "egg": "Samurai World Egg",
           "rarity": "Epic",
           "clicks": "2Sp",
           "variants": [
@@ -4743,7 +4743,7 @@
         {
           "slug": "obsidian-skull",
           "name": "Obsidian Skull",
-          "egg": "Obsidian Spires",
+          "egg": "Obsidian Spires Egg",
           "rarity": "Legendary",
           "clicks": "2Sp",
           "variants": [
@@ -4756,7 +4756,7 @@
         {
           "slug": "cotton-candy-spirit",
           "name": "Cotton Candy Spirit",
-          "egg": "Blossom Clouds",
+          "egg": "Blossom Clouds Egg",
           "rarity": "Eternal",
           "clicks": "3.4Sp",
           "variants": [
@@ -4769,7 +4769,7 @@
         {
           "slug": "lighting-hydra",
           "name": "Lighting Hydra",
-          "egg": "Thunder Isles",
+          "egg": "Thunder Isles Egg",
           "rarity": "Mysterious",
           "clicks": "4Sp",
           "variants": [
@@ -4782,7 +4782,7 @@
         {
           "slug": "abyssal-guardian",
           "name": "Abyssal Guardian",
-          "egg": "Sunken Temple",
+          "egg": "Sunken Temple Egg",
           "rarity": "Divine",
           "clicks": "4Sp",
           "variants": [
@@ -4795,7 +4795,7 @@
         {
           "slug": "koi-dragon",
           "name": "Koi Dragon",
-          "egg": "Samurai World",
+          "egg": "Samurai World Egg",
           "rarity": "Legendary",
           "clicks": "4Sp",
           "variants": [
@@ -4808,7 +4808,7 @@
         {
           "slug": "moss-guardian",
           "name": "Moss Guardian",
-          "egg": "Swamp World",
+          "egg": "Swamp World Egg",
           "rarity": "Secret",
           "clicks": "5Sp",
           "variants": [
@@ -4821,7 +4821,7 @@
         {
           "slug": "aurora-dragon",
           "name": "Aurora Dragon",
-          "egg": "Aurora World",
+          "egg": "Aurora World Egg",
           "rarity": "Mythical",
           "clicks": "5.2Sp",
           "variants": [
@@ -4834,7 +4834,7 @@
         {
           "slug": "ore-monster",
           "name": "Ore Monster",
-          "egg": "Crystal Islands",
+          "egg": "Crystal Islands Egg",
           "rarity": "Secret",
           "clicks": "10Sp",
           "variants": [
@@ -4847,7 +4847,7 @@
         {
           "slug": "obsidiant-bat",
           "name": "Obsidian Bat",
-          "egg": "Obsidian Spires",
+          "egg": "Obsidian Spires Egg",
           "rarity": "Mythical",
           "clicks": "10.4Sp",
           "variants": [
@@ -4860,7 +4860,7 @@
         {
           "slug": "aether-slime",
           "name": "Aether Slime",
-          "egg": "Skyward Falls",
+          "egg": "Skyward Falls Egg",
           "rarity": "Rare",
           "clicks": "12.8Sp",
           "variants": [
@@ -4873,7 +4873,7 @@
         {
           "slug": "aether-jelly",
           "name": "Aether Jelly",
-          "egg": "Skyward Falls",
+          "egg": "Skyward Falls Egg",
           "rarity": "Epic",
           "clicks": "16Sp",
           "variants": [
@@ -4886,7 +4886,7 @@
         {
           "slug": "root-titan",
           "name": "Root Titan",
-          "egg": "Swamp World",
+          "egg": "Swamp World Egg",
           "rarity": "Divine",
           "clicks": "16Sp",
           "variants": [
@@ -4899,7 +4899,7 @@
         {
           "slug": "bloom-guardian",
           "name": "Bloom Guardian",
-          "egg": "Blossom Clouds",
+          "egg": "Blossom Clouds Egg",
           "rarity": "Secret",
           "clicks": "20Sp",
           "variants": [
@@ -4912,7 +4912,7 @@
         {
           "slug": "sakura-shock",
           "name": "Sakura Shock",
-          "egg": "Samurai World",
+          "egg": "Samurai World Egg",
           "rarity": "Mythical",
           "clicks": "21Sp",
           "variants": [
@@ -4925,7 +4925,7 @@
         {
           "slug": "temple-leviathan",
           "name": "Temple Leviathan",
-          "egg": "Sunken Temple",
+          "egg": "Sunken Temple Egg",
           "rarity": "Mysterious",
           "clicks": "25Sp",
           "variants": [
@@ -4938,7 +4938,7 @@
         {
           "slug": "aurora-star",
           "name": "Aurora Star",
-          "egg": "Aurora World",
+          "egg": "Aurora World Egg",
           "rarity": "Eternal",
           "clicks": "28Sp",
           "variants": [
@@ -4951,7 +4951,7 @@
         {
           "slug": "aether-golem",
           "name": "Aether Golem",
-          "egg": "Skyward Falls",
+          "egg": "Skyward Falls Egg",
           "rarity": "Legendary",
           "clicks": "32Sp",
           "variants": [
@@ -4964,7 +4964,7 @@
         {
           "slug": "crystal-overlord",
           "name": "Crystal Overlord",
-          "egg": "Crystal Islands",
+          "egg": "Crystal Islands Egg",
           "rarity": "Divine",
           "clicks": "32Sp",
           "variants": [
@@ -4977,7 +4977,7 @@
         {
           "slug": "obsidian-kitsune",
           "name": "Obsidian Kitsune",
-          "egg": "Obsidian Spires",
+          "egg": "Obsidian Spires Egg",
           "rarity": "Eternal",
           "clicks": "56Sp",
           "variants": [
@@ -4990,7 +4990,7 @@
         {
           "slug": "immortal-kitsune",
           "name": "Immortal Kitsune",
-          "egg": "Blossom Clouds",
+          "egg": "Blossom Clouds Egg",
           "rarity": "Divine",
           "clicks": "70Sp",
           "variants": [
@@ -5003,7 +5003,7 @@
         {
           "slug": "slime-empress",
           "name": "Slime Empress",
-          "egg": "Swamp World",
+          "egg": "Swamp World Egg",
           "rarity": "Mysterious",
           "clicks": "100Sp",
           "variants": [
@@ -5016,7 +5016,7 @@
         {
           "slug": "bamboo-overlord",
           "name": "Bamboo Overlord",
-          "egg": "Samurai World",
+          "egg": "Samurai World Egg",
           "rarity": "Eternal",
           "clicks": "110Sp",
           "variants": [
@@ -5029,7 +5029,7 @@
         {
           "slug": "aurora-spirit",
           "name": "Aurora Spirit",
-          "egg": "Aurora World",
+          "egg": "Aurora World Egg",
           "rarity": "Secret",
           "clicks": "160Sp",
           "variants": [
@@ -5042,7 +5042,7 @@
         {
           "slug": "aether-wisp",
           "name": "Aether Wisp",
-          "egg": "Skyward Falls",
+          "egg": "Skyward Falls Egg",
           "rarity": "Mythical",
           "clicks": "168Sp",
           "variants": [
@@ -5055,7 +5055,7 @@
         {
           "slug": "crystal-seraph",
           "name": "Crystal Seraph",
-          "egg": "Crystal Islands",
+          "egg": "Crystal Islands Egg",
           "rarity": "Mysterious",
           "clicks": "200Sp",
           "variants": [
@@ -5068,7 +5068,7 @@
         {
           "slug": "obsidian-angel",
           "name": "Obsidian Angel",
-          "egg": "Obsidian Spires",
+          "egg": "Obsidian Spires Egg",
           "rarity": "Secret",
           "clicks": "320Sp",
           "variants": [
@@ -5081,7 +5081,7 @@
         {
           "slug": "blossom-deity",
           "name": "Blossom Deity",
-          "egg": "Blossom Clouds",
+          "egg": "Blossom Clouds Egg",
           "rarity": "Mysterious",
           "clicks": "400Sp",
           "variants": [
@@ -5094,7 +5094,7 @@
         {
           "slug": "aurora-warden",
           "name": "Aurora Warden",
-          "egg": "Aurora World",
+          "egg": "Aurora World Egg",
           "rarity": "Divine",
           "clicks": "560Sp",
           "variants": [
@@ -5107,7 +5107,7 @@
         {
           "slug": "jade-samurai",
           "name": "Jade Samurai",
-          "egg": "Samurai World",
+          "egg": "Samurai World Egg",
           "rarity": "Secret",
           "clicks": "640Sp",
           "variants": [
@@ -5120,7 +5120,7 @@
         {
           "slug": "waterfall-immortal",
           "name": "Waterfall Immortal",
-          "egg": "Skyward Falls",
+          "egg": "Skyward Falls Egg",
           "rarity": "Eternal",
           "clicks": "880Sp",
           "variants": [
@@ -5133,7 +5133,7 @@
         {
           "slug": "obsidian-sentinel",
           "name": "Obsidian Sentinel",
-          "egg": "Obsidian Spires",
+          "egg": "Obsidian Spires Egg",
           "rarity": "Divine",
           "clicks": "1.05O",
           "variants": [
@@ -5146,7 +5146,7 @@
         {
           "slug": "fallen-samurai",
           "name": "Fallen Samurai",
-          "egg": "Samurai World",
+          "egg": "Samurai World Egg",
           "rarity": "Divine",
           "clicks": "2.25O",
           "variants": [
@@ -5159,7 +5159,7 @@
         {
           "slug": "aurora-beast",
           "name": "Aurora Beast",
-          "egg": "Aurora World",
+          "egg": "Aurora World Egg",
           "rarity": "Mysterious",
           "clicks": "3.2O",
           "variants": [
@@ -5172,7 +5172,7 @@
         {
           "slug": "aether-shard",
           "name": "Aether Shard",
-          "egg": "Skyward Falls",
+          "egg": "Skyward Falls Egg",
           "rarity": "Secret",
           "clicks": "5.12O",
           "variants": [
@@ -5185,7 +5185,7 @@
         {
           "slug": "obsidian-titan",
           "name": "Obsidian Titan",
-          "egg": "Obsidian Spires",
+          "egg": "Obsidian Spires Egg",
           "rarity": "Mysterious",
           "clicks": "6.4O",
           "variants": [
@@ -5198,7 +5198,7 @@
         {
           "slug": "eternal-shogun",
           "name": "Eternal Shogun",
-          "egg": "Samurai World",
+          "egg": "Samurai World Egg",
           "rarity": "Mysterious",
           "clicks": "12.8O",
           "variants": [
@@ -5211,7 +5211,7 @@
         {
           "slug": "portal-guardian",
           "name": "Portal Guardian",
-          "egg": "Skyward Falls",
+          "egg": "Skyward Falls Egg",
           "rarity": "Divine",
           "clicks": "18O",
           "variants": [
@@ -5224,7 +5224,7 @@
         {
           "slug": "aether-serpent",
           "name": "Aether Serpent",
-          "egg": "Skyward Falls",
+          "egg": "Skyward Falls Egg",
           "rarity": "Mysterious",
           "clicks": "100O",
           "variants": [
@@ -5250,7 +5250,7 @@
         {
           "slug": "cloudy-bat",
           "name": "Cloudy Bat",
-          "egg": "Skyward Falls",
+          "egg": "Skyward Falls Egg",
           "rarity": "Supreme",
           "clicks": "100%",
           "variants": [
@@ -5354,7 +5354,7 @@
         {
           "slug": "treasure-guardian",
           "name": "Treasure Guardian",
-          "egg": "Treasure",
+          "egg": "Treasure Egg",
           "rarity": "Supreme",
           "clicks": "110%",
           "variants": [
@@ -5412,7 +5412,7 @@
         {
           "slug": "paradox-slime",
           "name": "Paradox Slime",
-          "egg": "Paradox Spawn",
+          "egg": "Paradox Spawn Egg",
           "rarity": "Rare",
           "clicks": "25Sp",
           "variants": [
@@ -5425,7 +5425,7 @@
         {
           "slug": "paradox-mimic",
           "name": "Paradox Mimic",
-          "egg": "Paradox Spawn",
+          "egg": "Paradox Spawn Egg",
           "rarity": "Epic",
           "clicks": "32Sp",
           "variants": [
@@ -5438,7 +5438,7 @@
         {
           "slug": "wheat-bunny",
           "name": "Wheat Bunny",
-          "egg": "Primitive Fields",
+          "egg": "Primitive Fields Egg",
           "rarity": "Rare",
           "clicks": "50Sp",
           "variants": [
@@ -5451,7 +5451,7 @@
         {
           "slug": "paradox-dragon",
           "name": "Paradox Dragon",
-          "egg": "Paradox Spawn",
+          "egg": "Paradox Spawn Egg",
           "rarity": "Legendary",
           "clicks": "64Sp",
           "variants": [
@@ -5464,7 +5464,7 @@
         {
           "slug": "straw-dragon",
           "name": "Straw Golem",
-          "egg": "Primitive Fields",
+          "egg": "Primitive Fields Egg",
           "rarity": "Epic",
           "clicks": "64Sp",
           "variants": [
@@ -5477,7 +5477,7 @@
         {
           "slug": "baby-dino",
           "name": "Baby Dino",
-          "egg": "Dino World",
+          "egg": "Dino World Egg",
           "rarity": "Rare",
           "clicks": "100Sp",
           "variants": [
@@ -5490,7 +5490,7 @@
         {
           "slug": "harvest-fox",
           "name": "Harvest Fox",
-          "egg": "Primitive Fields",
+          "egg": "Primitive Fields Egg",
           "rarity": "Legendary",
           "clicks": "128Sp",
           "variants": [
@@ -5503,7 +5503,7 @@
         {
           "slug": "dino-nest",
           "name": "Dino Nest",
-          "egg": "Dino World",
+          "egg": "Dino World Egg",
           "rarity": "Epic",
           "clicks": "128Sp",
           "variants": [
@@ -5516,7 +5516,7 @@
         {
           "slug": "dune-gecko",
           "name": "Dune Gecko",
-          "egg": "Sandy Dunes",
+          "egg": "Sandy Dunes Egg",
           "rarity": "Rare",
           "clicks": "200Sp",
           "variants": [
@@ -5529,7 +5529,7 @@
         {
           "slug": "raptor",
           "name": "Raptor",
-          "egg": "Dino World",
+          "egg": "Dino World Egg",
           "rarity": "Legendary",
           "clicks": "256Sp",
           "variants": [
@@ -5542,7 +5542,7 @@
         {
           "slug": "sand-camel",
           "name": "Sand Camel",
-          "egg": "Sandy Dunes",
+          "egg": "Sandy Dunes Egg",
           "rarity": "Epic",
           "clicks": "256Sp",
           "variants": [
@@ -5555,7 +5555,7 @@
         {
           "slug": "paradox-shock",
           "name": "Paradox Shock",
-          "egg": "Paradox Spawn",
+          "egg": "Paradox Spawn Egg",
           "rarity": "Mythical",
           "clicks": "335Sp",
           "variants": [
@@ -5568,7 +5568,7 @@
         {
           "slug": "atomic-slime",
           "name": "Atomic Slime",
-          "egg": "Atomic World",
+          "egg": "Atomic World Egg",
           "rarity": "Rare",
           "clicks": "400Sp",
           "variants": [
@@ -5581,7 +5581,7 @@
         {
           "slug": "sand-scorpion",
           "name": "Sand Scorpion",
-          "egg": "Sandy Dunes",
+          "egg": "Sandy Dunes Egg",
           "rarity": "Legendary",
           "clicks": "512Sp",
           "variants": [
@@ -5594,7 +5594,7 @@
         {
           "slug": "atomic-rat",
           "name": "Atomic Rat",
-          "egg": "Atomic World",
+          "egg": "Atomic World Egg",
           "rarity": "Epic",
           "clicks": "600Sp",
           "variants": [
@@ -5607,7 +5607,7 @@
         {
           "slug": "windmill-wisp",
           "name": "Windmill Wisp",
-          "egg": "Primitive Fields",
+          "egg": "Primitive Fields Egg",
           "rarity": "Mythical",
           "clicks": "670Sp",
           "variants": [
@@ -5620,7 +5620,7 @@
         {
           "slug": "magnet-bunny",
           "name": "Magnet Bunny",
-          "egg": "Magnetar Yard",
+          "egg": "Magnetar Yard Egg",
           "rarity": "Rare",
           "clicks": "800Sp",
           "variants": [
@@ -5633,7 +5633,7 @@
         {
           "slug": "atomic-moth",
           "name": "Atomic Moth",
-          "egg": "Atomic World",
+          "egg": "Atomic World Egg",
           "rarity": "Legendary",
           "clicks": "1.09O",
           "variants": [
@@ -5646,7 +5646,7 @@
         {
           "slug": "gear-golem",
           "name": "Gear Golem",
-          "egg": "Magnetar Yard",
+          "egg": "Magnetar Yard Egg",
           "rarity": "Epic",
           "clicks": "1.2O",
           "variants": [
@@ -5659,7 +5659,7 @@
         {
           "slug": "triceratops-dragon",
           "name": "Triceratops Dragon",
-          "egg": "Dino World",
+          "egg": "Dino World Egg",
           "rarity": "Mythical",
           "clicks": "1.34O",
           "variants": [
@@ -5672,7 +5672,7 @@
         {
           "slug": "broken-clock",
           "name": "Broken Clock",
-          "egg": "Paradox Spawn",
+          "egg": "Paradox Spawn Egg",
           "rarity": "Eternal",
           "clicks": "1.75O",
           "variants": [
@@ -5685,7 +5685,7 @@
         {
           "slug": "magnet-dragon",
           "name": "Magnet Dragon",
-          "egg": "Magnetar Yard",
+          "egg": "Magnetar Yard Egg",
           "rarity": "Legendary",
           "clicks": "2.25O",
           "variants": [
@@ -5698,7 +5698,7 @@
         {
           "slug": "mirage-dragon",
           "name": "Mirage Dragon",
-          "egg": "Sandy Dunes",
+          "egg": "Sandy Dunes Egg",
           "rarity": "Mythical",
           "clicks": "2.68O",
           "variants": [
@@ -5711,7 +5711,7 @@
         {
           "slug": "harvest-dragon",
           "name": "Harvest Dragon",
-          "egg": "Primitive Fields",
+          "egg": "Primitive Fields Egg",
           "rarity": "Eternal",
           "clicks": "3.5O",
           "variants": [
@@ -5724,7 +5724,7 @@
         {
           "slug": "wooden-fish",
           "name": "Wooden Fish",
-          "egg": "Sunken Village",
+          "egg": "Sunken Village Egg",
           "rarity": "Rare",
           "clicks": "4.8O",
           "variants": [
@@ -5737,7 +5737,7 @@
         {
           "slug": "atomic-dragon",
           "name": "Atomic Dragon",
-          "egg": "Atomic World",
+          "egg": "Atomic World Egg",
           "rarity": "Mythical",
           "clicks": "5.5O",
           "variants": [
@@ -5750,7 +5750,7 @@
         {
           "slug": "pterodactyl",
           "name": "Pterodactyl",
-          "egg": "Dino World",
+          "egg": "Dino World Egg",
           "rarity": "Eternal",
           "clicks": "7O",
           "variants": [
@@ -5763,7 +5763,7 @@
         {
           "slug": "bucket-crab",
           "name": "Bucket Crab",
-          "egg": "Sunken Village",
+          "egg": "Sunken Village Egg",
           "rarity": "Epic",
           "clicks": "7.5O",
           "variants": [
@@ -5776,7 +5776,7 @@
         {
           "slug": "popcorn-dog",
           "name": "Popcorn Dog",
-          "egg": "Carnival City",
+          "egg": "Carnival City Egg",
           "rarity": "Rare",
           "clicks": "10O",
           "variants": [
@@ -5789,7 +5789,7 @@
         {
           "slug": "hourglass-immortal",
           "name": "Hourglass Immortal",
-          "egg": "Paradox Spawn",
+          "egg": "Paradox Spawn Egg",
           "rarity": "Secret",
           "clicks": "10.25O",
           "variants": [
@@ -5802,7 +5802,7 @@
         {
           "slug": "gear-hydra",
           "name": "Gear Hydra",
-          "egg": "Magnetar Yard",
+          "egg": "Magnetar Yard Egg",
           "rarity": "Mythical",
           "clicks": "11O",
           "variants": [
@@ -5815,7 +5815,7 @@
         {
           "slug": "cactus-overlord",
           "name": "Cactus Overlord",
-          "egg": "Sandy Dunes",
+          "egg": "Sandy Dunes Egg",
           "rarity": "Eternal",
           "clicks": "14O",
           "variants": [
@@ -5828,7 +5828,7 @@
         {
           "slug": "fisher-frog",
           "name": "Fisher Frog",
-          "egg": "Sunken Village",
+          "egg": "Sunken Village Egg",
           "rarity": "Legendary",
           "clicks": "15O",
           "variants": [
@@ -5841,7 +5841,7 @@
         {
           "slug": "balloon-bunny",
           "name": "Balloon Bunny",
-          "egg": "Carnival City",
+          "egg": "Carnival City Egg",
           "rarity": "Epic",
           "clicks": "15O",
           "variants": [
@@ -5854,7 +5854,7 @@
         {
           "slug": "wheat-overlord",
           "name": "Wheat Overlord",
-          "egg": "Primitive Fields",
+          "egg": "Primitive Fields Egg",
           "rarity": "Secret",
           "clicks": "20.5O",
           "variants": [
@@ -5867,7 +5867,7 @@
         {
           "slug": "nuclear-crab",
           "name": "Nuclear Crab",
-          "egg": "Atomic World",
+          "egg": "Atomic World Egg",
           "rarity": "Eternal",
           "clicks": "30O",
           "variants": [
@@ -5880,7 +5880,7 @@
         {
           "slug": "cotton-candy-heart",
           "name": "Cotton Candy Heart",
-          "egg": "Carnival City",
+          "egg": "Carnival City Egg",
           "rarity": "Legendary",
           "clicks": "30O",
           "variants": [
@@ -5893,7 +5893,7 @@
         {
           "slug": "forgotten-titan",
           "name": "Forgotten Titan",
-          "egg": "Paradox Spawn",
+          "egg": "Paradox Spawn Egg",
           "rarity": "Divine",
           "clicks": "36O",
           "variants": [
@@ -5906,7 +5906,7 @@
         {
           "slug": "nest-protector",
           "name": "Nest Protector",
-          "egg": "Dino World",
+          "egg": "Dino World Egg",
           "rarity": "Secret",
           "clicks": "42O",
           "variants": [
@@ -5919,7 +5919,7 @@
         {
           "slug": "harvest-warden",
           "name": "Harvest Warden",
-          "egg": "Primitive Fields",
+          "egg": "Primitive Fields Egg",
           "rarity": "Divine",
           "clicks": "72O",
           "variants": [
@@ -5932,7 +5932,7 @@
         {
           "slug": "magnetar-core",
           "name": "Magnetar Core",
-          "egg": "Magnetar Yard",
+          "egg": "Magnetar Yard Egg",
           "rarity": "Eternal",
           "clicks": "60O",
           "variants": [
@@ -5945,7 +5945,7 @@
         {
           "slug": "crystal-octopus",
           "name": "Crystal Octopus",
-          "egg": "Sunken Village",
+          "egg": "Sunken Village Egg",
           "rarity": "Mythical",
           "clicks": "67O",
           "variants": [
@@ -5958,7 +5958,7 @@
         {
           "slug": "ancient-sandworm",
           "name": "Ancient Sandworm",
-          "egg": "Sandy Dunes",
+          "egg": "Sandy Dunes Egg",
           "rarity": "Secret",
           "clicks": "84O",
           "variants": [
@@ -5971,7 +5971,7 @@
         {
           "slug": "ferris-dragon",
           "name": "Ferris Dragon",
-          "egg": "Carnival City",
+          "egg": "Carnival City Egg",
           "rarity": "Mythical",
           "clicks": "135O",
           "variants": [
@@ -5984,7 +5984,7 @@
         {
           "slug": "dino-skeleton",
           "name": "Dino Skeleton",
-          "egg": "Dino World",
+          "egg": "Dino World Egg",
           "rarity": "Divine",
           "clicks": "144O",
           "variants": [
@@ -5997,7 +5997,7 @@
         {
           "slug": "nuclear-bloom",
           "name": "Nuclear Bloom",
-          "egg": "Atomic World",
+          "egg": "Atomic World Egg",
           "rarity": "Secret",
           "clicks": "175O",
           "variants": [
@@ -6010,7 +6010,7 @@
         {
           "slug": "paradox-beast",
           "name": "Paradox Beast",
-          "egg": "Paradox Spawn",
+          "egg": "Paradox Spawn Egg",
           "rarity": "Mysterious",
           "clicks": "200O",
           "variants": [
@@ -6023,7 +6023,7 @@
         {
           "slug": "tornado-monster",
           "name": "Tornado Monster",
-          "egg": "Sandy Dunes",
+          "egg": "Sandy Dunes Egg",
           "rarity": "Divine",
           "clicks": "288O",
           "variants": [
@@ -6036,7 +6036,7 @@
         {
           "slug": "scrap-immortal",
           "name": "Scrap Immortal",
-          "egg": "Magnetar Yard",
+          "egg": "Magnetar Yard Egg",
           "rarity": "Secret",
           "clicks": "350O",
           "variants": [
@@ -6049,7 +6049,7 @@
         {
           "slug": "streetlight-angler",
           "name": "Streetlight Angler",
-          "egg": "Sunken Village",
+          "egg": "Sunken Village Egg",
           "rarity": "Eternal",
           "clicks": "359.99O",
           "variants": [
@@ -6062,7 +6062,7 @@
         {
           "slug": "scarecrow-immortal",
           "name": "Scarecrow Immortal",
-          "egg": "Primitive Fields",
+          "egg": "Primitive Fields Egg",
           "rarity": "Mysterious",
           "clicks": "400O",
           "variants": [
@@ -6075,7 +6075,7 @@
         {
           "slug": "reactor-spider",
           "name": "Reactor Spider",
-          "egg": "Atomic World",
+          "egg": "Atomic World Egg",
           "rarity": "Divine",
           "clicks": "580O",
           "variants": [
@@ -6088,7 +6088,7 @@
         {
           "slug": "ancient-terror",
           "name": "Ancient Terror",
-          "egg": "Dino World",
+          "egg": "Dino World Egg",
           "rarity": "Mysterious",
           "clicks": "600O",
           "variants": [
@@ -6101,7 +6101,7 @@
         {
           "slug": "magnet-shard",
           "name": "Magnet Shard",
-          "egg": "Magnetar Yard",
+          "egg": "Magnetar Yard Egg",
           "rarity": "Divine",
           "clicks": "1.15N",
           "variants": [
@@ -6114,7 +6114,7 @@
         {
           "slug": "popcorn-overlord",
           "name": "Popcorn Overlord",
-          "egg": "Carnival City",
+          "egg": "Carnival City Egg",
           "rarity": "Eternal",
           "clicks": "720O",
           "variants": [
@@ -6127,7 +6127,7 @@
         {
           "slug": "mirage-titan",
           "name": "Mirage Titan",
-          "egg": "Sandy Dunes",
+          "egg": "Sandy Dunes Egg",
           "rarity": "Mysterious",
           "clicks": "1.2N",
           "variants": [
@@ -6140,7 +6140,7 @@
         {
           "slug": "seaweed-immortal",
           "name": "Seaweed Immortal",
-          "egg": "Sunken Village",
+          "egg": "Sunken Village Egg",
           "rarity": "Secret",
           "clicks": "2.1N",
           "variants": [
@@ -6153,7 +6153,7 @@
         {
           "slug": "core-overlord",
           "name": "Core Overlord",
-          "egg": "Atomic World",
+          "egg": "Atomic World Egg",
           "rarity": "Mysterious",
           "clicks": "2.4N",
           "variants": [
@@ -6166,7 +6166,7 @@
         {
           "slug": "magnetar-beast",
           "name": "Magnetar Beast",
-          "egg": "Magnetar Yard",
+          "egg": "Magnetar Yard Egg",
           "rarity": "Mysterious",
           "clicks": "4.8N",
           "variants": [
@@ -6179,7 +6179,7 @@
         {
           "slug": "jester-hydra",
           "name": "Jester Hydra",
-          "egg": "Carnival City",
+          "egg": "Carnival City Egg",
           "rarity": "Secret",
           "clicks": "4.2N",
           "variants": [
@@ -6192,7 +6192,7 @@
         {
           "slug": "dock-kraken",
           "name": "Dock Kraken",
-          "egg": "Sunken Village",
+          "egg": "Sunken Village Egg",
           "rarity": "Divine",
           "clicks": "7.2N",
           "variants": [
@@ -6205,7 +6205,7 @@
         {
           "slug": "illusion-shard",
           "name": "Illusion Shard",
-          "egg": "Carnival City",
+          "egg": "Carnival City Egg",
           "rarity": "Divine",
           "clicks": "14.4N",
           "variants": [
@@ -6218,7 +6218,7 @@
         {
           "slug": "sunken-colossus",
           "name": "Sunken Colossus",
-          "egg": "Sunken Village",
+          "egg": "Sunken Village Egg",
           "rarity": "Mysterious",
           "clicks": "30N",
           "variants": [
@@ -6231,7 +6231,7 @@
         {
           "slug": "carnival-titan",
           "name": "Carnival Titan",
-          "egg": "Carnival City",
+          "egg": "Carnival City Egg",
           "rarity": "Mysterious",
           "clicks": "60N",
           "variants": [
@@ -10970,7 +10970,7 @@
         {
           "slug": "maple-shield",
           "name": "Maple Shield",
-          "egg": null,
+          "egg": "Top Total Clan Acorns",
           "rarity": "Supreme",
           "clicks": "110%",
           "variants": [
@@ -11607,7 +11607,7 @@
         {
           "slug": "maple-shard",
           "name": "Maple Shard",
-          "egg": null,
+          "egg": "Top 100 Total Acorns",
           "rarity": "Supreme",
           "clicks": "200%",
           "variants": [
@@ -11876,7 +11876,7 @@
         {
           "slug": "royal-corn",
           "name": "Royal Corn",
-          "egg": null,
+          "egg": "Top 25 Total Acorns",
           "rarity": "Supreme",
           "clicks": "300%",
           "variants": [
@@ -12248,7 +12248,7 @@
         {
           "slug": "fall-protector",
           "name": "Fall Protector",
-          "egg": null,
+          "egg": "Top 1 Total Acorns",
           "rarity": "Ultimate",
           "clicks": "500%",
           "variants": [
@@ -14306,7 +14306,7 @@
         {
           "slug": "acorn-dog",
           "name": "Acorn Dog",
-          "egg": "Acorn",
+          "egg": "Acorn Egg",
           "rarity": "Common",
           "clicks": "600Qd",
           "variants": [
@@ -14319,7 +14319,7 @@
         {
           "slug": "acorn-fox",
           "name": "Acorn Fox",
-          "egg": "Acorn",
+          "egg": "Acorn Egg",
           "rarity": "Uncommon",
           "clicks": "1.2Qn",
           "variants": [
@@ -14332,7 +14332,7 @@
         {
           "slug": "leaf-hedgehog",
           "name": "Leaf Hedgehog",
-          "egg": "Acorn",
+          "egg": "Acorn Egg",
           "rarity": "Rare",
           "clicks": "2.1Qn",
           "variants": [
@@ -14345,7 +14345,7 @@
         {
           "slug": "apple-slime",
           "name": "Apple Slime",
-          "egg": "Orchard",
+          "egg": "Orchard Egg",
           "rarity": "Common",
           "clicks": "2.4Qn",
           "variants": [
@@ -14358,7 +14358,7 @@
         {
           "slug": "apple-bunny",
           "name": "Apple Bunny",
-          "egg": "Orchard",
+          "egg": "Orchard Egg",
           "rarity": "Uncommon",
           "clicks": "3Qn",
           "variants": [
@@ -14371,7 +14371,7 @@
         {
           "slug": "acorn-dragon",
           "name": "Acorn Dragon",
-          "egg": "Acorn",
+          "egg": "Acorn Egg",
           "rarity": "Epic",
           "clicks": "4.5Qn",
           "variants": [
@@ -14384,7 +14384,7 @@
         {
           "slug": "orchard-deer",
           "name": "Orchard Deer",
-          "egg": "Orchard",
+          "egg": "Orchard Egg",
           "rarity": "Rare",
           "clicks": "6Qn",
           "variants": [
@@ -14397,7 +14397,7 @@
         {
           "slug": "apple-golem",
           "name": "Apple Golem",
-          "egg": "Orchard",
+          "egg": "Orchard Egg",
           "rarity": "Epic",
           "clicks": "9Qn",
           "variants": [
@@ -14410,7 +14410,7 @@
         {
           "slug": "orchard-spirit",
           "name": "Orchard Spirit",
-          "egg": "Orchard",
+          "egg": "Orchard Egg",
           "rarity": "Legendary",
           "clicks": "30Qn",
           "variants": [
@@ -14436,7 +14436,7 @@
         {
           "slug": "happy-leaf",
           "name": "Happy Leaf",
-          "egg": "Fall 2026",
+          "egg": "Fall 2026 Egg",
           "rarity": "Rare",
           "clicks": "20O",
           "variants": [
@@ -14449,7 +14449,7 @@
         {
           "slug": "maple-cat",
           "name": "Maple Cat",
-          "egg": "Fall 2026",
+          "egg": "Fall 2026 Egg",
           "rarity": "Epic",
           "clicks": "30O",
           "variants": [
@@ -14462,7 +14462,7 @@
         {
           "slug": "autumn-heart",
           "name": "Autumn Heart",
-          "egg": "Fall 2026",
+          "egg": "Fall 2026 Egg",
           "rarity": "Legendary",
           "clicks": "60O",
           "variants": [
@@ -14475,7 +14475,7 @@
         {
           "slug": "maple-owl",
           "name": "Maple Owl",
-          "egg": "Fall 2026",
+          "egg": "Fall 2026 Egg",
           "rarity": "Mythical",
           "clicks": "270O",
           "variants": [
@@ -14488,7 +14488,7 @@
         {
           "slug": "rain-dragon",
           "name": "Rain Dragon",
-          "egg": "Fall 2026",
+          "egg": "Fall 2026 Egg",
           "rarity": "Eternal",
           "clicks": "1.44N",
           "variants": [
@@ -14501,7 +14501,7 @@
         {
           "slug": "autumn-moth",
           "name": "Autumn Moth",
-          "egg": "Fall 2026",
+          "egg": "Fall 2026 Egg",
           "rarity": "Secret",
           "clicks": "8.4N",
           "variants": [
@@ -14514,7 +14514,7 @@
         {
           "slug": "fall-phoenix",
           "name": "Fall Phoenix",
-          "egg": "Fall 2026",
+          "egg": "Fall 2026 Egg",
           "rarity": "Divine",
           "clicks": "28.8N",
           "variants": [
@@ -14527,7 +14527,7 @@
         {
           "slug": "leaf-duck",
           "name": "Leaf Duck",
-          "egg": "Leaf",
+          "egg": "Leaf Egg",
           "rarity": "Rare",
           "clicks": "40O",
           "variants": [
@@ -14540,7 +14540,7 @@
         {
           "slug": "fall-serpent",
           "name": "Fall Serpent",
-          "egg": "Leaf",
+          "egg": "Leaf Egg",
           "rarity": "Epic",
           "clicks": "60O",
           "variants": [
@@ -14553,7 +14553,7 @@
         {
           "slug": "fall-mimic",
           "name": "Fall Mimic",
-          "egg": "Leaf",
+          "egg": "Leaf Egg",
           "rarity": "Legendary",
           "clicks": "120O",
           "variants": [
@@ -14566,7 +14566,7 @@
         {
           "slug": "leaf-axolotl",
           "name": "Leaf Axolotl",
-          "egg": "Leaf",
+          "egg": "Leaf Egg",
           "rarity": "Mythical",
           "clicks": "550O",
           "variants": [
@@ -14579,7 +14579,7 @@
         {
           "slug": "fall-shock",
           "name": "Fall Shock",
-          "egg": "Leaf",
+          "egg": "Leaf Egg",
           "rarity": "Eternal",
           "clicks": "2.99N",
           "variants": [
@@ -14592,7 +14592,7 @@
         {
           "slug": "leaf-griffin",
           "name": "Leaf Griffin",
-          "egg": "Leaf",
+          "egg": "Leaf Egg",
           "rarity": "Secret",
           "clicks": "17N",
           "variants": [
@@ -14605,7 +14605,7 @@
         {
           "slug": "fallen-leaf",
           "name": "Fallen Leaf",
-          "egg": "Leaf",
+          "egg": "Leaf Egg",
           "rarity": "Divine",
           "clicks": "58N",
           "variants": [
@@ -14631,7 +14631,7 @@
         {
           "slug": "autumn-kitsune",
           "name": "Autumn Kitsune",
-          "egg": null,
+          "egg": "Fall Rewards",
           "rarity": "Supreme",
           "clicks": "110%",
           "variants": [
@@ -14644,7 +14644,7 @@
         {
           "slug": "maple-divinity",
           "name": "Maple Divinity",
-          "egg": null,
+          "egg": "Leaf Raking Minigame",
           "rarity": "Supreme",
           "clicks": "110%",
           "variants": [
@@ -14657,7 +14657,7 @@
         {
           "slug": "acorn-blobfish",
           "name": "Acorn Blobfish",
-          "egg": null,
+          "egg": "Fall Chest",
           "rarity": "Supreme",
           "clicks": "110%",
           "variants": [
@@ -14670,7 +14670,7 @@
         {
           "slug": "fall-community-pet",
           "name": "Fall Community Pet",
-          "egg": null,
+          "egg": "Discord Community Event",
           "rarity": "Supreme",
           "clicks": "200%",
           "variants": [
@@ -14695,7 +14695,7 @@
         {
           "slug": "acorn-tutel",
           "name": "Acorn Tutel",
-          "egg": "Fall 2026",
+          "egg": "Fall 2026 Egg",
           "rarity": "Supreme",
           "clicks": "200%",
           "variants": [
@@ -16415,7 +16415,7 @@
         {
           "slug": "chocolate-golem",
           "name": "Chocolate Golem",
-          "egg": "Chocolate Exclusive",
+          "egg": "Chocolate Exclusive Egg",
           "rarity": "Epic",
           "clicks": "1M",
           "variants": [
