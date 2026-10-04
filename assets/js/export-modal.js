@@ -237,7 +237,7 @@ function buildDialog() {
     sources: buildMenu("sources", "Sources", {
       allLabel: "All sources",
       countLabel: (n) => `${n} sources`,
-      searchLabel: "Search sources",
+      searchLabel: "Search sources or categories",
     }),
     rarities: buildMenu("rarities", "Rarities", {
       allLabel: "All rarities",

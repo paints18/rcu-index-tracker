@@ -532,7 +532,7 @@ export function fillSizer(sizer, samples = []) {
  *
  * A checklist can be searchable: a search box sits at the top of the list, takes
  * focus when the list opens, and narrows the rows as you type (Enter ticks the
- * first match). A searchable checklist puts Clear under the search box rather than
+ * first match). A row also matches by the heading it sits under. A searchable checklist puts Clear under the search box rather than
  * at the foot, where a long list would bury it. Checklist options may also carry a
  * `group`; the list then shows a heading above each run of options that share one,
  * so the caller has to keep an option's group-mates next to each other. The
@@ -580,7 +580,10 @@ export function mountMenu({ button, panel, multiple = false, searchLabel = "", a
     noMatch.hidden = true;
   }
 
-  /** Show only the rows whose label contains what was typed. */
+  /**
+   * Show only the rows whose label contains what was typed. A row also matches when
+   * the heading it sits under does, so typing a section's name lists all of it.
+   */
   const applyFilter = () => {
     if (!search) return;
     const query = search.value.trim().toLowerCase();
@@ -588,6 +591,7 @@ export function mountMenu({ button, panel, multiple = false, searchLabel = "", a
     // A section heading stays only while at least one of its rows does.
     let heading = null;
     let headingShown = false;
+    let headingText = "";
     const closeHeading = () => {
       if (heading) heading.hidden = !headingShown;
     };
@@ -596,8 +600,10 @@ export function mountMenu({ button, panel, multiple = false, searchLabel = "", a
         closeHeading();
         heading = node;
         headingShown = false;
+        headingText = node.textContent.toLowerCase();
       } else if (node.classList.contains("menu-row") && !node.classList.contains("menu-clear")) {
-        const match = !query || node.textContent.toLowerCase().includes(query);
+        const match =
+          !query || node.textContent.toLowerCase().includes(query) || headingText.includes(query);
         node.hidden = !match;
         if (match) {
           shown++;

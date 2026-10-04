@@ -232,7 +232,7 @@ const menus = {
   source: mountMenu({
     button: $("filter-source"),
     panel: $("source-panel"),
-    searchLabel: "Search sources",
+    searchLabel: "Search sources or categories",
     multiple: true,
     allLabel: FILTER_ALL.source,
     countLabel: (n) => `${n} sources`,

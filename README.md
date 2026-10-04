@@ -25,7 +25,7 @@ profile name.
 - Browse by category, or filter by name, source, rarity, completion status, or
   a specific missing variant. Source and Rarity are checklists: tick any number
   of either, or none for all. The Source menu has a search box, and on the All
-  tab it is sectioned by tab. The Source, Rarity, Status and Missing menus are
+  tab it is sectioned by tab and the search matches the tab name too. The Source, Rarity, Status and Missing menus are
   drawn by the page, not the browser, so they look and behave the same in
   every browser. Status and Missing apply to List view only. Filters stay set
   when you change category; a source or rarity the new category does not have is
