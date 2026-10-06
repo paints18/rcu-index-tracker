@@ -44,7 +44,7 @@
       "body": "Grid view, a layout that mirrors the in-game index, is now the default view, and you can import your index from the Powerful Studio API.",
       "items": [
         "Grid view: click a pet to tick it. Switch between Grid view and List view in the category header; filters and Undo work in both. Arrow keys move between pets, 1-4 switch variant, / focuses Search and Ctrl+Z undoes.",
-        "Import from API: use your Roblox username and an access token, from the first screen or Backup/Import > From API. Your in-game index is the source of truth, so ticks not in it are removed. Use the refresh icon next to the profile name to re-import. Imported profiles are locked by default; Settings > Your data can lock or unlock any profile.",
+        "Import from game: use your Roblox username and an access token, from the first screen or Backup/Import > From game. Your in-game index is the source of truth, so ticks not in it are removed. Use the refresh icon next to the profile name to re-import. Imported profiles are locked by default; Settings > Your data can lock or unlock any profile.",
         "Renamed Straw Dragon to Straw Golem.",
         "Champion Tutel and The Prototype are now Ultimate. Royal Cat clicks are 3.5K.",
         "Fixed percentages for Party Shield, Tiki Shield, 135M Dice, 25M Alien, Lovely Guardian, Adventure Immortal and Compass Overlord.",

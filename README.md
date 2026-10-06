@@ -38,8 +38,8 @@ profile name.
   focuses Search and Ctrl+Z undoes.
 - Multiple profiles, each with its own checklist.
 - Backup/Import moves a profile between browsers or devices via a code.
-- Import from the Powerful Studio API with a Roblox username and access
-  token, from the first-run screen or Backup/Import > From API. An import
+- Import from the game (via the Powerful Studio API) with a Roblox username and
+  access token, from the first-run screen or Backup/Import > From game. An import
   replaces the profile's ticks with the in-game index, so ticks not in the game
   are removed. Linking a profile that has ticks asks for confirmation first, and
   an empty API response never clears a profile. Linked profiles refresh on page
@@ -73,7 +73,7 @@ Progress is stored locally in the browser. There is no account and no
 database, so progress does not leave your device and does not sync across
 devices unless you use Backup/Import.
 
-The optional API import (Backup/Import > From API) sends the Roblox username
+The optional import from game (Backup/Import > From game) sends the Roblox username
 and access token entered to a Cloudflare Worker (`worker/index.js`), which
 forwards them to the Powerful Studio API and Roblox's username lookup. The
 Worker does not store or log them. The username and token are kept in the

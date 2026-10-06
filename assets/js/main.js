@@ -1478,9 +1478,9 @@ function confirmDelete() {
 
 function showBackupTab(which) {
   const tabs = [
+    [dom.tabApi, dom.panelApi, "api"],
     [dom.tabExport, dom.panelExport, "export"],
     [dom.tabImport, dom.panelImport, "import"],
-    [dom.tabApi, dom.panelApi, "api"],
   ];
   for (const [tab, panel, name] of tabs) {
     const active = name === which;
@@ -1491,7 +1491,7 @@ function showBackupTab(which) {
   if (which === "api") fillApiForms();
 }
 
-async function openBackupDialog(tab = "export") {
+async function openBackupDialog(tab = "api") {
   dom.importStatus.textContent = "";
   dom.importStatus.className = "import-status";
 
@@ -1685,7 +1685,7 @@ function setApiBusy(busy) {
   for (const form of apiForms) form.connect.disabled = busy;
   dom.apiRefresh.disabled = busy;
   // An icon button: the label lives in aria-label/title, and the arrows spin while busy.
-  const label = busy ? "Refreshing from API…" : "Refresh from API";
+  const label = busy ? "Refreshing from game…" : "Refresh from game";
   dom.apiRefresh.setAttribute("aria-label", label);
   dom.apiRefresh.title = label;
   dom.apiRefresh.setAttribute("aria-busy", String(busy));
@@ -1815,7 +1815,7 @@ async function runApiConnect(form) {
     if (created) form.name.value = "";
     fillApiForms();
     setApiStatus(form, `${describeSync(result)} Profile: "${profile.name}".`, "ok");
-    toast(created ? `Created "${profile.name}" from the API.` : `Imported into "${profile.name}".`);
+    toast(created ? `Created "${profile.name}" from the game.` : `Imported into "${profile.name}".`);
   } catch (error) {
     setApiStatus(form, error instanceof ApiImportError ? error.message : "Something went wrong importing.", "error");
   } finally {
@@ -1840,11 +1840,11 @@ async function runApiRefresh({ quiet = false } = {}) {
     const result = applyApiIndex(profileId, link, planApiIndex(profileId, body));
     if (!quiet) toast(describeSync(result));
     else if (result.added || result.removed) {
-      toast(`Refreshed from the API. ${describeSync(result)}`);
+      toast(`Refreshed from the game. ${describeSync(result)}`);
     }
   } catch (error) {
     // A silent refresh on page load should not nag; an explicit one should.
-    if (!quiet) toast(error instanceof ApiImportError ? error.message : "Could not refresh from the API.");
+    if (!quiet) toast(error instanceof ApiImportError ? error.message : "Could not refresh from the game.");
     else console.warn("API refresh failed:", error.message);
   } finally {
     setApiBusy(false);
@@ -1904,10 +1904,10 @@ function wireEvents() {
     if (closer) closer.closest("dialog")?.close();
   });
 
-  dom.openBackup.addEventListener("click", () => openBackupDialog("export"));
+  dom.openBackup.addEventListener("click", () => openBackupDialog("api"));
+  dom.tabApi.addEventListener("click", () => showBackupTab("api"));
   dom.tabExport.addEventListener("click", () => showBackupTab("export"));
   dom.tabImport.addEventListener("click", () => showBackupTab("import"));
-  dom.tabApi.addEventListener("click", () => showBackupTab("api"));
   dom.apiRefresh.addEventListener("click", () => runApiRefresh());
   dom.doImport.addEventListener("click", runImport);
 

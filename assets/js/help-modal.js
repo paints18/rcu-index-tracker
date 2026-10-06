@@ -121,8 +121,8 @@ const TABS = [
       steps([
         "Get an access token from **rcu.powerfulstudio.xyz/access-tokens** " +
           "(sign in with Roblox, which sends you back to that page, then Generate).",
-        "Open **Backup/Import > From API**, or use the first screen. Enter your " +
-          "Roblox username and the token, then press **Import from API**.",
+        "Open **Backup/Import > From game**, or use the first screen. Enter your " +
+          "Roblox username and the token, then press **Import from game**.",
         "The profile refreshes whenever the page loads, or when you press " +
           "the refresh icon next to the profile name. **Disconnect** unlinks it and keeps its ticks.",
       ]),

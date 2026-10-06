@@ -63,7 +63,7 @@
 
     <div class="tabs mt-4" role="tablist">
       <button type="button" class="tab is-active" id="onboard-tab-api" role="tab" aria-selected="true">
-        Import from Roblox <span class="text-muted text-[12px] font-normal">&middot; recommended</span></button>
+        Import from game <span class="text-muted text-[12px] font-normal">&middot; recommended</span></button>
       <button type="button" class="tab" id="onboard-tab-manual" role="tab" aria-selected="false">Set up manually</button>
     </div>
 
@@ -104,7 +104,7 @@
           <p class="profile-name min-w-0" id="profile-name">&mdash;</p>
           <!-- Shown only for a profile linked to the API. -->
           <button type="button" class="btn btn-quiet btn-sm shrink-0" id="api-refresh" hidden
-                  aria-label="Refresh from API" title="Refresh from API">
+                  aria-label="Refresh from game" title="Refresh from game">
             <svg class="block motion-reduce:animate-none" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
@@ -394,7 +394,7 @@
       them. They are kept in this browser so the profile can refresh itself.
     </p>
     <div class="flex flex-wrap gap-2 items-center">
-      <button type="button" class="btn btn-primary" data-api="connect">Import from API</button>
+      <button type="button" class="btn btn-primary" data-api="connect">Import from game</button>
       <button type="button" class="btn btn-quiet" data-api="disconnect" hidden>Disconnect</button>
     </div>
     <p class="text-[13px] empty:hidden" data-api="status" role="status"></p>
@@ -412,12 +412,14 @@
   </p>
 
   <div class="tabs mt-4" role="tablist">
-    <button type="button" class="tab is-active" id="tab-export" role="tab" aria-selected="true">Export</button>
+    <button type="button" class="tab is-active" id="tab-api" role="tab" aria-selected="true">From game</button>
+    <button type="button" class="tab" id="tab-export" role="tab" aria-selected="false">Export</button>
     <button type="button" class="tab" id="tab-import" role="tab" aria-selected="false">Import</button>
-    <button type="button" class="tab" id="tab-api" role="tab" aria-selected="false">From API</button>
   </div>
 
-  <div class="flex flex-col gap-3" id="panel-export">
+  <div id="panel-api"></div>
+
+  <div class="flex flex-col gap-3" id="panel-export" hidden>
     <p class="text-[13px]">Backup code for <strong id="export-profile-name"></strong>:</p>
     <textarea id="export-code" readonly rows="5" spellcheck="false" aria-label="Backup code"></textarea>
     <p class="text-muted text-[13px]" id="export-meta"></p>
@@ -442,8 +444,6 @@
     <button type="button" class="btn btn-primary self-start" id="do-import">Import</button>
     <p class="text-[13px] empty:hidden" id="import-status" role="status"></p>
   </div>
-
-  <div id="panel-api" hidden></div>
 </dialog>
 
 <!-- Reserved for one-off events with nowhere else to show themselves: a renamed

@@ -1,5 +1,5 @@
 /**
- * CORS proxy for the RCU Index Tracker's "Import from API" feature.
+ * CORS proxy for the RCU Index Tracker's "Import from game" feature.
  *
  * Browsers will not let the tracker call public-api.powerfulstudio.xyz or
  * Roblox's username lookup directly: neither sends CORS headers. This Worker
