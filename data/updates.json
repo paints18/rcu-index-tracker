@@ -4,6 +4,19 @@
   "notice": "",
   "entries": [
     {
+      "id": "2026-10-10-update",
+      "date": "2026-10-10",
+      "title": "Update 81",
+      "tags": [
+        "added"
+      ],
+      "body": "Added the Glitched World Egg pets to World 4 and the Shadow Exclusive Egg pets to Exclusives.",
+      "items": [
+        "World 4: Glitched Dog, Glitched Bunny, Glitched Heart, Glitched Hexagon, Glitched Overlord, Glitched Samurai, Glitched Shard, Glitched Titan (Glitched World Egg).",
+        "Exclusives: Shadow Lord, Shadow Deer, Shadow Core, Shadow Angel, Shadow Deity (Shadow Exclusive Egg)."
+      ]
+    },
+    {
       "id": "2026-10-04-update",
       "date": "2026-10-04",
       "title": "Export pets rework",

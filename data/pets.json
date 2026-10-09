@@ -5956,11 +5956,37 @@
           ]
         },
         {
+          "slug": "glitched-dog",
+          "name": "Glitched Dog",
+          "source": "Glitched World Egg",
+          "rarity": "Rare",
+          "clicks": "80O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "ancient-sandworm",
           "name": "Ancient Sandworm",
           "source": "Sandy Dunes Egg",
           "rarity": "Secret",
           "clicks": "84O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "glitched-bunny",
+          "name": "Glitched Bunny",
+          "source": "Glitched World Egg",
+          "rarity": "Epic",
+          "clicks": "120O",
           "variants": [
             "normal",
             "golden",
@@ -6013,6 +6039,19 @@
           "source": "Paradox Spawn Egg",
           "rarity": "Mysterious",
           "clicks": "200O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "glitched-heart",
+          "name": "Glitched Heart",
+          "source": "Glitched World Egg",
+          "rarity": "Legendary",
+          "clicks": "240O",
           "variants": [
             "normal",
             "golden",
@@ -6091,6 +6130,19 @@
           "source": "Dino World Egg",
           "rarity": "Mysterious",
           "clicks": "600O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "glitched-hexagon",
+          "name": "Glitched Hexagon",
+          "source": "Glitched World Egg",
+          "rarity": "Mythical",
+          "clicks": "1.09N",
           "variants": [
             "normal",
             "golden",
@@ -6190,6 +6242,19 @@
           ]
         },
         {
+          "slug": "glitched-overlord",
+          "name": "Glitched Overlord",
+          "source": "Glitched World Egg",
+          "rarity": "Eternal",
+          "clicks": "5.99N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "dock-kraken",
           "name": "Dock Kraken",
           "source": "Sunken Village Egg",
@@ -6229,11 +6294,50 @@
           ]
         },
         {
+          "slug": "glitched-samurai",
+          "name": "Glitched Samurai",
+          "source": "Glitched World Egg",
+          "rarity": "Secret",
+          "clicks": "34N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "carnival-titan",
           "name": "Carnival Titan",
           "source": "Carnival City Egg",
           "rarity": "Mysterious",
           "clicks": "60N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "glitched-shard",
+          "name": "Glitched Shard",
+          "source": "Glitched World Egg",
+          "rarity": "Divine",
+          "clicks": "116N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "glitched-titan",
+          "name": "Glitched Titan",
+          "source": "Glitched World Egg",
+          "rarity": "Mysterious",
+          "clicks": "480N",
           "variants": [
             "normal",
             "golden",
@@ -7995,6 +8099,45 @@
           ]
         },
         {
+          "slug": "shadow-lord",
+          "name": "Shadow Lord",
+          "source": "Shadow Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "1N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "shadow-deer",
+          "name": "Shadow Deer",
+          "source": "Shadow Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "5N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "shadow-core",
+          "name": "Shadow Core",
+          "source": "Shadow Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "20N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "thunder-fury",
           "name": "Thunder Fury",
           "source": "Storm Exclusive Egg",
@@ -8701,6 +8844,19 @@
           ]
         },
         {
+          "slug": "shadow-angel",
+          "name": "Shadow Angel",
+          "source": "Shadow Exclusive Egg",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "summer-lord",
           "name": "Summer Lord",
           "source": "-",
@@ -9291,6 +9447,19 @@
           "slug": "cosmic-watcher",
           "name": "Cosmic Watcher",
           "source": "Cosmic Exclusive Egg",
+          "rarity": "Ultimate",
+          "clicks": "400%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "shadow-deity",
+          "name": "Shadow Deity",
+          "source": "Shadow Exclusive Egg",
           "rarity": "Ultimate",
           "clicks": "400%",
           "variants": [
