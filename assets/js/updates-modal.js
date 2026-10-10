@@ -25,6 +25,30 @@ const STATUS = "py-6 text-center empty:hidden";
 
 let ui = null;
 let loaded = false;
+let pending = null;
+
+/**
+ * The changelog file, fetched once and kept: the Updates dialog and the "What's
+ * new" popup both read it. A failed fetch is not kept, so the next call retries.
+ */
+export function fetchUpdates() {
+  pending ??= fetch(UPDATES_URL, { cache: "no-cache" })
+    .then((response) => {
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.json();
+    })
+    .catch((error) => {
+      pending = null;
+      throw error;
+    });
+  return pending;
+}
+
+/** Newest first. Ties keep their file order, which is a stable sort in every engine we care about. */
+export function sortEntries(doc) {
+  const entries = Array.isArray(doc?.entries) ? [...doc.entries] : [];
+  return entries.sort((a, b) => String(b.date ?? "").localeCompare(String(a.date ?? "")));
+}
 
 function el(tag, className, text) {
   const node = document.createElement(tag);
@@ -34,7 +58,7 @@ function el(tag, className, text) {
 }
 
 /** "2026-08-11" -> "11 August 2026", falling back to the raw string. */
-function formatDate(value) {
+export function formatDate(value) {
   const date = new Date(`${value}T00:00:00`);
   if (Number.isNaN(date.valueOf())) return value ?? "";
   return date.toLocaleDateString(undefined, {
@@ -47,6 +71,14 @@ function formatDate(value) {
 function renderEntry(entry, isLatest) {
   const article = el("article", `update-entry${isLatest ? " is-latest" : ""}`);
 
+  article.append(...renderEntryBody(entry));
+  return article;
+}
+
+/** An entry's heading line, summary and bullet list, without the timeline styling around it. */
+export function renderEntryBody(entry) {
+  const nodes = [];
+
   const head = el("div", "flex flex-wrap items-baseline gap-x-3 gap-y-1.5");
   head.append(el("h3", "text-[17px] font-semibold", entry.title ?? "Untitled update"));
 
@@ -58,20 +90,20 @@ function renderEntry(entry, isLatest) {
     const key = String(tag).toLowerCase();
     head.append(el("span", `tag${KNOWN_TAGS.has(key) ? ` tag-${key}` : ""}`, key));
   }
-  article.append(head);
+  nodes.push(head);
 
   if (entry.body) {
-    article.append(el("p", "text-muted mt-2 leading-relaxed", entry.body));
+    nodes.push(el("p", "text-muted mt-2 leading-relaxed", entry.body));
   }
 
   const items = (entry.items ?? []).filter(Boolean);
   if (items.length) {
     const list = el("ul", "mt-2.5 flex flex-col gap-1.5 list-disc pl-5 marker:text-muted");
     for (const item of items) list.append(el("li", "text-sm", item));
-    article.append(list);
+    nodes.push(list);
   }
 
-  return article;
+  return nodes;
 }
 
 function buildDialog() {
@@ -89,9 +121,7 @@ function buildDialog() {
 async function loadEntries() {
   let doc;
   try {
-    const response = await fetch(UPDATES_URL, { cache: "no-cache" });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    doc = await response.json();
+    doc = await fetchUpdates();
   } catch (error) {
     ui.status.className = `${STATUS} text-danger`;
     ui.status.textContent = `Could not load updates: ${error.message}`;
@@ -101,15 +131,11 @@ async function loadEntries() {
   loaded = true;
   ui.notice.textContent = doc.notice ?? "";
 
-  const entries = Array.isArray(doc.entries) ? [...doc.entries] : [];
+  const entries = sortEntries(doc);
   if (!entries.length) {
     ui.status.textContent = "No updates have been posted yet.";
     return;
   }
-
-  // Newest first. Ties keep their file order, which is a stable sort in every
-  // engine we care about.
-  entries.sort((a, b) => String(b.date ?? "").localeCompare(String(a.date ?? "")));
 
   const fragment = document.createDocumentFragment();
   entries.forEach((entry, index) => fragment.append(renderEntry(entry, index === 0)));

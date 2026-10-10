@@ -1,8 +1,22 @@
 {
   "schemaVersion": 1,
   "_comment": "Changelog shown on updates.html. Newest first is not required — entries are sorted by date at render time. Add entries by hand. Tags: added | changed | fixed.",
-  "notice": "",
+  "notice": "Set up by hand? Use Sync from game next to your profile name to fill your checklist from your in-game index.",
   "entries": [
+    {
+      "id": "2026-10-10-sync",
+      "date": "2026-10-10",
+      "title": "Sync from game button",
+      "tags": [
+        "added",
+        "changed"
+      ],
+      "body": "Profiles that are not linked to the game yet now have a Sync from game button next to the profile name, for importing your in-game index.",
+      "items": [
+        "Missing filter: tick more than one variant to see pets missing any of them.",
+        "Some UI adjustments."
+      ]
+    },
     {
       "id": "2026-10-10-update",
       "date": "2026-10-10",

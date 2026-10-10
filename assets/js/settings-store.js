@@ -83,6 +83,10 @@ export const DEFAULTS = {
   lockNoteDismissed: false,
   /** One-time hint about bulk edit; not a choice, just a "seen it" flag. */
   bulkHintSeen: false,
+  /** The one-time "sync from the game" dialog for visitors with no synced profile. */
+  syncPromptSeen: false,
+  /** Id of the newest changelog entry the "What's new" popup has already shown. */
+  updatesSeenId: "",
   defaultCategory: "all",
 };
 
@@ -124,6 +128,7 @@ function withDefaults(stored) {
   for (const [key, fallback] of Object.entries(DEFAULTS)) {
     if (typeof fallback === "boolean" && key in rest && typeof rest[key] !== "boolean") delete rest[key];
   }
+  if (typeof rest.updatesSeenId !== "string") delete rest.updatesSeenId;
   if (!MODES.some((m) => m.id === rest.mode)) delete rest.mode;
   if (!DENSITIES.some((d) => d.id === rest.density)) delete rest.density;
   for (const c of COLUMNS) if (typeof columns[c.id] !== "boolean") columns[c.id] = true;

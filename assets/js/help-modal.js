@@ -121,8 +121,9 @@ const TABS = [
       steps([
         "Get an access token from **rcu.powerfulstudio.xyz/access-tokens** " +
           "(sign in with Roblox, which sends you back to that page, then Generate).",
-        "Open **Backup/Import > From game**, or use the first screen. Enter your " +
-          "Roblox username and the token, then press **Import from game**.",
+        "Press **Sync from game** next to your profile name, open **Backup/Import > From game**, " +
+          "or use the first screen. Enter your Roblox username and the token, then press " +
+          "**Import from game**.",
         "The profile refreshes whenever the page loads, or when you press " +
           "the refresh icon next to the profile name. **Disconnect** unlinks it and keeps its ticks.",
       ]),
@@ -148,7 +149,8 @@ const TABS = [
         "no such variant.",
       el("h3", "section-title mt-5 mb-1", "Another device"),
       "Progress is saved in this browser, so a phone or a second browser starts empty. " +
-        "**Backup/Import** turns a profile into a code; paste it into the Import tab there.",
+        "**Backup/Import** turns a profile into a code (**Backup code** tab); paste it into the " +
+          "**Import code** tab on the other device.",
     ],
   },
 ];

@@ -56,25 +56,22 @@
     <!-- <p class="page-sub"></p> -->
   </div>
 
-  <!-- First run: no profiles exist yet. Two routes, one open at a time, each
-       with its own name field. Importing from the API is the recommended one. -->
+  <!-- First run: no profiles exist yet. Importing from the game is the route; a
+       manual profile is a text link under it that swaps the card over. -->
   <section class="card prose-col mx-auto my-12" id="onboard" hidden>
     <h2 class="text-xl mb-2 font-semibold">Get started</h2>
 
-    <div class="tabs mt-4" role="tablist">
-      <button type="button" class="tab is-active" id="onboard-tab-api" role="tab" aria-selected="true">
-        Import from game <span class="text-muted text-[12px] font-normal">&middot; recommended</span></button>
-      <button type="button" class="tab" id="onboard-tab-manual" role="tab" aria-selected="false">Set up manually</button>
-    </div>
-
     <div class="mt-4" id="onboard-panel-api">
-      <p class="text-muted text-[13px] mb-3">Fills in your checklist from your in-game index.</p>
+      <p class="text-muted text-[13px] mb-3">Import from game fills in your checklist from your in-game index.</p>
       <div id="onboard-api-form"></div>
+      <p class="text-muted text-[13px] mt-4">Rather not?
+        <button type="button" class="linkish" id="onboard-show-manual">Set up manually</button></p>
     </div>
 
     <div class="mt-4 flex flex-col gap-3" id="onboard-panel-manual" hidden>
       <p class="text-muted text-[13px]">Start with an empty profile and tick pets yourself.
-         The checkbox at the top of each column fills in what you already have.</p>
+         The checkbox at the top of each column fills in what you already have.
+         <button type="button" class="linkish" id="onboard-show-api">Import from game instead</button></p>
       <label class="field max-w-[360px]">
         <span class="field-label">Profile name</span>
         <input type="text" id="onboard-name" maxlength="40" placeholder="e.g. paints"
@@ -112,6 +109,17 @@
               <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
               <path d="M8 16H3v5"/>
             </svg></button>
+          <!-- The same slot, for a profile that is not linked to the API yet: the
+               way in for anyone who set up by hand and never saw the import. -->
+          <button type="button" class="btn btn-quiet btn-sm shrink-0" id="api-sync" hidden
+                  aria-haspopup="dialog">
+            <svg class="block shrink-0" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+              <path d="M21 3v5h-5"/>
+              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+              <path d="M8 16H3v5"/>
+            </svg>Sync from game</button>
         </div>
         <p class="text-muted text-[12px]" id="lock-note" hidden>
           Ticks are locked on this profile. Unlock it in Settings &gt; Your data.
@@ -205,10 +213,11 @@
           <div class="menu-panel" id="status-panel" hidden></div>
         </div>
       </div>
-      <!-- Which variant is still unticked, not how far along the pet is overall
+      <!-- Which variants are still unticked, not how far along the pet is overall
            — a separate axis from Status on purpose, so the two combine (e.g.
            Incomplete + Missing Golden) instead of one dropdown trying to hold
-           both. Options are only the variants the active category actually
+           both. A checklist: a pet matches while it is missing any ticked
+           variant. Options are only the variants the active category actually
            has, same as the tick columns; see usedVariants in ui.js.
 
            Its placeholder is "No filter" rather than "All variants" — it
@@ -223,7 +232,7 @@
         <div class="select-wrap menu">
           <button type="button" class="select-btn" id="filter-missing"
                   aria-labelledby="missing-label filter-missing"
-                  aria-haspopup="listbox" aria-expanded="false"></button>
+                  aria-haspopup="true" aria-expanded="false"></button>
           <span class="select-sizer" id="missing-sizer"></span>
           <div class="menu-panel" id="missing-panel" hidden></div>
         </div>
@@ -393,7 +402,7 @@
       Powerful Studio API to read your index. The proxy does not store or log
       them. They are kept in this browser so the profile can refresh itself.
     </p>
-    <div class="flex flex-wrap gap-2 items-center">
+    <div class="flex flex-wrap gap-2 items-center" data-api="actions">
       <button type="button" class="btn btn-primary" data-api="connect">Import from game</button>
       <button type="button" class="btn btn-quiet" data-api="disconnect" hidden>Disconnect</button>
     </div>
@@ -401,20 +410,38 @@
   </div>
 </template>
 
+<!-- Shown once, to a visitor who has profiles but none synced with the game: the
+     import is easy to miss for anyone who set up by hand before it existed. -->
+<dialog id="sync-dialog" class="dialog">
+  <form method="dialog" class="float-right -mt-2 -mr-1.5">
+    <button class="dialog-x" aria-label="Close">&times;</button>
+  </form>
+
+  <h2>Sync your index from the game</h2>
+  <p class="text-muted text-[13px]">
+    Fill your checklist from your in-game index instead of ticking by hand, and
+    refresh it any time. A synced profile is locked afterwards so it stays matched
+    with the game; Settings &gt; Your data unlocks it.
+  </p>
+
+  <div class="mt-4" id="sync-api-form"></div>
+</dialog>
+
 <dialog id="backup-dialog" class="dialog">
   <form method="dialog" class="float-right -mt-2 -mr-1.5">
     <button class="dialog-x" aria-label="Close">&times;</button>
   </form>
 
-  <h2>Backup code</h2>
+  <h2>Backup/Import</h2>
   <p class="text-muted text-[13px]">
-    Moves one profile's progress to another browser or device.
+    Import your index from the game, or move a profile to another browser or
+    device with a backup code.
   </p>
 
   <div class="tabs mt-4" role="tablist">
     <button type="button" class="tab is-active" id="tab-api" role="tab" aria-selected="true">From game</button>
-    <button type="button" class="tab" id="tab-export" role="tab" aria-selected="false">Export</button>
-    <button type="button" class="tab" id="tab-import" role="tab" aria-selected="false">Import</button>
+    <button type="button" class="tab" id="tab-export" role="tab" aria-selected="false">Backup code</button>
+    <button type="button" class="tab" id="tab-import" role="tab" aria-selected="false">Import code</button>
   </div>
 
   <div id="panel-api"></div>

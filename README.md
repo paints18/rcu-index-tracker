@@ -23,8 +23,9 @@ profile name.
   Source header groups the list by source, with the sources in list order; clicking it
   again restores the default order.
 - Browse by category, or filter by name, source, rarity, completion status, or
-  a specific missing variant. Source and Rarity are checklists: tick any number
-  of either, or none for all. The Source menu has a search box, and on the All
+  specific missing variants. Source, Rarity and Missing are checklists: tick any
+  number of each, or none for no filter. Missing lists the pets still missing any
+  ticked variant. The Source menu has a search box, and on the All
   tab it is sectioned by tab and the search matches the tab name too. The Source, Rarity, Status and Missing menus are
   drawn by the page, not the browser, so they look and behave the same in
   every browser. Status and Missing apply to List view only. Filters stay set
@@ -37,11 +38,15 @@ profile name.
   row. Grid view also has Page Up/Page Down, and 1-4 to switch variant. `/`
   focuses Search and Ctrl+Z undoes.
 - Multiple profiles, each with its own checklist.
-- Backup/Import moves a profile between browsers or devices via a code.
+- Backup/Import moves a profile between browsers or devices via a code (Backup
+  code and Import code tabs).
 - Import from the game (via the Powerful Studio API) with a Roblox username and
-  access token, from the first-run screen or Backup/Import > From game. An import
-  replaces the profile's ticks with the in-game index, so ticks not in the game
-  are removed. Linking a profile that has ticks asks for confirmation first, and
+  access token, from the first-run screen, the Sync from game button next to the
+  name of a profile that is not linked yet, or Backup/Import > From game. The
+  first-run screen leads with the import; setting up an empty profile by hand is a
+  link beneath it. A visitor with profiles but none linked sees a one-time
+  dialog offering the import. An import replaces the profile's ticks with the
+  in-game index, so ticks not in the game are removed. Linking a profile that has ticks asks for confirmation first, and
   an empty API response never clears a profile. Linked profiles refresh on page
   load, and the refresh icon button next to the profile name re-imports on
   demand. Disconnect removes the link and keeps the ticks.
@@ -63,6 +68,9 @@ profile name.
   copied spreadsheet is tab-separated, for pasting into Google Sheets or
   Excel; a downloaded one is CSV. The preview is editable, and the list can be
   copied or downloaded. Options are remembered in this browser.
+- A "What's new" popup shows the newest Updates entry once, when a new one is
+  posted. First-time visitors do not see it. At most one popup is shown per
+  visit.
 - Light/dark mode, colour themes, a compact density option, and the ability
   to hide unused columns (Source, Rarity, Clicks). A default category and
   hide-completed-pets option (List view only) are also available in Settings.

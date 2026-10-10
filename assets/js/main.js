@@ -9,6 +9,7 @@ import { loadSettings, saveSettings, applySettings } from "./settings-store.js";
 import { mountHelpModal } from "./help-modal.js";
 import { mountSettingsModal } from "./settings-modal.js";
 import { mountUpdatesModal } from "./updates-modal.js";
+import { maybeShowWhatsNew } from "./whats-new.js";
 import { mountAboutModal } from "./about-modal.js";
 import { mountExportModal } from "./export-modal.js";
 import { loadIndex, countProgress, totalsByVariant, sourceOptions } from "./data.js";
@@ -45,8 +46,8 @@ const dom = {
   siteHeader: $("site-header"),
   onboard: $("onboard"),
   onboardName: $("onboard-name"),
-  onboardTabApi: $("onboard-tab-api"),
-  onboardTabManual: $("onboard-tab-manual"),
+  onboardShowApi: $("onboard-show-api"),
+  onboardShowManual: $("onboard-show-manual"),
   onboardPanelApi: $("onboard-panel-api"),
   onboardPanelManual: $("onboard-panel-manual"),
   onboardImport: $("onboard-import"),
@@ -115,6 +116,9 @@ const dom = {
   tabApi: $("tab-api"),
   panelApi: $("panel-api"),
   apiRefresh: $("api-refresh"),
+  apiSync: $("api-sync"),
+  syncDialog: $("sync-dialog"),
+  syncApiForm: $("sync-api-form"),
   lockNote: $("lock-note"),
   lockNoteDismiss: $("lock-note-dismiss"),
   renameDialogTokenWrap: $("rename-dialog-token-wrap"),
@@ -141,7 +145,7 @@ const state = {
   profileId: null,
   progress: {},
   categoryId: null,
-  filters: { search: "", sources: [], rarities: [], status: "all", missing: "" },
+  filters: { search: "", sources: [], rarities: [], status: "all", missing: [] },
   /** List grouped by source (the Source header is toggled on) rather than in the data's own order. */
   sortBySource: false,
   /** Variant columns the current head was built with; syncTableHead needs them. */
@@ -222,12 +226,12 @@ function statusOptions() {
   return STATUS_OPTIONS.filter((o) => o.value === "all" || (o.value === "missing") === grid);
 }
 
-/** "No filter" plus the variants this category has. */
+/** The variants this category has. */
 function missingOptions(variants = usedVariants(state.index.variants, activeCategory())) {
-  return [{ value: "", label: FILTER_ALL.missing }, ...variants.map((v) => ({ value: v.id, label: v.label }))];
+  return variants.map((v) => ({ value: v.id, label: v.label }));
 }
 
-/** The filter menus. Source and rarity take several values, so they are checklists. */
+/** The filter menus. Source, rarity and missing take several values, so they are checklists. */
 const menus = {
   source: mountMenu({
     button: $("filter-source"),
@@ -263,6 +267,9 @@ const menus = {
   missing: mountMenu({
     button: $("filter-missing"),
     panel: $("missing-panel"),
+    multiple: true,
+    allLabel: FILTER_ALL.missing,
+    countLabel: (n) => `${n} variants`,
     onChange: (value) => {
       state.filters.missing = value;
       renderBody();
@@ -516,12 +523,10 @@ function visiblePets(category) {
       if (status === "untouched" && owned !== 0) return false;
     }
 
-    // A pet without this variant at all isn't "missing" it — there is nothing
-    // to tick — so it drops out rather than counting as a match.
-    if (missing) {
-      if (!pet.variants.includes(missing)) return false;
-      if (caught.includes(missing)) return false;
-    }
+    // A pet matches while it is missing any ticked variant. A pet without a
+    // variant at all isn't "missing" it — there is nothing to tick — so that
+    // variant never makes it a match.
+    if (missing.length && !missing.some((v) => pet.variants.includes(v) && !caught.includes(v))) return false;
     return true;
   });
 }
@@ -1065,7 +1070,7 @@ function applyView() {
   }
   // The grid already shows one variant at a time, so its Missing menu is turned
   // off and cleared; a Missing choice made in the list does not come back.
-  if (grid) state.filters.missing = "";
+  if (grid) state.filters.missing = [];
   menus.status.setOptions(statusOptions(), state.filters.status);
   menus.missing.setOptions(missingOptions(), state.filters.missing);
   menus.missing.setDisabled(grid);
@@ -1137,10 +1142,6 @@ function switchProfile(profileId) {
 
 function showOnboardTab(which) {
   const api = which === "api";
-  dom.onboardTabApi.classList.toggle("is-active", api);
-  dom.onboardTabManual.classList.toggle("is-active", !api);
-  dom.onboardTabApi.setAttribute("aria-selected", String(api));
-  dom.onboardTabManual.setAttribute("aria-selected", String(!api));
   dom.onboardPanelApi.hidden = !api;
   dom.onboardPanelManual.hidden = api;
 }
@@ -1186,11 +1187,9 @@ function selectCategory(categoryId) {
   // there, so they are back when you return). A variant id means the same thing
   // everywhere, but it is dropped if the category you landed in does not have
   // that variant, which would otherwise leave the filter applying to a menu
-  // showing "No filter".
-  const stillValid = usedVariants(state.index.variants, activeCategory()).some(
-    (v) => v.id === state.filters.missing,
-  );
-  if (!stillValid) state.filters.missing = "";
+  // that does not show it.
+  const variantIds = usedVariants(state.index.variants, activeCategory()).map((v) => v.id);
+  state.filters.missing = state.filters.missing.filter((id) => variantIds.includes(id));
 
   // The undo history survives the switch — entries carry the category they were
   // made in, and lastUndoIndex() only reaches for this one, so the button now
@@ -1589,7 +1588,7 @@ let apiBusy = false;
  */
 const apiForms = [];
 
-function mountApiForm(host, { naming = false } = {}) {
+function mountApiForm(host, { naming = false, onSuccess = null, dismissLabel = "" } = {}) {
   const root = document.getElementById("api-form-template").content.cloneNode(true);
   const field = (name) => root.querySelector(`[data-api="${name}"]`);
   const form = {
@@ -1604,8 +1603,19 @@ function mountApiForm(host, { naming = false } = {}) {
     // imports into the active profile and has no name to ask for.
     nameWrap: field("name-wrap"),
     name: field("name"),
+    onSuccess,
   };
   form.nameWrap.hidden = !naming;
+
+  // A button after the import ones that just closes the dialog the form sits in.
+  if (dismissLabel) {
+    const dismiss = document.createElement("button");
+    dismiss.type = "button";
+    dismiss.className = "btn btn-quiet";
+    dismiss.textContent = dismissLabel;
+    dismiss.setAttribute("data-close-dialog", "");
+    field("actions").append(dismiss);
+  }
 
   form.connect.addEventListener("click", () => runApiConnect(form));
   // The fields are not in a <form>, so Enter would otherwise do nothing.
@@ -1661,6 +1671,8 @@ function renderApiLink() {
   const link = state.profileId ? store.getLink(state.profileId) : null;
   const profile = state.profileId ? store.getProfile(state.profileId) : null;
   dom.apiRefresh.hidden = !link;
+  // The other half of that slot: a profile with no link offers the way to make one.
+  dom.apiSync.hidden = !profile || Boolean(link);
   applyLock();
   for (const form of apiForms) {
     form.disconnect.hidden = !link;
@@ -1816,6 +1828,7 @@ async function runApiConnect(form) {
     fillApiForms();
     setApiStatus(form, `${describeSync(result)} Profile: "${profile.name}".`, "ok");
     toast(created ? `Created "${profile.name}" from the game.` : `Imported into "${profile.name}".`);
+    form.onSuccess?.();
   } catch (error) {
     setApiStatus(form, error instanceof ApiImportError ? error.message : "Something went wrong importing.", "error");
   } finally {
@@ -1863,8 +1876,11 @@ function runApiDisconnect() {
 /* ------------------------------------------------------------------ */
 
 function wireEvents() {
-  dom.onboardTabApi.addEventListener("click", () => showOnboardTab("api"));
-  dom.onboardTabManual.addEventListener("click", () => {
+  dom.onboardShowApi.addEventListener("click", () => {
+    showOnboardTab("api");
+    apiForms[0].user.focus();
+  });
+  dom.onboardShowManual.addEventListener("click", () => {
     showOnboardTab("manual");
     dom.onboardName.focus();
   });
@@ -1909,6 +1925,7 @@ function wireEvents() {
   dom.tabExport.addEventListener("click", () => showBackupTab("export"));
   dom.tabImport.addEventListener("click", () => showBackupTab("import"));
   dom.apiRefresh.addEventListener("click", () => runApiRefresh());
+  dom.apiSync.addEventListener("click", () => openBackupDialog("api"));
   dom.doImport.addEventListener("click", runImport);
 
   dom.copyCode.addEventListener("click", async () => {
@@ -2014,7 +2031,7 @@ function wireEvents() {
     // "Reset" means back to your configured default, not back to showing
     // everything — otherwise it would undo the hide-completed preference.
     const status = loadSettings().hideCompleted ? "incomplete" : "all";
-    state.filters = { search: "", sources: [], rarities: [], status, missing: "" };
+    state.filters = { search: "", sources: [], rarities: [], status, missing: [] };
     renderFilters();
     renderBody();
   });
@@ -2068,7 +2085,7 @@ async function boot() {
   fillSizer(dom.sourceSizer, [...state.index.widest.source, FILTER_ALL.source]);
   fillSizer(dom.raritySizer, [...state.index.widest.rarity, FILTER_ALL.rarity]);
   fillSizer(dom.statusSizer, STATUS_OPTIONS.map((o) => o.label));
-  fillSizer(dom.missingSizer, [...state.index.variants.map((v) => v.label), FILTER_ALL.missing]);
+  fillSizer(dom.missingSizer, [...state.index.variants.map((v) => v.label), FILTER_ALL.missing, `${state.index.variants.length} variants`]);
 
   state.categoryId = initialCategoryId(state.index, settings);
   if (settings.hideCompleted) state.filters.status = "incomplete";
@@ -2087,6 +2104,7 @@ async function boot() {
   syncListHeight();
   mountApiForm(dom.onboardApiForm, { naming: true });
   mountApiForm(dom.panelApi);
+  mountApiForm(dom.syncApiForm, { onSuccess: () => dom.syncDialog.close(), dismissLabel: "Not now" });
   wireEvents();
   renderProfiles();
   if (state.profileId) renderAll();
@@ -2096,6 +2114,30 @@ async function boot() {
   renderApiLink();
   runApiRefresh({ quiet: true });
   registerIconCache();
+  showStartupPrompts().catch((error) => console.warn("Startup prompts failed:", error));
+}
+
+/**
+ * What a returning visitor is told on load, at most one popup per visit.
+ *
+ * The "What's new" popup goes first. The sync dialog is for a visitor who has
+ * profiles but none synced with the game; it waits for a visit with no new entry
+ * rather than stacking on top of one. Both stay up across refreshes until
+ * they are closed. Anyone who skips the sync dialog still has the Sync from game
+ * button next to the profile name.
+ */
+async function showStartupPrompts() {
+  const profiles = store.listProfiles();
+  const hasProfiles = profiles.length > 0;
+
+  if (await maybeShowWhatsNew({ hasProfiles })) return;
+  if (!hasProfiles || loadSettings().syncPromptSeen) return;
+  if (profiles.some((profile) => store.getLink(profile.id))) return;
+
+  // Seen once it is closed (x, Not now, Escape, a click outside, or a finished
+  // import), not when it opens, so a refresh brings it back.
+  dom.syncDialog.addEventListener("close", () => saveSettings({ syncPromptSeen: true }), { once: true });
+  dom.syncDialog.showModal();
 }
 
 /**
