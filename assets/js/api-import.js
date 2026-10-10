@@ -29,7 +29,7 @@ const IGNORED_TIERS = new Set(["5"]);
  * Pets the API reports that the tracker deliberately does not list. They are
  * skipped silently instead of being reported as missing on every import.
  */
-const IGNORED_KEYS = new Set(["clantutel", "nuclearcow", "spacetutel", "theegg"]);
+const IGNORED_KEYS = new Set(["chocolatetutel", "clantutel", "nuclearcow", "questtutel", "spacetutel", "theegg"]);
 
 const squash = (text) => String(text ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
 
