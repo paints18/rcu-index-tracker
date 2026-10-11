@@ -57,7 +57,7 @@ jobs:
         run: |
           mkdir -p _site
           cp .nojekyll _site/
-          cp index.html updates.html settings.html sw.js _site/
+          cp index.html updates.html settings.html sw.js googlee01df9ad23a769b2.html _site/
           cp -r data _site/
           cp -r assets _site/
 
