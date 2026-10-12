@@ -232,6 +232,15 @@ function buildDialog() {
     ),
   );
 
+  const profileInTitle = checkbox("Show");
+  tracker.append(
+    row(
+      "Show profile name in tab title",
+      null,
+      profileInTitle.label,
+    ),
+  );
+
   const defaultCategory = createMenu({
     id: "setting-default-category",
     ariaLabel: "Category to open by default",
@@ -314,6 +323,7 @@ function buildDialog() {
     toast: toastNode,
     columns,
     hideCompleted: hideCompleted.input,
+    profileInTitle: profileInTitle.input,
     defaultCategory,
     modeSeg,
     themeRow,
@@ -395,6 +405,7 @@ function renderPreferences() {
 
   for (const [id, input] of ui.columns) input.checked = settings.columns?.[id] !== false;
   ui.hideCompleted.checked = settings.hideCompleted === true;
+  ui.profileInTitle.checked = settings.profileInTitle !== false;
 }
 
 function renderCategoryChoices() {
@@ -544,6 +555,10 @@ function wire() {
   }
   ui.hideCompleted.addEventListener("change", (event) =>
     update({ hideCompleted: event.target.checked }),
+  );
+
+  ui.profileInTitle.addEventListener("change", (event) =>
+    update({ profileInTitle: event.target.checked }),
   );
 
   ui.resetButton.addEventListener("click", resetPreferences);

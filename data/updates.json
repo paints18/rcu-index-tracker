@@ -4,6 +4,15 @@
   "notice": "Set up by hand? Use Sync from game next to your profile name to fill your checklist from your in-game index.",
   "entries": [
     {
+      "id": "2026-10-12-tab-title",
+      "date": "2026-10-12",
+      "title": "Profile name in the tab title",
+      "tags": [
+        "added"
+      ],
+      "body": "The browser tab title now shows the active profile. This can be turned off in Settings."
+    },
+    {
       "id": "2026-10-10-sync",
       "date": "2026-10-10",
       "title": "Sync from game button",

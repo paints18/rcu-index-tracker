@@ -366,6 +366,8 @@ function initialCategoryId(index, settings) {
 /* rendering                                                           */
 /* ------------------------------------------------------------------ */
 
+const BASE_TITLE = document.title;
+
 function renderProfiles() {
   const profiles = store.listProfiles();
   const hasProfiles = profiles.length > 0;
@@ -384,11 +386,15 @@ function renderProfiles() {
       setApiStatus(form, "");
     }
     renderApiLink();
+    document.title = BASE_TITLE;
     measureHeader();
     return;
   }
 
   const active = store.getProfile(state.profileId) ?? profiles[0];
+  document.title = loadSettings().profileInTitle
+    ? `${active.name} | ${BASE_TITLE}`
+    : BASE_TITLE;
   dom.profileName.textContent = active.name;
   // Truncated names lose their tail; the tooltip is where the rest of it lives.
   dom.profileName.title = active.name;

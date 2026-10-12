@@ -79,6 +79,8 @@ export const DEFAULTS = {
   density: "comfortable",
   columns: Object.fromEntries(COLUMNS.map((c) => [c.id, true])),
   hideCompleted: false,
+  /** Put the active profile's name in the browser tab title. */
+  profileInTitle: true,
   /** The "ticks are locked" note under the profile name, once dismissed. */
   lockNoteDismissed: false,
   /** One-time hint about bulk edit; not a choice, just a "seen it" flag. */
