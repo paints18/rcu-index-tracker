@@ -929,7 +929,7 @@
      pins the dialog to the top-left corner — so put it back explicitly. */
   .dialog {
     @apply m-auto border border-edge-hi rounded-xl bg-raised text-ink p-[22px]
-           w-[calc(100%-2rem)] max-w-[620px] backdrop:bg-black/55;
+           w-[calc(100%-2rem)] max-w-[620px] max-h-[80vh] backdrop:bg-black/55;
   }
   .dialog h2 { @apply text-lg mb-1.5; }
   .dialog-x {
@@ -969,6 +969,9 @@
     @apply flex flex-wrap items-center justify-between gap-3 py-3 border-t border-edge;
   }
   .setting-row:first-of-type { @apply border-t-0 pt-0; }
+  /* A group's last row has the next group's own gap under it; its padding as well
+     leaves far more room above the divider than below it. */
+  .settings-group > .setting-row:last-child { @apply pb-0; }
   .setting-label { @apply text-sm font-medium; }
   .setting-hint { @apply text-[13px] text-muted mt-0.5 max-w-[52ch]; }
 

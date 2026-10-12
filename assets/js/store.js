@@ -10,6 +10,8 @@
  *   rcu:v1:activeProfile       -> profileId
  *   rcu:v1:progress:<id>       -> { "<pet-slug>": ["normal", "golden"] }
  *   rcu:v1:link:<id>           -> { user, token, userId, syncedAt } (API import link)
+ *   rcu:v1:filters:<id>        -> { sources, rarities, status, missing, sortBySource } (last filter and sort choices)
+ *   rcu:v1:category:<id>       -> category id (the tab the profile was last on)
  *
  * Progress is keyed by pet slug and variant id — never by array position — so
  * reordering or inserting pets in pets.json cannot disturb saved progress.
@@ -22,6 +24,8 @@ const KEY_PROFILES = `${NS}:profiles`;
 const KEY_ACTIVE = `${NS}:activeProfile`;
 const keyProgress = (profileId) => `${NS}:progress:${profileId}`;
 const keyLink = (profileId) => `${NS}:link:${profileId}`;
+const keyFilters = (profileId) => `${NS}:filters:${profileId}`;
+const keyCategory = (profileId) => `${NS}:category:${profileId}`;
 
 export const MAX_NAME_LENGTH = 40;
 
@@ -248,6 +252,8 @@ export class Store {
     this.saveProfiles(list);
     removeRaw(keyProgress(id));
     removeRaw(keyLink(id));
+    removeRaw(keyFilters(id));
+    removeRaw(keyCategory(id));
     if (wasActive) {
       this.setActiveProfileId(list[0]?.id ?? null);
     }
@@ -292,6 +298,58 @@ export class Store {
     if (!profileId) return;
     removeRaw(keyLink(profileId));
     this.emit({ type: "link", profileId });
+  }
+
+  /* ---------- filters ---------- */
+
+  /**
+   * The filter choices (and the Source sort) a profile left off with, or null when
+   * it has none saved. A view preference rather than data, so it raises no change
+   * event.
+   * @returns {{sources: string[], rarities: string[], status: string, missing: string[], sortBySource: boolean}|null}
+   */
+  getFilters(profileId) {
+    if (!profileId) return null;
+    const raw = readJSON(keyFilters(profileId), null);
+    if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
+
+    const strings = (list) => (Array.isArray(list) ? list.filter((v) => typeof v === "string") : []);
+    return {
+      sources: strings(raw.sources),
+      rarities: strings(raw.rarities),
+      status: typeof raw.status === "string" ? raw.status : "all",
+      missing: strings(raw.missing),
+      sortBySource: raw.sortBySource === true,
+    };
+  }
+
+  /** @param {object|null} filters null forgets them, so the profile goes back to the defaults. */
+  setFilters(profileId, filters) {
+    if (!profileId) return;
+    if (filters) {
+      const { sources, rarities, status, missing, sortBySource } = filters;
+      writeRaw(
+        keyFilters(profileId),
+        JSON.stringify({ sources, rarities, status, missing, sortBySource: sortBySource === true }),
+      );
+    } else {
+      removeRaw(keyFilters(profileId));
+    }
+  }
+
+  /**
+   * The category tab a profile was last on, or null. Kept apart from the filters
+   * because resetting those must not move you off the tab you are on.
+   */
+  getCategory(profileId) {
+    if (!profileId) return null;
+    return readRaw(keyCategory(profileId)) || null;
+  }
+
+  setCategory(profileId, categoryId) {
+    if (!profileId) return;
+    if (categoryId) writeRaw(keyCategory(profileId), categoryId);
+    else removeRaw(keyCategory(profileId));
   }
 
   /* ---------- progress ---------- */

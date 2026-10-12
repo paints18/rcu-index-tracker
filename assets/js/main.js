@@ -242,6 +242,7 @@ const menus = {
     countLabel: (n) => `${n} sources`,
     onChange: (value) => {
       state.filters.sources = value;
+      saveFilters();
       renderBody();
     },
   }),
@@ -253,6 +254,7 @@ const menus = {
     countLabel: (n) => `${n} rarities`,
     onChange: (value) => {
       state.filters.rarities = value;
+      saveFilters();
       renderBody();
     },
   }),
@@ -261,6 +263,7 @@ const menus = {
     panel: $("status-panel"),
     onChange: (value) => {
       state.filters.status = value;
+      saveFilters();
       renderBody();
     },
   }),
@@ -272,6 +275,7 @@ const menus = {
     countLabel: (n) => `${n} variants`,
     onChange: (value) => {
       state.filters.missing = value;
+      saveFilters();
       renderBody();
     },
   }),
@@ -347,19 +351,22 @@ function activeCategory() {
 }
 
 /**
- * Pick a starting category: an explicit link wins, then the preferred category
- * from settings, then the first one that actually has pets.
+ * The category a profile opens on: the one it was last on, or else the first that
+ * actually has pets.
  */
-function initialCategoryId(index, settings) {
+function profileCategoryId(profileId) {
+  const { categories } = state.index;
+  const saved = store.getCategory(profileId);
+  if (saved && categories.some((c) => c.id === saved && c.pets.length)) return saved;
+
+  return (categories.find((c) => c.pets.length) ?? categories[0]).id;
+}
+
+/** Page load only: an explicit ?category= link wins over what the profile last had. */
+function initialCategoryId(profileId) {
   const fromQuery = new URLSearchParams(location.search).get("category");
-  if (fromQuery && index.categories.some((c) => c.id === fromQuery)) return fromQuery;
-
-  const preferred = settings.defaultCategory;
-  if (preferred && index.categories.some((c) => c.id === preferred && c.pets.length)) {
-    return preferred;
-  }
-
-  return (index.categories.find((c) => c.pets.length) ?? index.categories[0]).id;
+  if (fromQuery && state.index.categories.some((c) => c.id === fromQuery)) return fromQuery;
+  return profileCategoryId(profileId);
 }
 
 /* ------------------------------------------------------------------ */
@@ -501,7 +508,7 @@ function visiblePets(category) {
   // does not list simply do not apply here.
   const sources = state.filters.sources.filter((s) => category.sources.includes(s));
   const rarities = state.filters.rarities.filter((r) => category.rarities.includes(r));
-  // A status the grid does not offer (say, hide-completed carried over from the
+  // A status the grid does not offer (say, Incomplete carried over from the
   // list) is set aside there rather than filtering with no way to see or undo it.
   const status = statusOptions().some((o) => o.value === state.filters.status)
     ? state.filters.status
@@ -945,6 +952,45 @@ function renderUndo() {
     `${n === 1 ? "box" : "boxes"} · ${depth} to go back through`;
 }
 
+/**
+ * Filters, and the Source sort saved beside them, are remembered per profile, so a
+ * profile comes back the way it was left. Search text is not: it is a one-off
+ * lookup, and a stale search that hides most of the list on the next visit reads
+ * as the page being broken.
+ */
+function defaultFilters() {
+  return { search: "", sources: [], rarities: [], status: "all", missing: [] };
+}
+
+function saveFilters() {
+  if (!state.profileId) return;
+  const { sources, rarities, status, missing } = state.filters;
+  // The grid has no Missing menu and drops the choice from state (see applyView),
+  // so a list-view pick is kept in storage rather than overwritten with nothing.
+  const kept = state.view === "grid" ? (store.getFilters(state.profileId)?.missing ?? []) : missing;
+  store.setFilters(state.profileId, {
+    sources,
+    rarities,
+    status,
+    missing: kept,
+    sortBySource: state.sortBySource,
+  });
+}
+
+/** Swap in the current profile's saved filters and sort, or the defaults if it has none. */
+function loadFilters() {
+  const { sortBySource = false, ...saved } = store.getFilters(state.profileId) ?? {};
+  state.filters = { ...defaultFilters(), ...saved };
+  state.sortBySource = sortBySource;
+
+  if (state.view === "grid") {
+    state.filters.missing = [];
+  } else if (state.categoryId) {
+    const variantIds = usedVariants(state.index.variants, activeCategory()).map((v) => v.id);
+    state.filters.missing = state.filters.missing.filter((id) => variantIds.includes(id));
+  }
+}
+
 function renderFilters() {
   const category = activeCategory();
   menus.source.setOptions(sourceOptions(state.index, category), state.filters.sources);
@@ -1142,6 +1188,8 @@ function switchProfile(profileId) {
   // profile they belong to, and lastUndoIndex() only reaches for this one. An
   // anchor from the previous profile's table means nothing here, though.
   state.range = null;
+  state.categoryId = profileCategoryId(profileId);
+  loadFilters();
   renderProfiles();
   renderAll();
 }
@@ -1172,6 +1220,8 @@ function onSettingsChanged() {
 
   if (state.profileId && !store.getProfile(state.profileId)) {
     state.profileId = store.getActiveProfileId();
+    state.categoryId = profileCategoryId(state.profileId);
+    loadFilters();
   }
   state.progress = store.getProgress(state.profileId);
   // Settings can delete this profile or erase everything. The history survives,
@@ -1187,6 +1237,7 @@ function selectCategory(categoryId) {
   const switching = categoryId !== state.categoryId;
 
   state.categoryId = categoryId;
+  store.setCategory(state.profileId, categoryId);
 
   // Filters follow you from category to category. Source and rarity picks are kept
   // even where a category lacks them (visiblePets and the menus skip what is not
@@ -1195,7 +1246,11 @@ function selectCategory(categoryId) {
   // that variant, which would otherwise leave the filter applying to a menu
   // that does not show it.
   const variantIds = usedVariants(state.index.variants, activeCategory()).map((v) => v.id);
-  state.filters.missing = state.filters.missing.filter((id) => variantIds.includes(id));
+  const missing = state.filters.missing.filter((id) => variantIds.includes(id));
+  if (missing.length !== state.filters.missing.length) {
+    state.filters.missing = missing;
+    saveFilters();
+  }
 
   // The undo history survives the switch — entries carry the category they were
   // made in, and lastUndoIndex() only reaches for this one, so the button now
@@ -1469,6 +1524,8 @@ function confirmDelete() {
   const next = store.getActiveProfileId();
   state.profileId = next;
   state.progress = store.getProgress(next);
+  state.categoryId = profileCategoryId(next);
+  loadFilters();
 
   dom.deleteDialog.close();
   // Delete now opens from inside the edit-profile dialog, on top of it — if
@@ -1993,6 +2050,7 @@ function wireEvents() {
   dom.thead.addEventListener("click", (event) => {
     if (!event.target.closest(".sort-btn")) return;
     state.sortBySource = !state.sortBySource;
+    saveFilters();
     state.range = null; // an anchor row means nothing in a new order
     renderBody();
     // The head was rebuilt, so the button that had focus is gone.
@@ -2034,10 +2092,10 @@ function wireEvents() {
   });
 
   dom.filterReset.addEventListener("click", () => {
-    // "Reset" means back to your configured default, not back to showing
-    // everything — otherwise it would undo the hide-completed preference.
-    const status = loadSettings().hideCompleted ? "incomplete" : "all";
-    state.filters = { search: "", sources: [], rarities: [], status, missing: [] };
+    state.filters = defaultFilters();
+    // Written directly, not through saveFilters(), which in the grid would keep a
+    // saved list-view Missing choice. The Source sort is not a filter and stays.
+    store.setFilters(state.profileId, { ...state.filters, sortBySource: state.sortBySource });
     renderFilters();
     renderBody();
   });
@@ -2084,7 +2142,7 @@ async function boot() {
 
   // The inline snippet in <head> applies only the settings that would flash if
   // they arrived late (theme, density, columns); this is idempotent with it.
-  const settings = applySettings(loadSettings());
+  applySettings(loadSettings());
 
   // Once, not per render: the samples come from the whole dataset, which cannot
   // change while the page is open.
@@ -2093,9 +2151,8 @@ async function boot() {
   fillSizer(dom.statusSizer, STATUS_OPTIONS.map((o) => o.label));
   fillSizer(dom.missingSizer, [...state.index.variants.map((v) => v.label), FILTER_ALL.missing, `${state.index.variants.length} variants`]);
 
-  state.categoryId = initialCategoryId(state.index, settings);
-  if (settings.hideCompleted) state.filters.status = "incomplete";
   state.profileId = store.getActiveProfileId();
+  state.categoryId = initialCategoryId(state.profileId);
   state.progress = store.getProgress(state.profileId);
 
   if (!store.storageAvailable) {
@@ -2103,6 +2160,7 @@ async function boot() {
   }
 
   state.view = initialView();
+  loadFilters();
   applyView();
   if (state.view === "grid") state.petImages = await loadPetImages();
 

@@ -26,7 +26,6 @@ import {
 import { Store, PROBE_KEY } from "./store.js";
 import { loadIndex, countProgress } from "./data.js";
 import { createDialog, showDialog, mountTrigger } from "./modal.js";
-import { createMenu } from "./ui.js";
 
 /** Old settings.html bookmarks land on the tracker with ?settings — see settings.html. */
 const OPEN_PARAM = "settings";
@@ -223,35 +222,12 @@ function buildDialog() {
     row("Row density", null, densitySeg),
   );
 
-  const hideCompleted = checkbox("Hide");
-  tracker.append(
-    row(
-      "Hide fully caught pets by default",
-      "List view only. Grid view always shows every pet.",
-      hideCompleted.label,
-    ),
-  );
-
   const profileInTitle = checkbox("Show");
   tracker.append(
     row(
       "Show profile name in tab title",
       null,
       profileInTitle.label,
-    ),
-  );
-
-  const defaultCategory = createMenu({
-    id: "setting-default-category",
-    ariaLabel: "Category to open by default",
-    className: "min-w-[190px]",
-    onChange: (value) => update({ defaultCategory: value }),
-  });
-  tracker.append(
-    row(
-      "Category to open by default",
-      null,
-      defaultCategory.element,
     ),
   );
 
@@ -322,9 +298,7 @@ function buildDialog() {
     dialog,
     toast: toastNode,
     columns,
-    hideCompleted: hideCompleted.input,
     profileInTitle: profileInTitle.input,
-    defaultCategory,
     modeSeg,
     themeRow,
     densitySeg,
@@ -404,28 +378,7 @@ function renderPreferences() {
   renderThemes();
 
   for (const [id, input] of ui.columns) input.checked = settings.columns?.[id] !== false;
-  ui.hideCompleted.checked = settings.hideCompleted === true;
   ui.profileInTitle.checked = settings.profileInTitle !== false;
-}
-
-function renderCategoryChoices() {
-  const menu = ui.defaultCategory;
-
-  if (!index) {
-    menu.setOptions([{ value: "", label: "Loading categories…", disabled: true }], "");
-    return;
-  }
-
-  menu.setOptions(
-    index.categories.map((category) => ({
-      value: category.id,
-      label: category.pets.length
-        ? `${category.label} (${category.pets.length})`
-        : `${category.label} (empty)`,
-      disabled: category.pets.length === 0,
-    })),
-    settings.defaultCategory,
-  );
 }
 
 function renderProfiles() {
@@ -493,7 +446,6 @@ async function resetPreferences() {
 
   settings = resetSettings();
   renderPreferences();
-  renderCategoryChoices();
   toast("Settings reset.");
   host.onChange?.(settings);
 }
@@ -519,7 +471,6 @@ async function eraseEverything() {
 
   settings = resetSettings();
   renderPreferences();
-  renderCategoryChoices();
   renderProfiles();
   toast("All local data erased.");
   host.onChange?.(settings);
@@ -530,9 +481,10 @@ async function eraseEverything() {
 /* ------------------------------------------------------------------ */
 
 /**
- * The category list is the only thing here that needs pet data. The tracker
- * already has an index in memory and hands it over; anywhere else we fetch it
- * once, after the dialog is on screen, and fill the dropdown in when it lands.
+ * The profile list is the only thing here that needs pet data (to count each
+ * profile's ticks). The tracker already has an index in memory and hands it over;
+ * anywhere else we fetch it once, after the dialog is on screen, and fill the
+ * counts in when it lands.
  */
 async function ensureIndex() {
   if (index) return;
@@ -553,9 +505,6 @@ function wire() {
       update({ columns: { ...settings.columns, [id]: input.checked } }),
     );
   }
-  ui.hideCompleted.addEventListener("change", (event) =>
-    update({ hideCompleted: event.target.checked }),
-  );
 
   ui.profileInTitle.addEventListener("change", (event) =>
     update({ profileInTitle: event.target.checked }),
@@ -573,14 +522,12 @@ export async function openSettings() {
 
   settings = loadSettings();
   renderPreferences();
-  renderCategoryChoices();
   renderProfiles();
 
   showDialog(ui.dialog);
 
   await ensureIndex();
   if (!ui.dialog.open) return;
-  renderCategoryChoices();
   renderProfiles();
 }
 
@@ -604,7 +551,6 @@ export function mountSettingsModal(options = {}) {
     settings = applySettings(loadSettings());
     if (!ui) return;
     renderPreferences();
-    renderCategoryChoices();
     renderProfiles();
   });
 }

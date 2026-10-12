@@ -78,7 +78,6 @@ export const DEFAULTS = {
   theme: "periwinkle",
   density: "comfortable",
   columns: Object.fromEntries(COLUMNS.map((c) => [c.id, true])),
-  hideCompleted: false,
   /** Put the active profile's name in the browser tab title. */
   profileInTitle: true,
   /** The "ticks are locked" note under the profile name, once dismissed. */
@@ -89,7 +88,6 @@ export const DEFAULTS = {
   syncPromptSeen: false,
   /** Id of the newest changelog entry the "What's new" popup has already shown. */
   updatesSeenId: "",
-  defaultCategory: "all",
 };
 
 export function loadSettings() {
@@ -111,7 +109,7 @@ function withDefaults(stored) {
   // fine and would otherwise spread into the settings as indexed keys).
   if (!stored || typeof stored !== "object" || Array.isArray(stored)) stored = {};
 
-  const { showClicks, accent, ...rest } = stored;
+  const { showClicks, accent, hideCompleted, defaultCategory, ...rest } = stored;
   const storedColumns =
     stored.columns && typeof stored.columns === "object" && !Array.isArray(stored.columns)
       ? stored.columns
@@ -140,10 +138,6 @@ function withDefaults(stored) {
   // back to the default.
   if (rest.theme == null && accent) rest.theme = accent;
   if (!THEME_IDS.has(rest.theme)) delete rest.theme;
-
-  // Settings saved before there was a default category, or with the old
-  // "first category with pets" blank choice, fall back to the current default.
-  if (!rest.defaultCategory || typeof rest.defaultCategory !== "string") delete rest.defaultCategory;
 
   return { ...DEFAULTS, ...rest, columns };
 }

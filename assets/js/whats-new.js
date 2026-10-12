@@ -26,7 +26,7 @@ function el(tag, className, text) {
 }
 
 function buildDialog(entry) {
-  const dialog = createDialog("What's new", "max-w-[460px]");
+  const dialog = createDialog("What's new");
 
   dialog.append(el("h2", null, "What's new"));
 

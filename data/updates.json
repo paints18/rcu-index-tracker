@@ -4,13 +4,18 @@
   "notice": "Set up by hand? Use Sync from game next to your profile name to fill your checklist from your in-game index.",
   "entries": [
     {
-      "id": "2026-10-12-tab-title",
+      "id": "2026-10-12-saved-filters-tab",
       "date": "2026-10-12",
-      "title": "Profile name in the tab title",
+      "title": "Saved filters and profile in the tab title",
       "tags": [
-        "added"
+        "added",
+        "changed"
       ],
-      "body": "The browser tab title now shows the active profile. This can be turned off in Settings."
+      "body": "Each profile now remembers its category tab, filters and Source sort, and the browser tab title shows the active profile.",
+      "items": [
+        "Saved per profile: the category tab, the Source, Rarity, Status and Missing filters, and the Source sorting.",
+        "Tab title now shows the active profile. This can be turned off in Settings."
+      ]
     },
     {
       "id": "2026-10-10-sync",

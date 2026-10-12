@@ -30,7 +30,10 @@ profile name.
   drawn by the page, not the browser, so they look and behave the same in
   every browser. Status and Missing apply to List view only. Filters stay set
   when you change category; a source or rarity the new category does not have is
-  skipped there and comes back when you return.
+  skipped there and comes back when you return. Each profile remembers its
+  category tab, its Source, Rarity, Status and Missing filters, and the Source
+  sort in this browser; search text is not remembered, and Reset filters clears
+  the saved filters but not the tab or the sort. A ?category= link overrides the remembered tab.
 - List view: fill a whole column at once for the pets currently shown, or
   shift-click to fill a range. Undo reverts any of these bulk edits.
 - Keyboard navigation in both views: arrow keys, Home/End, Ctrl+Home/Ctrl+End
@@ -72,8 +75,9 @@ profile name.
   posted. First-time visitors do not see it. At most one popup is shown per
   visit.
 - Light/dark mode, colour themes, a compact density option, and the ability
-  to hide unused columns (Source, Rarity, Clicks). A default category and
-  hide-completed-pets option (List view only) are also available in Settings.
+  to hide unused columns (Source, Rarity, Clicks). An option to show the
+  profile name in the browser tab title (on by default) is also available in
+  Settings.
 
 ## Data
 
