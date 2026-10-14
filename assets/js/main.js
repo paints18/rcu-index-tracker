@@ -1906,14 +1906,15 @@ async function runApiRefresh({ quiet = false } = {}) {
 
   setApiBusy(true);
   try {
+    // A link with a saved user ID is fetched by that ID, so a rename or a name
+    // taken by someone else cannot point it at a different player.
     const body = await fetchPlayerIndex(link);
-    // A username can be released and taken by someone else; the user ID cannot.
-    if (link.userId && body.userId !== link.userId) {
-      throw new ApiImportError(
-        "That username now belongs to a different player. Disconnect this profile and import again.",
-      );
-    }
-    const result = applyApiIndex(profileId, link, planApiIndex(profileId, body));
+    // Pin links saved without an ID to the player just found.
+    const result = applyApiIndex(
+      profileId,
+      { ...link, userId: link.userId ?? body.userId },
+      planApiIndex(profileId, body),
+    );
     if (!quiet) toast(describeSync(result));
     else if (result.added || result.removed) {
       toast(`Refreshed from the game. ${describeSync(result)}`);

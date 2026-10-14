@@ -69,6 +69,9 @@ async function resolveUser(input) {
     body: JSON.stringify({ usernames: [input], excludeBannedUsers: false }),
     signal: AbortSignal.timeout(TIMEOUT_MS),
   });
+  if (res.status === 429) {
+    throw Object.assign(new Error("roblox 429"), { retryAfter: retryAfterSeconds(res.headers.get("Retry-After")) });
+  }
   if (!res.ok) throw new Error(`roblox ${res.status}`);
 
   const found = (await res.json())?.data?.[0];
@@ -102,7 +105,10 @@ export default {
     let user;
     try {
       user = await resolveUser(input);
-    } catch {
+    } catch (error) {
+      if (error.retryAfter) {
+        return reply(origin, 429, { error: "Roblox is rate limiting lookups. Wait a moment and try again." }, { "Retry-After": error.retryAfter });
+      }
       return reply(origin, 502, { error: "Roblox could not be reached. Try again shortly." });
     }
     if (!user) {

@@ -41,9 +41,14 @@ export class ApiImportError extends Error {
   }
 }
 
-/** Fetch the raw index entries for one player. */
-export async function fetchPlayerIndex({ user, token } = {}) {
-  const cleanUser = String(user ?? "").trim();
+/**
+ * Fetch the raw index entries for one player.
+ *
+ * A saved `userId` is sent in place of the username: it skips the Roblox name
+ * lookup (which rate limits the proxy) and survives the player renaming.
+ */
+export async function fetchPlayerIndex({ user, userId, token } = {}) {
+  const cleanUser = String(userId ?? "").trim() || String(user ?? "").trim();
   const cleanToken = String(token ?? "").trim();
   if (!cleanUser) throw new ApiImportError("Enter your Roblox username or user ID.");
   if (!cleanToken) throw new ApiImportError("Enter your access token.");
