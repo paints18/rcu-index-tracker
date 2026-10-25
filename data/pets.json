@@ -6021,6 +6021,19 @@
           ]
         },
         {
+          "slug": "dark-book",
+          "name": "Dark Book",
+          "source": "Enchanted Mansion Egg",
+          "rarity": "Rare",
+          "clicks": "160O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "nuclear-bloom",
           "name": "Nuclear Bloom",
           "source": "Atomic World Egg",
@@ -6051,6 +6064,19 @@
           "name": "Glitched Heart",
           "source": "Glitched World Egg",
           "rarity": "Legendary",
+          "clicks": "240O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "library-bunny",
+          "name": "Library Bunny",
+          "source": "Enchanted Mansion Egg",
+          "rarity": "Epic",
           "clicks": "240O",
           "variants": [
             "normal",
@@ -6104,6 +6130,19 @@
           "source": "Primitive Fields Egg",
           "rarity": "Mysterious",
           "clicks": "400O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "library-hydra",
+          "name": "Library Hydra",
+          "source": "Enchanted Mansion Egg",
+          "rarity": "Legendary",
+          "clicks": "480O",
           "variants": [
             "normal",
             "golden",
@@ -6203,6 +6242,19 @@
           ]
         },
         {
+          "slug": "book-wisp",
+          "name": "Book Wisp",
+          "source": "Enchanted Mansion Egg",
+          "rarity": "Mythical",
+          "clicks": "2.19N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "core-overlord",
           "name": "Core Overlord",
           "source": "Atomic World Egg",
@@ -6268,6 +6320,19 @@
           ]
         },
         {
+          "slug": "enchanted-overlord",
+          "name": "Enchanted Overlord",
+          "source": "Enchanted Mansion Egg",
+          "rarity": "Eternal",
+          "clicks": "11.99N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "illusion-shard",
           "name": "Illusion Shard",
           "source": "Carnival City Egg",
@@ -6320,6 +6385,19 @@
           ]
         },
         {
+          "slug": "forbidden-book",
+          "name": "Forbidden Book",
+          "source": "Enchanted Mansion Egg",
+          "rarity": "Secret",
+          "clicks": "68N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "glitched-shard",
           "name": "Glitched Shard",
           "source": "Glitched World Egg",
@@ -6333,11 +6411,37 @@
           ]
         },
         {
+          "slug": "library-guardian",
+          "name": "Library Guardian",
+          "source": "Enchanted Mansion Egg",
+          "rarity": "Divine",
+          "clicks": "232N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "glitched-titan",
           "name": "Glitched Titan",
           "source": "Glitched World Egg",
           "rarity": "Mysterious",
           "clicks": "480N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "the-librarian",
+          "name": "The Librarian",
+          "source": "Enchanted Mansion Egg",
+          "rarity": "Mysterious",
+          "clicks": "960N",
           "variants": [
             "normal",
             "golden",
@@ -8138,6 +8242,45 @@
           ]
         },
         {
+          "slug": "specter-dragon",
+          "name": "Specter Dragon",
+          "source": "Spooky Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "30N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "haunted-spirit",
+          "name": "Haunted Spirit",
+          "source": "Spooky Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "44.99N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "spooky-bat",
+          "name": "Spooky Bat",
+          "source": "Spooky Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "80N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "thunder-fury",
           "name": "Thunder Fury",
           "source": "Storm Exclusive Egg",
@@ -8857,6 +9000,19 @@
           ]
         },
         {
+          "slug": "halloween-cerberus",
+          "name": "Halloween Cerberus",
+          "source": "Spooky Exclusive Egg",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "summer-lord",
           "name": "Summer Lord",
           "source": "-",
@@ -9460,6 +9616,19 @@
           "slug": "shadow-deity",
           "name": "Shadow Deity",
           "source": "Shadow Exclusive Egg",
+          "rarity": "Ultimate",
+          "clicks": "400%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "nightmare-sovereign",
+          "name": "Nightmare Sovereign",
+          "source": "Spooky Exclusive Egg",
           "rarity": "Ultimate",
           "clicks": "400%",
           "variants": [
@@ -11573,6 +11742,19 @@
           ]
         },
         {
+          "slug": "spooky-shield",
+          "name": "Spooky Shield",
+          "source": "Top Total Clan Pumpkins",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "christmas-sock",
           "name": "Christmas Sock",
           "source": null,
@@ -11967,6 +12149,19 @@
           ]
         },
         {
+          "slug": "phantom-wyvern",
+          "name": "Phantom Wyvern",
+          "source": "Top 100 Total Pumpkins",
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "15m-robot",
           "name": "15M Robot",
           "source": null,
@@ -12150,6 +12345,19 @@
           "slug": "dungeon-seraph",
           "name": "Dungeon Seraph",
           "source": null,
+          "rarity": "Supreme",
+          "clicks": "300%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "soul-reaper",
+          "name": "Soul Reaper",
+          "source": "Top 25 Total Pumpkins",
           "rarity": "Supreme",
           "clicks": "300%",
           "variants": [
@@ -12431,6 +12639,19 @@
           "slug": "factory-king",
           "name": "Factory King",
           "source": null,
+          "rarity": "Ultimate",
+          "clicks": "500%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "champion-pot",
+          "name": "Champion Pot",
+          "source": "Top 1 Total Pumpkins",
           "rarity": "Ultimate",
           "clicks": "500%",
           "variants": [
@@ -17492,6 +17713,220 @@
           "slug": "the-prototype",
           "name": "The Prototype",
           "source": null,
+          "rarity": "Ultimate",
+          "clicks": "400%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pumpkins",
+      "label": "Pumpkins",
+      "pets": [
+        {
+          "slug": "zombie-dog",
+          "name": "Zombie Dog",
+          "source": "Halloween Dice",
+          "rarity": "Common",
+          "clicks": "36O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "witch-bunny",
+          "name": "Witch Bunny",
+          "source": "Halloween Dice",
+          "rarity": "Uncommon",
+          "clicks": "99.99O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "zombie-spider",
+          "name": "Zombie Spider",
+          "source": "Halloween Dice",
+          "rarity": "Rare",
+          "clicks": "320O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "pumpkin-slime",
+          "name": "Pumpkin Slime",
+          "source": "Halloween Dice",
+          "rarity": "Epic",
+          "clicks": "480O",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "bone-dragon",
+          "name": "Bone Dragon",
+          "source": "Halloween Dice",
+          "rarity": "Legendary",
+          "clicks": "1N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "spooky-shard",
+          "name": "Spooky Shard",
+          "source": "Spooky Stock Pack",
+          "rarity": "Exclusive",
+          "clicks": "1N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "forgotten-soul",
+          "name": "Forgotten Soul",
+          "source": "Halloween Dice",
+          "rarity": "Mythical",
+          "clicks": "4.5N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "sly-spirit",
+          "name": "Sly Spirit",
+          "source": "Halloween Dice",
+          "rarity": "Eternal",
+          "clicks": "23.99N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "skull-heathen",
+          "name": "Skull Heathen",
+          "source": "Halloween Dice",
+          "rarity": "Secret",
+          "clicks": "130N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "pumpkin-king",
+          "name": "Pumpkin King",
+          "source": "Halloween Dice",
+          "rarity": "Divine",
+          "clicks": "460N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "spirit-s-animal",
+          "name": "Spirit's Animal",
+          "source": "Witch Shop",
+          "rarity": "Supreme",
+          "clicks": "110%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "spooky-immortal",
+          "name": "Spooky Immortal",
+          "source": "Spooky Wheel",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "pumpkin-beast",
+          "name": "Pumpkin Beast",
+          "source": "Spooky Pack",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "bat-tutel",
+          "name": "Bat Tutel",
+          "source": "Witch Shop",
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "spooky-lord",
+          "name": "Spooky Lord",
+          "source": "Halloween Dice",
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "queen-of-death",
+          "name": "Queen of Death",
+          "source": "Halloween Dice",
           "rarity": "Ultimate",
           "clicks": "400%",
           "variants": [

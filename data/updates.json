@@ -4,6 +4,30 @@
   "notice": "Set up by hand? Use Sync from game next to your profile name to fill your checklist from your in-game index.",
   "entries": [
     {
+      "id": "2026-10-25-update",
+      "date": "2026-10-25",
+      "title": "Update 82, 83: Enchanted Mansion, Halloween Event",
+      "tags": [
+        "added"
+      ],
+      "body": "Added Enchanted Mansion pets to World 4, a new Pumpkins tab for the Halloween Event, Spooky Exclusive Egg to Exclusives, and the Halloween pack, wheel, shop and leaderboard pets.",
+      "items": [
+        "World 4: Dark Book, Library Bunny, Library Hydra, Book Wisp, Enchanted Overlord, Forbidden Book, Library Guardian, The Librarian.",
+        {
+          "text": "Pumpkins:",
+          "items": [
+            "Halloween Dice: Zombie Dog, Witch Bunny, Zombie Spider, Pumpkin Slime, Bone Dragon, Forgotten Soul, Sly Spirit, Skull Heathen, Pumpkin King, Spooky Lord, Queen of Death.",
+            "Spooky Pack: Pumpkin Beast.",
+            "Spooky Stock Pack: Spooky Shard.",
+            "Spooky Wheel: Spooky Immortal.",
+            "Witch Shop: Spirit's Animal, Bat Tutel."
+          ]
+        },
+        "Exclusives: Specter Dragon, Haunted Spirit, Spooky Bat, Halloween Cerberus, Nightmare Sovereign (Spooky Exclusive Egg).",
+        "No Currency: Spooky Shield, Phantom Wyvern, Soul Reaper, Champion Pot (Pumpkins leaderboards)."
+      ]
+    },
+    {
       "id": "2026-10-12-saved-filters-tab",
       "date": "2026-10-12",
       "title": "Saved filters and profile in the tab title",

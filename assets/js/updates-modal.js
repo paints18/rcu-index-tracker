@@ -75,6 +75,19 @@ function renderEntry(entry, isLatest) {
   return article;
 }
 
+/** One bullet. An item is a string, or { text, items: [...] } for a bullet with sub-bullets. */
+function itemNode(item) {
+  const text = typeof item === "string" ? item : item.text;
+  const li = el("li", "text-sm", text);
+  const subs = typeof item === "string" ? [] : (item.items ?? []).filter(Boolean);
+  if (subs.length) {
+    const sub = el("ul", "mt-1.5 flex flex-col gap-1 list-disc pl-5 marker:text-muted");
+    for (const s of subs) sub.append(el("li", "text-sm", s));
+    li.append(sub);
+  }
+  return li;
+}
+
 /** An entry's heading line, summary and bullet list, without the timeline styling around it. */
 export function renderEntryBody(entry) {
   const nodes = [];
@@ -99,7 +112,7 @@ export function renderEntryBody(entry) {
   const items = (entry.items ?? []).filter(Boolean);
   if (items.length) {
     const list = el("ul", "mt-2.5 flex flex-col gap-1.5 list-disc pl-5 marker:text-muted");
-    for (const item of items) list.append(el("li", "text-sm", item));
+    for (const item of items) list.append(itemNode(item));
     nodes.push(list);
   }
 
