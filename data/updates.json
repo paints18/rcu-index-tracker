@@ -4,6 +4,25 @@
   "notice": "Set up by hand? Use Sync from game next to your profile name to fill your checklist from your in-game index.",
   "entries": [
     {
+      "id": "2026-11-02-update",
+      "date": "2026-11-02",
+      "title": "Update 84: Halloween Event Part 2",
+      "tags": [
+        "added"
+      ],
+      "body": "Added Halloween Dice and Top 500 Headless Horseman Quests pets to Pumpkins, and Witch Exclusive Egg to Exclusives.",
+      "items": [
+        {
+          "text": "Pumpkins:",
+          "items": [
+            "Halloween Dice: Candle Overlord, Zombie Shard, Haunted Tree.",
+            "Top 500 Headless Horseman Quests: Haunted Trophy."
+          ]
+        },
+        "Exclusives: Cursed Witch, Halloween Queen, Witch Emperor (Witch Exclusive Egg)."
+      ]
+    },
+    {
       "id": "2026-10-25-update",
       "date": "2026-10-25",
       "title": "Update 82, 83: Enchanted Mansion, Halloween Event",

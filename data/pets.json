@@ -9013,6 +9013,19 @@
           ]
         },
         {
+          "slug": "cursed-witch",
+          "name": "Cursed Witch",
+          "source": "Witch Exclusive Egg",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "summer-lord",
           "name": "Summer Lord",
           "source": "-",
@@ -9080,6 +9093,19 @@
           "slug": "melting-immortal",
           "name": "Melting Immortal",
           "source": "-",
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "halloween-queen",
+          "name": "Halloween Queen",
+          "source": "Witch Exclusive Egg",
           "rarity": "Supreme",
           "clicks": "200%",
           "variants": [
@@ -9629,6 +9655,19 @@
           "slug": "nightmare-sovereign",
           "name": "Nightmare Sovereign",
           "source": "Spooky Exclusive Egg",
+          "rarity": "Ultimate",
+          "clicks": "400%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "witch-emperor",
+          "name": "Witch Emperor",
+          "source": "Witch Exclusive Egg",
           "rarity": "Ultimate",
           "clicks": "400%",
           "variants": [
@@ -17833,6 +17872,19 @@
           ]
         },
         {
+          "slug": "candle-overlord",
+          "name": "Candle Overlord",
+          "source": "Halloween Dice",
+          "rarity": "Eternal",
+          "clicks": "47.99N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "skull-heathen",
           "name": "Skull Heathen",
           "source": "Halloween Dice",
@@ -17846,11 +17898,37 @@
           ]
         },
         {
+          "slug": "zombie-shard",
+          "name": "Zombie Shard",
+          "source": "Halloween Dice",
+          "rarity": "Secret",
+          "clicks": "260N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "pumpkin-king",
           "name": "Pumpkin King",
           "source": "Halloween Dice",
           "rarity": "Divine",
           "clicks": "460N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "haunted-tree",
+          "name": "Haunted Tree",
+          "source": "Halloween Dice",
+          "rarity": "Divine",
+          "clicks": "920N",
           "variants": [
             "normal",
             "golden",
@@ -17888,6 +17966,19 @@
           "slug": "pumpkin-beast",
           "name": "Pumpkin Beast",
           "source": "Spooky Pack",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "haunted-trophy",
+          "name": "Haunted Trophy",
+          "source": "Top 500 Headless Horseman Quests",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [

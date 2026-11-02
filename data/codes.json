@@ -1,6 +1,6 @@
 {
   "_comment": "Permanent pet-slug -> integer ledger, maintained by tools/assign_codes.py. Do not hand-edit: changing or reusing an integer invalidates every backup code players have saved.",
-  "nextCode": 1395,
+  "nextCode": 1402,
   "codes": {
     "100m-balloon": 1137,
     "100m-blaster": 1146,
@@ -261,6 +261,7 @@
     "cactus-golem": 292,
     "cactus-overlord": 442,
     "cake-titan": 867,
+    "candle-overlord": 1398,
     "candy-cane-dragon": 906,
     "candy-immortal": 863,
     "candy-shield": 800,
@@ -401,6 +402,7 @@
     "cursed-ghost": 128,
     "cursed-immortal": 134,
     "cursed-skull": 647,
+    "cursed-witch": 1395,
     "cursed-wizard": 1096,
     "cyber-car": 152,
     "cyber-golem": 146,
@@ -674,6 +676,7 @@
     "halloween-community-pet": 842,
     "halloween-demon": 998,
     "halloween-dominus": 990,
+    "halloween-queen": 1396,
     "halloween-slime": 993,
     "halloween-tutel": 1012,
     "halloween-warden": 658,
@@ -695,6 +698,8 @@
     "harvester": 582,
     "haunted-potion": 1083,
     "haunted-spirit": 1371,
+    "haunted-tree": 1400,
+    "haunted-trophy": 1401,
     "hazmat-demon": 18,
     "heatwave-hydra": 1221,
     "heaven-dove": 50,
@@ -1377,6 +1382,7 @@
     "winter-dragon": 904,
     "winter-spirit": 940,
     "witch-bunny": 1380,
+    "witch-emperor": 1397,
     "witch-hydra": 991,
     "wizard": 1084,
     "wizard-wisp": 1092,
@@ -1396,6 +1402,7 @@
     "zombie-golem": 992,
     "zombie-mimic": 79,
     "zombie-overlord": 999,
+    "zombie-shard": 1399,
     "zombie-spider": 1381
   }
 }
