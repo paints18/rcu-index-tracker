@@ -466,7 +466,7 @@
      the cards, and the accent for whatever is picked, hovered or focused. */
   .menu { @apply relative; }
   .menu-panel {
-    @apply absolute left-0 top-full z-30 min-w-full w-max max-w-[80vw] max-h-[60vh] overflow-y-auto
+    @apply absolute left-0 top-full z-30 min-w-full w-max max-w-[min(80vw,15rem)] max-h-[60vh] overflow-y-auto
            flex flex-col gap-px p-1 mt-1 bg-input text-ink border border-edge-hi rounded-lg
            font-[inherit] text-[inherit];
     box-shadow: 0 8px 24px rgb(0 0 0 / 0.28);
@@ -474,7 +474,7 @@
   .menu-panel[hidden] { @apply hidden; }
   .menu-panel:focus { @apply outline-none; }
   .menu-row {
-    @apply flex items-center gap-2 px-2 min-h-8 shrink-0 cursor-pointer whitespace-nowrap
+    @apply flex items-center gap-2 px-2 py-1 min-h-8 shrink-0 cursor-pointer
            text-left bg-transparent border-0 rounded-md font-[inherit] text-[inherit];
   }
   .menu-row:hover,
