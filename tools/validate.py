@@ -48,7 +48,7 @@ IMAGE_VARIANTS = ["normal", "golden", "toxic", "galaxy"]
 # No leading/trailing zeros, no zero values, no whitespace.
 CLICKS_NUMBER = r"(?:[1-9]\d*|0\.\d*[1-9]|[1-9]\d*\.\d*[1-9])"
 CLICKS_RE = re.compile(r"^%s(?:[A-Za-z]{1,2}|%%)?$" % CLICKS_NUMBER)
-CLICKS_SUFFIXES = {"K", "M", "B", "T", "Qd", "Qn", "Sx", "Sp", "O", "N"}
+CLICKS_SUFFIXES = {"K", "M", "B", "T", "Qd", "Qn", "Sx", "Sp", "O", "N", "De"}
 
 
 def check_clicks(value):

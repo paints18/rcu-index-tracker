@@ -4,6 +4,25 @@
   "notice": "Set up by hand? Use Sync from game next to your profile name to fill your checklist from your in-game index.",
   "entries": [
     {
+      "id": "2026-11-08-update",
+      "date": "2026-11-08",
+      "title": "Update 85",
+      "tags": [
+        "added"
+      ],
+      "body": "Added 250M Egg, 250M Wheel and 250M Rebirths leaderboard pets to No Currency.",
+      "items": [
+        {
+          "text": "No Currency:",
+          "items": [
+            "250M Egg: 250M Bunny, 250M Balloon, 250M Axolotl, 250M Firework, 250M Dragon, 250M Dominus, 250M Robot, 250M Eternity.",
+            "250M Wheel: 250M Trophy.",
+            "250M Rebirths leaderboards: 250M King, 250M Angel, 250M Hydra, 250M Shard."
+          ]
+        }
+      ]
+    },
+    {
       "id": "2026-11-02-update",
       "date": "2026-11-02",
       "title": "Update 84: Halloween Event Part 2",

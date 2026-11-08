@@ -42,7 +42,7 @@ power of ten as a float and cuts the result off after two decimals (never rounds
 so a base of 1.16e30 shows as 1.15N. This reproduced every existing non-percent
 clicks value when it was written, and predicted Magnet Shard's before it was
 checked in game. About 1% of pets are affected and it cannot be told by eye.
-Suffixes are K M B T Qd Qn Sx Sp O N; a base past that is reported, not filled.
+Suffixes are K M B T Qd Qn Sx Sp O N De; a base past that is reported, not filled.
 Existing values that disagree with the rule are listed and left alone.
 
 Icons
@@ -80,7 +80,7 @@ API = "https://public-api.powerfulstudio.xyz/rcu/v1/directories/pets"
 THUMBS = "https://thumbnails.roblox.com/v1/assets?assetIds=%s&size=150x150&format=Png"
 BATCH = 100
 
-SUFFIXES = ["", "K", "M", "B", "T", "Qd", "Qn", "Sx", "Sp", "O", "N"]
+SUFFIXES = ["", "K", "M", "B", "T", "Qd", "Qn", "Sx", "Sp", "O", "N", "De"]
 PERCENT_RARITIES = {"Supreme", "Ultimate"}
 
 # The API names an event pet's currency in camelCase; these are the ones whose tab

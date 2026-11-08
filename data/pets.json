@@ -11104,6 +11104,97 @@
           ]
         },
         {
+          "slug": "250m-bunny",
+          "name": "250M Bunny",
+          "source": "250M Egg",
+          "rarity": "Rare",
+          "clicks": "1.28N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "250m-balloon",
+          "name": "250M Balloon",
+          "source": "250M Egg",
+          "rarity": "Epic",
+          "clicks": "1.92N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "250m-axolotl",
+          "name": "250M Axolotl",
+          "source": "250M Egg",
+          "rarity": "Legendary",
+          "clicks": "3.84N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "250m-firework",
+          "name": "250M Firework",
+          "source": "250M Egg",
+          "rarity": "Mythical",
+          "clicks": "18N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "250m-dragon",
+          "name": "250M Dragon",
+          "source": "250M Egg",
+          "rarity": "Eternal",
+          "clicks": "100N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "250m-dominus",
+          "name": "250M Dominus",
+          "source": "250M Egg",
+          "rarity": "Secret",
+          "clicks": "550N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "250m-robot",
+          "name": "250M Robot",
+          "source": "250M Egg",
+          "rarity": "Divine",
+          "clicks": "1.9De",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "starfactory-trophy",
           "name": "Starfactory Trophy",
           "source": null,
@@ -11794,6 +11885,19 @@
           ]
         },
         {
+          "slug": "250m-trophy",
+          "name": "250M Trophy",
+          "source": "250M Wheel",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "christmas-sock",
           "name": "Christmas Sock",
           "source": null,
@@ -12201,6 +12305,32 @@
           ]
         },
         {
+          "slug": "250m-shard",
+          "name": "250M Shard",
+          "source": "Top 250 250M Rebirths",
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "250m-eternity",
+          "name": "250M Eternity",
+          "source": "250M Egg",
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "15m-robot",
           "name": "15M Robot",
           "source": null,
@@ -12256,6 +12386,19 @@
           "source": null,
           "rarity": "Supreme",
           "clicks": "225%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "250m-hydra",
+          "name": "250M Hydra",
+          "source": "Top 100 250M Rebirths",
+          "rarity": "Supreme",
+          "clicks": "250%",
           "variants": [
             "normal",
             "golden",
@@ -12397,6 +12540,19 @@
           "slug": "soul-reaper",
           "name": "Soul Reaper",
           "source": "Top 25 Total Pumpkins",
+          "rarity": "Supreme",
+          "clicks": "300%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "250m-angel",
+          "name": "250M Angel",
+          "source": "Top 25 250M Rebirths",
           "rarity": "Supreme",
           "clicks": "300%",
           "variants": [
@@ -12691,6 +12847,19 @@
           "slug": "champion-pot",
           "name": "Champion Pot",
           "source": "Top 1 Total Pumpkins",
+          "rarity": "Ultimate",
+          "clicks": "500%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "250m-king",
+          "name": "250M King",
+          "source": "Top 1 250M Rebirths",
           "rarity": "Ultimate",
           "clicks": "500%",
           "variants": [
