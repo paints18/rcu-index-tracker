@@ -75,19 +75,23 @@ export async function fetchPlayerIndex({ user, userId, token } = {}) {
     // Handled below by status.
   }
 
+  // The message is shown to the person, so only a short, non-empty string is trusted.
+  const trimmed = typeof body?.error === "string" ? body.error.trim() : "";
+  const message = trimmed.length <= 200 ? trimmed : "";
+
   if (response.status === 429) {
     const wait = Math.ceil(Number(response.headers.get("Retry-After")));
     const seconds = Number.isFinite(wait) && wait > 0 ? Math.min(wait, MAX_RETRY_SECONDS) : null;
+    // A 429 with no wait is one waiting will not fix (a Roblox name lookup), and
+    // the proxy's message says what to do instead.
     throw new ApiImportError(
-      seconds ? `Rate limited. Try again in ${seconds} seconds.` : "Rate limited. Try again in a moment.",
+      seconds ? `Rate limited. Try again in ${seconds} seconds.` : message || "Rate limited. Try again in a moment.",
       seconds,
     );
   }
   if (!response.ok || !Array.isArray(body?.index)) {
-    // The message is shown to the person, so only a short, non-empty string is trusted.
-    const message = typeof body?.error === "string" ? body.error.trim() : "";
     throw new ApiImportError(
-      message && message.length <= 200
+      message
         ? message
         : response.ok
           ? "The import service sent an unexpected response."

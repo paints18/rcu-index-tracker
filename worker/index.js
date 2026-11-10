@@ -3,7 +3,7 @@
  *
  * Browsers will not let the tracker call public-api.powerfulstudio.xyz or
  * Roblox's username lookup directly: neither sends CORS headers. This Worker
- * makes those two calls on the browser's behalf and adds the headers.
+ * makes those calls on the browser's behalf and adds the headers.
  *
  *   GET /player?user=<roblox username or numeric id>
  *       header: X-Access-Token
@@ -15,6 +15,7 @@
 
 const API = "https://public-api.powerfulstudio.xyz";
 const ROBLOX_USERS = "https://users.roblox.com/v1/usernames/users";
+const ROBLOX_PROFILE = "https://www.roblox.com/users/profile";
 
 const ALLOWED_ORIGINS = new Set([
   "https://paints18.github.io",
@@ -58,26 +59,69 @@ function retryAfterSeconds(value) {
   return String(Math.min(wait, MAX_RETRY_AFTER));
 }
 
-/** Resolve a username to { id, name }, or pass a numeric id straight through. */
+/** The id goes into the upstream URL path, so only a plain positive integer is accepted. */
+const USER_ID_RE = /^[1-9]\d{0,19}$/;
+
+/** Username lookup through Roblox's users API. Resolves to { id, name }, or null when no such user. */
+async function lookupByUsersApi(username) {
+  const res = await fetch(ROBLOX_USERS, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ usernames: [username], excludeBannedUsers: false }),
+    signal: AbortSignal.timeout(TIMEOUT_MS),
+  });
+  if (res.status === 429) throw Object.assign(new Error("roblox 429"), { rateLimited: true });
+  if (!res.ok) throw new Error(`roblox ${res.status}`);
+
+  const found = (await res.json())?.data?.[0];
+  const id = String(found?.id ?? "");
+  return USER_ID_RE.test(id) ? { id, name: typeof found.name === "string" ? found.name : null } : null;
+}
+
+/**
+ * Username lookup through the roblox.com profile redirect, which answers with a
+ * 302 to /users/<id>/profile, or to /request-error?code=404 for an unknown name.
+ * It is a different service from the users API, so it is tried when that one
+ * refuses. Resolves to { id, name: null }, or null when no such user.
+ */
+async function lookupByProfileRedirect(username) {
+  const res = await fetch(`${ROBLOX_PROFILE}?username=${encodeURIComponent(username)}`, {
+    redirect: "manual",
+    signal: AbortSignal.timeout(TIMEOUT_MS),
+  });
+  const location = res.status >= 300 && res.status < 400 ? res.headers.get("Location") : null;
+  if (!location) throw new Error(`roblox profile ${res.status}`);
+
+  const target = new URL(location, ROBLOX_PROFILE);
+  const id = target.pathname.match(/^\/users\/(\d+)\/profile\/?$/)?.[1];
+  if (id && USER_ID_RE.test(id)) return { id, name: null };
+  if (target.pathname === "/request-error" && target.searchParams.get("code") === "404") return null;
+  throw new Error(`roblox profile redirect to ${target.pathname}`);
+}
+
+/**
+ * Resolve a username to { id, name }, or pass a numeric id straight through.
+ *
+ * Roblox rate limits the users API by IP, and Workers call out from addresses
+ * shared with every other Worker, so that API refuses most lookups from here
+ * with a 429 even at one request an hour. The profile redirect is the fallback.
+ * When both fail, the users API's error is the one thrown.
+ */
 async function resolveUser(input) {
   if (/^\d{1,20}$/.test(input)) return { id: input, name: null };
   if (!USERNAME_RE.test(input)) return null;
 
-  const res = await fetch(ROBLOX_USERS, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ usernames: [input], excludeBannedUsers: false }),
-    signal: AbortSignal.timeout(TIMEOUT_MS),
-  });
-  if (res.status === 429) {
-    throw Object.assign(new Error("roblox 429"), { retryAfter: retryAfterSeconds(res.headers.get("Retry-After")) });
+  let primaryError;
+  try {
+    return await lookupByUsersApi(input);
+  } catch (error) {
+    primaryError = error;
   }
-  if (!res.ok) throw new Error(`roblox ${res.status}`);
-
-  const found = (await res.json())?.data?.[0];
-  // The id goes into the upstream URL path, so only accept a plain positive integer.
-  const id = String(found?.id ?? "");
-  return /^[1-9]\d{0,19}$/.test(id) ? { id, name: typeof found.name === "string" ? found.name : null } : null;
+  try {
+    return await lookupByProfileRedirect(input);
+  } catch {
+    throw primaryError;
+  }
 }
 
 export default {
@@ -106,8 +150,11 @@ export default {
     try {
       user = await resolveUser(input);
     } catch (error) {
-      if (error.retryAfter) {
-        return reply(origin, 429, { error: "Roblox is rate limiting lookups. Wait a moment and try again." }, { "Retry-After": error.retryAfter });
+      // No Retry-After: waiting rarely helps (see resolveUser), the user ID does.
+      if (error.rateLimited) {
+        return reply(origin, 429, {
+          error: "Roblox is rate limiting name lookups. Enter your user ID instead: the number in your Roblox profile link.",
+        });
       }
       return reply(origin, 502, { error: "Roblox could not be reached. Try again shortly." });
     }
