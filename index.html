@@ -21,6 +21,7 @@
     var theme = s.theme || s.accent; // accents became themes; ids carried over
     if (theme && theme !== "periwinkle") r.dataset.theme = theme;
     if (s.density === "compact") r.dataset.density = "compact";
+    if (s.unindexed === "silhouette") r.dataset.unindexed = "silhouette";
     var cols = s.columns || (s.showClicks === false ? { clicks: false } : {});
     if (cols.source == null && cols.egg === false) cols.source = false; // Source was the Egg column
     var hide = ["source", "rarity", "clicks"].filter(function (c) { return cols[c] === false; });

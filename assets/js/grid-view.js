@@ -7,7 +7,7 @@
  *
  * Only the rows near the scroll position exist in the page. The "All" category is
  * well over a thousand pets, and a thousand image elements (each with a CSS filter
- * for the silhouette) is what makes scrolling it crawl. The rest of the height is
+ * for a not-indexed pet) is what makes scrolling it crawl. The rest of the height is
  * padding on the grid, so the scrollbar still spans the whole list, and tiles are
  * added and removed as it scrolls.
  *

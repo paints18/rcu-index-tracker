@@ -17,6 +17,7 @@ import {
   MODES,
   THEMES,
   DENSITIES,
+  UNINDEXED_STYLES,
   COLUMNS,
   loadSettings,
   saveSettings,
@@ -222,6 +223,13 @@ function buildDialog() {
     row("Row density", null, densitySeg),
   );
 
+  const unindexedSeg = el("div", "seg");
+  unindexedSeg.setAttribute("role", "group");
+  unindexedSeg.setAttribute("aria-label", "Not-indexed pets in grid view");
+  tracker.append(
+    row("Not-indexed pets in grid view", null, unindexedSeg),
+  );
+
   const profileInTitle = checkbox("Show");
   tracker.append(
     row(
@@ -302,6 +310,7 @@ function buildDialog() {
     modeSeg,
     themeRow,
     densitySeg,
+    unindexedSeg,
     profileList,
     resetButton,
     eraseButton,
@@ -375,6 +384,7 @@ function renderThemes() {
 function renderPreferences() {
   renderSegment(ui.modeSeg, MODES, settings.mode, (mode) => update({ mode }));
   renderSegment(ui.densitySeg, DENSITIES, settings.density, (density) => update({ density }));
+  renderSegment(ui.unindexedSeg, UNINDEXED_STYLES, settings.unindexed, (unindexed) => update({ unindexed }));
   renderThemes();
 
   for (const [id, input] of ui.columns) input.checked = settings.columns?.[id] !== false;

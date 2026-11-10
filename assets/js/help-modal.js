@@ -96,7 +96,7 @@ const TABS = [
     label: "Basics",
     blocks: () => [
       "**Grid view** shows the in-game layout: pick a variant, then click a pet to " +
-        "tick it. Pets you don't have yet are silhouettes.",
+        "tick it. Pets you don't have yet are dimmed.",
       "**List view** (top right) is a table with a box per variant. Tick each variant " +
         "you have in your in-game index. The circle in the **All** column covers every " +
         "variant that pet has, and shows a bar when you have some of them but not all.",

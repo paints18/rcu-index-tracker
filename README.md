@@ -12,7 +12,7 @@ profile name.
 
 - Grid view (the default; Grid view/List view toggle in the category header)
   shows the in-game index layout: one variant at a time, 7 tiles per row,
-  not-indexed pets as silhouettes, and a hover card with rarity, clicks and
+  not-indexed pets dimmed, and a hover card with rarity, clicks and
   source. Clicking a tile ticks it. Search, Source, Rarity, counts and Undo are shared
   with the list. The Status menu offers All pets and Missing, which lists
   the pets not yet ticked for the variant on show (Normal, Golden, Toxic or
@@ -75,7 +75,8 @@ profile name.
   posted. First-time visitors do not see it. At most one popup is shown per
   visit.
 - Light/dark mode, colour themes, a compact density option, and the ability
-  to hide unused columns (Source, Rarity, Clicks). An option to show the
+  to hide unused columns (Source, Rarity, Clicks). Not-indexed pets in grid
+  view can be shown dimmed (the default) or as black silhouettes. An option to show the
   profile name in the browser tab title (on by default) is also available in
   Settings.
 

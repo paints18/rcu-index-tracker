@@ -70,11 +70,17 @@
   transition: filter 0.12s ease;
 }
 
-/* Not indexed: the icon is a solid black silhouette on the same rarity tile as an
-   indexed pet. Hover or keyboard focus lifts it just enough to tell what it is. */
-.gv-tile:not(.is-caught) img { filter: brightness(0); }
+/* Not indexed: by default the icon is dimmed (darkened, colour kept) on the same
+   rarity tile as an indexed pet; Settings can switch it to a solid black silhouette
+   ([data-unindexed="silhouette"]). Hover or keyboard focus lifts either one
+   enough to tell what it is. */
+.gv-tile:not(.is-caught) img { filter: brightness(0.3); }
 .gv-tile:not(.is-caught):hover img,
-.gv-tile:not(.is-caught):focus-visible img { filter: brightness(0.45); }
+.gv-tile:not(.is-caught):focus-visible img { filter: brightness(0.75); }
+
+[data-unindexed="silhouette"] .gv-tile:not(.is-caught) img { filter: brightness(0); }
+[data-unindexed="silhouette"] .gv-tile:not(.is-caught):hover img,
+[data-unindexed="silhouette"] .gv-tile:not(.is-caught):focus-visible img { filter: brightness(0.45); }
 
 .gv-tile.is-caught::before {
   content: "★";

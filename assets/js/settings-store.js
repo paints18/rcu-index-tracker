@@ -58,6 +58,12 @@ export const THEMES = [
 
 const THEME_IDS = new Set(THEMES.map((t) => t.id));
 
+/** How the grid draws a pet that is not indexed yet. */
+export const UNINDEXED_STYLES = [
+  { id: "dim", label: "Dimmed" },
+  { id: "silhouette", label: "Silhouette" },
+];
+
 export const DENSITIES = [
   { id: "comfortable", label: "Comfortable" },
   { id: "compact", label: "Compact" },
@@ -77,6 +83,7 @@ export const DEFAULTS = {
   mode: "auto",
   theme: "periwinkle",
   density: "comfortable",
+  unindexed: "dim",
   columns: Object.fromEntries(COLUMNS.map((c) => [c.id, true])),
   /** Put the active profile's name in the browser tab title. */
   profileInTitle: true,
@@ -131,6 +138,7 @@ function withDefaults(stored) {
   if (typeof rest.updatesSeenId !== "string") delete rest.updatesSeenId;
   if (!MODES.some((m) => m.id === rest.mode)) delete rest.mode;
   if (!DENSITIES.some((d) => d.id === rest.density)) delete rest.density;
+  if (!UNINDEXED_STYLES.some((u) => u.id === rest.unindexed)) delete rest.unindexed;
   for (const c of COLUMNS) if (typeof columns[c.id] !== "boolean") columns[c.id] = true;
 
   // Accents became whole themes. The five accent ids that survived as themes
@@ -180,6 +188,9 @@ export function applySettings(settings = loadSettings()) {
 
   if (settings.density === "compact") root.dataset.density = "compact";
   else delete root.dataset.density;
+
+  if (settings.unindexed === "silhouette") root.dataset.unindexed = "silhouette";
+  else delete root.dataset.unindexed;
 
   // Bulk edit is always on; the attribute stays because the stylesheet keys off
   // it (see [data-bulk="on"] in tailwind.css) rather than because it is still a
