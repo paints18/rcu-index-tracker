@@ -464,14 +464,16 @@ function renderCounts() {
   const counts = countProgress(index, state.progress);
   const category = activeCategory();
 
-  // Overall
-  dom.summaryValue.textContent = counts.total.toLocaleString();
+  // Overall. Ticks the last game sync found on pets the tracker does not list
+  // still count here, so the number matches the in-game index.
+  const caught = counts.total + (store.getLink(state.profileId)?.ignoredTicks ?? 0);
+  dom.summaryValue.textContent = caught.toLocaleString();
   dom.summaryTotal.textContent = `/ ${index.totalTicks.toLocaleString()}`;
-  const pct = percent(counts.total, index.totalTicks);
+  const pct = Math.min(100, percent(caught, index.totalTicks));
   dom.summaryBar.style.width = `${pct}%`;
   dom.summaryBarWrap.setAttribute(
     "aria-label",
-    `${counts.total} of ${index.totalTicks} caught, ${pct} percent`,
+    `${caught} of ${index.totalTicks} caught, ${pct} percent`,
   );
 
   dom.variantSummary.replaceChildren(
@@ -1778,7 +1780,7 @@ const countTicks = (progress) => Object.values(progress).reduce((sum, v) => sum 
  * API response must never be able to wipe a checklist.
  */
 function planApiIndex(profileId, body) {
-  const { progress, unmatched, unsupported } = entriesToProgress(body.index, state.index);
+  const { progress, unmatched, unsupported, ignored } = entriesToProgress(body.index, state.index);
   const current = store.getProgress(profileId);
 
   let added = 0;
@@ -1795,15 +1797,15 @@ function planApiIndex(profileId, body) {
   if (countTicks(progress) === 0 && countTicks(current) > 0) {
     throw new ApiImportError("The API reported no pets for this player, so nothing was changed.");
   }
-  return { progress, added, removed, unmatched, unsupported };
+  return { progress, added, removed, unmatched, unsupported, ignored };
 }
 
 /** Replace a profile's ticks with a plan from planApiIndex and record the link. */
 function applyApiIndex(profileId, link, plan) {
-  const { progress, added, removed, unmatched, unsupported } = plan;
+  const { progress, added, removed, unmatched, unsupported, ignored } = plan;
 
   store.setProgress(profileId, progress);
-  store.setLink(profileId, { ...link, syncedAt: new Date().toISOString() });
+  store.setLink(profileId, { ...link, syncedAt: new Date().toISOString(), ignoredTicks: ignored });
   // The ticks changed under it, so an older edit would no longer undo cleanly.
   state.undoStack = state.undoStack.filter((entry) => entry.profileId !== profileId);
 
@@ -1932,6 +1934,8 @@ function runApiDisconnect() {
   if (!state.profileId) return;
   store.clearLink(state.profileId);
   fillApiForms();
+  // The game-only ticks lived on the link, so the overall total drops them.
+  renderCounts();
   toast("Disconnected. Your ticks were kept.");
 }
 
