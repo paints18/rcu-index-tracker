@@ -1,6 +1,6 @@
 {
   "_comment": "Permanent pet-slug -> integer ledger, maintained by tools/assign_codes.py. Do not hand-edit: changing or reusing an integer invalidates every backup code players have saved.",
-  "nextCode": 1447,
+  "nextCode": 1448,
   "codes": {
     "100m-balloon": 1137,
     "100m-blaster": 1146,
@@ -944,6 +944,7 @@
     "nova-singularity": 242,
     "nuclear-beast": 32,
     "nuclear-bloom": 1236,
+    "nuclear-cow": 1447,
     "nuclear-crab": 1235,
     "nuclear-golem": 12,
     "nuclear-hydra": 16,

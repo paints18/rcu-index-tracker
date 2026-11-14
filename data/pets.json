@@ -217,6 +217,18 @@
           ]
         },
         {
+          "slug": "nuclear-cow",
+          "name": "Nuclear Cow",
+          "source": "Nuclear Egg",
+          "rarity": "Uncommon",
+          "clicks": "300",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic"
+          ]
+        },
+        {
           "slug": "nuclear-hydra",
           "name": "Nuclear Hydra",
           "source": "Nuclear Egg",
