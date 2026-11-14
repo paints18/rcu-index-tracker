@@ -9,7 +9,7 @@
  *   rcu:v1:profiles            -> [{ id, name, createdAt }]
  *   rcu:v1:activeProfile       -> profileId
  *   rcu:v1:progress:<id>       -> { "<pet-slug>": ["normal", "golden"] }
- *   rcu:v1:link:<id>           -> { user, token, userId, syncedAt, ignoredTicks } (API import link)
+ *   rcu:v1:link:<id>           -> { user, token, userId, syncedAt } (API import link)
  *   rcu:v1:filters:<id>        -> { sources, rarities, status, missing, sortBySource } (last filter and sort choices)
  *   rcu:v1:category:<id>       -> category id (the tab the profile was last on)
  *
@@ -129,14 +129,13 @@ function normalizeLink(link) {
   if (typeof link.user !== "string" || !link.user) return null;
   if (typeof link.token !== "string" || !link.token) return null;
 
-  const { userId, syncedAt, ignoredTicks } = link;
+  const { userId, syncedAt } = link;
   const validId = (typeof userId === "string" && userId !== "") || Number.isFinite(userId);
   return {
     user: link.user,
     token: link.token,
     userId: validId ? userId : null,
     syncedAt: typeof syncedAt === "string" ? syncedAt : null,
-    ignoredTicks: Number.isInteger(ignoredTicks) && ignoredTicks > 0 ? ignoredTicks : 0,
   };
 }
 
@@ -280,9 +279,7 @@ export class Store {
    * itself. Local to this browser, like everything else here.
    * `userId` is whatever the API returned (a number from Roblox); it is kept as
    * stored so callers can compare it strictly against a fresh response.
-   * `ignoredTicks` is how many ticks the last sync found on pets the tracker
-   * does not list; they count toward the overall total only.
-   * @returns {{user: string, token: string, userId: string|number|null, syncedAt: string|null, ignoredTicks: number}|null}
+   * @returns {{user: string, token: string, userId: string|number|null, syncedAt: string|null}|null}
    */
   getLink(profileId) {
     if (!profileId) return null;

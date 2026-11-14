@@ -27,8 +27,7 @@ const IGNORED_TIERS = new Set(["5"]);
 
 /**
  * Pets the API reports that the tracker deliberately does not list. They are
- * left out of the "Not in the tracker yet" message, but their ticks are still
- * counted (as `ignored`) so the overall total matches the in-game index.
+ * skipped silently instead of being reported as missing on every import.
  */
 const IGNORED_KEYS = new Set(["chocolatetutel", "clantutel", "egglord", "giftoverlord", "nuclearcow", "questtutel", "santatutel", "spacetutel", "theegg"]);
 
@@ -108,7 +107,7 @@ export async function fetchPlayerIndex({ user, userId, token } = {}) {
  * Nothing is guessed: an entry whose name matches no pet, or more than one, is
  * reported as unmatched rather than attached to the nearest candidate.
  *
- * @returns {{progress: Record<string, string[]>, unmatched: string[], unsupported: number, ignored: number}}
+ * @returns {{progress: Record<string, string[]>, unmatched: string[], unsupported: number}}
  */
 export function entriesToProgress(entries, index) {
   const bySquashed = new Map();
@@ -122,7 +121,6 @@ export function entriesToProgress(entries, index) {
   // A Map, so no slug can collide with Object.prototype members.
   const progress = new Map();
   const unmatched = new Set();
-  const ignored = new Set();
   let unsupported = 0;
 
   for (const entry of Array.isArray(entries) ? entries : []) {
@@ -140,10 +138,7 @@ export function entriesToProgress(entries, index) {
       unsupported += 1;
       continue;
     }
-    if (IGNORED_KEYS.has(key)) {
-      ignored.add(`${key}:${variant}`);
-      continue;
-    }
+    if (IGNORED_KEYS.has(key)) continue;
 
     const pet = ambiguous.has(key) ? null : bySquashed.get(key);
     if (!pet) {
@@ -161,5 +156,5 @@ export function entriesToProgress(entries, index) {
     progress.set(pet.slug, list);
   }
 
-  return { progress: Object.fromEntries(progress), unmatched: [...unmatched], unsupported, ignored: ignored.size };
+  return { progress: Object.fromEntries(progress), unmatched: [...unmatched], unsupported };
 }
