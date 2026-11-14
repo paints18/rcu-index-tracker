@@ -1,8 +1,38 @@
 {
   "schemaVersion": 1,
   "_comment": "Changelog shown on updates.html. Newest first is not required — entries are sorted by date at render time. Add entries by hand. Tags: added | changed | fixed.",
-  "notice": "Set up by hand? Use Sync from game next to your profile name to fill your checklist from your in-game index.",
   "entries": [
+    {
+      "id": "2026-11-14-update",
+      "date": "2026-11-14",
+      "title": "Update 86: Powerful Event",
+      "tags": [
+        "added"
+      ],
+      "body": "Added a new Powerful Coins tab for the Powerful Event, Powerful Exclusive Egg to Exclusives, and the Powerful pack, stock pack and leaderboard pets.",
+      "items": [
+        {
+          "text": "Powerful Coins:",
+          "items": [
+            "Developer Egg: Adaspo, Igor, Woiz, BitBoy, Roksek.",
+            "Powerful Egg: OG Bunny, Aqua Planet, Glove Dragon, Toys Basket, Timber Overlord, Developer Hydra, Powerful Shard, Tutel God.",
+            "Rebirth F2P Exclusive Egg: Rebirth Dominus, Rebirth Heart, Rebirth Mimic, Rebirth Overlord, Rebirth Beast.",
+            "Powerful Stock Pack: Powerful Kitsune.",
+            "Powerful Rewards: Powerful Queen.",
+            "Top 25 Powerful Clan Room: Powerful Trophy."
+          ]
+        },
+        {
+          "text": "Exclusives:",
+          "items": [
+            "Powerful Exclusive Egg: Powerful Star, Powerful Dragon, Powerful Saviour, Powerful Servant, Powerful Overseer.",
+            "Powerful Pack: Neon Champion.",
+            "Powerful Stock Pack: Powerful Lord."
+          ]
+        },
+        "No Currency: Powerful Shield, Gifts Stack, Royal Glove, Powerful Cake (Powerful Coins leaderboards)."
+      ]
+    },
     {
       "id": "2026-11-08-update",
       "date": "2026-11-08",

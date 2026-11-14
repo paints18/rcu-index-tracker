@@ -8281,6 +8281,45 @@
           ]
         },
         {
+          "slug": "powerful-star",
+          "name": "Powerful Star",
+          "source": "Powerful Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "120N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "powerful-dragon",
+          "name": "Powerful Dragon",
+          "source": "Powerful Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "167.99N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "powerful-saviour",
+          "name": "Powerful Saviour",
+          "source": "Powerful Exclusive Egg",
+          "rarity": "Exclusive",
+          "clicks": "300N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "thunder-fury",
           "name": "Thunder Fury",
           "source": "Storm Exclusive Egg",
@@ -9026,6 +9065,32 @@
           ]
         },
         {
+          "slug": "neon-champion",
+          "name": "Neon Champion",
+          "source": "Powerful Pack",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "powerful-servant",
+          "name": "Powerful Servant",
+          "source": "Powerful Exclusive Egg",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "summer-lord",
           "name": "Summer Lord",
           "source": "-",
@@ -9106,6 +9171,19 @@
           "slug": "halloween-queen",
           "name": "Halloween Queen",
           "source": "Witch Exclusive Egg",
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "powerful-lord",
+          "name": "Powerful Lord",
+          "source": "Powerful Stock Pack",
           "rarity": "Supreme",
           "clicks": "200%",
           "variants": [
@@ -9668,6 +9746,19 @@
           "slug": "witch-emperor",
           "name": "Witch Emperor",
           "source": "Witch Exclusive Egg",
+          "rarity": "Ultimate",
+          "clicks": "400%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "powerful-overseer",
+          "name": "Powerful Overseer",
+          "source": "Powerful Exclusive Egg",
           "rarity": "Ultimate",
           "clicks": "400%",
           "variants": [
@@ -11438,7 +11529,7 @@
         {
           "slug": "maple-shield",
           "name": "Maple Shield",
-          "source": "Top Total Clan Acorns",
+          "source": "Top 25 Total Clan Acorns",
           "rarity": "Supreme",
           "clicks": "110%",
           "variants": [
@@ -11874,7 +11965,7 @@
         {
           "slug": "spooky-shield",
           "name": "Spooky Shield",
-          "source": "Top Total Clan Pumpkins",
+          "source": "Top 25 Total Clan Pumpkins",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
@@ -11888,6 +11979,19 @@
           "slug": "250m-trophy",
           "name": "250M Trophy",
           "source": "250M Wheel",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "powerful-shield",
+          "name": "Powerful Shield",
+          "source": "Top 25 Total Clan Powerful Coins",
           "rarity": "Supreme",
           "clicks": "125%",
           "variants": [
@@ -12331,6 +12435,19 @@
           ]
         },
         {
+          "slug": "gifts-stack",
+          "name": "Gifts Stack",
+          "source": "Top 100 Total Powerful Coins",
+          "rarity": "Supreme",
+          "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "15m-robot",
           "name": "15M Robot",
           "source": null,
@@ -12553,6 +12670,19 @@
           "slug": "250m-angel",
           "name": "250M Angel",
           "source": "Top 25 250M Rebirths",
+          "rarity": "Supreme",
+          "clicks": "300%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "royal-glove",
+          "name": "Royal Glove",
+          "source": "Top 25 Total Powerful Coins",
           "rarity": "Supreme",
           "clicks": "300%",
           "variants": [
@@ -12860,6 +12990,19 @@
           "slug": "250m-king",
           "name": "250M King",
           "source": "Top 1 250M Rebirths",
+          "rarity": "Ultimate",
+          "clicks": "500%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "powerful-cake",
+          "name": "Powerful Cake",
+          "source": "Top 1 Total Powerful Coins",
           "rarity": "Ultimate",
           "clicks": "500%",
           "variants": [
@@ -18189,6 +18332,285 @@
           "source": "Halloween Dice",
           "rarity": "Ultimate",
           "clicks": "400%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "powerful-coins",
+      "label": "Powerful Coins",
+      "pets": [
+        {
+          "slug": "adaspo",
+          "name": "Adaspo",
+          "source": "Developer Egg",
+          "rarity": "Common",
+          "clicks": "2.4Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "igor",
+          "name": "Igor",
+          "source": "Developer Egg",
+          "rarity": "Uncommon",
+          "clicks": "3Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "woiz",
+          "name": "Woiz",
+          "source": "Developer Egg",
+          "rarity": "Rare",
+          "clicks": "6Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "bitboy",
+          "name": "BitBoy",
+          "source": "Developer Egg",
+          "rarity": "Epic",
+          "clicks": "9Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "roksek",
+          "name": "Roksek",
+          "source": "Developer Egg",
+          "rarity": "Legendary",
+          "clicks": "30Qn",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "powerful-kitsune",
+          "name": "Powerful Kitsune",
+          "source": "Powerful Stock Pack",
+          "rarity": "Exclusive",
+          "clicks": "1N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "rebirth-dominus",
+          "name": "Rebirth Dominus",
+          "source": "Rebirth F2P Exclusive Egg",
+          "rarity": "Epic",
+          "clicks": "1.92N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "og-bunny",
+          "name": "OG Bunny",
+          "source": "Powerful Egg",
+          "rarity": "Rare",
+          "clicks": "2.5N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "rebirth-heart",
+          "name": "Rebirth Heart",
+          "source": "Rebirth F2P Exclusive Egg",
+          "rarity": "Legendary",
+          "clicks": "3.84N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "aqua-planet",
+          "name": "Aqua Planet",
+          "source": "Powerful Egg",
+          "rarity": "Epic",
+          "clicks": "4N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "glove-dragon",
+          "name": "Glove Dragon",
+          "source": "Powerful Egg",
+          "rarity": "Legendary",
+          "clicks": "8N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "rebirth-mimic",
+          "name": "Rebirth Mimic",
+          "source": "Rebirth F2P Exclusive Egg",
+          "rarity": "Mythical",
+          "clicks": "17.59N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "toys-basket",
+          "name": "Toys Basket",
+          "source": "Powerful Egg",
+          "rarity": "Mythical",
+          "clicks": "36N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "rebirth-overlord",
+          "name": "Rebirth Overlord",
+          "source": "Rebirth F2P Exclusive Egg",
+          "rarity": "Eternal",
+          "clicks": "100N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "timber-overlord",
+          "name": "Timber Overlord",
+          "source": "Powerful Egg",
+          "rarity": "Eternal",
+          "clicks": "200N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "developer-hydra",
+          "name": "Developer Hydra",
+          "source": "Powerful Egg",
+          "rarity": "Secret",
+          "clicks": "1.1De",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "powerful-shard",
+          "name": "Powerful Shard",
+          "source": "Powerful Egg",
+          "rarity": "Divine",
+          "clicks": "3.8De",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "powerful-queen",
+          "name": "Powerful Queen",
+          "source": "Powerful Rewards",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "powerful-trophy",
+          "name": "Powerful Trophy",
+          "source": "Top 25 Powerful Clan Room",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "rebirth-beast",
+          "name": "Rebirth Beast",
+          "source": "Rebirth F2P Exclusive Egg",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "tutel-god",
+          "name": "Tutel God",
+          "source": "Powerful Egg",
+          "rarity": "Supreme",
+          "clicks": "200%",
           "variants": [
             "normal",
             "golden",
