@@ -3,6 +3,27 @@
   "_comment": "Changelog shown on updates.html. Newest first is not required — entries are sorted by date at render time. Add entries by hand. Tags: added | changed | fixed.",
   "entries": [
     {
+      "id": "2026-11-24-update",
+      "date": "2026-11-24",
+      "title": "Update 87: Thanksgiving, Powerful Event Part 2",
+      "tags": [
+        "added"
+      ],
+      "body": "Added Thanksgiving 2026 Egg to Powerful Coins, plus the minigame supremes.",
+      "items": [
+        {
+          "text": "Powerful Coins:",
+          "items": [
+            "Thanksgiving 2026 Egg: Harvest Cat, Corn Bunny, Thanksgiving Hydra, Cranberry Lion, Orchard Avatar, Thanksgiving Turkey, Roksek Turkey, BitBoy Turkey, Woiz Turkey, Igor Turkey, Adaspo Turkey, Rebirth Tutel, Powerful Turkey.",
+            "Destroying Planets: Ccichy Turkey.",
+            "Defeating Mobs: Wyrek Turkey.",
+            "Selling Gifts: Okis Turkey.",
+            "Powerful Wheel: Powerful Blobfish."
+          ]
+        }
+      ]
+    },
+    {
       "id": "2026-11-14-update",
       "date": "2026-11-14",
       "title": "Update 86: Powerful Event",

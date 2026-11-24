@@ -18488,11 +18488,50 @@
           ]
         },
         {
+          "slug": "harvest-cat",
+          "name": "Harvest Cat",
+          "source": "Thanksgiving 2026 Egg",
+          "rarity": "Rare",
+          "clicks": "5N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "glove-dragon",
           "name": "Glove Dragon",
           "source": "Powerful Egg",
           "rarity": "Legendary",
           "clicks": "8N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "corn-bunny",
+          "name": "Corn Bunny",
+          "source": "Thanksgiving 2026 Egg",
+          "rarity": "Epic",
+          "clicks": "8N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "thanksgiving-hydra",
+          "name": "Thanksgiving Hydra",
+          "source": "Thanksgiving 2026 Egg",
+          "rarity": "Legendary",
+          "clicks": "16N",
           "variants": [
             "normal",
             "golden",
@@ -18527,6 +18566,19 @@
           ]
         },
         {
+          "slug": "cranberry-lion",
+          "name": "Cranberry Lion",
+          "source": "Thanksgiving 2026 Egg",
+          "rarity": "Mythical",
+          "clicks": "72N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "rebirth-overlord",
           "name": "Rebirth Overlord",
           "source": "Rebirth F2P Exclusive Egg",
@@ -18553,6 +18605,19 @@
           ]
         },
         {
+          "slug": "orchard-avatar",
+          "name": "Orchard Avatar",
+          "source": "Thanksgiving 2026 Egg",
+          "rarity": "Eternal",
+          "clicks": "400N",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "developer-hydra",
           "name": "Developer Hydra",
           "source": "Powerful Egg",
@@ -18566,11 +18631,89 @@
           ]
         },
         {
+          "slug": "thanksgiving-turkey",
+          "name": "Thanksgiving Turkey",
+          "source": "Thanksgiving 2026 Egg",
+          "rarity": "Secret",
+          "clicks": "2.2De",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "powerful-shard",
           "name": "Powerful Shard",
           "source": "Powerful Egg",
           "rarity": "Divine",
           "clicks": "3.8De",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "roksek-turkey",
+          "name": "Roksek Turkey",
+          "source": "Thanksgiving 2026 Egg",
+          "rarity": "Divine",
+          "clicks": "7.6De",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "bitboy-turkey",
+          "name": "BitBoy Turkey",
+          "source": "Thanksgiving 2026 Egg",
+          "rarity": "Divine",
+          "clicks": "7.6De",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "woiz-turkey",
+          "name": "Woiz Turkey",
+          "source": "Thanksgiving 2026 Egg",
+          "rarity": "Divine",
+          "clicks": "7.6De",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "igor-turkey",
+          "name": "Igor Turkey",
+          "source": "Thanksgiving 2026 Egg",
+          "rarity": "Divine",
+          "clicks": "7.6De",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "adaspo-turkey",
+          "name": "Adaspo Turkey",
+          "source": "Thanksgiving 2026 Egg",
+          "rarity": "Divine",
+          "clicks": "7.6De",
           "variants": [
             "normal",
             "golden",
@@ -18618,11 +18761,89 @@
           ]
         },
         {
+          "slug": "ccichy-turkey",
+          "name": "Ccichy Turkey",
+          "source": "Destroying Planets",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "wyrek-turkey",
+          "name": "Wyrek Turkey",
+          "source": "Defeating Mobs",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "okis-turkey",
+          "name": "Okis Turkey",
+          "source": "Selling Gifts",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "powerful-blobfish",
+          "name": "Powerful Blobfish",
+          "source": "Powerful Wheel",
+          "rarity": "Supreme",
+          "clicks": "125%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
           "slug": "tutel-god",
           "name": "Tutel God",
           "source": "Powerful Egg",
           "rarity": "Supreme",
           "clicks": "200%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "rebirth-tutel",
+          "name": "Rebirth Tutel",
+          "source": "Thanksgiving 2026 Egg",
+          "rarity": "Ultimate",
+          "clicks": "400%",
+          "variants": [
+            "normal",
+            "golden",
+            "toxic",
+            "galaxy"
+          ]
+        },
+        {
+          "slug": "powerful-turkey",
+          "name": "Powerful Turkey",
+          "source": "Thanksgiving 2026 Egg",
+          "rarity": "Ultimate",
+          "clicks": "400%",
           "variants": [
             "normal",
             "golden",
